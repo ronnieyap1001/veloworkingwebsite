@@ -1,0 +1,1403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Velo Working — Operations systems SMEs actually own</title>
+
+<!-- SEO -->
+<meta name="description" content="Velo Working helps SMEs in Singapore and Malaysia automate and digitise operations with no-code software and hardware your own team runs. Fixed fee. No subscription. No vendor lock-in." />
+<meta name="author" content="Velo Working Pte. Ltd." />
+<link rel="canonical" href="https://www.veloworking.com/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Velo Working — Operations systems SMEs actually own" />
+<meta property="og:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in. Built for SMEs in Singapore and Malaysia." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.veloworking.com/" />
+<meta property="og:site_name" content="Velo Working" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Velo Working — Operations systems SMEs actually own" />
+<meta name="twitter:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&family=Libre+Baskerville:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Favicon — Velo mark on paper -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Cg fill='%230A0A0A'%3E%3Crect x='14.5' y='6' width='3' height='20'/%3E%3Cpath d='M16 4 L10 10 L22 10 Z'/%3E%3Cpath d='M16 28 L10 22 L22 22 Z'/%3E%3Cpath d='M4 16 L10 10 L10 22 Z'/%3E%3Cpath d='M28 16 L22 10 L22 22 Z'/%3E%3C/g%3E%3C/svg%3E" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Velo Working Pte. Ltd.",
+  "url": "https://www.veloworking.com",
+  "email": "ronnie.yap@veloworking.com",
+  "telephone": "+65 9894 3004",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "540 Sims Ave #03-05",
+    "addressLocality": "Singapore",
+    "postalCode": "387603",
+    "addressCountry": "SG"
+  },
+  "founder": { "@type": "Person", "name": "Ronnie Yap" },
+  "description": "Velo Working helps SMEs with non-continuous and discrete business systems, providing a full solution in automating and digitising operations with no-code software and hardware that is cost-efficient and self-manageable by their own employees."
+}
+</script>
+
+<style>
+/* ================================================================
+   BRAND TOKENS — Paper theme (Pitch Deck v3 palette)
+================================================================ */
+:root {
+  /* Locked brand colours */
+  --ink: #0A0A0A;
+  --paper: #F7F5F0;
+  --paper-soft: #EDEAE2;
+  --paper-edge: #E3DFD4;
+  --blue: #1317E4;
+
+  /* Semantic tokens on paper background */
+  --bg: var(--paper);
+  --bg-alt: var(--paper-soft);
+  --fg: var(--ink);
+  --fg-dim: rgba(10, 10, 10, 0.66);
+  --fg-ghost: rgba(10, 10, 10, 0.46);
+  --fg-faint: rgba(10, 10, 10, 0.30);
+  --rule: rgba(10, 10, 10, 0.10);
+  --rule-strong: rgba(10, 10, 10, 0.20);
+
+  --f-display: "DM Sans", system-ui, sans-serif;
+  --f-accent: "Libre Baskerville", Georgia, serif;
+  --f-body: "DM Sans", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --max: 1440px;
+  --gut: clamp(24px, 6vw, 120px);
+  --section-pad-y: clamp(96px, 14vw, 180px);
+}
+
+/* ================================================================
+   RESET
+================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-weight: 400; font-size: 17px; line-height: 1.55;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gut); padding-right: var(--gut); }
+
+/* ================================================================
+   TYPOGRAPHY
+================================================================ */
+.mono {
+  font-family: var(--f-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.mono--strong { color: var(--fg); }
+.mono--blue { color: var(--blue); }
+
+.italic-accent {
+  font-family: var(--f-accent); font-style: italic; font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.accent--blue { color: var(--blue); }
+
+h1, h2, h3 { margin: 0; font-family: var(--f-display); font-weight: 800; letter-spacing: -0.035em; line-height: 0.96; color: var(--fg); }
+h1 { font-size: clamp(48px, 9.5vw, 148px); font-weight: 900; }
+h2 { font-size: clamp(40px, 6.5vw, 92px); }
+h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+
+.lede { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 58ch; }
+
+/* ================================================================
+   CTA
+================================================================ */
+.cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 26px; border-radius: 999px;
+  font-family: var(--f-body); font-weight: 500; font-size: 15px;
+  letter-spacing: -0.005em; white-space: nowrap;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.cta--primary { background: var(--blue); color: var(--paper); }
+.cta--primary:hover { transform: translateY(-2px); }
+.cta--ghost { border: 1px solid var(--rule-strong); color: var(--fg); }
+.cta--ghost:hover { border-color: var(--fg); }
+.cta .arr { display: inline-block; transition: transform 220ms ease; }
+.cta:hover .arr { transform: translateX(4px); }
+
+/* ================================================================
+   NAV — paper with blur-on-scroll
+================================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0;
+  background: rgba(247, 245, 240, 0);
+  backdrop-filter: blur(0);
+  border-bottom: 1px solid transparent;
+  transition: background 280ms ease, backdrop-filter 280ms ease, border-color 280ms ease, padding 280ms ease;
+}
+.nav.scrolled {
+  background: rgba(247, 245, 240, 0.85);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 0;
+}
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+
+.logo {
+  display: inline-flex; align-items: center;
+  color: var(--fg);
+  transition: opacity 180ms ease;
+  line-height: 0;
+}
+.logo:hover { opacity: 0.82; }
+.logo__svg {
+  height: 36px;
+  width: auto;
+  color: var(--fg);
+}
+
+.nav__links { display: flex; align-items: center; gap: 32px; }
+.nav__link { font-size: 14px; color: var(--fg-dim); transition: color 180ms ease; }
+.nav__link:hover { color: var(--fg); }
+.nav__cta {
+  padding: 10px 18px; background: var(--ink); color: var(--paper);
+  border-radius: 999px; font-size: 13px; font-weight: 500;
+  transition: background 180ms ease;
+}
+.nav__cta:hover { background: var(--blue); }
+.nav__toggle { display: none; }
+
+@media (max-width: 860px) {
+  .logo__svg { height: 28px; }
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg); }
+  .nav__toggle .bars { display: flex; flex-direction: column; gap: 3px; }
+  .nav__toggle .bars span { display: block; width: 20px; height: 1.5px; background: var(--fg); }
+  .nav--open .nav__links {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg); padding: 20px var(--gut) 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav--open .nav__link { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 16px; color: var(--fg); }
+}
+
+/* ================================================================
+   HERO
+================================================================ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 180px 0 100px; overflow: hidden;
+}
+.hero__inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+.hero__eyebrow { margin-bottom: 28px; }
+.hero h1 { margin-bottom: 36px; }
+.hero h1 .line { display: block; }
+.hero h1 .accent--blue { font-weight: 400; }
+.hero__sub { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 52ch; margin-bottom: 40px; }
+.hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero__visual { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
+.hero__visual svg { width: 100%; height: auto; }
+
+@media (max-width: 1024px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 60px; }
+  .hero__visual { max-width: 460px; margin: 0 auto; }
+}
+
+.scroll-cue { position: absolute; bottom: 36px; left: var(--gut); display: flex; align-items: center; gap: 12px; color: var(--fg-dim); }
+.scroll-cue .line { display: block; width: 36px; height: 1px; background: var(--fg-dim); animation: pulse 2.6s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { transform: scaleX(0.3); opacity: 0.3; } 50% { transform: scaleX(1); opacity: 1; } }
+
+/* ================================================================
+   SECTION SCAFFOLD
+================================================================ */
+.section { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); position: relative; }
+.section--divider { border-top: 1px solid var(--rule); }
+.section--soft { background: var(--bg-alt); }
+.section__head { margin-bottom: clamp(48px, 6vw, 88px); }
+.section__eyebrow { display: inline-block; margin-bottom: 24px; }
+.section__title { max-width: 18ch; }
+.section__intro { max-width: 56ch; margin-top: 28px; color: var(--fg-dim); font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; }
+
+/* ================================================================
+   PROBLEM PILLARS
+================================================================ */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+.pillar { padding: 48px 32px 48px 0; border-right: 1px solid var(--rule); }
+.pillar:last-child { border-right: 0; padding-right: 0; }
+.pillar__num { margin-bottom: 24px; }
+.pillar__title { margin-bottom: 20px; max-width: 14ch; }
+.pillar p { color: var(--fg-dim); max-width: 40ch; }
+@media (max-width: 900px) {
+  .pillars { grid-template-columns: 1fr; }
+  .pillar { padding: 40px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
+  .pillar:last-child { border-bottom: 0; }
+}
+
+/* ================================================================
+   REFRAME
+================================================================ */
+.reframe { padding-top: calc(var(--section-pad-y) * 1.1); padding-bottom: calc(var(--section-pad-y) * 1.1); border-top: 1px solid var(--rule); background: var(--bg-alt); }
+.reframe__statement { font-family: var(--f-display); font-weight: 800; font-size: clamp(36px, 5.8vw, 84px); letter-spacing: -0.035em; line-height: 1.02; max-width: 20ch; color: var(--fg); }
+.reframe__statement .accent--blue { font-weight: 400; }
+.reframe__cost { margin-top: 72px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.reframe__cost > div { background: var(--bg-alt); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
+.reframe__cost .arr { font-family: var(--f-mono); color: var(--blue); font-size: 13px; margin-top: 3px; flex-shrink: 0; }
+.reframe__cost span { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--fg); line-height: 1.5; }
+@media (max-width: 780px) { .reframe__cost { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   BEFORE / AFTER
+================================================================ */
+.flow-compare {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: clamp(24px, 4vw, 56px); align-items: stretch;
+  margin-top: 16px;
+}
+.flow-compare__panel {
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  padding: 36px 32px 40px;
+  display: flex; flex-direction: column;
+}
+.flow-compare__panel--after { border-color: var(--rule-strong); }
+.flow-compare__label { margin-bottom: 8px; }
+.flow-compare__title {
+  font-family: var(--f-display); font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -0.02em;
+  line-height: 1.15; margin-bottom: 24px;
+  color: var(--fg);
+}
+.flow-compare__title--after .italic-accent { color: var(--blue); }
+.flow-compare__svg { width: 100%; height: auto; margin-top: auto; margin-bottom: 20px; }
+.flow-compare__foot { color: var(--fg-dim); font-size: 14.5px; line-height: 1.5; }
+.flow-compare__arrow {
+  align-self: center; color: var(--blue);
+  font-family: var(--f-mono); font-size: 13px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  writing-mode: vertical-rl; padding: 0 2px;
+  display: flex; align-items: center; gap: 16px;
+}
+.flow-compare__arrow .line { writing-mode: horizontal-tb; width: 1px; height: 48px; background: var(--blue); display: block; }
+@media (max-width: 900px) {
+  .flow-compare { grid-template-columns: 1fr; }
+  .flow-compare__arrow { writing-mode: horizontal-tb; flex-direction: row; padding: 8px 0; justify-content: center; }
+  .flow-compare__arrow .line { width: 48px; height: 1px; }
+}
+
+/* ================================================================
+   CONCEPT PRINCIPLES
+================================================================ */
+.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.principle { background: var(--bg); padding: 40px 36px 48px; display: flex; flex-direction: column; }
+.principle__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.principle__num { color: var(--blue); }
+.principle__glyph { width: 36px; height: 36px; color: var(--fg-dim); flex-shrink: 0; transition: color 280ms ease; }
+.principle:hover .principle__glyph { color: var(--blue); }
+.principle h3 { margin-bottom: 16px; max-width: 18ch; }
+.principle p { color: var(--fg-dim); font-size: 15.5px; line-height: 1.55; }
+@media (max-width: 1024px) { .principles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .principles { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   MODULE FLOW
+================================================================ */
+.module-flow {
+  position: relative;
+  padding: 48px clamp(16px, 3vw, 48px);
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  margin-bottom: 56px;
+}
+.module-flow__caption {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px; gap: 24px; flex-wrap: wrap;
+}
+.module-flow__caption strong { font-weight: 500; color: var(--fg); }
+.module-flow__svg { width: 100%; height: auto; max-height: 560px; }
+@media (max-width: 720px) { .module-flow { padding: 32px 20px; } }
+
+/* ================================================================
+   MODULES
+================================================================ */
+.modules { border-top: 1px solid var(--rule-strong); }
+.module-row {
+  display: grid; grid-template-columns: 60px 260px 1fr; gap: 40px;
+  padding: 32px 0; border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+  transition: padding 220ms ease;
+}
+.module-row:hover { padding-left: 16px; }
+.module-row__num { color: var(--blue); }
+.module-row__name { font-family: var(--f-display); font-weight: 700; font-size: clamp(20px, 1.8vw, 26px); letter-spacing: -0.02em; color: var(--fg); }
+.module-row__desc { color: var(--fg-dim); font-size: 15.5px; max-width: 58ch; }
+.modules__footer { margin-top: 40px; color: var(--fg-ghost); }
+@media (max-width: 900px) {
+  .module-row { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .module-row:hover { padding-left: 0; }
+}
+
+/* ================================================================
+   APPROACH TIMELINE
+================================================================ */
+.timeline { position: relative; }
+.timeline__track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.timeline__rail { position: absolute; top: 44px; left: 0; right: 0; height: 1px; background: var(--rule-strong); z-index: 0; }
+.timeline__progress { position: absolute; top: 44px; left: 0; width: 0; height: 1px; background: var(--blue); z-index: 1; transition: width 2400ms cubic-bezier(.2,.7,.2,1); }
+.timeline.visible .timeline__progress { width: 100%; }
+
+.timeline__step { position: relative; z-index: 2; padding: 0 24px 0 0; }
+.timeline__step:last-child { padding-right: 0; }
+
+.timeline__dot {
+  position: relative; width: 88px; height: 88px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 50%; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 32px;
+  transition: border-color 400ms ease;
+}
+.timeline__step.active .timeline__dot { border-color: var(--blue); }
+.timeline__dot-num { font-family: var(--f-display); font-weight: 900; font-size: 32px; letter-spacing: -0.03em; color: var(--fg); }
+.timeline__dot-num .dot { color: var(--blue); }
+
+.timeline__meta .mono { margin-bottom: 14px; display: block; }
+.timeline__step h3 { margin-bottom: 18px; max-width: 18ch; }
+.timeline__step p { color: var(--fg-dim); font-size: 16px; line-height: 1.6; max-width: 44ch; }
+
+@media (max-width: 900px) {
+  .timeline__track { grid-template-columns: 1fr; gap: 56px; }
+  .timeline__rail, .timeline__progress { display: none; }
+  .timeline__dot { margin-bottom: 20px; }
+}
+
+/* ================================================================
+   POSITIONING
+================================================================ */
+.positions { display: grid; gap: 0; }
+.position { padding: 72px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+.position:first-child { border-top: 0; padding-top: 0; }
+.position__label { font-family: var(--f-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); }
+.position h3 { font-size: clamp(28px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 28px; max-width: 20ch; }
+.position p { color: var(--fg-dim); max-width: 62ch; font-size: 16.5px; line-height: 1.6; }
+@media (max-width: 900px) { .position { grid-template-columns: 1fr; gap: 18px; padding: 48px 0; } }
+
+/* ================================================================
+   MECHANISM TRIANGLE
+================================================================ */
+.mechanism { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.mechanism__svg { width: 100%; height: auto; }
+.mechanism__body p { color: var(--fg-dim); font-size: 16.5px; line-height: 1.6; max-width: 52ch; margin-bottom: 20px; }
+.mechanism__body p:first-child { color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 28px; }
+
+.mech-table { margin-top: 36px; border-top: 1px solid var(--rule); }
+.mech-row { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.mech-row__label { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); }
+.mech-row__body { color: var(--fg-dim); font-size: 15.5px; }
+.mech-row__body strong { color: var(--fg); font-weight: 500; }
+
+@media (max-width: 900px) {
+  .mechanism { grid-template-columns: 1fr; }
+  .mechanism__svg { max-width: 420px; margin: 0 auto; }
+  .mech-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
+}
+
+/* ================================================================
+   PRICING
+================================================================ */
+.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.tier { background: var(--bg); padding: 48px 40px 56px; display: flex; flex-direction: column; }
+.tier__label { color: var(--fg-dim); margin-bottom: 28px; }
+.tier__name { font-family: var(--f-display); font-weight: 800; font-size: clamp(24px, 2.4vw, 36px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
+.tier__price { font-family: var(--f-display); font-weight: 900; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.035em; color: var(--blue); margin-bottom: 28px; }
+.tier p { color: var(--fg-dim); font-size: 15.5px; }
+.pricing__note { margin-top: 32px; color: var(--fg-dim); font-size: 15px; max-width: 70ch; }
+@media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   MANIFESTO
+================================================================ */
+.manifesto__grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px; align-items: start; }
+.manifesto__lead p { color: var(--fg-dim); font-size: 17px; line-height: 1.65; margin-bottom: 18px; }
+.manifesto__lead p:first-child { color: var(--fg); font-size: clamp(20px, 1.8vw, 26px); font-family: var(--f-display); font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; }
+.beliefs { list-style: none; padding: 0; margin: 0; }
+.beliefs li { padding: 20px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: baseline; }
+.beliefs li:first-child { border-top: 1px solid var(--rule); }
+.beliefs .mono { color: var(--blue); }
+.beliefs p { color: var(--fg); font-size: 16px; line-height: 1.5; }
+.manifesto__signoff { margin-top: 56px; font-family: var(--f-accent); font-style: italic; font-size: clamp(22px, 2vw, 30px); color: var(--fg); text-align: right; }
+@media (max-width: 1024px) { .manifesto__grid { grid-template-columns: 1fr; gap: 56px; } }
+
+/* ================================================================
+   FINAL CTA
+================================================================ */
+.final-cta { padding: clamp(120px, 20vw, 220px) 0; text-align: center; position: relative; border-top: 1px solid var(--rule); background: var(--bg-alt); }
+.final-cta h2 { font-size: clamp(64px, 13vw, 200px); font-weight: 900; letter-spacing: -0.05em; line-height: 0.92; margin-bottom: 40px; }
+.final-cta h2 .italic-accent { font-weight: 400; }
+.final-cta .lede { max-width: 52ch; margin: 0 auto 48px; text-align: center; }
+.final-cta .cta-group { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.final-cta .mono { letter-spacing: 0.16em; }
+
+/* ================================================================
+   FOOTER
+================================================================ */
+.footer { border-top: 1px solid var(--rule); padding: 64px 0 48px; background: var(--bg); }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+.footer__brand .logo { margin-bottom: 20px; }
+.footer__brand .logo__svg { height: 44px; }
+.footer__brand p { color: var(--fg-dim); max-width: 42ch; font-size: 14.5px; line-height: 1.55; }
+.footer__col h4 { font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-ghost); margin: 0 0 16px; }
+.footer__col a, .footer__col span { display: block; color: var(--fg); font-size: 14.5px; margin-bottom: 10px; line-height: 1.5; }
+.footer__col a:hover { color: var(--blue); }
+.footer__bottom { padding-top: 32px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--fg-ghost); font-size: 12.5px; font-family: var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   REVEAL + MOTION
+================================================================ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 800ms cubic-bezier(.2,.7,.2,1), transform 800ms cubic-bezier(.2,.7,.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-cue .line { animation: none; }
+  .timeline__progress { transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   COOKIE BANNER
+================================================================ */
+.cookie-bar {
+  position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 620px; margin: 0 auto;
+  background: var(--bg-alt); border: 1px solid var(--rule-strong); padding: 16px 20px;
+  border-radius: 10px; display: flex; align-items: center; gap: 20px; z-index: 200;
+  font-size: 13.5px; color: var(--fg-dim);
+  box-shadow: 0 12px 48px rgba(10, 10, 10, 0.08);
+  transform: translateY(140%); transition: transform 420ms cubic-bezier(.2,.7,.2,1);
+}
+.cookie-bar.show { transform: translateY(0); }
+.cookie-bar button {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fg); padding: 8px 14px;
+  border: 1px solid var(--rule-strong); border-radius: 999px;
+  transition: border-color 180ms ease, background 180ms ease; flex-shrink: 0;
+}
+.cookie-bar button:hover { border-color: var(--fg); }
+</style>
+</head>
+
+<body>
+
+<!-- ================================================================
+  SVG SPRITE — Logo (full, with text) and principle glyphs
+================================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <!-- Ronnie's actual Velo Working logotype: mark + "VELO WORKING" text.
+       Both paths extracted verbatim from Logo with Text.svg, recoloured to currentColor. -->
+  <symbol id="velo-logo" viewBox="-67 125 310 50">
+    <g fill="currentColor">
+      <!-- Mark -->
+      <path d="m -63.08431,159.73324 v -11.95468 h 1.711254 1.711254 v 11.95468 11.95468 h -1.711254 -1.711254 z m 13.473111,-0.82354 c -2.7838,-2.88889 -5.165724,-5.36884 -5.293161,-5.51098 l -0.231706,-0.25846 0.549761,-1.29497 0.549763,-1.29498 7.635659,0.0174 c 4.199613,0.01 7.642322,0.0236 7.650469,0.0309 0.01335,0.0121 -1.513544,3.63653 -1.544387,3.66591 -0.0071,0.007 -1.932699,-0.0391 -4.279044,-0.10194 -2.346348,-0.0628 -4.407082,-0.11379 -4.579413,-0.11326 l -0.313328,9e-4 3.263591,3.23912 3.263592,3.23912 -0.776198,1.81972 c -0.42691,1.00085 -0.789235,1.81842 -0.80517,1.81682 -0.01595,-0.001 -2.306627,-2.36654 -5.090428,-5.25543 z m -29.666932,3.11343 c -0.40939,-1.01953 -0.73477,-1.86111 -0.72306,-1.87019 0.11854,-0.0919 6.601154,-6.26625 6.601154,-6.28717 0,-0.0155 -2.06247,-0.0194 -4.583264,-0.009 l -4.58327,0.0194 -0.74007,-1.83176 -0.74007,-1.83177 0.15342,-0.0131 c 0.34112,-0.0292 15.135529,0.27402 15.167398,0.31083 0.01891,0.0219 0.267301,0.61697 0.551984,1.32251 l 0.517602,1.28278 -3.365959,3.34337 c -1.851279,1.83885 -4.288204,4.26051 -5.415385,5.38145 -1.12719,1.12096 -2.05995,2.03766 -2.0728,2.03711 -0.0129,-4.5e-4 -0.3583,-0.83516 -0.76768,-1.85469 z m 33.041236,-14.34438 c -3.791272,-0.0741 -7.098103,-0.14163 -7.348513,-0.15003 l -0.455294,-0.0153 -0.520844,-1.3003 c -0.286465,-0.71518 -0.520846,-1.31372 -0.520846,-1.3301 0,-0.0374 3.03224,-3.04993 5.890442,-5.87067 2.539166,-2.5059 4.940976,-4.86047 4.957427,-4.84345 0.02131,0.0221 0.36701,0.85212 0.768213,1.84455 l 0.729459,1.80441 -0.207484,0.20195 c -0.114116,0.11108 -1.519848,1.44395 -3.123846,2.96192 -1.603998,1.51799 -3.013976,2.85516 -3.133281,2.9715 l -0.21692,0.21154 4.60739,-0.0328 c 3.946267,-0.028 4.611369,-0.023 4.635133,0.0354 0.249971,0.61373 1.323165,3.26153 1.390383,3.43038 l 0.09115,0.22896 -0.324674,-0.007 c -0.178575,-0.003 -3.426627,-0.0673 -7.217897,-0.14137 z m -31.875116,-0.22557 c -3.49313,-0.008 -5.89298,-0.0303 -5.89298,-0.0563 0,-0.0603 1.49413,-3.5857 1.54033,-3.63439 0.0204,-0.0215 2.08435,0.0149 4.58652,0.0808 2.502157,0.066 4.555892,0.1135 4.56385,0.1055 0.008,-0.008 -1.450958,-1.46694 -3.24204,-3.24218 l -3.2565,-3.22771 0.78062,-1.84246 0.78062,-1.84246 0.13009,0.13515 c 0.0715,0.0743 2.464747,2.55971 5.318224,5.52307 l 5.188142,5.38792 -0.06524,0.15558 c -0.03588,0.0856 -0.288522,0.6816 -0.561424,1.32453 l -0.496185,1.16895 -1.740524,-0.0119 c -0.957288,-0.007 -4.392364,-0.0174 -7.633503,-0.0243 z m 19.589652,-5.24138 c -0.712179,-0.30247 -1.305328,-0.56039 -1.318105,-0.57317 -0.01277,-0.0128 -0.0072,-3.45913 0.01238,-7.65856 l 0.03563,-7.63531 1.788624,0.75983 c 0.983744,0.41792 1.814974,0.7774 1.847178,0.79886 0.04578,0.0305 0.03288,0.98466 -0.05923,4.37741 -0.06479,2.38612 -0.117559,4.44686 -0.117282,4.57942 l 4.48e-4,0.24102 3.24018,-3.26967 3.240214,-3.26966 1.78356,0.75711 c 0.980959,0.41641 1.801446,0.77332 1.823303,0.79314 0.02185,0.0199 -2.320873,2.30888 -5.206069,5.08681 -2.885194,2.77793 -5.365114,5.16596 -5.510933,5.30673 l -0.265123,0.25597 z m -12.34695,-4.8958 c -2.942875,-2.96981 -5.356102,-5.41524 -5.362732,-5.43431 -0.0104,-0.0301 3.575683,-1.50529 3.65865,-1.505 0.0172,6e-5 1.436368,1.48058 3.153703,3.29005 1.717335,1.80948 3.14167,3.29761 3.165188,3.30699 0.02476,0.01 0.03646,-1.91609 0.02778,-4.57516 l -0.01498,-4.5922 1.828043,-0.73907 c 1.005424,-0.40649 1.833188,-0.73378 1.839475,-0.72732 0.01771,0.0182 -0.27252,15.28791 -0.290931,15.30631 -0.01962,0.0197 -2.434208,1.00013 -2.563044,1.04078 -0.07161,0.0227 -1.205843,-1.097 -5.441159,-5.37107 z"/>
+      <!-- "VELO WORKING" text -->
+      <path d="m -19.089294,160.84717 h 6.702763 l 8.4666472,-24.69439 h -5.1152663 l -6.3499859,19.04996 h -0.705554 l -6.349986,-19.04996 h -5.115266 z m 17.9916369,0 H 15.482861 v -4.23333 H 3.4884437 v -5.9972 H 14.777307 v -4.23333 H 3.4884437 V 140.3861 H 15.482861 v -4.23332 H -1.0976571 Z m 21.1666331,0 h 16.227742 v -4.40971 H 24.655077 v -20.28468 h -4.586101 z m 29.104079,-4.05694 c -4.233324,0 -7.408317,-3.21027 -7.408317,-8.29026 0,-5.07999 3.174993,-8.29026 7.408317,-8.29026 4.233323,0 7.408316,3.21027 7.408316,8.29026 0,5.07999 -3.174993,8.29026 -7.408316,8.29026 z m 0,-20.99023 c -6.667485,0 -11.994418,5.25638 -11.994418,12.69997 0,7.4436 5.326933,12.69997 11.994418,12.69997 6.667485,0 11.994417,-5.25637 11.994417,-12.69997 0,-7.44359 -5.326932,-12.69997 -11.994417,-12.69997 z m 27.692983,25.04717 h 6.349986 l 4.233324,-16.9333 h 0.705554 l 4.233323,16.9333 h 6.349986 l 6.173599,-24.69439 h -5.115268 l -4.233324,17.28607 h -0.705554 l -4.409712,-17.28607 h -5.291655 l -4.409712,17.28607 h -0.705554 l -4.233324,-17.28607 h -5.115266 z m 41.804052,-4.05694 c -4.23332,0 -7.40831,-3.21027 -7.40831,-8.29026 0,-5.07999 3.17499,-8.29026 7.40831,-8.29026 4.23333,0 7.40832,3.21027 7.40832,8.29026 0,5.07999 -3.17499,8.29026 -7.40832,8.29026 z m 0,-20.99023 c -6.66748,0 -11.99441,5.25638 -11.99441,12.69997 0,7.4436 5.32693,12.69997 11.99441,12.69997 6.66749,0 11.99442,-5.25637 11.99442,-12.69997 0,-7.44359 -5.32693,-12.69997 -11.99442,-12.69997 z m 16.22777,25.04717 h 4.5861 v -8.46665 h 1.41111 l 7.93748,8.46665 h 5.82082 l -7.93748,-8.46665 c 3.88054,-0.17639 7.23192,-3.17499 7.23192,-7.93748 0,-4.93888 -3.38666,-8.29026 -7.76109,-8.29026 h -11.28886 z m 4.5861,-12.69997 v -7.58471 h 6.52637 c 1.76389,0 3.35138,1.5875 3.35138,3.88055 0,2.11666 -1.58749,3.70416 -3.35138,3.70416 z m 18.8736,12.69997 h 4.5861 v -11.46525 l 9.1722,11.46525 h 5.64443 l -10.05414,-12.52359 9.34859,-12.1708 h -5.64443 l -8.46665,11.11247 v -11.11247 h -4.5861 z m 21.34299,0 h 4.5861 v -24.69439 h -4.5861 z m 9.87777,0 h 4.5861 v -17.10969 h 0.70556 l 8.99581,17.10969 h 6.1736 v -24.69439 h -4.5861 v 17.10968 h -0.70556 l -8.99581,-17.10968 h -6.1736 z m 44.44988,0 h 3.52777 v -13.05275 h -10.75969 v 3.52777 h 6.17359 v 0.17639 c 0,1.58749 -2.11666,5.29165 -6.70276,5.29165 -4.23332,0 -7.40832,-3.21027 -7.40832,-8.29026 0,-5.07999 3.175,-8.29026 7.40832,-8.29026 3.3161,0 5.29165,2.11667 6.34999,4.40972 h 4.76248 C 236.53292,140.73888 232.93459,135.8 226.26711,135.8 c -6.66749,0 -11.99442,5.25638 -11.99442,12.69997 0,7.4436 5.32693,12.69997 11.99442,12.69997 2.50472,0 4.23332,-0.7761 5.46804,-1.58749 0.70556,-0.45861 1.30528,-0.98778 1.76389,-1.5875 h 0.17639 z"/>
+    </g>
+  </symbol>
+
+  <!-- Principle glyphs -->
+  <symbol id="g-database" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <ellipse cx="18" cy="8" rx="12" ry="3.5"/>
+    <path d="M6 8 v20 a12 3.5 0 0 0 24 0 v-20"/>
+    <path d="M6 15 a12 3.5 0 0 0 24 0"/>
+    <path d="M6 22 a12 3.5 0 0 0 24 0"/>
+  </symbol>
+  <symbol id="g-workflow" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="3" y="5" width="9" height="9"/><rect x="24" y="5" width="9" height="9"/>
+    <rect x="3" y="22" width="9" height="9"/><rect x="24" y="22" width="9" height="9"/>
+    <path d="M12 9.5 H24"/><path d="M28.5 14 V22"/>
+    <path d="M24 26.5 H12"/><path d="M7.5 22 V14"/>
+  </symbol>
+  <symbol id="g-unlock" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="7" y="16" width="22" height="14" rx="1"/>
+    <path d="M11 16 V11 a7 7 0 0 1 14 0"/>
+    <circle cx="18" cy="23" r="2"/><path d="M18 25 v3"/>
+  </symbol>
+  <symbol id="g-coin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <circle cx="18" cy="18" r="12"/>
+    <path d="M18 11 v14 M14 14 c0 2 1.5 3 4 3 2.5 0 4 1 4 3 s-1.5 3-4 3-4-1-4-3"/>
+  </symbol>
+  <symbol id="g-modules" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="3" y="3" width="12" height="12"/><rect x="21" y="3" width="12" height="12"/>
+    <rect x="3" y="21" width="12" height="12"/><rect x="21" y="21" width="12" height="12"/>
+    <path d="M15 9 H21 M15 27 H21 M9 15 V21 M27 15 V21" stroke-dasharray="2 2"/>
+  </symbol>
+  <symbol id="g-portal" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="4" y="7" width="28" height="18" rx="1"/>
+    <path d="M4 13 H32"/>
+    <circle cx="8" cy="10" r="0.8" fill="currentColor" stroke="none"/>
+    <circle cx="11" cy="10" r="0.8" fill="currentColor" stroke="none"/>
+    <path d="M14 29 L22 29 M18 25 V29"/>
+    <path d="M10 18 H26 M10 21 H20"/>
+  </symbol>
+</svg>
+
+
+<!-- ================================================================
+  NAV
+================================================================ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="logo" aria-label="Velo Working — home">
+      <svg class="logo__svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+    </a>
+
+    <div class="nav__links" id="navLinks">
+      <a href="#approach" class="nav__link">Approach</a>
+      <a href="#modules" class="nav__link">Modules</a>
+      <a href="#positioning" class="nav__link">Why us</a>
+      <a href="#manifesto" class="nav__link">Manifesto</a>
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="nav__cta" target="_blank" rel="noopener">Talk to Ronnie</a>
+    </div>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span>Menu</span>
+      <span class="bars" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ================================================================
+  HERO
+================================================================ -->
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <div class="hero__eyebrow mono">Velo Working · Singapore · SME operations systems</div>
+      <h1 class="reveal">
+        <span class="line">Own the system</span>
+        <span class="line">that runs</span>
+        <span class="line">your business.</span>
+        <span class="line italic-accent accent--blue">No lock-in.</span>
+      </h1>
+      <p class="hero__sub reveal">We help SMEs automate and digitise operations with no-code software and hardware your own team can run. Fixed scope. Fixed fee. No subscription. No vendor dependency.</p>
+      <div class="hero__ctas reveal">
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="cta cta--primary" target="_blank" rel="noopener">Talk to Ronnie <span class="arr">→</span></a>
+        <a href="#approach" class="cta cta--ghost">See the approach</a>
+      </div>
+    </div>
+
+    <!-- Hero visual: module network on paper -->
+    <div class="hero__visual reveal" aria-hidden="true">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <defs>
+          <style>
+            .n-label { font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #0A0A0A; letter-spacing: 0.12em; text-transform: uppercase; }
+            .n-circle { stroke: #0A0A0A; stroke-width: 1; fill: #EDEAE2; }
+            .n-link { stroke: #0A0A0A; stroke-width: 1; stroke-opacity: 0.28; }
+            .n-center { stroke: #1317E4; stroke-width: 1.5; fill: #F7F5F0; }
+            .n-center-label { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+          </style>
+        </defs>
+
+        <circle cx="240" cy="240" r="170" stroke="#0A0A0A" stroke-opacity="0.10" stroke-width="1" fill="none"/>
+
+        <line x1="240" y1="240" x2="240" y2="70" class="n-link"/>
+        <line x1="240" y1="240" x2="384" y2="140" class="n-link"/>
+        <line x1="240" y1="240" x2="410" y2="310" class="n-link"/>
+        <line x1="240" y1="240" x2="320" y2="410" class="n-link"/>
+        <line x1="240" y1="240" x2="160" y2="410" class="n-link"/>
+        <line x1="240" y1="240" x2="70" y2="310" class="n-link"/>
+        <line x1="240" y1="240" x2="96" y2="140" class="n-link"/>
+
+        <circle cx="240" cy="240" r="48" class="n-center"/>
+        <text x="240" y="236" text-anchor="middle" class="n-center-label">Integrated</text>
+        <text x="240" y="252" text-anchor="middle" class="n-center-label">Database</text>
+
+        <g><circle cx="240" cy="70" r="22" class="n-circle"/><text x="240" y="44" text-anchor="middle" class="n-label">Procurement</text></g>
+        <g><circle cx="384" cy="140" r="22" class="n-circle"/><text x="384" y="114" text-anchor="middle" class="n-label">Inventory</text></g>
+        <g><circle cx="410" cy="310" r="22" class="n-circle"/><text x="410" y="356" text-anchor="middle" class="n-label">Production</text></g>
+        <g><circle cx="320" cy="410" r="22" class="n-circle"/><text x="320" y="456" text-anchor="middle" class="n-label">Quality</text></g>
+        <g><circle cx="160" cy="410" r="22" class="n-circle"/><text x="160" y="456" text-anchor="middle" class="n-label">Finance</text></g>
+        <g><circle cx="70" cy="310" r="22" class="n-circle"/><text x="70" y="356" text-anchor="middle" class="n-label">HR</text></g>
+        <g><circle cx="96" cy="140" r="22" class="n-circle"/><text x="96" y="114" text-anchor="middle" class="n-label">Sales/CRM</text></g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scroll-cue mono" aria-hidden="true">
+    <span class="line"></span>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  PROBLEM
+================================================================ -->
+<section class="section section--divider" id="problem">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 01 / The problem</div>
+      <h2 class="section__title reveal">You didn't fail the system. The <span class="italic-accent accent--blue">system</span> failed you.</h2>
+      <p class="section__intro reveal">Three operational failures recur in almost every SME we walk into — and they compound silently until the damage is impossible to ignore.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pillar__num mono mono--blue">01</div>
+        <h3 class="pillar__title">You can't hold onto what you've learned.</h3>
+        <p>Knowledge lives in one person's head, one WhatsApp thread, or one spreadsheet only the "wizard" understands. When they leave, so does the company's memory. New hires take months to catch up. The same problems repeat because nobody can see they've happened before.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__num mono mono--blue">02</div>
+        <h3 class="pillar__title">Your staff spend their days copying data.</h3>
+        <p>Supplier quotes re-typed into Excel. Paper travellers re-entered into WhatsApp. Delivery orders copied into accounting software. A 30-person SME typically loses 1–1.5 full-time headcount to pure duplicate data entry. Salary paid for work that creates zero new information.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__num mono mono--blue">03</div>
+        <h3 class="pillar__title">The numbers don't add up.</h3>
+        <p>What goes in is wrong, so what comes out is unreliable. Decisions get made on gut feel because the reports can't be trusted. AI? Forget it — AI needs clean structured data, and you don't have any.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  REFRAME — soft section for contrast
+================================================================ -->
+<section class="reframe">
+  <div class="wrap">
+    <div class="section__eyebrow mono">Section 02 / Why it matters</div>
+    <p class="reframe__statement reveal">
+      Every day the system stays broken, you're paying twice.<br>
+      Once for the manpower to run it manually.<br>
+      Once for the <span class="italic-accent accent--blue">competitors</span> compounding ahead of you.
+    </p>
+
+    <div class="reframe__cost reveal">
+      <div><span class="arr">→</span><span>Burnout + turnover — good staff leave; only the tenured ones tolerate the chaos</span></div>
+      <div><span class="arr">→</span><span>Cash trapped in surplus stock — buying "just in case" because forecasts don't work</span></div>
+      <div><span class="arr">→</span><span>Slow response, damaged customer experience — yesterday's data, today's decisions</span></div>
+      <div><span class="arr">→</span><span>Not AI-ready — every month the gap widens</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  BEFORE / AFTER
+================================================================ -->
+<section class="section section--divider" id="transform">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 03 / The transformation</div>
+      <h2 class="section__title reveal">From scattered to <span class="italic-accent accent--blue">integrated</span>.</h2>
+      <p class="section__intro reveal">The same business, before and after. Nothing new added — just the right information flowing to the right place at the right time.</p>
+    </div>
+
+    <div class="flow-compare reveal">
+      <!-- BEFORE -->
+      <div class="flow-compare__panel">
+        <div class="flow-compare__label mono">Before</div>
+        <div class="flow-compare__title">Information scattered. Work duplicated. Nobody in sync.</div>
+
+        <svg class="flow-compare__svg" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <defs>
+            <style>
+              .b-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
+              .b-label { font-family: "JetBrains Mono", monospace; font-size: 9.5px; fill: #0A0A0A; letter-spacing: 0.1em; text-transform: uppercase; }
+              .b-line { stroke: rgba(10,10,10,0.38); stroke-width: 0.9; fill: none; stroke-dasharray: 3 3; }
+            </style>
+          </defs>
+          <!-- Tangled lines -->
+          <path class="b-line" d="M 60 60 C 150 80, 200 30, 280 70"/>
+          <path class="b-line" d="M 60 60 C 120 140, 240 90, 310 150"/>
+          <path class="b-line" d="M 90 200 C 180 160, 210 220, 300 210"/>
+          <path class="b-line" d="M 280 70 C 230 150, 120 170, 90 200"/>
+          <path class="b-line" d="M 160 110 C 100 130, 200 200, 240 160"/>
+          <path class="b-line" d="M 310 150 C 250 180, 170 120, 60 60"/>
+          <path class="b-line" d="M 60 60 L 300 210"/>
+          <path class="b-line" d="M 280 70 L 90 200"/>
+          <!-- Scattered nodes -->
+          <g><rect x="30" y="45" width="60" height="30" class="b-node"/><text x="60" y="64" text-anchor="middle" class="b-label">Email</text></g>
+          <g><rect x="250" y="55" width="60" height="30" class="b-node"/><text x="280" y="74" text-anchor="middle" class="b-label">Whatsapp</text></g>
+          <g><rect x="130" y="95" width="60" height="30" class="b-node"/><text x="160" y="114" text-anchor="middle" class="b-label">Excel</text></g>
+          <g><rect x="280" y="135" width="60" height="30" class="b-node"/><text x="310" y="154" text-anchor="middle" class="b-label">Paper</text></g>
+          <g><rect x="60" y="185" width="60" height="30" class="b-node"/><text x="90" y="204" text-anchor="middle" class="b-label">Accounts</text></g>
+          <g><rect x="210" y="145" width="60" height="30" class="b-node"/><text x="240" y="164" text-anchor="middle" class="b-label">Files</text></g>
+          <g><rect x="270" y="195" width="60" height="30" class="b-node"/><text x="300" y="214" text-anchor="middle" class="b-label">Memory</text></g>
+        </svg>
+
+        <div class="flow-compare__foot">Information lives wherever it was created. Every cross-reference is a fresh search. Every handoff risks error.</div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flow-compare__arrow" aria-hidden="true">
+        <span class="line"></span>
+        <span>Velo</span>
+        <span class="line"></span>
+      </div>
+
+      <!-- AFTER -->
+      <div class="flow-compare__panel flow-compare__panel--after">
+        <div class="flow-compare__label mono mono--blue">After</div>
+        <div class="flow-compare__title flow-compare__title--after">One database. Every module talks. Your team <span class="italic-accent">owns</span> it.</div>
+
+        <svg class="flow-compare__svg" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+          <defs>
+            <style>
+              .a-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
+              .a-label { font-family: "JetBrains Mono", monospace; font-size: 9.5px; fill: #0A0A0A; letter-spacing: 0.1em; text-transform: uppercase; }
+              .a-link { stroke: #1317E4; stroke-width: 1; stroke-opacity: 0.7; fill: none; }
+              .a-center { stroke: #1317E4; stroke-width: 1.5; fill: #F7F5F0; }
+              .a-center-label { font-family: "JetBrains Mono", monospace; font-size: 9px; fill: #1317E4; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+            </style>
+          </defs>
+
+          <line x1="180" y1="130" x2="60" y2="60" class="a-link"/>
+          <line x1="180" y1="130" x2="300" y2="60" class="a-link"/>
+          <line x1="180" y1="130" x2="40" y2="130" class="a-link"/>
+          <line x1="180" y1="130" x2="320" y2="130" class="a-link"/>
+          <line x1="180" y1="130" x2="60" y2="200" class="a-link"/>
+          <line x1="180" y1="130" x2="300" y2="200" class="a-link"/>
+          <line x1="180" y1="130" x2="180" y2="230" class="a-link"/>
+
+          <circle cx="180" cy="130" r="42" class="a-center"/>
+          <text x="180" y="126" text-anchor="middle" class="a-center-label">Integrated</text>
+          <text x="180" y="140" text-anchor="middle" class="a-center-label">Database</text>
+
+          <g><rect x="28" y="46" width="64" height="28" class="a-node"/><text x="60" y="64" text-anchor="middle" class="a-label">Procure</text></g>
+          <g><rect x="268" y="46" width="64" height="28" class="a-node"/><text x="300" y="64" text-anchor="middle" class="a-label">Inventory</text></g>
+          <g><rect x="8" y="116" width="64" height="28" class="a-node"/><text x="40" y="134" text-anchor="middle" class="a-label">Sales</text></g>
+          <g><rect x="288" y="116" width="64" height="28" class="a-node"/><text x="320" y="134" text-anchor="middle" class="a-label">Finance</text></g>
+          <g><rect x="28" y="186" width="64" height="28" class="a-node"/><text x="60" y="204" text-anchor="middle" class="a-label">Quality</text></g>
+          <g><rect x="268" y="186" width="64" height="28" class="a-node"/><text x="300" y="204" text-anchor="middle" class="a-label">HR</text></g>
+          <g><rect x="148" y="216" width="64" height="28" class="a-node"/><text x="180" y="234" text-anchor="middle" class="a-label">Production</text></g>
+        </svg>
+
+        <div class="flow-compare__foot">Captured once. Accessible everywhere. Audit trail on every record. The system becomes the company's memory.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  CONCEPT — soft section
+================================================================ -->
+<section class="section section--divider section--soft" id="concept">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 04 / What we offer</div>
+      <h2 class="section__title reveal">Not a piece of software. A way of <span class="italic-accent accent--blue">operating</span>.</h2>
+      <p class="section__intro reveal">Six principles that separate what we build from what most vendors sell.</p>
+    </div>
+
+    <div class="principles">
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">01</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-database"/></svg>
+        </div>
+        <h3>One integrated database.</h3>
+        <p>Every transaction, every part, every customer, every production record — captured once and preserved for as long as the company exists. One system of record, not three spreadsheets and a filing cabinet.</p>
+      </article>
+
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">02</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-workflow"/></svg>
+        </div>
+        <h3>Workflow and management discipline, built in.</h3>
+        <p>Industry best-practice processes embedded into the system itself. The right way of working becomes the default way of working — no training memo required. The system becomes the company's memory, discipline, and engine of continuous improvement.</p>
+      </article>
+
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">03</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-unlock"/></svg>
+        </div>
+        <h3>No vendor dependency.</h3>
+        <p>Drag-and-drop configuration means your own staff can adjust, extend, and maintain the system. No long-term contract. We work per project, not per subscription.</p>
+      </article>
+
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">04</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-coin"/></svg>
+        </div>
+        <h3>Lean software costs.</h3>
+        <p>Built on established open-source operational platforms — no heavy licence fees. Global engineering talent without the local agency overhead. You pay when there's work. Nothing when there isn't.</p>
+      </article>
+
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">05</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-modules"/></svg>
+        </div>
+        <h3>Flexible and modular.</h3>
+        <p>Plug in or integrate any module to fill a specific gap. Keep the accounting software you already like. Swap out modules later without ripping out the whole system. Interoperability is a first principle here.</p>
+      </article>
+
+      <article class="principle reveal">
+        <div class="principle__head">
+          <div class="principle__num mono">06</div>
+          <svg class="principle__glyph" aria-hidden="true"><use href="#g-portal"/></svg>
+        </div>
+        <h3>Replace the messy-email culture.</h3>
+        <p>A structured client–vendor portal. Communication tied to records — every message attached to the PO, the work order, the delivery it refers to. Full audit trail. Eliminate the endless search, consolidate, sort, act cycle.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  MODULES
+================================================================ -->
+<section class="section section--divider" id="modules">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 05 / What we build</div>
+      <h2 class="section__title reveal">Twelve modules. One <span class="italic-accent accent--blue">flow</span>.</h2>
+      <p class="section__intro reveal">A single customer order crosses every module in the system — without the data ever being re-entered. That's what "integrated" actually means.</p>
+    </div>
+
+    <!-- Process flow diagram -->
+    <div class="module-flow reveal">
+      <div class="module-flow__caption">
+        <span class="mono">Example · A customer order flowing through the system</span>
+        <span class="mono mono--blue">Zero duplicate entry</span>
+      </div>
+
+      <svg class="module-flow__svg" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <style>
+            .m-box { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
+            .m-box-active { stroke: #1317E4; stroke-width: 1.2; fill: #F7F5F0; }
+            .m-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: rgba(10,10,10,0.66); letter-spacing: 0.14em; text-transform: uppercase; }
+            .m-tag-blue { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+            .m-title { font-family: "DM Sans", sans-serif; font-size: 15px; fill: #0A0A0A; font-weight: 700; letter-spacing: -0.01em; }
+            .m-note { font-family: "DM Sans", sans-serif; font-size: 11.5px; fill: rgba(10,10,10,0.60); }
+            .m-arrow { stroke: #1317E4; stroke-width: 1.2; fill: none; }
+            .m-spine { stroke: rgba(10,10,10,0.22); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+            .m-hub-label { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+          </style>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#1317E4"/>
+          </marker>
+        </defs>
+
+        <line x1="80" y1="230" x2="1120" y2="230" class="m-spine"/>
+        <text x="600" y="300" text-anchor="middle" class="m-hub-label">↑ all steps write to the integrated database ↑</text>
+
+        <g>
+          <rect x="60" y="40" width="160" height="120" rx="1" class="m-box"/>
+          <text x="75" y="62" class="m-tag">Sales / CRM</text>
+          <text x="75" y="92" class="m-title">Quotation</text>
+          <text x="75" y="112" class="m-note">Quote issued,</text>
+          <text x="75" y="126" class="m-note">customer approves.</text>
+          <line x1="140" y1="160" x2="140" y2="220" class="m-spine"/>
+          <circle cx="140" cy="230" r="4" fill="#1317E4"/>
+        </g>
+        <path d="M 220 100 L 280 100" class="m-arrow" marker-end="url(#arr)"/>
+
+        <g>
+          <rect x="290" y="40" width="160" height="120" rx="1" class="m-box"/>
+          <text x="305" y="62" class="m-tag">Procurement</text>
+          <text x="305" y="92" class="m-title">Purchase order</text>
+          <text x="305" y="112" class="m-note">Supplier materials</text>
+          <text x="305" y="126" class="m-note">auto-requisitioned.</text>
+          <line x1="370" y1="160" x2="370" y2="220" class="m-spine"/>
+          <circle cx="370" cy="230" r="4" fill="#1317E4"/>
+        </g>
+        <path d="M 450 100 L 510 100" class="m-arrow" marker-end="url(#arr)"/>
+
+        <g>
+          <rect x="520" y="40" width="160" height="120" rx="1" class="m-box m-box-active"/>
+          <text x="535" y="62" class="m-tag-blue">Inventory</text>
+          <text x="535" y="92" class="m-title">Stock receipt</text>
+          <text x="535" y="112" class="m-note">Scan-in, location,</text>
+          <text x="535" y="126" class="m-note">batch recorded.</text>
+          <line x1="600" y1="160" x2="600" y2="220" class="m-spine"/>
+          <circle cx="600" cy="230" r="4" fill="#1317E4"/>
+        </g>
+        <path d="M 680 100 L 740 100" class="m-arrow" marker-end="url(#arr)"/>
+
+        <g>
+          <rect x="750" y="40" width="160" height="120" rx="1" class="m-box"/>
+          <text x="765" y="62" class="m-tag">Production</text>
+          <text x="765" y="92" class="m-title">Work order</text>
+          <text x="765" y="112" class="m-note">BOM pulled,</text>
+          <text x="765" y="126" class="m-note">job assigned.</text>
+          <line x1="830" y1="160" x2="830" y2="220" class="m-spine"/>
+          <circle cx="830" cy="230" r="4" fill="#1317E4"/>
+        </g>
+        <path d="M 910 100 L 970 100" class="m-arrow" marker-end="url(#arr)"/>
+
+        <g>
+          <rect x="980" y="40" width="160" height="120" rx="1" class="m-box"/>
+          <text x="995" y="62" class="m-tag">Quality · Finance</text>
+          <text x="995" y="92" class="m-title">QC + Invoice</text>
+          <text x="995" y="112" class="m-note">Inspection pass,</text>
+          <text x="995" y="126" class="m-note">invoice issued.</text>
+          <line x1="1060" y1="160" x2="1060" y2="220" class="m-spine"/>
+          <circle cx="1060" cy="230" r="4" fill="#1317E4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Module list -->
+    <div class="modules">
+      <div class="module-row reveal">
+        <div class="module-row__num mono">01</div>
+        <div class="module-row__name">Procurement &amp; Purchasing</div>
+        <div class="module-row__desc">RFQs, supplier portal, purchase order workflow, multi-level approvals.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">02</div>
+        <div class="module-row__name">Inventory &amp; Warehouse</div>
+        <div class="module-row__desc">Stock control, barcode and QR scanning, multi-location, reorder automation.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">03</div>
+        <div class="module-row__name">Manufacturing &amp; Production</div>
+        <div class="module-row__desc">BOMs, work orders, job tracking, production dashboards, shop-floor integration.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">04</div>
+        <div class="module-row__name">Product Lifecycle Management</div>
+        <div class="module-row__desc">Engineering change orders, revision control, drawing and spec versioning, part master data.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">05</div>
+        <div class="module-row__name">Quality Management</div>
+        <div class="module-row__desc">Inspection records, non-conformance tracking, corrective and preventive action workflows.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">06</div>
+        <div class="module-row__name">Maintenance Management</div>
+        <div class="module-row__desc">Preventive maintenance schedules, machine work orders, downtime tracking, spare parts registry.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">07</div>
+        <div class="module-row__name">Project Management</div>
+        <div class="module-row__desc">Gantt scheduling, milestones, resource allocation, engineer-to-order job tracking.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">08</div>
+        <div class="module-row__name">Field Service &amp; Installation</div>
+        <div class="module-row__desc">Dispatch scheduling, on-site service reports, customer sign-off, warranty and callback tracking.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">09</div>
+        <div class="module-row__name">EHS · Safety &amp; Compliance</div>
+        <div class="module-row__desc">Incident reports, audit checklists, PPE and MSDS tracking, corrective action loops.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">10</div>
+        <div class="module-row__name">Finance &amp; Accounting</div>
+        <div class="module-row__desc">General ledger, receivables, payables, GST filing, PayNow-compatible billing.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">11</div>
+        <div class="module-row__name">HR &amp; Payroll</div>
+        <div class="module-row__desc">Employee records, leave, claims, payroll processing, CPF filing.</div>
+      </div>
+      <div class="module-row reveal">
+        <div class="module-row__num mono">12</div>
+        <div class="module-row__name">Sales &amp; CRM</div>
+        <div class="module-row__desc">Pipeline management, quotations, customer service tickets, delivery scheduling.</div>
+      </div>
+    </div>
+
+    <p class="modules__footer mono">→ Plus document management, fleet &amp; logistics, asset and calibration tracking, supplier management, and custom modules on request.</p>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  APPROACH — soft
+================================================================ -->
+<section class="section section--divider section--soft" id="approach">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 06 / How we work</div>
+      <h2 class="section__title reveal">Diagnose. Implement. Hand it <span class="italic-accent accent--blue">back</span>.</h2>
+      <p class="section__intro reveal">Ninety days from first meeting to your team running the system themselves. Fixed scope. Fixed fee. Written in plain English before we start.</p>
+    </div>
+
+    <div class="timeline reveal" id="timeline">
+      <div class="timeline__track">
+        <div class="timeline__rail" aria-hidden="true"></div>
+        <div class="timeline__progress" aria-hidden="true"></div>
+
+        <div class="timeline__step active">
+          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">1</span></span></div>
+          <div class="timeline__meta"><span class="mono mono--strong">Weeks 1–2 · Diagnose</span></div>
+          <h3>Walk the floor. Quantify the cost.</h3>
+          <p>A two-week audit of your current operations. We watch how work actually flows and quantify the hidden cost of the status quo. You get a written report — honest, not a sales pitch — with a fixed-scope, fixed-price proposal attached.</p>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">2</span></span></div>
+          <div class="timeline__meta"><span class="mono mono--strong">Weeks 3–12 · Implement</span></div>
+          <h3>Build while the business keeps running.</h3>
+          <p>A focused sprint on the modules that matter most. Your staff learn the system as we build it, not after we leave. We configure, migrate data, integrate with the tools you already use, and go live in increments so operations never stop.</p>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">3</span></span></div>
+          <div class="timeline__meta"><span class="mono mono--strong">Week 13+ · Hand back</span></div>
+          <h3>You own it. We stay reachable.</h3>
+          <p>Documentation your team can read. Two staff trained to run it. You own the software, data, server, workflows. We stay reachable for task-based support — you pay when there's work, nothing when there isn't. No retainer trap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  POSITIONING
+================================================================ -->
+<section class="section section--divider" id="positioning">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 07 / Why Velo Working</div>
+      <h2 class="section__title reveal">Three things nobody else offers at SME <span class="italic-accent accent--blue">scale</span>.</h2>
+    </div>
+
+    <div class="positions">
+      <div class="position reveal">
+        <div class="position__label">One</div>
+        <div>
+          <h3>Honest, transparent pricing.</h3>
+          <p>Incumbents earn from licence fees, annual maintenance, and expensive IT specialist day rates — recurring income whether or not you see value. We earn from actual work delivered. Our ongoing monthly fee is deliberately low, often zero between projects. Recurring revenue is not the goal. Task completion is.</p>
+        </div>
+      </div>
+      <div class="position reveal">
+        <div class="position__label">Two</div>
+        <div>
+          <h3>Lean company, global engineering bench.</h3>
+          <p>We are not a big consultancy. That's the point. No complicated internal workflow means fast quotes and fast delivery. Flexible scope — if you need something adjacent, we find a way. We source specialist engineering talent globally rather than carrying a full local developer bench, and we pass the cost advantage through to you.</p>
+        </div>
+      </div>
+      <div class="position reveal">
+        <div class="position__label">Three</div>
+        <div>
+          <h3>Engineers only. Actual engineers.</h3>
+          <p>Not IT consultants who read a factory manual. Not business graduates with a certification. We only hire people who have wired panels, written PLC code, and debugged production lines. When we configure your inventory module, we know where the physical bins sit. When we design your QC workflow, we know what a rejection actually looks like.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  MECHANISM TRIANGLE — soft
+================================================================ -->
+<section class="section section--divider section--soft" id="mechanism">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 08 / The ultimate goal</div>
+      <h2 class="section__title reveal">Deploy the right mechanism for every <span class="italic-accent accent--blue">task</span>.</h2>
+    </div>
+
+    <div class="mechanism reveal">
+      <svg class="mechanism__svg" viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <defs>
+          <style>
+            .tri-line { stroke: #0A0A0A; stroke-width: 1; stroke-opacity: 0.28; }
+            .tri-inner { stroke: #1317E4; stroke-width: 1; stroke-opacity: 0.35; stroke-dasharray: 3 3; }
+            .tri-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
+            .tri-node-human { stroke: #1317E4; stroke-width: 1.4; fill: #F7F5F0; }
+            .tri-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; fill: #0A0A0A; }
+            .tri-label-blue { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; fill: #1317E4; font-weight: 500; }
+            .tri-sub { font-family: "DM Sans", sans-serif; font-size: 11px; fill: rgba(10,10,10,0.60); }
+            .tri-center { font-family: "DM Sans", sans-serif; font-size: 13px; fill: #0A0A0A; font-weight: 500; letter-spacing: -0.01em; }
+          </style>
+        </defs>
+
+        <polygon points="240,60 420,380 60,380" class="tri-line" stroke-linejoin="round"/>
+        <line x1="240" y1="60" x2="240" y2="230" class="tri-inner"/>
+        <line x1="420" y1="380" x2="240" y2="230" class="tri-inner"/>
+        <line x1="60" y1="380" x2="240" y2="230" class="tri-inner"/>
+
+        <g>
+          <circle cx="240" cy="60" r="28" class="tri-node"/>
+          <text x="240" y="64" text-anchor="middle" class="tri-label">Human</text>
+          <text x="240" y="30" text-anchor="middle" class="tri-sub">Judgement · exceptions</text>
+        </g>
+        <g>
+          <circle cx="420" cy="380" r="28" class="tri-node-human"/>
+          <text x="420" y="384" text-anchor="middle" class="tri-label-blue">System</text>
+          <text x="420" y="418" text-anchor="middle" class="tri-sub">Rules · record · visibility</text>
+        </g>
+        <g>
+          <circle cx="60" cy="380" r="28" class="tri-node"/>
+          <text x="60" y="384" text-anchor="middle" class="tri-label">AI</text>
+          <text x="60" y="418" text-anchor="middle" class="tri-sub">Forecast · pattern · classify</text>
+        </g>
+
+        <rect x="150" y="210" width="180" height="44" rx="1" fill="#F7F5F0" stroke="#1317E4" stroke-width="0.8"/>
+        <text x="240" y="228" text-anchor="middle" class="tri-center">Every task assigned</text>
+        <text x="240" y="244" text-anchor="middle" class="tri-center">to the right tool</text>
+      </svg>
+
+      <div class="mechanism__body">
+        <p>Every operational step should be handled by the most appropriate operator. Most SMEs default to <strong>human</strong> for everything — because they don't have the other two options.</p>
+
+        <p>Our job is to help you see where each mechanism fits — and deploy accordingly. Humans doing what humans do best. Systems doing what systems do best. AI doing what AI does best. Nobody wasted on the wrong task.</p>
+
+        <div class="mech-table">
+          <div class="mech-row">
+            <div class="mech-row__label">Human</div>
+            <div class="mech-row__body"><strong>Judgement, relationships, creative problem-solving, handling exceptions.</strong> Humans are wasted on repetitive data entry, rule-based routing, and status tracking.</div>
+          </div>
+          <div class="mech-row">
+            <div class="mech-row__label">System</div>
+            <div class="mech-row__body"><strong>Consistent rule-based workflows, record-keeping, scheduled reporting, cross-department visibility.</strong> The foundation that makes the other two useful.</div>
+          </div>
+          <div class="mech-row">
+            <div class="mech-row__label">AI</div>
+            <div class="mech-row__body"><strong>Pattern recognition, forecasting, classification, natural language.</strong> Only works once the system is capturing clean structured data — which is why we build the system first.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  PRICING
+================================================================ -->
+<section class="section section--divider" id="pricing">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 09 / Investment</div>
+      <h2 class="section__title reveal">Fixed scope. Fixed fee. <span class="italic-accent accent--blue">Published.</span></h2>
+    </div>
+
+    <div class="pricing">
+      <div class="tier reveal">
+        <div class="tier__label mono">Tier 01</div>
+        <div class="tier__name">Standard Implementation</div>
+        <div class="tier__price">S$3,500 – S$15,000</div>
+        <p>Configuration of standard modules, data migration, training, go-live support, and post-launch stabilisation. For companies starting fresh or moving off spreadsheets and WhatsApp.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="tier__label mono">Tier 02</div>
+        <div class="tier__name">Customisation &amp; Hardware</div>
+        <div class="tier__price">S$15,000 – S$30,000</div>
+        <p>Custom-developed modules, integrations with your existing software, hardware sourcing, and design and build of control panels, wire harnesses, PCBA, and IoT sensor deployments. For companies with non-standard needs.</p>
+      </div>
+    </div>
+
+    <p class="pricing__note">All pricing is fixed-scope, fixed-price. No open-ended time-and-materials. No surprises. PSG and EDG grant navigation included at no extra charge.</p>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  MANIFESTO
+================================================================ -->
+<section class="section section--divider" id="manifesto">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section__eyebrow mono">Section 10 / Manifesto</div>
+      <h2 class="section__title reveal">Why Velo Working <span class="italic-accent accent--blue">exists</span>.</h2>
+    </div>
+
+    <div class="manifesto__grid">
+      <div class="manifesto__lead reveal">
+        <p>Singapore and Malaysia run on SMEs. They are not a secondary economy — they <em>are</em> the economy.</p>
+        <p>99% of enterprises in Singapore. 70% of the workforce. Nearly half of GDP. These are the precision machinists supplying global semiconductor lines, the family stamping shops that have exported to Japan for thirty years, the second-generation traders digitising businesses their parents built by hand.</p>
+        <p>But the ground is shifting. AI-ready competitors compound their advantages every year. SMEs still running on WhatsApp, email, and spreadsheets are not falling behind linearly — they are falling behind exponentially. Once that gap opens, no amount of grant money closes it, because the foundation was never laid.</p>
+        <p>We built Velo Working to close that gap — with fair pricing, real engineering understanding, and the accountability to stay until it works.</p>
+        <p style="color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: 16px; margin-top: 32px;"><strong>Ronnie Yap</strong> · Founder &amp; Director · PMP</p>
+      </div>
+
+      <div class="reveal">
+        <ul class="beliefs">
+          <li><span class="mono">01</span><p>Good quality work should not be a luxury only big companies can afford.</p></li>
+          <li><span class="mono">02</span><p>SMEs deserve vendors who are honest about pricing.</p></li>
+          <li><span class="mono">03</span><p>The right operating system is the great equaliser for small companies.</p></li>
+          <li><span class="mono">04</span><p>The value is not in the software — it is in understanding your business process.</p></li>
+          <li><span class="mono">05</span><p>If a solution isn't right for you, we'll tell you.</p></li>
+          <li><span class="mono">06</span><p>Digitalisation is not optional anymore — it is survival.</p></li>
+          <li><span class="mono">07</span><p>Local SMEs don't need to shrink. They need the right partner.</p></li>
+        </ul>
+        <div class="manifesto__signoff">Built for the ones still standing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  FINAL CTA — soft
+================================================================ -->
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <div class="mono" style="margin-bottom: 32px;">Start the conversation</div>
+    <h2 class="reveal">
+      Still <span class="italic-accent accent--blue">standing?</span><br>
+      Let's talk.
+    </h2>
+    <p class="lede reveal">A thirty-minute call. No deck, no pitch, no NDA theatre. If we can help, we'll tell you. If we can't, we'll tell you that too — and point you somewhere that can.</p>
+    <div class="cta-group reveal">
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="cta cta--primary" target="_blank" rel="noopener" style="font-size: 16px; padding: 20px 32px;">WhatsApp +65 9894 3004 <span class="arr">→</span></a>
+      <div class="mono">Or email <a href="mailto:ronnie.yap@veloworking.com" style="color: var(--fg); text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 4px;">ronnie.yap@veloworking.com</a></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+  FOOTER
+================================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#top" class="logo">
+          <svg class="logo__svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+        </a>
+        <p>Integrated operational systems for SMEs in Singapore and Malaysia. Built on no-code platforms you own — not licences you rent.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Navigate</h4>
+        <a href="#approach">Approach</a>
+        <a href="#modules">Modules</a>
+        <a href="#positioning">Why us</a>
+        <a href="#manifesto">Manifesto</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <span>Velo Working Pte. Ltd.</span>
+        <span>UEN 202609930G</span>
+        <span>Incorporated 2026</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Velo Working Pte. Ltd.</span>
+      <span>Built for the ones still standing.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookie banner -->
+<div class="cookie-bar" id="cookieBar">
+  <span>This site uses privacy-friendly analytics. No tracking. No ad cookies.</span>
+  <button id="cookieDismiss">OK</button>
+</div>
+
+<script>
+/* Nav */
+(function(){
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav__link').forEach(l => {
+    l.addEventListener('click', () => nav.classList.remove('nav--open'));
+  });
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(e => e.classList.add('visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+/* Timeline progressive lighting */
+(function(){
+  const tl = document.getElementById('timeline');
+  if (!tl || !('IntersectionObserver' in window)) return;
+  const steps = tl.querySelectorAll('.timeline__step');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tl.classList.add('visible');
+        steps.forEach((s, i) => setTimeout(() => s.classList.add('active'), 500 + i * 700));
+        io.unobserve(tl);
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(tl);
+})();
+
+/* Cookie banner */
+(function(){
+  const bar = document.getElementById('cookieBar');
+  const btn = document.getElementById('cookieDismiss');
+  if (!localStorage.getItem('vw_cookie_dismissed')) {
+    setTimeout(() => bar.classList.add('show'), 1400);
+  }
+  btn.addEventListener('click', () => {
+    bar.classList.remove('show');
+    localStorage.setItem('vw_cookie_dismissed', '1');
+  });
+})();
+</script>
+
+</body>
+</html>
