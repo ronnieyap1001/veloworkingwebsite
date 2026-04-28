@@ -2,1496 +2,1627 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Velo Working — Operations systems SMEs actually own</title>
-
-<!-- SEO -->
-<meta name="description" content="Velo Working helps SMEs in Singapore and Malaysia automate and digitise operations with no-code software and hardware your own team runs. Fixed fee. No subscription. No vendor lock-in." />
-<meta name="author" content="Velo Working Pte. Ltd." />
-<link rel="canonical" href="https://www.veloworking.com/" />
-
-<!-- Open Graph -->
-<meta property="og:title" content="Velo Working — Operations systems SMEs actually own" />
-<meta property="og:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in. Built for SMEs in Singapore and Malaysia." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.veloworking.com/" />
-<meta property="og:site_name" content="Velo Working" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Velo Working — Operations systems SMEs actually own" />
-<meta name="twitter:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in." />
-
-<!-- Fonts -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Velo Working · Pitch Deck v3 · Print Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&family=Libre+Baskerville:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<!-- Favicon — Velo mark on paper -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Cg fill='%230A0A0A'%3E%3Crect x='14.5' y='6' width='3' height='20'/%3E%3Cpath d='M16 4 L10 10 L22 10 Z'/%3E%3Cpath d='M16 28 L10 22 L22 22 Z'/%3E%3Cpath d='M4 16 L10 10 L10 22 Z'/%3E%3Cpath d='M28 16 L22 10 L22 22 Z'/%3E%3C/g%3E%3C/svg%3E" />
-
-<!-- Structured data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Velo Working Pte. Ltd.",
-  "url": "https://www.veloworking.com",
-  "email": "ronnie.yap@veloworking.com",
-  "telephone": "+65 9894 3004",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "540 Sims Ave #03-05",
-    "addressLocality": "Singapore",
-    "postalCode": "387603",
-    "addressCountry": "SG"
-  },
-  "founder": { "@type": "Person", "name": "Ronnie Yap" },
-  "description": "Velo Working helps SMEs with non-continuous and discrete business systems, providing a full solution in automating and digitising operations with no-code software and hardware that is cost-efficient and self-manageable by their own employees."
-}
-</script>
-
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-/* ================================================================
-   BRAND TOKENS — Paper theme (Pitch Deck v3 palette)
-================================================================ */
-:root {
-  /* Locked brand colours */
-  --ink: #0A0A0A;
-  --paper: #F7F5F0;
-  --paper-soft: #EDEAE2;
-  --paper-edge: #E3DFD4;
-  --blue: #1317E4;
-
-  /* Semantic tokens on paper background */
-  --bg: var(--paper);
-  --bg-alt: var(--paper-soft);
-  --fg: var(--ink);
-  --fg-dim: rgba(10, 10, 10, 0.66);
-  --fg-ghost: rgba(10, 10, 10, 0.46);
-  --fg-faint: rgba(10, 10, 10, 0.30);
-  --rule: rgba(10, 10, 10, 0.10);
-  --rule-strong: rgba(10, 10, 10, 0.20);
-
-  --f-display: "DM Sans", system-ui, sans-serif;
-  --f-accent: "Libre Baskerville", Georgia, serif;
-  --f-body: "DM Sans", system-ui, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, monospace;
-
-  --max: 1440px;
-  --gut: clamp(24px, 6vw, 120px);
-  --section-pad-y: clamp(96px, 14vw, 180px);
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#2a2a2a;
+  --paper:#FFFFFF;
+  --paper-soft:#FAFAFA;
+  --paper-line:#D9D4C7;
+  --rule:#1f1f1f;
+  --rule-soft:#cfcfcf;
+  --blue:#1317E4;
+  --blue-soft:#5b5fee;
+  --muted:#6b6b6b;
+  --muted-light:#9a9a9a;
+  --serif:"Libre Baskerville", Georgia, serif;
+  --sans:"DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
 }
 
-/* ================================================================
-   RESET
-================================================================ */
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--f-body);
-  font-weight: 400; font-size: 17px; line-height: 1.55;
-  overflow-x: hidden;
-}
-img, svg { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-p { margin: 0 0 1rem; }
-p:last-child { margin-bottom: 0; }
-
-.wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gut); padding-right: var(--gut); }
-
-/* ================================================================
-   TYPOGRAPHY
-================================================================ */
-.mono {
-  font-family: var(--f-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--fg-dim);
-}
-.mono--strong { color: var(--fg); }
-.mono--blue { color: var(--blue); }
-
-.italic-accent {
-  font-family: var(--f-accent); font-style: italic; font-weight: 400;
-  letter-spacing: -0.01em;
-}
-.accent--blue { color: var(--blue); }
-
-h1, h2, h3 { margin: 0; font-family: var(--f-display); font-weight: 800; letter-spacing: -0.035em; line-height: 0.96; color: var(--fg); }
-h1 { font-size: clamp(48px, 9.5vw, 148px); font-weight: 900; }
-h2 { font-size: clamp(40px, 6.5vw, 92px); }
-h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-
-.lede { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 58ch; }
-
-/* ================================================================
-   CTA
-================================================================ */
-.cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 26px; border-radius: 999px;
-  font-family: var(--f-body); font-weight: 500; font-size: 15px;
-  letter-spacing: -0.005em; white-space: nowrap;
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
-}
-.cta--primary { background: var(--blue); color: var(--paper); }
-.cta--primary:hover { transform: translateY(-2px); }
-.cta--ghost { border: 1px solid var(--rule-strong); color: var(--fg); }
-.cta--ghost:hover { border-color: var(--fg); }
-.cta .arr { display: inline-block; transition: transform 220ms ease; }
-.cta:hover .arr { transform: translateX(4px); }
-
-/* ================================================================
-   NAV — paper with blur-on-scroll
-================================================================ */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 0;
-  background: rgba(247, 245, 240, 0);
-  backdrop-filter: blur(0);
-  border-bottom: 1px solid transparent;
-  transition: background 280ms ease, backdrop-filter 280ms ease, border-color 280ms ease, padding 280ms ease;
-}
-.nav.scrolled {
-  background: rgba(247, 245, 240, 0.85);
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
-  border-bottom: 1px solid var(--rule);
-  padding: 14px 0;
-}
-.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-
-.logo {
-  display: inline-flex; align-items: center;
-  color: var(--fg);
-  transition: opacity 180ms ease;
-  line-height: 0;
-}
-.logo:hover { opacity: 0.82; }
-.logo__svg {
-  height: 36px;
-  width: auto;
-  color: var(--fg);
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{height:100%; width:100%}
+body{
+  font-family:var(--sans);
+  background:#e8e8e8;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
-.nav__links { display: flex; align-items: center; gap: 32px; }
-.nav__link { font-size: 14px; color: var(--fg-dim); transition: color 180ms ease; }
-.nav__link:hover { color: var(--fg); }
-.nav__cta {
-  padding: 10px 18px; background: var(--ink); color: var(--paper);
-  border-radius: 999px; font-size: 13px; font-weight: 500;
-  transition: background 180ms ease;
+.deck-wrapper{
+  min-height:100vh; width:100%;
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:16px 0;
 }
-.nav__cta:hover { background: var(--blue); }
-.nav__toggle { display: none; }
+.scale-wrap{
+  position:relative;
+  transform-origin:top center;
+}
+.stage{
+  width:1440px;
+  min-height:900px;
+  position:relative;
+  background:#fff;
+}
 
-.nav__dropdown { position: relative; }
-.nav__dropdown-toggle {
-  background: none; border: 0; padding: 0; cursor: pointer;
-  font: inherit; font-size: 14px; color: var(--fg-dim);
-  display: inline-flex; align-items: center; gap: 6px;
-  transition: color 180ms ease;
+.slide{
+  position:absolute; top:0; left:0;
+  width:1440px; min-height:900px;
+  display:flex; flex-direction:column;
+  padding:44px 72px 32px;
+  opacity:0; pointer-events:none;
+  transition:opacity .35s ease;
+  background:var(--paper);
+  color:var(--ink);
 }
-.nav__dropdown-toggle:hover { color: var(--fg); }
-.nav__dropdown-toggle::after {
-  content: ''; width: 6px; height: 6px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg) translateY(-2px);
-  transition: transform 200ms ease;
-}
-.nav__dropdown.is-open .nav__dropdown-toggle { color: var(--fg); }
-.nav__dropdown.is-open .nav__dropdown-toggle::after {
-  transform: rotate(-135deg) translateY(2px);
-}
-.nav__dropdown-menu {
-  position: absolute; top: calc(100% + 14px); left: 50%;
-  min-width: 260px; padding: 8px;
-  background: rgba(247, 245, 240, 0.96);
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  opacity: 0; pointer-events: none;
-  transform: translateX(-50%) translateY(-6px);
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-.nav__dropdown.is-open .nav__dropdown-menu {
-  opacity: 1; pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-.nav__dropdown-item {
-  display: block; padding: 10px 14px;
-  font-size: 14px; color: var(--fg);
-  border-radius: 8px;
-  transition: background 180ms ease;
-}
-.nav__dropdown-item:hover { background: rgba(0, 0, 0, 0.04); }
+.slide.is-active{opacity:1; pointer-events:auto; z-index:2; position:relative}
 
-@media (max-width: 860px) {
-  .logo__svg { height: 28px; }
-  .nav__links { display: none; }
-  .nav__toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg); }
-  .nav__toggle .bars { display: flex; flex-direction: column; gap: 3px; }
-  .nav__toggle .bars span { display: block; width: 20px; height: 1.5px; background: var(--fg); }
-  .nav--open .nav__links {
-    display: flex; flex-direction: column; align-items: stretch; gap: 0;
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--bg); padding: 20px var(--gut) 28px;
-    border-bottom: 1px solid var(--rule);
+/* All slides white now */
+.bg-ink, .bg-paper, .bg-paper-soft{ background:var(--paper); color:var(--ink); }
+
+/* CHROME */
+.chrome{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  font-family:var(--mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted);
+}
+.chrome .brand{display:flex; align-items:center; gap:10px; color:var(--ink); font-weight:500}
+.chrome .brand .dot{width:7px; height:7px; display:inline-block; background:var(--blue)}
+.chrome .act{opacity:.75}
+
+/* FOOTER */
+.footer{
+  display:flex; justify-content:space-between; align-items:flex-end;
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase;
+  margin-top:auto;
+  color:var(--muted);
+}
+.footer .num{display:flex; gap:6px; align-items:center; color:var(--ink)}
+.footer .num .hl{color:var(--blue); font-style:normal}
+
+/* RULES */
+.hairline{height:1px; background:var(--rule-soft); margin:18px 0 28px}
+.hairline-blue{height:1px; width:64px; margin:28px 0 18px !important; background:var(--blue)}
+
+/* EYEBROW */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+  margin-bottom:20px;
+  color:var(--blue);
+}
+
+/* DISPLAY */
+.display{
+  font-family:var(--serif);
+  font-weight:400;
+  line-height:1.02;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+.display-xl{font-size:110px}
+.display-lg{font-size:72px}
+.display-md{font-size:44px}
+.display-sm{font-size:30px}
+
+.italic{font-style:italic; color:var(--blue)}
+
+.body{font-family:var(--sans); font-weight:400; line-height:1.55; font-size:18px; color:var(--ink-soft)}
+.body-lg{font-family:var(--sans); font-weight:400; line-height:1.5; font-size:21px; color:var(--ink-soft)}
+.body-sm{font-family:var(--sans); font-weight:400; line-height:1.55; font-size:16px; color:var(--ink-soft)}
+.mono{font-family:var(--mono); letter-spacing:.04em}
+.caps{text-transform:uppercase; letter-spacing:.14em; font-size:13.5px}
+
+.row{display:flex; gap:32px}
+.col{display:flex; flex-direction:column}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:56px}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:40px}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:32px}
+.stack-sm>*+*{margin-top:10px}
+.stack-md>*+*{margin-top:20px}
+.stack-lg>*+*{margin-top:32px}
+.fill{flex:1}
+.ml-auto{margin-left:auto}
+
+.ring{
+  width:42px; height:42px; border-radius:50%;
+  border:1.5px solid var(--blue);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:14px; font-weight:500;
+  flex-shrink:0;
+  color:var(--blue);
+}
+
+/* HUD (only on screen) */
+.hud{
+  position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:100;
+}
+.hud button{
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  border:1px solid #1f1f1f; background:#fff; color:#1f1f1f;
+  padding:10px 14px; cursor:pointer;
+  transition:all .15s ease;
+}
+.hud button:hover{background:var(--blue); color:#fff; border-color:var(--blue)}
+.hud .sep{opacity:.4; align-self:center; color:#1f1f1f}
+.progress{
+  position:fixed; top:0; left:0; height:2px; background:var(--blue);
+  z-index:30; width:0%; transition:width .3s ease;
+}
+
+/* Cover grid lines — light gray, prints near-zero ink */
+.cover-grid-lines{
+  position:absolute; inset:0; pointer-events:none; opacity:.7;
+  background-image:linear-gradient(to right, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size:calc(100% / 12) 100%;
+}
+
+/* STAT BLOCKS */
+.stat-block{display:flex; flex-direction:column; gap:6px}
+.stat-block .pct{
+  font-family:var(--serif); font-weight:400;
+  font-size:140px; line-height:.88; letter-spacing:-.03em;
+  color:var(--ink);
+}
+.stat-block .pct sup{font-size:.5em; font-weight:400; vertical-align:top; margin-left:4px; color:var(--blue)}
+.stat-block .label{font-family:var(--sans); font-size:16px; line-height:1.45; max-width:280px; color:var(--ink-soft)}
+.stat-block .source{
+  font-family:var(--mono); font-size:12px; opacity:.7; letter-spacing:.12em; text-transform:uppercase;
+  margin-top:10px; color:var(--muted);
+}
+.stat-block.compact .pct{font-size:110px}
+.stat-block.compact .label{font-size:15px; max-width:260px}
+
+/* PILLAR ROWS */
+.pillar-row{
+  display:grid; grid-template-columns:120px 1fr; gap:28px;
+  padding:22px 0; border-top:1px solid var(--rule-soft);
+}
+.pillar-row:last-child{border-bottom:1px solid var(--rule-soft)}
+.pillar-row .idx{font-family:var(--mono); font-size:13px; letter-spacing:.1em; padding-top:6px; color:var(--blue)}
+.pillar-row .body{max-width:62ch}
+.pillar-row h4{font-family:var(--serif); font-size:26px; font-weight:400; letter-spacing:-.01em; margin-bottom:10px; color:var(--ink)}
+
+/* COST ROWS */
+.cost-row{
+  display:grid; grid-template-columns:auto 1fr auto; gap:28px;
+  padding:10px 0;
+  border-bottom:1px solid var(--rule-soft);
+  align-items:center;
+}
+.cost-row .role{font-family:var(--serif); font-style:italic; font-size:21px; color:var(--ink)}
+.cost-row .what{font-size:15.5px; color:var(--ink-soft); max-width:48ch; line-height:1.45}
+.cost-row .hours{font-family:var(--serif); font-size:27px; letter-spacing:-.01em; white-space:nowrap; color:var(--ink)}
+.cost-row .hours span{font-style:italic; font-size:.68em; display:block; margin-top:1px; color:var(--blue)}
+
+/* FLOW CHAIN */
+.flow-chain{
+  display:grid;
+  grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
+  gap:0;
+  align-items:stretch;
+}
+.flow-node{
+  padding:22px 20px;
+  border:1px solid var(--rule-soft);
+  background:#fff;
+  display:flex; flex-direction:column; gap:10px;
+  position:relative;
+}
+.flow-node::before{
+  content:""; position:absolute; top:0; left:0;
+  width:100%; height:2px; background:var(--blue);
+}
+.flow-node .flow-idx{
+  font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--blue);
+}
+.flow-node h5{
+  font-family:var(--serif); font-size:22px; font-weight:400; line-height:1.15; letter-spacing:-.01em;
+  margin-bottom:2px; min-height:2.3em; color:var(--ink);
+}
+.flow-node ul{list-style:none; margin-top:4px}
+.flow-node ul li{
+  font-size:14.5px; line-height:1.45; padding:5px 0; color:var(--ink-soft);
+  border-top:1px solid var(--rule-soft);
+}
+.flow-node ul li:first-child{border-top:none; padding-top:0}
+.flow-node ul li::before{content:"— "; color:var(--blue); opacity:.7}
+.flow-sep{
+  align-self:center; display:flex; justify-content:center; align-items:center;
+  font-family:var(--serif); font-style:italic;
+  font-size:28px; color:var(--blue);
+}
+.flow-sep span{display:block; width:100%; text-align:center; letter-spacing:-0.04em}
+
+/* SERVICE / POSITION COLS */
+.service-col{
+  padding:22px; border:1px solid var(--rule-soft);
+  display:flex; flex-direction:column; gap:12px;
+  background:#fff;
+}
+.service-col .tag{font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--blue)}
+.service-col h3{font-family:var(--serif); font-size:24px; font-weight:400; line-height:1.1; letter-spacing:-.015em; color:var(--ink)}
+.service-col ul{list-style:none; margin-top:2px}
+.service-col ul li{font-size:15.5px; padding:6px 0; border-bottom:1px solid var(--rule-soft); line-height:1.4; color:var(--ink-soft)}
+.service-col ul li:last-child{border-bottom:none}
+
+.position-col{display:flex; flex-direction:column; gap:12px; padding-right:24px; position:relative}
+.position-col:not(:last-child)::after{
+  content:""; position:absolute; right:0; top:0; bottom:0;
+  width:1px; background:var(--rule-soft);
+}
+.position-col .big{
+  font-family:var(--serif); font-size:54px; font-weight:400; line-height:1; letter-spacing:-.02em;
+  color:var(--blue);
+}
+.position-col h4{font-family:var(--serif); font-size:22px; font-weight:400; letter-spacing:-.01em; line-height:1.15; color:var(--ink)}
+.position-col p{font-size:15.5px; line-height:1.55; color:var(--ink-soft)}
+.position-col.dim p{color:var(--ink-soft)}
+.position-col.dim .sub{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin-top:2px;
+}
+
+/* CASE GRID */
+.case-grid{display:grid; grid-template-columns:200px 1fr 1fr; border-top:1px solid var(--rule-soft)}
+.case-grid > div{padding:13px 20px; border-bottom:1px solid var(--rule-soft)}
+.case-grid .metric{font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); align-self:center}
+.case-grid .before{font-family:var(--serif); font-style:italic; font-size:19px; color:var(--muted-light)}
+.case-grid .after{font-family:var(--serif); font-size:21px; color:var(--blue)}
+
+/* TIER */
+.tier{padding:28px; border:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:14px; background:#fff}
+.tier .label{font-family:var(--mono); font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue)}
+.tier .price{font-family:var(--serif); font-size:46px; font-weight:400; line-height:1; letter-spacing:-.02em; color:var(--ink)}
+.tier .price small{font-size:.4em; color:var(--muted); margin-left:4px}
+.tier h3{font-family:var(--serif); font-size:21px; font-weight:400; line-height:1.2; color:var(--ink)}
+.tier ul{list-style:none}
+.tier ul li{font-size:15.5px; padding:6px 0; border-bottom:1px solid var(--rule-soft); line-height:1.4; color:var(--ink-soft)}
+.tier ul li:last-child{border-bottom:none}
+.tier ul li::before{content:"— "; color:var(--blue)}
+
+/* MECHANISM */
+.mechanism-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--rule-soft)}
+.mech-col{padding:22px; border-right:1px solid var(--rule-soft)}
+.mech-col:last-child{border-right:none}
+.mech-col .tag{font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); margin-bottom:10px}
+.mech-col h3{font-family:var(--serif); font-size:36px; font-weight:400; line-height:1; letter-spacing:-.02em; margin-bottom:12px; color:var(--ink)}
+.mech-col .section{margin-top:12px}
+.mech-col .section .heading{font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:5px}
+.mech-col .section p{font-size:15.5px; line-height:1.5; color:var(--ink-soft)}
+
+/* CTA */
+.cta-btn{
+  align-self:flex-start;
+  display:inline-flex; align-items:center; gap:14px;
+  padding:18px 30px;
+  background:#fff; color:var(--blue);
+  font-family:var(--mono); font-size:14px; letter-spacing:.14em; text-transform:uppercase;
+  border:2px solid var(--blue); cursor:pointer; text-decoration:none;
+  transition:transform .15s ease;
+}
+.cta-btn:hover{transform:translateX(4px)}
+.cta-btn .arrow{font-family:var(--serif); font-style:normal; font-size:20px}
+
+.cta-contact{
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px;
+  padding-top:28px; border-top:1px solid var(--rule-soft); margin-top:32px;
+}
+.cta-contact .item{display:flex; flex-direction:column; gap:4px}
+.cta-contact .item .k{font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.cta-contact .item .v{font-family:var(--serif); font-size:20px; letter-spacing:-.01em; color:var(--ink)}
+
+.pullquote{
+  font-family:var(--serif); font-style:italic; font-size:34px;
+  line-height:1.2; letter-spacing:-.01em;
+  max-width:22ch; color:var(--blue);
+}
+
+/* BOXES — outlined, not filled, to save ink */
+.box-outline{padding:20px 24px; border:1px solid var(--rule-soft); background:transparent}
+.box-blue-line{padding:20px 28px; border-left:3px solid var(--blue); background:transparent}
+.box-blue-frame{padding:20px 24px; border:1px solid var(--blue); background:transparent}
+
+.mega-quote{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:130px; line-height:.98; letter-spacing:-.03em;
+  color:var(--blue);
+}
+.mega-quote .mark{font-style:normal; opacity:.4}
+
+/* SOURCES */
+.sources-strip{
+  display:flex; gap:28px; flex-wrap:wrap;
+  padding-top:16px; margin-top:8px;
+  border-top:1px solid var(--rule-soft);
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* QUESTION SLIDE */
+.q-setup{max-width:72ch; margin-bottom:40px}
+.q-setup p{font-family:var(--serif); font-style:italic; font-size:23px; line-height:1.45; color:var(--ink-soft)}
+.q-mega{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:118px; line-height:1; letter-spacing:-.025em;
+  color:var(--blue); margin-bottom:42px; max-width:24ch;
+}
+.q-mark{font-style:normal; opacity:.35; margin:0 4px}
+.q-meaning{
+  display:grid; grid-template-columns:auto 1fr; gap:36px;
+  max-width:92ch; padding-top:24px;
+  border-top:1px solid var(--rule-soft); align-items:start;
+}
+.q-meaning .q-label{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); padding-top:6px; white-space:nowrap;
+}
+.q-meaning .q-real{
+  font-family:var(--serif); font-style:italic; font-size:30px;
+  line-height:1.3; letter-spacing:-.01em; color:var(--ink);
+}
+
+/* QA STACK */
+.qa-stack{display:flex; flex-direction:column; border-top:1px solid var(--rule-soft)}
+.qa-row{
+  display:grid; grid-template-columns:50px 1fr 1fr; gap:32px;
+  padding:20px 0; border-bottom:1px solid var(--rule-soft); align-items:start;
+}
+.qa-row .num{font-family:var(--mono); font-size:12.5px; letter-spacing:.16em; color:var(--blue); padding-top:10px}
+.qa-row .q{
+  font-family:var(--serif); font-style:italic; font-size:23px;
+  line-height:1.3; letter-spacing:-.005em; color:var(--muted); padding-top:4px;
+}
+.qa-row .a{
+  font-family:var(--serif); font-size:23px;
+  line-height:1.3; letter-spacing:-.005em; color:var(--ink);
+  padding-top:4px; padding-left:28px;
+  border-left:1px solid var(--rule-soft);
+}
+.qa-row .a em{font-style:normal; color:var(--blue)}
+
+/* PROBLEM-3 INK-SAVING BOX */
+.box-num-frame{
+  padding:18px 22px; border:1px solid var(--rule-soft);
+}
+.box-num-frame .head{font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); margin-bottom:8px}
+.box-num-frame .body{color:var(--ink-soft)}
+.box-num-frame.accent{border:1px solid var(--blue)}
+
+/* CASE BEFORE BOXES */
+.case-stat{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:16px 22px; border:1px solid var(--rule-soft);
+}
+.case-stat .k{font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.case-stat .v{font-family:var(--serif); font-size:30px; letter-spacing:-.01em; color:var(--ink)}
+.case-stat .note{font-family:var(--sans); font-size:14px; color:var(--muted); max-width:22ch; text-align:right; line-height:1.45}
+.case-stat.accent{border:1px solid var(--blue)}
+.case-stat.accent .k{color:var(--blue)}
+.case-stat.accent .v{color:var(--blue); font-style:italic; font-size:22px; line-height:1.3}
+
+/* ============= PRINT STYLES ============= */
+@media print{
+  /* US Letter @ 72dpi-ish: 1056 x 816, but we set custom size to keep aspect */
+  @page{
+    size:1440px 900px;
+    margin:0;
   }
-  .nav--open .nav__link { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 16px; color: var(--fg); }
-
-  .nav--open .nav__dropdown { border-bottom: 1px solid var(--rule); }
-  .nav--open .nav__dropdown-toggle {
-    width: 100%; justify-content: space-between;
-    padding: 14px 0; font-size: 16px; color: var(--fg);
+  html, body{
+    background:#fff !important;
+    overflow:visible !important;
+    width:1440px !important;
+    height:auto !important;
   }
-  .nav--open .nav__dropdown-menu {
-    position: static; transform: none; opacity: 1; pointer-events: auto;
-    background: transparent; border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
-    padding: 0 0 12px; min-width: 0;
-    max-height: 0; overflow: hidden;
-    transition: max-height 240ms ease, padding 240ms ease;
+  body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .deck-wrapper{
+    position:static !important;
+    background:#fff !important;
+    display:block !important;
+    padding:0 !important;
+    width:1440px !important;
   }
-  .nav--open .nav__dropdown.is-open .nav__dropdown-menu {
-    max-height: 600px;
-    padding: 4px 0 16px;
+  .scale-wrap{
+    transform:none !important;
+    width:1440px !important;
+    height:auto !important;
   }
-  .nav--open .nav__dropdown-item { padding: 10px 12px; font-size: 15px; }
+  .stage{
+    transform:none !important;
+    width:1440px !important;
+    height:auto !important;
+    background:#fff !important;
+  }
+  .slide{
+    position:relative !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
+    page-break-after:always !important;
+    break-after:page !important;
+    page-break-inside:avoid !important;
+    break-inside:avoid !important;
+    width:1440px !important;
+    height:900px !important;
+    min-height:900px !important;
+    max-height:900px !important;
+    overflow:hidden !important;
+    background:#fff !important;
+    transition:none !important;
+  }
+  .slide:last-child{
+    page-break-after:auto !important;
+    break-after:auto !important;
+  }
+  .hud, .progress{display:none !important}
+
+  /* Crisper print contrast on rules */
+  .hairline, .hairline-blue,
+  .pillar-row, .cost-row, .case-grid > div,
+  .qa-row, .flow-node, .service-col,
+  .tier, .mech-col, .case-stat, .box-outline,
+  .box-num-frame, .position-col:not(:last-child)::after{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
 }
 
-/* ================================================================
-   HERO
-================================================================ */
-.hero {
-  position: relative; min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 180px 0 100px; overflow: hidden;
+/* Force-print helper class */
+.printing .slide{
+  position:relative !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
 }
-.hero__inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
-.hero__eyebrow { margin-bottom: 28px; }
-.hero h1 { margin-bottom: 36px; }
-.hero h1 .line { display: block; }
-.hero h1 .accent--blue { font-weight: 400; }
-.hero__sub { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 52ch; margin-bottom: 40px; }
-.hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-
-.hero__visual { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
-.hero__visual svg { width: 100%; height: auto; }
-
-@media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 60px; }
-  .hero__visual { max-width: 460px; margin: 0 auto; }
-}
-
-.scroll-cue { position: absolute; bottom: 36px; left: var(--gut); display: flex; align-items: center; gap: 12px; color: var(--fg-dim); }
-.scroll-cue .line { display: block; width: 36px; height: 1px; background: var(--fg-dim); animation: pulse 2.6s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { transform: scaleX(0.3); opacity: 0.3; } 50% { transform: scaleX(1); opacity: 1; } }
-
-/* ================================================================
-   SECTION SCAFFOLD
-================================================================ */
-.section { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); position: relative; }
-.section--divider { border-top: 1px solid var(--rule); }
-.section--soft { background: var(--bg-alt); }
-.section__head { margin-bottom: clamp(48px, 6vw, 88px); }
-.section__eyebrow { display: inline-block; margin-bottom: 24px; }
-.section__title { max-width: 18ch; }
-.section__intro { max-width: 56ch; margin-top: 28px; color: var(--fg-dim); font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; }
-
-/* ================================================================
-   PROBLEM PILLARS
-================================================================ */
-.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
-.pillar { padding: 48px 32px 48px 0; border-right: 1px solid var(--rule); }
-.pillar:last-child { border-right: 0; padding-right: 0; }
-.pillar__num { margin-bottom: 24px; }
-.pillar__title { margin-bottom: 20px; max-width: 14ch; }
-.pillar p { color: var(--fg-dim); max-width: 40ch; }
-@media (max-width: 900px) {
-  .pillars { grid-template-columns: 1fr; }
-  .pillar { padding: 40px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
-  .pillar:last-child { border-bottom: 0; }
-}
-
-/* ================================================================
-   REFRAME
-================================================================ */
-.reframe { padding-top: calc(var(--section-pad-y) * 1.1); padding-bottom: calc(var(--section-pad-y) * 1.1); border-top: 1px solid var(--rule); background: var(--bg-alt); }
-.reframe__statement { font-family: var(--f-display); font-weight: 800; font-size: clamp(36px, 5.8vw, 84px); letter-spacing: -0.035em; line-height: 1.02; max-width: 20ch; color: var(--fg); }
-.reframe__statement .accent--blue { font-weight: 400; }
-.reframe__cost { margin-top: 72px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.reframe__cost > div { background: var(--bg-alt); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
-.reframe__cost .arr { font-family: var(--f-mono); color: var(--blue); font-size: 13px; margin-top: 3px; flex-shrink: 0; }
-.reframe__cost span { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--fg); line-height: 1.5; }
-@media (max-width: 780px) { .reframe__cost { grid-template-columns: 1fr; } }
-
-/* ================================================================
-   BEFORE / AFTER
-================================================================ */
-.flow-compare {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: clamp(24px, 4vw, 56px); align-items: stretch;
-  margin-top: 16px;
-}
-.flow-compare__panel {
-  background: var(--bg-alt);
-  border: 1px solid var(--rule);
-  padding: 36px 32px 40px;
-  display: flex; flex-direction: column;
-}
-.flow-compare__panel--after { border-color: var(--rule-strong); }
-.flow-compare__label { margin-bottom: 8px; }
-.flow-compare__title {
-  font-family: var(--f-display); font-weight: 700;
-  font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -0.02em;
-  line-height: 1.15; margin-bottom: 24px;
-  color: var(--fg);
-}
-.flow-compare__title--after .italic-accent { color: var(--blue); }
-.flow-compare__svg { width: 100%; height: auto; margin-top: auto; margin-bottom: 20px; }
-.flow-compare__foot { color: var(--fg-dim); font-size: 14.5px; line-height: 1.5; }
-.flow-compare__arrow {
-  align-self: center; color: var(--blue);
-  font-family: var(--f-mono); font-size: 13px;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  writing-mode: vertical-rl; padding: 0 2px;
-  display: flex; align-items: center; gap: 16px;
-}
-.flow-compare__arrow .line { writing-mode: horizontal-tb; width: 1px; height: 48px; background: var(--blue); display: block; }
-@media (max-width: 900px) {
-  .flow-compare { grid-template-columns: 1fr; }
-  .flow-compare__arrow { writing-mode: horizontal-tb; flex-direction: row; padding: 8px 0; justify-content: center; }
-  .flow-compare__arrow .line { width: 48px; height: 1px; }
-}
-
-/* ================================================================
-   CONCEPT PRINCIPLES
-================================================================ */
-.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.principle { background: var(--bg); padding: 40px 36px 48px; display: flex; flex-direction: column; }
-.principle__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
-.principle__num { color: var(--blue); }
-.principle__glyph { width: 36px; height: 36px; color: var(--fg-dim); flex-shrink: 0; transition: color 280ms ease; }
-.principle:hover .principle__glyph { color: var(--blue); }
-.principle h3 { margin-bottom: 16px; max-width: 18ch; }
-.principle p { color: var(--fg-dim); font-size: 15.5px; line-height: 1.55; }
-@media (max-width: 1024px) { .principles { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .principles { grid-template-columns: 1fr; } }
-
-/* ================================================================
-   MODULE FLOW
-================================================================ */
-.module-flow {
-  position: relative;
-  padding: 48px clamp(16px, 3vw, 48px);
-  background: var(--bg-alt);
-  border: 1px solid var(--rule);
-  margin-bottom: 56px;
-}
-.module-flow__caption {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 32px; gap: 24px; flex-wrap: wrap;
-}
-.module-flow__caption strong { font-weight: 500; color: var(--fg); }
-.module-flow__svg { width: 100%; height: auto; max-height: 560px; }
-@media (max-width: 720px) { .module-flow { padding: 32px 20px; } }
-
-/* ================================================================
-   MODULES
-================================================================ */
-.modules { border-top: 1px solid var(--rule-strong); }
-.module-row {
-  display: grid; grid-template-columns: 60px 260px 1fr; gap: 40px;
-  padding: 32px 0; border-bottom: 1px solid var(--rule);
-  align-items: baseline;
-  transition: padding 220ms ease;
-}
-.module-row:hover { padding-left: 16px; }
-.module-row__num { color: var(--blue); }
-.module-row__name { font-family: var(--f-display); font-weight: 700; font-size: clamp(20px, 1.8vw, 26px); letter-spacing: -0.02em; color: var(--fg); }
-.module-row__desc { color: var(--fg-dim); font-size: 15.5px; max-width: 58ch; }
-.modules__footer { margin-top: 40px; color: var(--fg-ghost); }
-@media (max-width: 900px) {
-  .module-row { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
-  .module-row:hover { padding-left: 0; }
-}
-
-/* ================================================================
-   APPROACH TIMELINE
-================================================================ */
-.timeline { position: relative; }
-.timeline__track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-.timeline__rail { position: absolute; top: 44px; left: 0; right: 0; height: 1px; background: var(--rule-strong); z-index: 0; }
-.timeline__progress { position: absolute; top: 44px; left: 0; width: 0; height: 1px; background: var(--blue); z-index: 1; transition: width 2400ms cubic-bezier(.2,.7,.2,1); }
-.timeline.visible .timeline__progress { width: 100%; }
-
-.timeline__step { position: relative; z-index: 2; padding: 0 24px 0 0; }
-.timeline__step:last-child { padding-right: 0; }
-
-.timeline__dot {
-  position: relative; width: 88px; height: 88px;
-  border: 1px solid var(--rule-strong);
-  border-radius: 50%; background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 32px;
-  transition: border-color 400ms ease;
-}
-.timeline__step.active .timeline__dot { border-color: var(--blue); }
-.timeline__dot-num { font-family: var(--f-display); font-weight: 900; font-size: 32px; letter-spacing: -0.03em; color: var(--fg); }
-.timeline__dot-num .dot { color: var(--blue); }
-
-.timeline__meta .mono { margin-bottom: 14px; display: block; }
-.timeline__step h3 { margin-bottom: 18px; max-width: 18ch; }
-.timeline__step p { color: var(--fg-dim); font-size: 16px; line-height: 1.6; max-width: 44ch; }
-
-@media (max-width: 900px) {
-  .timeline__track { grid-template-columns: 1fr; gap: 56px; }
-  .timeline__rail, .timeline__progress { display: none; }
-  .timeline__dot { margin-bottom: 20px; }
-}
-
-/* ================================================================
-   POSITIONING
-================================================================ */
-.positions { display: grid; gap: 0; }
-.position { padding: 72px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
-.position:first-child { border-top: 0; padding-top: 0; }
-.position__label { font-family: var(--f-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); }
-.position h3 { font-size: clamp(28px, 3.6vw, 52px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 28px; max-width: 20ch; }
-.position p { color: var(--fg-dim); max-width: 62ch; font-size: 16.5px; line-height: 1.6; }
-@media (max-width: 900px) { .position { grid-template-columns: 1fr; gap: 18px; padding: 48px 0; } }
-
-/* ================================================================
-   MECHANISM TRIANGLE
-================================================================ */
-.mechanism { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
-.mechanism__svg { width: 100%; height: auto; }
-.mechanism__body p { color: var(--fg-dim); font-size: 16.5px; line-height: 1.6; max-width: 52ch; margin-bottom: 20px; }
-.mechanism__body p:first-child { color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 28px; }
-
-.mech-table { margin-top: 36px; border-top: 1px solid var(--rule); }
-.mech-row { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
-.mech-row__label { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); }
-.mech-row__body { color: var(--fg-dim); font-size: 15.5px; }
-.mech-row__body strong { color: var(--fg); font-weight: 500; }
-
-@media (max-width: 900px) {
-  .mechanism { grid-template-columns: 1fr; }
-  .mechanism__svg { max-width: 420px; margin: 0 auto; }
-  .mech-row { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
-}
-
-/* ================================================================
-   PRICING
-================================================================ */
-.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.tier { background: var(--bg); padding: 48px 40px 56px; display: flex; flex-direction: column; }
-.tier__label { color: var(--fg-dim); margin-bottom: 28px; }
-.tier__name { font-family: var(--f-display); font-weight: 800; font-size: clamp(24px, 2.4vw, 36px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
-.tier__price { font-family: var(--f-display); font-weight: 900; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.035em; color: var(--blue); margin-bottom: 28px; }
-.tier p { color: var(--fg-dim); font-size: 15.5px; }
-.pricing__note { margin-top: 32px; color: var(--fg-dim); font-size: 15px; max-width: 70ch; }
-@media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
-
-/* ================================================================
-   MANIFESTO
-================================================================ */
-.manifesto__grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 100px; align-items: start; }
-.manifesto__lead p { color: var(--fg-dim); font-size: 17px; line-height: 1.65; margin-bottom: 18px; }
-.manifesto__lead p:first-child { color: var(--fg); font-size: clamp(20px, 1.8vw, 26px); font-family: var(--f-display); font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; }
-.beliefs { list-style: none; padding: 0; margin: 0; }
-.beliefs li { padding: 20px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: baseline; }
-.beliefs li:first-child { border-top: 1px solid var(--rule); }
-.beliefs .mono { color: var(--blue); }
-.beliefs p { color: var(--fg); font-size: 16px; line-height: 1.5; }
-.manifesto__signoff { margin-top: 56px; font-family: var(--f-accent); font-style: italic; font-size: clamp(22px, 2vw, 30px); color: var(--fg); text-align: right; }
-@media (max-width: 1024px) { .manifesto__grid { grid-template-columns: 1fr; gap: 56px; } }
-
-/* ================================================================
-   FINAL CTA
-================================================================ */
-.final-cta { padding: clamp(120px, 20vw, 220px) 0; text-align: center; position: relative; border-top: 1px solid var(--rule); background: var(--bg-alt); }
-.final-cta h2 { font-size: clamp(64px, 13vw, 200px); font-weight: 900; letter-spacing: -0.05em; line-height: 0.92; margin-bottom: 40px; }
-.final-cta h2 .italic-accent { font-weight: 400; }
-.final-cta .lede { max-width: 52ch; margin: 0 auto 48px; text-align: center; }
-.final-cta .cta-group { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.final-cta .mono { letter-spacing: 0.16em; }
-
-/* ================================================================
-   FOOTER
-================================================================ */
-.footer { border-top: 1px solid var(--rule); padding: 64px 0 48px; background: var(--bg); }
-.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
-.footer__brand .logo { margin-bottom: 20px; }
-.footer__brand .logo__svg { height: 44px; }
-.footer__brand p { color: var(--fg-dim); max-width: 42ch; font-size: 14.5px; line-height: 1.55; }
-.footer__col h4 { font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-ghost); margin: 0 0 16px; }
-.footer__col a, .footer__col span { display: block; color: var(--fg); font-size: 14.5px; margin-bottom: 10px; line-height: 1.5; }
-.footer__col a:hover { color: var(--blue); }
-.footer__bottom { padding-top: 32px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--fg-ghost); font-size: 12.5px; font-family: var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; }
-@media (max-width: 900px) {
-  .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .footer__brand { grid-column: 1 / -1; }
-}
-@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
-
-/* ================================================================
-   REVEAL + MOTION
-================================================================ */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 800ms cubic-bezier(.2,.7,.2,1), transform 800ms cubic-bezier(.2,.7,.2,1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .scroll-cue .line { animation: none; }
-  .timeline__progress { transition: none; }
-  html { scroll-behavior: auto; }
-}
-
-/* ================================================================
-   COOKIE BANNER
-================================================================ */
-.cookie-bar {
-  position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 620px; margin: 0 auto;
-  background: var(--bg-alt); border: 1px solid var(--rule-strong); padding: 16px 20px;
-  border-radius: 10px; display: flex; align-items: center; gap: 20px; z-index: 200;
-  font-size: 13.5px; color: var(--fg-dim);
-  box-shadow: 0 12px 48px rgba(10, 10, 10, 0.08);
-  transform: translateY(140%); transition: transform 420ms cubic-bezier(.2,.7,.2,1);
-}
-.cookie-bar.show { transform: translateY(0); }
-.cookie-bar button {
-  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--fg); padding: 8px 14px;
-  border: 1px solid var(--rule-strong); border-radius: 999px;
-  transition: border-color 180ms ease, background 180ms ease; flex-shrink: 0;
-}
-.cookie-bar button:hover { border-color: var(--fg); }
 </style>
 </head>
-
 <body>
 
-<!-- ================================================================
-  SVG SPRITE — Logo (full, with text) and principle glyphs
-================================================================ -->
-<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
-  <!-- Ronnie's actual Velo Working logotype: mark + "VELO WORKING" text.
-       Both paths extracted verbatim from Logo with Text.svg, recoloured to currentColor. -->
-  <symbol id="velo-logo" viewBox="-67 125 310 50">
-    <g fill="currentColor">
-      <!-- Mark -->
-      <path d="m -63.08431,159.73324 v -11.95468 h 1.711254 1.711254 v 11.95468 11.95468 h -1.711254 -1.711254 z m 13.473111,-0.82354 c -2.7838,-2.88889 -5.165724,-5.36884 -5.293161,-5.51098 l -0.231706,-0.25846 0.549761,-1.29497 0.549763,-1.29498 7.635659,0.0174 c 4.199613,0.01 7.642322,0.0236 7.650469,0.0309 0.01335,0.0121 -1.513544,3.63653 -1.544387,3.66591 -0.0071,0.007 -1.932699,-0.0391 -4.279044,-0.10194 -2.346348,-0.0628 -4.407082,-0.11379 -4.579413,-0.11326 l -0.313328,9e-4 3.263591,3.23912 3.263592,3.23912 -0.776198,1.81972 c -0.42691,1.00085 -0.789235,1.81842 -0.80517,1.81682 -0.01595,-0.001 -2.306627,-2.36654 -5.090428,-5.25543 z m -29.666932,3.11343 c -0.40939,-1.01953 -0.73477,-1.86111 -0.72306,-1.87019 0.11854,-0.0919 6.601154,-6.26625 6.601154,-6.28717 0,-0.0155 -2.06247,-0.0194 -4.583264,-0.009 l -4.58327,0.0194 -0.74007,-1.83176 -0.74007,-1.83177 0.15342,-0.0131 c 0.34112,-0.0292 15.135529,0.27402 15.167398,0.31083 0.01891,0.0219 0.267301,0.61697 0.551984,1.32251 l 0.517602,1.28278 -3.365959,3.34337 c -1.851279,1.83885 -4.288204,4.26051 -5.415385,5.38145 -1.12719,1.12096 -2.05995,2.03766 -2.0728,2.03711 -0.0129,-4.5e-4 -0.3583,-0.83516 -0.76768,-1.85469 z m 33.041236,-14.34438 c -3.791272,-0.0741 -7.098103,-0.14163 -7.348513,-0.15003 l -0.455294,-0.0153 -0.520844,-1.3003 c -0.286465,-0.71518 -0.520846,-1.31372 -0.520846,-1.3301 0,-0.0374 3.03224,-3.04993 5.890442,-5.87067 2.539166,-2.5059 4.940976,-4.86047 4.957427,-4.84345 0.02131,0.0221 0.36701,0.85212 0.768213,1.84455 l 0.729459,1.80441 -0.207484,0.20195 c -0.114116,0.11108 -1.519848,1.44395 -3.123846,2.96192 -1.603998,1.51799 -3.013976,2.85516 -3.133281,2.9715 l -0.21692,0.21154 4.60739,-0.0328 c 3.946267,-0.028 4.611369,-0.023 4.635133,0.0354 0.249971,0.61373 1.323165,3.26153 1.390383,3.43038 l 0.09115,0.22896 -0.324674,-0.007 c -0.178575,-0.003 -3.426627,-0.0673 -7.217897,-0.14137 z m -31.875116,-0.22557 c -3.49313,-0.008 -5.89298,-0.0303 -5.89298,-0.0563 0,-0.0603 1.49413,-3.5857 1.54033,-3.63439 0.0204,-0.0215 2.08435,0.0149 4.58652,0.0808 2.502157,0.066 4.555892,0.1135 4.56385,0.1055 0.008,-0.008 -1.450958,-1.46694 -3.24204,-3.24218 l -3.2565,-3.22771 0.78062,-1.84246 0.78062,-1.84246 0.13009,0.13515 c 0.0715,0.0743 2.464747,2.55971 5.318224,5.52307 l 5.188142,5.38792 -0.06524,0.15558 c -0.03588,0.0856 -0.288522,0.6816 -0.561424,1.32453 l -0.496185,1.16895 -1.740524,-0.0119 c -0.957288,-0.007 -4.392364,-0.0174 -7.633503,-0.0243 z m 19.589652,-5.24138 c -0.712179,-0.30247 -1.305328,-0.56039 -1.318105,-0.57317 -0.01277,-0.0128 -0.0072,-3.45913 0.01238,-7.65856 l 0.03563,-7.63531 1.788624,0.75983 c 0.983744,0.41792 1.814974,0.7774 1.847178,0.79886 0.04578,0.0305 0.03288,0.98466 -0.05923,4.37741 -0.06479,2.38612 -0.117559,4.44686 -0.117282,4.57942 l 4.48e-4,0.24102 3.24018,-3.26967 3.240214,-3.26966 1.78356,0.75711 c 0.980959,0.41641 1.801446,0.77332 1.823303,0.79314 0.02185,0.0199 -2.320873,2.30888 -5.206069,5.08681 -2.885194,2.77793 -5.365114,5.16596 -5.510933,5.30673 l -0.265123,0.25597 z m -12.34695,-4.8958 c -2.942875,-2.96981 -5.356102,-5.41524 -5.362732,-5.43431 -0.0104,-0.0301 3.575683,-1.50529 3.65865,-1.505 0.0172,6e-5 1.436368,1.48058 3.153703,3.29005 1.717335,1.80948 3.14167,3.29761 3.165188,3.30699 0.02476,0.01 0.03646,-1.91609 0.02778,-4.57516 l -0.01498,-4.5922 1.828043,-0.73907 c 1.005424,-0.40649 1.833188,-0.73378 1.839475,-0.72732 0.01771,0.0182 -0.27252,15.28791 -0.290931,15.30631 -0.01962,0.0197 -2.434208,1.00013 -2.563044,1.04078 -0.07161,0.0227 -1.205843,-1.097 -5.441159,-5.37107 z"/>
-      <!-- "VELO WORKING" text -->
-      <path d="m -19.089294,160.84717 h 6.702763 l 8.4666472,-24.69439 h -5.1152663 l -6.3499859,19.04996 h -0.705554 l -6.349986,-19.04996 h -5.115266 z m 17.9916369,0 H 15.482861 v -4.23333 H 3.4884437 v -5.9972 H 14.777307 v -4.23333 H 3.4884437 V 140.3861 H 15.482861 v -4.23332 H -1.0976571 Z m 21.1666331,0 h 16.227742 v -4.40971 H 24.655077 v -20.28468 h -4.586101 z m 29.104079,-4.05694 c -4.233324,0 -7.408317,-3.21027 -7.408317,-8.29026 0,-5.07999 3.174993,-8.29026 7.408317,-8.29026 4.233323,0 7.408316,3.21027 7.408316,8.29026 0,5.07999 -3.174993,8.29026 -7.408316,8.29026 z m 0,-20.99023 c -6.667485,0 -11.994418,5.25638 -11.994418,12.69997 0,7.4436 5.326933,12.69997 11.994418,12.69997 6.667485,0 11.994417,-5.25637 11.994417,-12.69997 0,-7.44359 -5.326932,-12.69997 -11.994417,-12.69997 z m 27.692983,25.04717 h 6.349986 l 4.233324,-16.9333 h 0.705554 l 4.233323,16.9333 h 6.349986 l 6.173599,-24.69439 h -5.115268 l -4.233324,17.28607 h -0.705554 l -4.409712,-17.28607 h -5.291655 l -4.409712,17.28607 h -0.705554 l -4.233324,-17.28607 h -5.115266 z m 41.804052,-4.05694 c -4.23332,0 -7.40831,-3.21027 -7.40831,-8.29026 0,-5.07999 3.17499,-8.29026 7.40831,-8.29026 4.23333,0 7.40832,3.21027 7.40832,8.29026 0,5.07999 -3.17499,8.29026 -7.40832,8.29026 z m 0,-20.99023 c -6.66748,0 -11.99441,5.25638 -11.99441,12.69997 0,7.4436 5.32693,12.69997 11.99441,12.69997 6.66749,0 11.99442,-5.25637 11.99442,-12.69997 0,-7.44359 -5.32693,-12.69997 -11.99442,-12.69997 z m 16.22777,25.04717 h 4.5861 v -8.46665 h 1.41111 l 7.93748,8.46665 h 5.82082 l -7.93748,-8.46665 c 3.88054,-0.17639 7.23192,-3.17499 7.23192,-7.93748 0,-4.93888 -3.38666,-8.29026 -7.76109,-8.29026 h -11.28886 z m 4.5861,-12.69997 v -7.58471 h 6.52637 c 1.76389,0 3.35138,1.5875 3.35138,3.88055 0,2.11666 -1.58749,3.70416 -3.35138,3.70416 z m 18.8736,12.69997 h 4.5861 v -11.46525 l 9.1722,11.46525 h 5.64443 l -10.05414,-12.52359 9.34859,-12.1708 h -5.64443 l -8.46665,11.11247 v -11.11247 h -4.5861 z m 21.34299,0 h 4.5861 v -24.69439 h -4.5861 z m 9.87777,0 h 4.5861 v -17.10969 h 0.70556 l 8.99581,17.10969 h 6.1736 v -24.69439 h -4.5861 v 17.10968 h -0.70556 l -8.99581,-17.10968 h -6.1736 z m 44.44988,0 h 3.52777 v -13.05275 h -10.75969 v 3.52777 h 6.17359 v 0.17639 c 0,1.58749 -2.11666,5.29165 -6.70276,5.29165 -4.23332,0 -7.40832,-3.21027 -7.40832,-8.29026 0,-5.07999 3.175,-8.29026 7.40832,-8.29026 3.3161,0 5.29165,2.11667 6.34999,4.40972 h 4.76248 C 236.53292,140.73888 232.93459,135.8 226.26711,135.8 c -6.66749,0 -11.99442,5.25638 -11.99442,12.69997 0,7.4436 5.32693,12.69997 11.99442,12.69997 2.50472,0 4.23332,-0.7761 5.46804,-1.58749 0.70556,-0.45861 1.30528,-0.98778 1.76389,-1.5875 h 0.17639 z"/>
-    </g>
-  </symbol>
+<div class="progress" id="progress"></div>
 
-  <!-- Principle glyphs -->
-  <symbol id="g-database" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <ellipse cx="18" cy="8" rx="12" ry="3.5"/>
-    <path d="M6 8 v20 a12 3.5 0 0 0 24 0 v-20"/>
-    <path d="M6 15 a12 3.5 0 0 0 24 0"/>
-    <path d="M6 22 a12 3.5 0 0 0 24 0"/>
-  </symbol>
-  <symbol id="g-workflow" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <rect x="3" y="5" width="9" height="9"/><rect x="24" y="5" width="9" height="9"/>
-    <rect x="3" y="22" width="9" height="9"/><rect x="24" y="22" width="9" height="9"/>
-    <path d="M12 9.5 H24"/><path d="M28.5 14 V22"/>
-    <path d="M24 26.5 H12"/><path d="M7.5 22 V14"/>
-  </symbol>
-  <symbol id="g-unlock" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <rect x="7" y="16" width="22" height="14" rx="1"/>
-    <path d="M11 16 V11 a7 7 0 0 1 14 0"/>
-    <circle cx="18" cy="23" r="2"/><path d="M18 25 v3"/>
-  </symbol>
-  <symbol id="g-coin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <circle cx="18" cy="18" r="12"/>
-    <path d="M18 11 v14 M14 14 c0 2 1.5 3 4 3 2.5 0 4 1 4 3 s-1.5 3-4 3-4-1-4-3"/>
-  </symbol>
-  <symbol id="g-modules" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <rect x="3" y="3" width="12" height="12"/><rect x="21" y="3" width="12" height="12"/>
-    <rect x="3" y="21" width="12" height="12"/><rect x="21" y="21" width="12" height="12"/>
-    <path d="M15 9 H21 M15 27 H21 M9 15 V21 M27 15 V21" stroke-dasharray="2 2"/>
-  </symbol>
-  <symbol id="g-portal" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
-    <rect x="4" y="7" width="28" height="18" rx="1"/>
-    <path d="M4 13 H32"/>
-    <circle cx="8" cy="10" r="0.8" fill="currentColor" stroke="none"/>
-    <circle cx="11" cy="10" r="0.8" fill="currentColor" stroke="none"/>
-    <path d="M14 29 L22 29 M18 25 V29"/>
-    <path d="M10 18 H26 M10 21 H20"/>
-  </symbol>
-</svg>
+<div class="deck-wrapper">
+<div class="scale-wrap" id="scaleWrap">
+<div class="stage" id="stage">
 
-
-<!-- ================================================================
-  NAV
-================================================================ -->
-<nav class="nav" id="nav">
-  <div class="wrap nav__inner">
-    <a href="#top" class="logo" aria-label="Velo Working — home">
-      <svg class="logo__svg" aria-hidden="true"><use href="#velo-logo"/></svg>
-    </a>
-
-    <div class="nav__links" id="navLinks">
-      <a href="#approach" class="nav__link">Approach</a>
-      <a href="#modules" class="nav__link">Modules</a>
-      <a href="#positioning" class="nav__link">Why us</a>
-      <a href="#manifesto" class="nav__link">Manifesto</a>
-      <a href="assessment/assessment.html" class="nav__link">Assessment</a>
-      <div class="nav__dropdown" id="diaryDropdown">
-        <button type="button" class="nav__dropdown-toggle" id="diaryToggle" aria-haspopup="true" aria-expanded="false">Diary</button>
-        <div class="nav__dropdown-menu" role="menu">
-          <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html" class="nav__dropdown-item" role="menuitem">The SME Digital Paradox</a>
-        </div>
-      </div>
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="nav__cta" target="_blank" rel="noopener">Talk to Ronnie</a>
-    </div>
-
-    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-      <span>Menu</span>
-      <span class="bars" aria-hidden="true"><span></span><span></span></span>
-    </button>
-  </div>
-</nav>
-
-
-<!-- ================================================================
-  HERO
-================================================================ -->
-<section class="hero" id="top">
-  <div class="wrap hero__inner">
-    <div class="hero__copy">
-      <div class="hero__eyebrow mono">Velo Working · Singapore · SME operations systems</div>
-      <h1 class="reveal">
-        <span class="line">Own the system</span>
-        <span class="line">that runs</span>
-        <span class="line">your business.</span>
-        <span class="line italic-accent accent--blue">No lock-in.</span>
-      </h1>
-      <p class="hero__sub reveal">We help SMEs automate and digitise operations with no-code software and hardware your own team can run. Fixed scope. Fixed fee. No subscription. No vendor dependency.</p>
-      <div class="hero__ctas reveal">
-        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="cta cta--primary" target="_blank" rel="noopener">Talk to Ronnie <span class="arr">→</span></a>
-        <a href="#approach" class="cta cta--ghost">See the approach</a>
-      </div>
-    </div>
-
-    <!-- Hero visual: module network on paper -->
-    <div class="hero__visual reveal" aria-hidden="true">
-      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <defs>
-          <style>
-            .n-label { font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #0A0A0A; letter-spacing: 0.12em; text-transform: uppercase; }
-            .n-circle { stroke: #0A0A0A; stroke-width: 1; fill: #EDEAE2; }
-            .n-link { stroke: #0A0A0A; stroke-width: 1; stroke-opacity: 0.28; }
-            .n-center { stroke: #1317E4; stroke-width: 1.5; fill: #F7F5F0; }
-            .n-center-label { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-          </style>
-        </defs>
-
-        <circle cx="240" cy="240" r="170" stroke="#0A0A0A" stroke-opacity="0.10" stroke-width="1" fill="none"/>
-
-        <line x1="240" y1="240" x2="240" y2="70" class="n-link"/>
-        <line x1="240" y1="240" x2="384" y2="140" class="n-link"/>
-        <line x1="240" y1="240" x2="410" y2="310" class="n-link"/>
-        <line x1="240" y1="240" x2="320" y2="410" class="n-link"/>
-        <line x1="240" y1="240" x2="160" y2="410" class="n-link"/>
-        <line x1="240" y1="240" x2="70" y2="310" class="n-link"/>
-        <line x1="240" y1="240" x2="96" y2="140" class="n-link"/>
-
-        <circle cx="240" cy="240" r="48" class="n-center"/>
-        <text x="240" y="236" text-anchor="middle" class="n-center-label">Integrated</text>
-        <text x="240" y="252" text-anchor="middle" class="n-center-label">Database</text>
-
-        <g><circle cx="240" cy="70" r="22" class="n-circle"/><text x="240" y="44" text-anchor="middle" class="n-label">Procurement</text></g>
-        <g><circle cx="384" cy="140" r="22" class="n-circle"/><text x="384" y="114" text-anchor="middle" class="n-label">Inventory</text></g>
-        <g><circle cx="410" cy="310" r="22" class="n-circle"/><text x="410" y="356" text-anchor="middle" class="n-label">Production</text></g>
-        <g><circle cx="320" cy="410" r="22" class="n-circle"/><text x="320" y="456" text-anchor="middle" class="n-label">Quality</text></g>
-        <g><circle cx="160" cy="410" r="22" class="n-circle"/><text x="160" y="456" text-anchor="middle" class="n-label">Finance</text></g>
-        <g><circle cx="70" cy="310" r="22" class="n-circle"/><text x="70" y="356" text-anchor="middle" class="n-label">HR</text></g>
-        <g><circle cx="96" cy="140" r="22" class="n-circle"/><text x="96" y="114" text-anchor="middle" class="n-label">Sales/CRM</text></g>
-      </svg>
-    </div>
+<!-- 00 COVER -->
+<section class="slide is-active" data-act="Cover">
+  <div class="cover-grid-lines"></div>
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Pitch Deck · v3 · April 2026</div>
   </div>
 
-  <div class="scroll-cue mono" aria-hidden="true">
-    <span class="line"></span>
-    <span>Scroll</span>
+  <div style="margin-top:110px">
+    <div class="mono" style="font-size:13px; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; margin-bottom:24px">For SMEs with non-continuous and discrete business systems</div>
+    <h1 class="display display-xl" style="max-width:16ch">Own the system<br/>that runs<br/><span class="italic">your business.</span></h1>
+  </div>
+  <p class="body-lg" style="max-width:54ch; margin-top:28px">
+    No lock-in. No subscription. No vendor dependency.<br/>
+    Cost-efficient software and hardware, self-manageable by your own employees.
+  </p>
+
+  <div class="footer">
+    <div class="mono">Built for the ones still standing.</div>
+    <div class="num"><span>00</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 01 ABOUT US -->
+<section class="slide" data-act="About">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">About · 01</div>
+  </div>
 
-<!-- ================================================================
-  PROBLEM
-================================================================ -->
-<section class="section section--divider" id="problem">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 01 / The problem</div>
-      <h2 class="section__title reveal">You didn't fail the system. The <span class="italic-accent accent--blue">system</span> failed you.</h2>
-      <p class="section__intro reveal">Three operational failures recur in almost every SME we walk into — and they compound silently until the damage is impossible to ignore.</p>
-    </div>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">About Us</div>
 
-    <div class="pillars">
-      <div class="pillar reveal">
-        <div class="pillar__num mono mono--blue">01</div>
-        <h3 class="pillar__title">You can't hold onto what you've learned.</h3>
-        <p>Knowledge lives in one person's head, one WhatsApp thread, or one spreadsheet only the "wizard" understands. When they leave, so does the company's memory. New hires take months to catch up. The same problems repeat because nobody can see they've happened before.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar__num mono mono--blue">02</div>
-        <h3 class="pillar__title">Your staff spend their days copying data.</h3>
-        <p>Supplier quotes re-typed into Excel. Paper travellers re-entered into WhatsApp. Delivery orders copied into accounting software. A 30-person SME typically loses 1–1.5 full-time headcount to pure duplicate data entry. Salary paid for work that creates zero new information.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar__num mono mono--blue">03</div>
-        <h3 class="pillar__title">The numbers don't add up.</h3>
-        <p>What goes in is wrong, so what comes out is unreliable. Decisions get made on gut feel because the reports can't be trusted. AI? Forget it — AI needs clean structured data, and you don't have any.</p>
+  <p class="display display-md" style="font-weight:400; line-height:1.25; letter-spacing:-.01em; max-width:46ch; margin-bottom:28px">
+    <strong style="font-weight:700">Velo Working helps SMEs with non-continuous and discrete business systems</strong> — providing a full solution in automating and digitising their operations, by setting up <strong style="font-weight:700">no-code-based software and hardware</strong> that is <strong style="font-weight:700">cost-efficient</strong> and <strong style="font-weight:700">self-manageable by their own employees</strong>.
+  </p>
+
+  <div class="grid-2" style="gap:48px; margin-top:auto; align-items:start">
+    <div>
+      <div class="mono caps" style="color:var(--blue); margin-bottom:14px">The result — in the owner's own words</div>
+      <div class="stack-sm">
+        <p class="body-lg" style="font-family:var(--serif); font-style:italic; line-height:1.35">Stops finding out problems after the damage is done.</p>
+        <p class="body-lg" style="font-family:var(--serif); font-style:italic; line-height:1.35">Stops guessing if the numbers are real.</p>
+        <p class="body-lg" style="font-family:var(--serif); font-style:italic; line-height:1.35">Stops losing everything every time someone walks out the door.</p>
       </div>
     </div>
+    <div class="box-blue-line">
+      <p class="body-lg" style="font-family:var(--serif); font-style:italic; color:var(--blue); line-height:1.3">
+        We sell the labour. You own everything else — the software, the data, the server, the workflows.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:28px">
+    <div class="mono">One sentence. The whole positioning.</div>
+    <div class="num"><span class="hl">01</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 02 SMEs ARE THE ECONOMY -->
+<section class="slide" data-act="Act 1">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · Ordinary World · 02</div>
+  </div>
 
-<!-- ================================================================
-  REFRAME — soft section for contrast
-================================================================ -->
-<section class="reframe">
-  <div class="wrap">
-    <div class="section__eyebrow mono">Section 02 / Why it matters</div>
-    <p class="reframe__statement reveal">
-      Every day the system stays broken, you're paying twice.<br>
-      Once for the manpower to run it manually.<br>
-      Once for the <span class="italic-accent accent--blue">competitors</span> compounding ahead of you.
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The ground beneath the economy</div>
+  <h2 class="display display-lg" style="max-width:22ch; margin-bottom:48px">
+    SMEs aren't a footnote<br/>to the economy.<br/>
+    <span class="italic">They are the economy.</span>
+  </h2>
+
+  <div class="grid-4" style="margin-top:auto">
+    <div class="stat-block">
+      <div class="pct">99<sup>%</sup></div>
+      <div class="label">of all enterprises in Singapore are SMEs.</div>
+      <div class="source">Enterprise Singapore</div>
+    </div>
+    <div class="stat-block">
+      <div class="pct">70<sup>%</sup></div>
+      <div class="label">of Singapore's workforce is employed by SMEs.</div>
+      <div class="source">MTI 2025</div>
+    </div>
+    <div class="stat-block">
+      <div class="pct">97<sup>%</sup></div>
+      <div class="label">of all enterprises in Malaysia are SMEs.</div>
+      <div class="source">SME Corp Malaysia</div>
+    </div>
+    <div class="stat-block">
+      <div class="pct">~48<sup>%</sup></div>
+      <div class="label">combined GDP contribution across Singapore and Malaysia.</div>
+      <div class="source">MTI / BNM 2025</div>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:32px">
+    <div class="mono">Precision machinists. Second-gen traders. Stamping shops. The engine of the economy.</div>
+    <div class="num"><span class="hl">02</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 03 PARADOX -->
+<section class="slide" data-act="Act 1 · Paradox">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Paradox · 03</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Research · Why digitalisation rarely sticks</div>
+
+  <h2 class="display display-lg" style="max-width:22ch; margin-bottom:48px">
+    They want it.<br/>
+    <span class="italic">Very few make it stick.</span>
+  </h2>
+
+  <div class="grid-4" style="margin-top:auto">
+    <div class="stat-block compact">
+      <div class="pct">83<sup>%</sup></div>
+      <div class="label">of SMEs in Singapore have a digital transformation strategy in place.</div>
+      <div class="source">ASME · SME Digital Study</div>
+    </div>
+    <div class="stat-block compact">
+      <div class="pct">~40<sup>%</sup></div>
+      <div class="label">of those SMEs consider their digital efforts a success.</div>
+      <div class="source">ASME · SME Digital Study</div>
+    </div>
+    <div class="stat-block compact">
+      <div class="pct">70<sup>–</sup><span style="font-size:.68em">85%</span></div>
+      <div class="label">of ERP projects fail on cost, schedule, or fit with the actual business.</div>
+      <div class="source">Peer-reviewed ERP research</div>
+    </div>
+    <div class="stat-block compact">
+      <div class="pct">58<sup>%</sup></div>
+      <div class="label">of SG businesses cite high cost of technology adoption as the primary barrier.</div>
+      <div class="source">SBF Business Survey 2025</div>
+    </div>
+  </div>
+
+  <div class="box-blue-frame" style="margin-top:36px; max-width:100ch">
+    <p class="body-lg" style="font-family:var(--serif); font-style:italic; color:var(--blue); line-height:1.3">
+      The intent is there. The outcome rarely is. Between the strategy deck and the shop floor — something breaks.
     </p>
+  </div>
 
-    <div class="reframe__cost reveal">
-      <div><span class="arr">→</span><span>Burnout + turnover — good staff leave; only the tenured ones tolerate the chaos</span></div>
-      <div><span class="arr">→</span><span>Cash trapped in surplus stock — buying "just in case" because forecasts don't work</span></div>
-      <div><span class="arr">→</span><span>Slow response, damaged customer experience — yesterday's data, today's decisions</span></div>
-      <div><span class="arr">→</span><span>Not AI-ready — every month the gap widens</span></div>
-    </div>
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Strategy on paper. No execution on the ground.</div>
+    <div class="num"><span class="hl">03</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 04 UNSERVED MARKET -->
+<section class="slide" data-act="Act 1 · Market Gap">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Unserved Market · 04</div>
+  </div>
 
-<!-- ================================================================
-  BEFORE / AFTER
-================================================================ -->
-<section class="section section--divider" id="transform">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 03 / The transformation</div>
-      <h2 class="section__title reveal">From scattered to <span class="italic-accent accent--blue">integrated</span>.</h2>
-      <p class="section__intro reveal">The same business, before and after. Nothing new added — just the right information flowing to the right place at the right time.</p>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The market gap</div>
+
+  <h2 class="display display-lg" style="max-width:26ch; margin-bottom:24px">
+    Hundreds of thousands of SMEs.<br/>
+    <span class="italic">The biggest players still can't fit.</span>
+  </h2>
+
+  <p class="body-lg" style="max-width:86ch; margin-bottom:40px">
+    The large ERP platforms, the Tier-1 consultancies, the global implementation partners — all focus elsewhere. Not because they don't see the SME market. Because their structure cannot serve it profitably.
+  </p>
+
+  <div class="grid-3" style="gap:44px; margin-top:auto">
+    <div class="position-col dim">
+      <div class="big">01</div>
+      <h4>Price floor.</h4>
+      <p>Enterprise consultants charge S$200–550 per hour. Professional services typically run 100–200% of annual software licence fees. A 30-person SME cannot absorb a six-figure bill — and a Tier-1 vendor cannot profitably quote below its own fixed cost base.</p>
+      <div class="sub">Industry rates · Panorama Consulting</div>
     </div>
-
-    <div class="flow-compare reveal">
-      <!-- BEFORE -->
-      <div class="flow-compare__panel">
-        <div class="flow-compare__label mono">Before</div>
-        <div class="flow-compare__title">Information scattered. Work duplicated. Nobody in sync.</div>
-
-        <svg class="flow-compare__svg" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
-          <defs>
-            <style>
-              .b-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
-              .b-label { font-family: "JetBrains Mono", monospace; font-size: 9.5px; fill: #0A0A0A; letter-spacing: 0.1em; text-transform: uppercase; }
-              .b-line { stroke: rgba(10,10,10,0.38); stroke-width: 0.9; fill: none; stroke-dasharray: 3 3; }
-            </style>
-          </defs>
-          <!-- Tangled lines -->
-          <path class="b-line" d="M 60 60 C 150 80, 200 30, 280 70"/>
-          <path class="b-line" d="M 60 60 C 120 140, 240 90, 310 150"/>
-          <path class="b-line" d="M 90 200 C 180 160, 210 220, 300 210"/>
-          <path class="b-line" d="M 280 70 C 230 150, 120 170, 90 200"/>
-          <path class="b-line" d="M 160 110 C 100 130, 200 200, 240 160"/>
-          <path class="b-line" d="M 310 150 C 250 180, 170 120, 60 60"/>
-          <path class="b-line" d="M 60 60 L 300 210"/>
-          <path class="b-line" d="M 280 70 L 90 200"/>
-          <!-- Scattered nodes -->
-          <g><rect x="30" y="45" width="60" height="30" class="b-node"/><text x="60" y="64" text-anchor="middle" class="b-label">Email</text></g>
-          <g><rect x="250" y="55" width="60" height="30" class="b-node"/><text x="280" y="74" text-anchor="middle" class="b-label">Whatsapp</text></g>
-          <g><rect x="130" y="95" width="60" height="30" class="b-node"/><text x="160" y="114" text-anchor="middle" class="b-label">Excel</text></g>
-          <g><rect x="280" y="135" width="60" height="30" class="b-node"/><text x="310" y="154" text-anchor="middle" class="b-label">Paper</text></g>
-          <g><rect x="60" y="185" width="60" height="30" class="b-node"/><text x="90" y="204" text-anchor="middle" class="b-label">Accounts</text></g>
-          <g><rect x="210" y="145" width="60" height="30" class="b-node"/><text x="240" y="164" text-anchor="middle" class="b-label">Files</text></g>
-          <g><rect x="270" y="195" width="60" height="30" class="b-node"/><text x="300" y="214" text-anchor="middle" class="b-label">Memory</text></g>
-        </svg>
-
-        <div class="flow-compare__foot">Information lives wherever it was created. Every cross-reference is a fresh search. Every handoff risks error.</div>
-      </div>
-
-      <!-- Arrow -->
-      <div class="flow-compare__arrow" aria-hidden="true">
-        <span class="line"></span>
-        <span>Velo</span>
-        <span class="line"></span>
-      </div>
-
-      <!-- AFTER -->
-      <div class="flow-compare__panel flow-compare__panel--after">
-        <div class="flow-compare__label mono mono--blue">After</div>
-        <div class="flow-compare__title flow-compare__title--after">One database. Every module talks. Your team <span class="italic-accent">owns</span> it.</div>
-
-        <svg class="flow-compare__svg" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
-          <defs>
-            <style>
-              .a-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
-              .a-label { font-family: "JetBrains Mono", monospace; font-size: 9.5px; fill: #0A0A0A; letter-spacing: 0.1em; text-transform: uppercase; }
-              .a-link { stroke: #1317E4; stroke-width: 1; stroke-opacity: 0.7; fill: none; }
-              .a-center { stroke: #1317E4; stroke-width: 1.5; fill: #F7F5F0; }
-              .a-center-label { font-family: "JetBrains Mono", monospace; font-size: 9px; fill: #1317E4; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
-            </style>
-          </defs>
-
-          <line x1="180" y1="130" x2="60" y2="60" class="a-link"/>
-          <line x1="180" y1="130" x2="300" y2="60" class="a-link"/>
-          <line x1="180" y1="130" x2="40" y2="130" class="a-link"/>
-          <line x1="180" y1="130" x2="320" y2="130" class="a-link"/>
-          <line x1="180" y1="130" x2="60" y2="200" class="a-link"/>
-          <line x1="180" y1="130" x2="300" y2="200" class="a-link"/>
-          <line x1="180" y1="130" x2="180" y2="230" class="a-link"/>
-
-          <circle cx="180" cy="130" r="42" class="a-center"/>
-          <text x="180" y="126" text-anchor="middle" class="a-center-label">Integrated</text>
-          <text x="180" y="140" text-anchor="middle" class="a-center-label">Database</text>
-
-          <g><rect x="28" y="46" width="64" height="28" class="a-node"/><text x="60" y="64" text-anchor="middle" class="a-label">Procure</text></g>
-          <g><rect x="268" y="46" width="64" height="28" class="a-node"/><text x="300" y="64" text-anchor="middle" class="a-label">Inventory</text></g>
-          <g><rect x="8" y="116" width="64" height="28" class="a-node"/><text x="40" y="134" text-anchor="middle" class="a-label">Sales</text></g>
-          <g><rect x="288" y="116" width="64" height="28" class="a-node"/><text x="320" y="134" text-anchor="middle" class="a-label">Finance</text></g>
-          <g><rect x="28" y="186" width="64" height="28" class="a-node"/><text x="60" y="204" text-anchor="middle" class="a-label">Quality</text></g>
-          <g><rect x="268" y="186" width="64" height="28" class="a-node"/><text x="300" y="204" text-anchor="middle" class="a-label">HR</text></g>
-          <g><rect x="148" y="216" width="64" height="28" class="a-node"/><text x="180" y="234" text-anchor="middle" class="a-label">Production</text></g>
-        </svg>
-
-        <div class="flow-compare__foot">Captured once. Accessible everywhere. Audit trail on every record. The system becomes the company's memory.</div>
-      </div>
+    <div class="position-col dim">
+      <div class="big">02</div>
+      <h4>Product built for someone else.</h4>
+      <p>Modules are built around idealised enterprise workflows: standardised inputs, clean master data, uniform roles. SME operations are messier — varied processes, tribal knowledge, non-standard work. The system does not bend. The SME is told to. Most can't afford to.</p>
+      <div class="sub">ERP-in-SME literature · MDPI 2021, 2016</div>
     </div>
+    <div class="position-col dim">
+      <div class="big">03</div>
+      <h4>Incentive misalignment.</h4>
+      <p>Vendor revenue is licence + hosting + annual maintenance — paid whether the client sees value or not. "Finishing" is not the goal. Dependency is the business model. A client who finishes and self-manages is a customer lost.</p>
+      <div class="sub">Observed across ERP disasters · CIO</div>
+    </div>
+  </div>
+
+  <div class="box-blue-line" style="margin-top:32px; max-width:100ch">
+    <p class="body-lg" style="font-family:var(--serif); font-style:italic">
+      The biggest opportunity in the SG–MY digital economy is also the one the biggest players <span style="color:var(--blue)">have the hardest time capturing.</span>
+    </p>
+  </div>
+
+  <div class="sources-strip">
+    <span>Sources:</span>
+    <span>SBF National Business Survey 2025</span>
+    <span>IMDA Digital Acceleration Index 2023–24</span>
+    <span>Panorama Consulting · Software Path</span>
+    <span>MDPI ERP-in-SME research</span>
+  </div>
+
+  <div class="footer" style="margin-top:20px">
+    <div class="mono">Big reach. Wrong structure. Wrong price. Wrong incentive.</div>
+    <div class="num"><span class="hl">04</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 05 STRUCTURAL FIT -->
+<section class="slide" data-act="Act 1 · Structural Fit">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · Our Structural Fit · 05</div>
+  </div>
 
-<!-- ================================================================
-  CONCEPT — soft section
-================================================================ -->
-<section class="section section--divider section--soft" id="concept">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 04 / What we offer</div>
-      <h2 class="section__title reveal">Not a piece of software. A way of <span class="italic-accent accent--blue">operating</span>.</h2>
-      <p class="section__intro reveal">Six principles that separate what we build from what most vendors sell.</p>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Why we fit — structurally</div>
+
+  <h2 class="display display-lg" style="max-width:24ch; margin-bottom:24px">
+    Three advantages.<br/>
+    <span class="italic">Not strategy. Structure.</span>
+  </h2>
+
+  <p class="body-lg" style="max-width:86ch; margin-bottom:40px">
+    We don't serve the SME market because we decided it was underserved. We serve it because our entire company is built to — and we would be unprofitable trying to do anything else.
+  </p>
+
+  <div class="grid-3" style="gap:44px; margin-top:auto">
+    <div class="position-col">
+      <div class="big">01</div>
+      <h4>Lean cost base.</h4>
+      <p>No licence revenue to protect. No office-tower overhead to fund. Specialist engineers sourced globally, where cost-to-capability is strongest. The advantage is passed through to the client — not pocketed as margin. Our S$8,000 fixed scope is not a discount. It is our natural price.</p>
     </div>
-
-    <div class="principles">
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">01</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-database"/></svg>
-        </div>
-        <h3>One integrated database.</h3>
-        <p>Every transaction, every part, every customer, every production record — captured once and preserved for as long as the company exists. One system of record, not three spreadsheets and a filing cabinet.</p>
-      </article>
-
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">02</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-workflow"/></svg>
-        </div>
-        <h3>Workflow and management discipline, built in.</h3>
-        <p>Industry best-practice processes embedded into the system itself. The right way of working becomes the default way of working — no training memo required. The system becomes the company's memory, discipline, and engine of continuous improvement.</p>
-      </article>
-
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">03</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-unlock"/></svg>
-        </div>
-        <h3>No vendor dependency.</h3>
-        <p>Drag-and-drop configuration means your own staff can adjust, extend, and maintain the system. No long-term contract. We work per project, not per subscription.</p>
-      </article>
-
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">04</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-coin"/></svg>
-        </div>
-        <h3>Lean software costs.</h3>
-        <p>Built on established open-source operational platforms — no heavy licence fees. Global engineering talent without the local agency overhead. You pay when there's work. Nothing when there isn't.</p>
-      </article>
-
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">05</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-modules"/></svg>
-        </div>
-        <h3>Flexible and modular.</h3>
-        <p>Plug in or integrate any module to fill a specific gap. Keep the accounting software you already like. Swap out modules later without ripping out the whole system. Interoperability is a first principle here.</p>
-      </article>
-
-      <article class="principle reveal">
-        <div class="principle__head">
-          <div class="principle__num mono">06</div>
-          <svg class="principle__glyph" aria-hidden="true"><use href="#g-portal"/></svg>
-        </div>
-        <h3>Replace the messy-email culture.</h3>
-        <p>A structured client–vendor portal. Communication tied to records — every message attached to the PO, the work order, the delivery it refers to. Full audit trail. Eliminate the endless search, consolidate, sort, act cycle.</p>
-      </article>
+    <div class="position-col">
+      <div class="big">02</div>
+      <h4>Engineering fit.</h4>
+      <p>We are engineers. Not IT consultants. Not business graduates with a factory manual. We have wired panels, debugged production lines, walked shop floors at 2am. When we configure an inventory module, we know where the physical bins sit. The system bends to your operation — not the other way around.</p>
     </div>
+    <div class="position-col">
+      <div class="big">03</div>
+      <h4>Aligned incentive.</h4>
+      <p>We earn from work delivered. No licence markups, no platform commissions, no annual maintenance contracts. When the work is done, we leave. You own the software, the server, the data, the workflows. That alignment is why SMEs finally trust us to actually finish.</p>
+    </div>
+  </div>
+
+  <div class="box-blue-line" style="margin-top:32px; max-width:100ch">
+    <p class="body-lg" style="font-family:var(--serif); font-style:italic">
+      先为不可胜,以待敌之可胜 <span style="color:var(--muted)">—</span> <span style="color:var(--blue)">First make yourself unbeatable in structure. Then wait.</span>
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Specialist doctor. Not salesman. Built to serve — at a price that works.</div>
+    <div class="num"><span class="hl">05</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 06 PROBLEM 1 -->
+<section class="slide" data-act="Act 1 · Problem 1">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Problem · 06</div>
+  </div>
 
-<!-- ================================================================
-  MODULES
-================================================================ -->
-<section class="section section--divider" id="modules">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 05 / What we build</div>
-      <h2 class="section__title reveal">Twelve modules. One <span class="italic-accent accent--blue">flow</span>.</h2>
-      <p class="section__intro reveal">A single customer order crosses every module in the system — without the data ever being re-entered. That's what "integrated" actually means.</p>
-    </div>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Problem 01 of 03</div>
+  <h2 class="display display-lg" style="max-width:20ch; margin-bottom:40px">
+    You can't uphold<br/>your own <span class="italic">data, knowledge, and history.</span>
+  </h2>
 
-    <!-- Process flow diagram -->
-    <div class="module-flow reveal">
-      <div class="module-flow__caption">
-        <span class="mono">Example · A customer order flowing through the system</span>
-        <span class="mono mono--blue">Zero duplicate entry</span>
-      </div>
-
-      <svg class="module-flow__svg" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
-        <defs>
-          <style>
-            .m-box { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
-            .m-box-active { stroke: #1317E4; stroke-width: 1.2; fill: #F7F5F0; }
-            .m-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: rgba(10,10,10,0.66); letter-spacing: 0.14em; text-transform: uppercase; }
-            .m-tag-blue { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
-            .m-title { font-family: "DM Sans", sans-serif; font-size: 15px; fill: #0A0A0A; font-weight: 700; letter-spacing: -0.01em; }
-            .m-note { font-family: "DM Sans", sans-serif; font-size: 11.5px; fill: rgba(10,10,10,0.60); }
-            .m-arrow { stroke: #1317E4; stroke-width: 1.2; fill: none; }
-            .m-spine { stroke: rgba(10,10,10,0.22); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
-            .m-hub-label { font-family: "JetBrains Mono", monospace; font-size: 10px; fill: #1317E4; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-          </style>
-          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#1317E4"/>
-          </marker>
-        </defs>
-
-        <line x1="80" y1="230" x2="1120" y2="230" class="m-spine"/>
-        <text x="600" y="300" text-anchor="middle" class="m-hub-label">↑ all steps write to the integrated database ↑</text>
-
-        <g>
-          <rect x="60" y="40" width="160" height="120" rx="1" class="m-box"/>
-          <text x="75" y="62" class="m-tag">Sales / CRM</text>
-          <text x="75" y="92" class="m-title">Quotation</text>
-          <text x="75" y="112" class="m-note">Quote issued,</text>
-          <text x="75" y="126" class="m-note">customer approves.</text>
-          <line x1="140" y1="160" x2="140" y2="220" class="m-spine"/>
-          <circle cx="140" cy="230" r="4" fill="#1317E4"/>
-        </g>
-        <path d="M 220 100 L 280 100" class="m-arrow" marker-end="url(#arr)"/>
-
-        <g>
-          <rect x="290" y="40" width="160" height="120" rx="1" class="m-box"/>
-          <text x="305" y="62" class="m-tag">Procurement</text>
-          <text x="305" y="92" class="m-title">Purchase order</text>
-          <text x="305" y="112" class="m-note">Supplier materials</text>
-          <text x="305" y="126" class="m-note">auto-requisitioned.</text>
-          <line x1="370" y1="160" x2="370" y2="220" class="m-spine"/>
-          <circle cx="370" cy="230" r="4" fill="#1317E4"/>
-        </g>
-        <path d="M 450 100 L 510 100" class="m-arrow" marker-end="url(#arr)"/>
-
-        <g>
-          <rect x="520" y="40" width="160" height="120" rx="1" class="m-box m-box-active"/>
-          <text x="535" y="62" class="m-tag-blue">Inventory</text>
-          <text x="535" y="92" class="m-title">Stock receipt</text>
-          <text x="535" y="112" class="m-note">Scan-in, location,</text>
-          <text x="535" y="126" class="m-note">batch recorded.</text>
-          <line x1="600" y1="160" x2="600" y2="220" class="m-spine"/>
-          <circle cx="600" cy="230" r="4" fill="#1317E4"/>
-        </g>
-        <path d="M 680 100 L 740 100" class="m-arrow" marker-end="url(#arr)"/>
-
-        <g>
-          <rect x="750" y="40" width="160" height="120" rx="1" class="m-box"/>
-          <text x="765" y="62" class="m-tag">Production</text>
-          <text x="765" y="92" class="m-title">Work order</text>
-          <text x="765" y="112" class="m-note">BOM pulled,</text>
-          <text x="765" y="126" class="m-note">job assigned.</text>
-          <line x1="830" y1="160" x2="830" y2="220" class="m-spine"/>
-          <circle cx="830" cy="230" r="4" fill="#1317E4"/>
-        </g>
-        <path d="M 910 100 L 970 100" class="m-arrow" marker-end="url(#arr)"/>
-
-        <g>
-          <rect x="980" y="40" width="160" height="120" rx="1" class="m-box"/>
-          <text x="995" y="62" class="m-tag">Quality · Finance</text>
-          <text x="995" y="92" class="m-title">QC + Invoice</text>
-          <text x="995" y="112" class="m-note">Inspection pass,</text>
-          <text x="995" y="126" class="m-note">invoice issued.</text>
-          <line x1="1060" y1="160" x2="1060" y2="220" class="m-spine"/>
-          <circle cx="1060" cy="230" r="4" fill="#1317E4"/>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Module list -->
-    <div class="modules">
-      <div class="module-row reveal">
-        <div class="module-row__num mono">01</div>
-        <div class="module-row__name">Procurement &amp; Purchasing</div>
-        <div class="module-row__desc">RFQs, supplier portal, purchase order workflow, multi-level approvals.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">02</div>
-        <div class="module-row__name">Inventory &amp; Warehouse</div>
-        <div class="module-row__desc">Stock control, barcode and QR scanning, multi-location, reorder automation.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">03</div>
-        <div class="module-row__name">Manufacturing &amp; Production</div>
-        <div class="module-row__desc">BOMs, work orders, job tracking, production dashboards, shop-floor integration.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">04</div>
-        <div class="module-row__name">Product Lifecycle Management</div>
-        <div class="module-row__desc">Engineering change orders, revision control, drawing and spec versioning, part master data.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">05</div>
-        <div class="module-row__name">Quality Management</div>
-        <div class="module-row__desc">Inspection records, non-conformance tracking, corrective and preventive action workflows.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">06</div>
-        <div class="module-row__name">Maintenance Management</div>
-        <div class="module-row__desc">Preventive maintenance schedules, machine work orders, downtime tracking, spare parts registry.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">07</div>
-        <div class="module-row__name">Project Management</div>
-        <div class="module-row__desc">Gantt scheduling, milestones, resource allocation, engineer-to-order job tracking.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">08</div>
-        <div class="module-row__name">Field Service &amp; Installation</div>
-        <div class="module-row__desc">Dispatch scheduling, on-site service reports, customer sign-off, warranty and callback tracking.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">09</div>
-        <div class="module-row__name">EHS · Safety &amp; Compliance</div>
-        <div class="module-row__desc">Incident reports, audit checklists, PPE and MSDS tracking, corrective action loops.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">10</div>
-        <div class="module-row__name">Finance &amp; Accounting</div>
-        <div class="module-row__desc">General ledger, receivables, payables, GST filing, PayNow-compatible billing.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">11</div>
-        <div class="module-row__name">HR &amp; Payroll</div>
-        <div class="module-row__desc">Employee records, leave, claims, payroll processing, CPF filing.</div>
-      </div>
-      <div class="module-row reveal">
-        <div class="module-row__num mono">12</div>
-        <div class="module-row__name">Sales &amp; CRM</div>
-        <div class="module-row__desc">Pipeline management, quotations, customer service tickets, delivery scheduling.</div>
+  <div class="col" style="gap:0">
+    <div class="pillar-row">
+      <div class="idx">01 — Can't learn</div>
+      <div>
+        <h4>The same problem keeps repeating.</h4>
+        <p class="body">Improvement meetings run on bias and loudest voice. Supplier lead times drift for months before anyone notices. Growth stalls at the founder's bandwidth, because every lesson has to pass through the founder's memory.</p>
       </div>
     </div>
+    <div class="pillar-row">
+      <div class="idx">02 — People leave</div>
+      <div>
+        <h4>Heavy penalty every time a key person resigns — or is just unavailable.</h4>
+        <p class="body">Retention cost spirals. You pay above market to keep the one person who knows how things work. A single resignation stalls entire workflows. Project risk is one bad Monday away.</p>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <div class="idx">03 — New hires can't catch up</div>
+      <div>
+        <h4>Onboarding takes months of tribal knowledge transfer. Most leave before becoming productive.</h4>
+        <p class="body">You end up hiring above market rate just to attract people willing to absorb the chaos — effectively training talent that competitors will later poach.</p>
+      </div>
+    </div>
+  </div>
 
-    <p class="modules__footer mono">→ Plus document management, fleet &amp; logistics, asset and calibration tracking, supplier management, and custom modules on request.</p>
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Knowledge that lives in one head is knowledge the company doesn't own.</div>
+    <div class="num"><span class="hl">06</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+<!-- 07 PROBLEM 2 -->
+<section class="slide" data-act="Act 1 · Problem 2">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Problem · 07</div>
+  </div>
 
-<!-- ================================================================
-  APPROACH — soft
-================================================================ -->
-<section class="section section--divider section--soft" id="approach">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 06 / How we work</div>
-      <h2 class="section__title reveal">Diagnose. Implement. Hand it <span class="italic-accent accent--blue">back</span>.</h2>
-      <p class="section__intro reveal">Ninety days from first meeting to your team running the system themselves. Fixed scope. Fixed fee. Written in plain English before we start.</p>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Problem 02 of 03</div>
+
+  <div class="grid-2" style="gap:64px; align-items:start">
+    <div>
+      <h2 class="display display-lg" style="max-width:14ch; margin-bottom:24px">
+        You're paying<br/>salary for <span class="italic">duplicate work</span>— and you don't track the cost.
+      </h2>
+      <p class="body-lg" style="max-width:42ch">
+        Staff spend their days transferring information from hardcopy to softcopy, from softcopy to another softcopy, from email to spreadsheet, from spreadsheet to WhatsApp. Zero new information is created.
+      </p>
     </div>
 
-    <div class="timeline reveal" id="timeline">
-      <div class="timeline__track">
-        <div class="timeline__rail" aria-hidden="true"></div>
-        <div class="timeline__progress" aria-hidden="true"></div>
+    <div style="padding-top:8px">
+      <div class="mono caps" style="color:var(--blue); margin-bottom:12px">The hidden salary bill</div>
+      <div class="cost-row">
+        <div class="role">Purchasing clerk</div>
+        <div class="what">Re-types supplier quotations from email PDFs into an Excel tracker.</div>
+        <div class="hours">22 hrs<span>/month</span></div>
+      </div>
+      <div class="cost-row">
+        <div class="role">Production supervisor</div>
+        <div class="what">Copies paper traveller job numbers into a daily WhatsApp report.</div>
+        <div class="hours">5.5 hrs<span>/month</span></div>
+      </div>
+      <div class="cost-row">
+        <div class="role">Accounts admin</div>
+        <div class="what">Copies delivery order numbers from hardcopy binders into accounting software.</div>
+        <div class="hours">8 hrs<span>/month</span></div>
+      </div>
+      <div class="cost-row">
+        <div class="role">QC inspector</div>
+        <div class="what">Logs rejection data on paper, re-enters into quarterly summaries.</div>
+        <div class="hours">16 hrs<span>/qtr</span></div>
+      </div>
 
-        <div class="timeline__step active">
-          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">1</span></span></div>
-          <div class="timeline__meta"><span class="mono mono--strong">Weeks 1–2 · Diagnose</span></div>
-          <h3>Walk the floor. Quantify the cost.</h3>
-          <p>A two-week audit of your current operations. We watch how work actually flows and quantify the hidden cost of the status quo. You get a written report — honest, not a sales pitch — with a fixed-scope, fixed-price proposal attached.</p>
-        </div>
+      <div class="box-blue-line" style="margin-top:20px">
+        <p class="body-lg" style="font-family:var(--serif); font-style:italic">
+          A 30-person SME typically loses <span style="color:var(--blue)">1–1.5 full-time headcount</span> to this work. Every month. Paid for activity that creates no new value.
+        </p>
+      </div>
+    </div>
+  </div>
 
-        <div class="timeline__step">
-          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">2</span></span></div>
-          <div class="timeline__meta"><span class="mono mono--strong">Weeks 3–12 · Implement</span></div>
-          <h3>Build while the business keeps running.</h3>
-          <p>A focused sprint on the modules that matter most. Your staff learn the system as we build it, not after we leave. We configure, migrate data, integrate with the tools you already use, and go live in increments so operations never stop.</p>
-        </div>
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Delay. Error. Rework. And nobody tracks the bill.</div>
+    <div class="num"><span class="hl">07</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
 
-        <div class="timeline__step">
-          <div class="timeline__dot"><span class="timeline__dot-num">0<span class="dot">3</span></span></div>
-          <div class="timeline__meta"><span class="mono mono--strong">Week 13+ · Hand back</span></div>
-          <h3>You own it. We stay reachable.</h3>
-          <p>Documentation your team can read. Two staff trained to run it. You own the software, data, server, workflows. We stay reachable for task-based support — you pay when there's work, nothing when there isn't. No retainer trap.</p>
+<!-- 08 PROBLEM 3 -->
+<section class="slide" data-act="Act 1 · Problem 3">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Problem · 08</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Problem 03 of 03</div>
+
+  <div class="grid-2" style="gap:64px; align-items:center">
+    <div>
+      <h2 class="display display-lg" style="max-width:14ch; margin-bottom:24px">
+        When the data<br/>going in is <span class="italic">unreliable</span>—<br/>everything built on top is unreliable.
+      </h2>
+      <p class="body-lg" style="max-width:44ch">
+        Inconsistent inputs become inconsistent reports. Inconsistent reports become wrong decisions. Wrong decisions become losses you only discover after the damage is done.
+      </p>
+    </div>
+
+    <div class="stack-md">
+      <div class="box-num-frame">
+        <div class="head">01 · Wasted manpower</div>
+        <div class="body">Hours per week correcting, reviewing, reconciling — effectively a full-time role cleaning what should have been right at source.</div>
+      </div>
+      <div class="box-num-frame">
+        <div class="head">02 · Wrong decisions</div>
+        <div class="body">Buying extra stock "just in case." Investing in the wrong equipment. Hiring headcount because workload reports are wrong.</div>
+      </div>
+      <div class="box-num-frame">
+        <div class="head">03 · No deep analysis</div>
+        <div class="body">Trend analysis, margin analysis, customer profitability — impossible to run on unreliable data.</div>
+      </div>
+      <div class="box-num-frame accent">
+        <div class="head">04 · AI remains out of reach</div>
+        <div class="body">AI forecasting, vision QC, predictive maintenance — all require clean structured data. Messy data = no AI = watching competitors compound every year.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">The AI era is here. The question is whether your data is ready for it.</div>
+    <div class="num"><span class="hl">08</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 09 COMPOUND DAMAGE CHAIN -->
+<section class="slide" data-act="Act 1 · Compound">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Compound Damage · 09</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">What standing still actually costs</div>
+
+  <h2 class="display display-lg" style="max-width:26ch; margin-bottom:44px">
+    Not four separate problems.<br/>
+    <span class="italic">One chain.</span> Each link forges the next.
+  </h2>
+
+  <div class="flow-chain">
+    <div class="flow-node">
+      <div class="flow-idx">Link 01</div>
+      <h5>Poor operating efficiency</h5>
+      <ul>
+        <li>Output per employee drops</li>
+        <li>Work duplicated and re-done daily</li>
+        <li>Friction compounds in every workflow</li>
+      </ul>
+    </div>
+    <div class="flow-sep"><span>→</span></div>
+    <div class="flow-node">
+      <div class="flow-idx">Link 02</div>
+      <h5>High burnout &amp; turnover</h5>
+      <ul>
+        <li>Younger staff refuse low-value rework</li>
+        <li>Job satisfaction collapses under chaos</li>
+        <li>Career anxiety drives good people out</li>
+      </ul>
+    </div>
+    <div class="flow-sep"><span>→</span></div>
+    <div class="flow-node">
+      <div class="flow-idx">Link 03</div>
+      <h5>Poor expense efficiency</h5>
+      <ul>
+        <li>Inventory can't be kept lean — cash trapped</li>
+        <li>Purchasing reactive, no leverage</li>
+        <li>Forecasting breaks down both sides</li>
+      </ul>
+    </div>
+    <div class="flow-sep"><span>→</span></div>
+    <div class="flow-node">
+      <div class="flow-idx">Link 04</div>
+      <h5>Losing competitiveness</h5>
+      <ul>
+        <li>Higher cost base loses bids on price</li>
+        <li>Slow responses damage customer experience</li>
+        <li>Thin margin leaves nothing to reinvest</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box-blue-line" style="margin-top:40px; max-width:96ch">
+    <p class="body-lg" style="font-family:var(--serif); font-style:italic; color:var(--blue)">
+      The chain runs one way. Break it at Link 01 — operating efficiency — and the rest of the chain never forms.
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Four cascading damages. One starting point. One lever that breaks the whole chain.</div>
+    <div class="num"><span class="hl">09</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 10 EXPENSIVE SENTENCE -->
+<section class="slide" data-act="Act 1 · Mindset Tax">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 1 · The Mindset Tax · 10</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The most expensive sentence in the language</div>
+
+  <div class="grid-2" style="gap:72px; align-items:center; margin-top:24px">
+    <div>
+      <p class="mega-quote">
+        <span class="mark">"</span>We've<br/>always<br/>run it<br/>this way.<span class="mark">"</span>
+      </p>
+    </div>
+    <div class="stack-md">
+      <p class="body-lg" style="font-family:var(--serif); font-style:italic; color:var(--blue); font-size:28px; line-height:1.3; max-width:24ch">
+        Not a warning. An invoice — already accumulating, quietly, every month.
+      </p>
+      <p class="body-lg" style="max-width:46ch">
+        Every SME owner says this at least once. And the longer it's said, the more the cost compounds. The bill doesn't arrive in a letter — it shows up as a lost bid, a resigned foreman, an inventory count that no longer matches reality.
+      </p>
+      <p class="body-lg" style="max-width:46ch">
+        This is not a question of technology. It is a question of whether the business continues to run on one person's memory — or on a system the company actually owns.
+      </p>
+
+      <div class="box-outline" style="margin-top:8px">
+        <div class="mono caps" style="color:var(--blue); margin-bottom:10px">Sources referenced</div>
+        <div class="body" style="line-height:1.55">
+          SBF National Business Survey 2025 · EDB / MAS 2026 · SME Development Survey
         </div>
       </div>
     </div>
   </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Inertia has a monthly price tag — and you're already paying it.</div>
+    <div class="num"><span class="hl">10</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
 </section>
 
+<!-- 11 MEETING THE MENTOR -->
+<section class="slide" data-act="Act 2 · Mentor">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 2 · Meeting the Mentor · 11</div>
+  </div>
 
-<!-- ================================================================
-  POSITIONING
-================================================================ -->
-<section class="section section--divider" id="positioning">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 07 / Why Velo Working</div>
-      <h2 class="section__title reveal">Three things nobody else offers at SME <span class="italic-accent accent--blue">scale</span>.</h2>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Who we are</div>
+
+  <div class="grid-2" style="gap:80px; align-items:start; margin-top:20px">
+    <div>
+      <h2 class="display display-lg" style="max-width:14ch">
+        We don't sell<br/>software.<br/>
+        <span class="italic">We help SMEs<br/>own the system<br/>that runs their<br/>business.</span>
+      </h2>
     </div>
-
-    <div class="positions">
-      <div class="position reveal">
-        <div class="position__label">One</div>
+    <div class="stack-lg" style="padding-top:12px">
+      <div class="row" style="gap:18px; align-items:flex-start">
+        <div class="ring">01</div>
         <div>
-          <h3>Honest, transparent pricing.</h3>
-          <p>Incumbents earn from licence fees, annual maintenance, and expensive IT specialist day rates — recurring income whether or not you see value. We earn from actual work delivered. Our ongoing monthly fee is deliberately low, often zero between projects. Recurring revenue is not the goal. Task completion is.</p>
+          <h4 class="display display-sm" style="margin-bottom:6px">Engineers only.</h4>
+          <p class="body" style="max-width:46ch">Not IT consultants reading a factory manual. Engineers who have wired control panels, pulled wire harnesses, walked production floors, debugged lines at 2am.</p>
         </div>
       </div>
-      <div class="position reveal">
-        <div class="position__label">Two</div>
+      <div class="row" style="gap:18px; align-items:flex-start">
+        <div class="ring">02</div>
         <div>
-          <h3>Lean company, global engineering bench.</h3>
-          <p>We are not a big consultancy. That's the point. No complicated internal workflow means fast quotes and fast delivery. Flexible scope — if you need something adjacent, we find a way. We source specialist engineering talent globally rather than carrying a full local developer bench, and we pass the cost advantage through to you.</p>
+          <h4 class="display display-sm" style="margin-bottom:6px">Zero conflict of interest.</h4>
+          <p class="body" style="max-width:46ch">We don't earn from software licences. We don't mark up hosting. We don't take platform commissions. We earn from work delivered. Nothing else.</p>
         </div>
       </div>
-      <div class="position reveal">
-        <div class="position__label">Three</div>
+      <div class="row" style="gap:18px; align-items:flex-start">
+        <div class="ring">03</div>
         <div>
-          <h3>Engineers only. Actual engineers.</h3>
-          <p>Not IT consultants who read a factory manual. Not business graduates with a certification. We only hire people who have wired panels, written PLC code, and debugged production lines. When we configure your inventory module, we know where the physical bins sit. When we design your QC workflow, we know what a rejection actually looks like.</p>
+          <h4 class="display display-sm" style="margin-bottom:6px">You own everything.</h4>
+          <p class="body" style="max-width:46ch">Your software. Your server. Your data. Your workflows. When our work is done, you don't need us. That is the point.</p>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Specialist doctor. Not salesman.</div>
+    <div class="num"><span class="hl">11</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
 </section>
 
+<!-- 12 THE QUESTION -->
+<section class="slide" data-act="Act 2 · The Question">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 2 · What They Really Ask · 12</div>
+  </div>
 
-<!-- ================================================================
-  MECHANISM TRIANGLE — soft
-================================================================ -->
-<section class="section section--divider section--soft" id="mechanism">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 08 / The ultimate goal</div>
-      <h2 class="section__title reveal">Deploy the right mechanism for every <span class="italic-accent accent--blue">task</span>.</h2>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">A moment every SME owner has with us</div>
+
+  <div class="q-setup">
+    <p>
+      Every SME owner asks us the same question. Eventually. Usually not in the first meeting — and not on a slide. It comes later, when the deck is closed and we're being walked to the door. Voice lowered. Almost casual. Like it's a secret they've been carrying for two years.
+    </p>
+  </div>
+
+  <div class="q-mega">
+    <span class="q-mark">"</span>What happens<br/>when you leave?<span class="q-mark">"</span>
+  </div>
+
+  <div class="q-meaning">
+    <div class="q-label">What they're really asking</div>
+    <p class="q-real">
+      "Am I going to end up stuck — the way I did with the last vendor?"
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">It's the only question that matters. The whole offer lives or dies on the answer.</div>
+    <div class="num"><span class="hl">12</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 13 SIX ANSWERS -->
+<section class="slide" data-act="Act 2 · Six Answers">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 2 · The Six Answers · 13</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Six questions. Six structural answers.</div>
+
+  <h2 class="display display-md" style="max-width:58ch; margin-bottom:28px; line-height:1.15">
+    Not a piece of software. <span class="italic">A way of operating</span> — designed around the questions every SME owner actually asks.
+  </h2>
+
+  <div class="qa-stack">
+    <div class="qa-row">
+      <div class="num">01</div>
+      <div class="q">"What happens to my data — if we ever part ways?"</div>
+      <div class="a">One integrated database, on <em>your</em> server. When we leave, you own every byte — the records, the history, the lessons.</div>
+    </div>
+    <div class="qa-row">
+      <div class="num">02</div>
+      <div class="q">"What if my staff forgets how to use it?"</div>
+      <div class="a">The workflow <em>is</em> the system. No training PDF to forget, no memo to lose — the right way of working becomes the default way.</div>
+    </div>
+    <div class="qa-row">
+      <div class="num">03</div>
+      <div class="q">"What if I need to change something later?"</div>
+      <div class="a">Drag-and-drop configuration. Your own staff extends and adjusts it. <em>No support tickets.</em> No annual contract.</div>
+    </div>
+    <div class="qa-row">
+      <div class="num">04</div>
+      <div class="q">"What if cash flow gets tight for a few months?"</div>
+      <div class="a">No licence fees. No monthly subscription trap. You pay for tasks completed — <em>and you can pause anytime.</em></div>
+    </div>
+    <div class="qa-row">
+      <div class="num">05</div>
+      <div class="q">"What if we outgrow it?"</div>
+      <div class="a">Modular. Plug in one piece at a time. Keep what already works. <em>Never rip-and-replace.</em></div>
+    </div>
+    <div class="qa-row">
+      <div class="num">06</div>
+      <div class="q">"How does the team actually stay coordinated through all this?"</div>
+      <div class="a">One portal. Every message, every approval, every change tied to a record. <em>One place to look</em> — no more searching five apps for one answer.</div>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Every answer is a structural commitment — not a promise. Promises don't survive the first renewal.</div>
+    <div class="num"><span class="hl">13</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 14 SERVICE LAYERS -->
+<section class="slide" data-act="Act 2 · Service">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 2 · The Service · 14</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">What we deliver</div>
+  <h2 class="display display-lg" style="max-width:28ch; margin-bottom:36px">
+    Three layers. <span class="italic">Fixed scope. Fixed price.</span><br/>
+    No open-ended billing.
+  </h2>
+
+  <div class="grid-3" style="gap:20px; margin-top:auto">
+    <div class="service-col">
+      <div class="tag">Layer 01 · Software</div>
+      <h3>Seven core module areas.</h3>
+      <ul>
+        <li>Procurement &amp; Purchasing</li>
+        <li>Inventory &amp; Warehouse</li>
+        <li>Manufacturing &amp; Production</li>
+        <li>Quality Management</li>
+        <li>Finance &amp; Accounting</li>
+        <li>HR &amp; Payroll</li>
+        <li>Sales &amp; CRM</li>
+      </ul>
+      <p class="body-sm" style="margin-top:4px">Additional modules (Safety, Logistics, Projects) plugged in as needed.</p>
+    </div>
+    <div class="service-col">
+      <div class="tag">Layer 02 · Implementation Labour</div>
+      <h3>The human work that makes software actually work.</h3>
+      <ul>
+        <li>Implementation, configuration, setup</li>
+        <li>Role-specific on-site training</li>
+        <li>Data migration (clean, map, validate)</li>
+        <li>Hardcopy-to-softcopy data entry</li>
+        <li>On-site survey and data capture</li>
+        <li>Scheduled reporting setup</li>
+        <li>Per-task ongoing fixes</li>
+      </ul>
+      <p class="body-sm" style="margin-top:4px">Charged per task completed. Not per subscription.</p>
+    </div>
+    <div class="service-col">
+      <div class="tag">Layer 03 · Customisation</div>
+      <h3>For clients whose needs exceed standard modules.</h3>
+      <ul>
+        <li>Integration with existing software</li>
+        <li>R&amp;D of new software modules</li>
+        <li>Hardware sourcing</li>
+        <li>Control panel design &amp; build</li>
+        <li>Wire harness &amp; PCBA assembly</li>
+        <li>IoT sensor deployment</li>
+        <li>Custom fixtures</li>
+      </ul>
+      <p class="body-sm" style="margin-top:4px">Engineering DNA — not outsourced, not guessed.</p>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:32px">
+    <div class="mono">Software. Labour. Customisation. Three layers. One accountable partner.</div>
+    <div class="num"><span class="hl">14</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 15 POSITIONING -->
+<section class="slide" data-act="Act 2 · Positioning">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 2 · The Positioning · 15</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">Why us, instead of everyone else</div>
+  <h2 class="display display-lg" style="max-width:22ch; margin-bottom:40px">
+    Three structural differences<br/>incumbents <span class="italic">cannot copy.</span>
+  </h2>
+
+  <div class="grid-3" style="gap:44px">
+    <div class="position-col">
+      <div class="big">01</div>
+      <h4>Honest pricing, by structure.</h4>
+      <p>Others earn from licence fees, annual maintenance, and expensive IT day rates — recurring income whether or not you see value. We earn from work delivered. Our monthly fee is deliberately low, or zero between projects. Finishing the work is the objective.</p>
+    </div>
+    <div class="position-col">
+      <div class="big">02</div>
+      <h4>Lean company, global talent.</h4>
+      <p>No complicated internal workflow. No heavy overhead. We source specialist engineers worldwide, passing the cost advantage through to you — not pocketing it. Large consultancies can't quote S$8K for a fixed scope because their structure makes it unprofitable. Ours doesn't.</p>
+    </div>
+    <div class="position-col">
+      <div class="big">03</div>
+      <h4>Engineers only.</h4>
+      <p>Not IT consultants with a certification. Not business graduates reading a factory manual. Engineers who have wired panels, written PLC code, debugged production lines. When we configure your inventory module, we know where the physical bins sit.</p>
+    </div>
+  </div>
+
+  <div class="box-blue-line" style="margin-top:auto; max-width:100ch">
+    <p class="body-lg" style="font-family:var(--serif); font-style:italic">
+      The question isn't <span style="color:var(--blue)">"how can a non-IT company configure systems?"</span> The question is — <span style="color:var(--blue)">why would you want someone who's never touched a machine configuring the system that runs your factory?</span>
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top:24px">
+    <div class="mono">避实击虚 — strike where they are weak, not where they are strong.</div>
+    <div class="num"><span class="hl">15</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 16 CASE BEFORE -->
+<section class="slide" data-act="Act 3 · Before">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 3 · Case Study · Before · 16</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The prospect's starting state</div>
+
+  <div class="grid-2" style="gap:64px; align-items:start; margin-top:16px">
+    <div>
+      <h2 class="display display-lg" style="max-width:16ch; margin-bottom:24px">
+        A 40-person<br/>precision machining<br/>shop in Tuas.<br/>
+        <span class="italic">Twelve years running.</span>
+      </h2>
+      <p class="body-lg" style="max-width:44ch">
+        Spent S$65K on an ERP two years ago. Vendor ran impressive demos, promised the world, disappeared six months after go-live.
+      </p>
+      <p class="body-lg" style="max-width:44ch; margin-top:16px">
+        Today only 2 of 12 modules are used. Staff bypass the system for Excel. Inventory data doesn't match the warehouse.
+      </p>
     </div>
 
-    <div class="mechanism reveal">
-      <svg class="mechanism__svg" viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
-        <defs>
-          <style>
-            .tri-line { stroke: #0A0A0A; stroke-width: 1; stroke-opacity: 0.28; }
-            .tri-inner { stroke: #1317E4; stroke-width: 1; stroke-opacity: 0.35; stroke-dasharray: 3 3; }
-            .tri-node { stroke: #0A0A0A; stroke-width: 1; fill: #F7F5F0; }
-            .tri-node-human { stroke: #1317E4; stroke-width: 1.4; fill: #F7F5F0; }
-            .tri-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; fill: #0A0A0A; }
-            .tri-label-blue { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; fill: #1317E4; font-weight: 500; }
-            .tri-sub { font-family: "DM Sans", sans-serif; font-size: 11px; fill: rgba(10,10,10,0.60); }
-            .tri-center { font-family: "DM Sans", sans-serif; font-size: 13px; fill: #0A0A0A; font-weight: 500; letter-spacing: -0.01em; }
-          </style>
-        </defs>
+    <div class="stack-md" style="padding-top:8px">
+      <div class="case-stat">
+        <div>
+          <div class="k">Module adoption</div>
+          <div class="v">2 of 12 active</div>
+        </div>
+        <div class="note">Staff work around the system, not with it.</div>
+      </div>
+      <div class="case-stat">
+        <div>
+          <div class="k">Inventory accuracy</div>
+          <div class="v">~60%</div>
+        </div>
+        <div class="note">System says one thing. The shelf says another.</div>
+      </div>
+      <div class="case-stat">
+        <div>
+          <div class="k">Monthly vendor cost</div>
+          <div class="v">S$2,500/mo</div>
+        </div>
+        <div class="note">Hosting + "support." Tickets take 5 days.</div>
+      </div>
+      <div class="case-stat accent" style="display:block">
+        <div class="k">The real damage</div>
+        <div class="v">The boss has lost trust in the idea that technology can work for a company his size.</div>
+      </div>
+    </div>
+  </div>
 
-        <polygon points="240,60 420,380 60,380" class="tri-line" stroke-linejoin="round"/>
-        <line x1="240" y1="60" x2="240" y2="230" class="tri-inner"/>
-        <line x1="420" y1="380" x2="240" y2="230" class="tri-inner"/>
-        <line x1="60" y1="380" x2="240" y2="230" class="tri-inner"/>
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">This is not a story about software. It's a story about being abandoned mid-implementation.</div>
+    <div class="num"><span class="hl">16</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
 
-        <g>
-          <circle cx="240" cy="60" r="28" class="tri-node"/>
-          <text x="240" y="64" text-anchor="middle" class="tri-label">Human</text>
-          <text x="240" y="30" text-anchor="middle" class="tri-sub">Judgement · exceptions</text>
-        </g>
-        <g>
-          <circle cx="420" cy="380" r="28" class="tri-node-human"/>
-          <text x="420" y="384" text-anchor="middle" class="tri-label-blue">System</text>
-          <text x="420" y="418" text-anchor="middle" class="tri-sub">Rules · record · visibility</text>
-        </g>
-        <g>
-          <circle cx="60" cy="380" r="28" class="tri-node"/>
-          <text x="60" y="384" text-anchor="middle" class="tri-label">AI</text>
-          <text x="60" y="418" text-anchor="middle" class="tri-sub">Forecast · pattern · classify</text>
-        </g>
+<!-- 17 CASE AFTER -->
+<section class="slide" data-act="Act 3 · After">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 3 · Case Study · After · 17</div>
+  </div>
 
-        <rect x="150" y="210" width="180" height="44" rx="1" fill="#F7F5F0" stroke="#1317E4" stroke-width="0.8"/>
-        <text x="240" y="228" text-anchor="middle" class="tri-center">Every task assigned</text>
-        <text x="240" y="244" text-anchor="middle" class="tri-center">to the right tool</text>
-      </svg>
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">90 days later</div>
+  <h2 class="display display-lg" style="max-width:22ch; margin-bottom:40px">
+    Same software.<br/>
+    Same team.<br/>
+    <span class="italic">Completely different outcome.</span>
+  </h2>
 
-      <div class="mechanism__body">
-        <p>Every operational step should be handled by the most appropriate operator. Most SMEs default to <strong>human</strong> for everything — because they don't have the other two options.</p>
+  <div class="case-grid">
+    <div class="metric">Module adoption</div>
+    <div class="before">2 of 12 active</div>
+    <div class="after">8 of 12 actively used</div>
 
-        <p>Our job is to help you see where each mechanism fits — and deploy accordingly. Humans doing what humans do best. Systems doing what systems do best. AI doing what AI does best. Nobody wasted on the wrong task.</p>
+    <div class="metric">Inventory accuracy</div>
+    <div class="before">~60%</div>
+    <div class="after">95%+</div>
 
-        <div class="mech-table">
-          <div class="mech-row">
-            <div class="mech-row__label">Human</div>
-            <div class="mech-row__body"><strong>Judgement, relationships, creative problem-solving, handling exceptions.</strong> Humans are wasted on repetitive data entry, rule-based routing, and status tracking.</div>
-          </div>
-          <div class="mech-row">
-            <div class="mech-row__label">System</div>
-            <div class="mech-row__body"><strong>Consistent rule-based workflows, record-keeping, scheduled reporting, cross-department visibility.</strong> The foundation that makes the other two useful.</div>
-          </div>
-          <div class="mech-row">
-            <div class="mech-row__label">AI</div>
-            <div class="mech-row__body"><strong>Pattern recognition, forecasting, classification, natural language.</strong> Only works once the system is capturing clean structured data — which is why we build the system first.</div>
-          </div>
+    <div class="metric">Monthly system cost</div>
+    <div class="before">S$2,500 / month</div>
+    <div class="after">S$25 / month</div>
+
+    <div class="metric">Report generation</div>
+    <div class="before">Manual, 2 hrs/week</div>
+    <div class="after">Automated, real-time</div>
+
+    <div class="metric">Annual hosting savings</div>
+    <div class="before">—</div>
+    <div class="after">~S$29,700 / year</div>
+
+    <div class="metric">Total rescue cost</div>
+    <div class="before">—</div>
+    <div class="after">S$12K one-time</div>
+  </div>
+
+  <div style="margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end">
+    <p class="pullquote">
+      The system is now <span style="color:var(--ink)">his</span>.<br/>
+      Not the vendor's. Not ours.
+    </p>
+    <div class="col" style="gap:6px">
+      <div class="mono caps" style="color:var(--muted)">Time on site</div>
+      <div class="display display-md">4 weeks<span style="font-style:italic; color:var(--blue); font-size:.48em; margin-left:8px">configure + stabilise</span></div>
+      <div class="body-sm" style="max-width:42ch">Week 1 audit. Weeks 2–3 reconfigure. Weeks 4–8 on-site stabilisation — 2 days/week tapering to 1 day/week. We leave when the team owns it.</div>
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:24px">
+    <div class="mono">He opens one screen Monday morning. Inventory. Production. Deliveries. Everything.</div>
+    <div class="num"><span class="hl">17</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 18 PRICE RANGE -->
+<section class="slide" data-act="Act 3 · Investment">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 3 · The Investment · 18</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The number is real, and it's in reach</div>
+  <h2 class="display display-lg" style="max-width:24ch; margin-bottom:36px">
+    Fixed scope. <span class="italic">Fixed price.</span><br/>
+    No open-ended billing.
+  </h2>
+
+  <div class="grid-2" style="gap:28px; margin-top:auto">
+    <div class="tier">
+      <div class="label">Tier 01 · Standard Implementation</div>
+      <div class="price">S$3,500 <small>to</small> S$15,000</div>
+      <h3>Standard-module setup for SMEs stepping into their first system or rescuing a broken one.</h3>
+      <ul>
+        <li>Configuration of standard modules</li>
+        <li>Data migration (clean, map, validate)</li>
+        <li>Role-specific training on-site</li>
+        <li>Go-live support</li>
+        <li>Post-launch stabilisation</li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <div class="label">Tier 02 · Customisation / Hardware</div>
+      <div class="price">S$15,000 <small>to</small> S$30,000</div>
+      <h3>For clients whose operations need more than standard modules — or whose physical factory needs to be in the loop.</h3>
+      <ul>
+        <li>Custom-developed modules</li>
+        <li>Third-party system integrations</li>
+        <li>Sensor / IoT deployment</li>
+        <li>Control panel &amp; hardware build</li>
+        <li>R&amp;D engineering on bespoke workflows</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:28px; padding:16px 24px; border:1px dashed var(--blue); display:flex; justify-content:space-between; align-items:center">
+    <div class="body-lg"><span style="color:var(--blue); font-family:var(--serif); font-style:italic">PSG / EDG grant navigation included</span> — at no extra charge. Up to 50% co-funding available for qualifying implementations.</div>
+    <div class="mono caps" style="color:var(--blue)">Built-in, not upsold</div>
+  </div>
+
+  <div class="footer" style="margin-top:24px">
+    <div class="mono">No surprises. No recurring traps. You pay for work — and nothing else.</div>
+    <div class="num"><span class="hl">18</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 19 ULTIMATE GOAL -->
+<section class="slide" data-act="Act 3 · Goal">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 3 · The Ultimate Goal · 19</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">The real prize</div>
+  <h2 class="display display-lg" style="max-width:28ch; margin-bottom:36px">
+    Every task assigned<br/>to the <span class="italic">right mechanism.</span><br/>
+    Nobody wasted on the wrong work.
+  </h2>
+
+  <div class="mechanism-grid">
+    <div class="mech-col">
+      <div class="tag">Mechanism 01</div>
+      <h3>Human</h3>
+      <div class="section">
+        <div class="heading">Best for</div>
+        <p>Judgement, relationships, creative problem-solving, handling exceptions and edge cases.</p>
+      </div>
+      <div class="section">
+        <div class="heading">Worst for</div>
+        <p>Repetitive data entry, rule-based routing, status tracking, copying numbers between screens.</p>
+      </div>
+    </div>
+    <div class="mech-col">
+      <div class="tag">Mechanism 02</div>
+      <h3>Digital System</h3>
+      <div class="section">
+        <div class="heading">Best for</div>
+        <p>Consistent rule-based workflows, record-keeping, scheduled reporting, cross-department visibility.</p>
+      </div>
+      <div class="section">
+        <div class="heading">Worst for</div>
+        <p>Interpreting ambiguous situations, moments requiring human judgement and accountability.</p>
+      </div>
+    </div>
+    <div class="mech-col">
+      <div class="tag">Mechanism 03</div>
+      <h3>AI</h3>
+      <div class="section">
+        <div class="heading">Best for</div>
+        <p>Pattern recognition, forecasting, classification, natural language — but only once clean data exists.</p>
+      </div>
+      <div class="section">
+        <div class="heading">Worst for</div>
+        <p>Anything requiring accountability without oversight, or situations with no training data to learn from.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="pullquote" style="margin-top:32px; max-width:56ch">
+    Humans doing what humans do best. Systems doing what systems do best. AI doing what AI does best.
+  </p>
+
+  <div class="footer" style="margin-top:auto">
+    <div class="mono">Sustainable business. Easier life. AI-ready in 6–12 months — naturally.</div>
+    <div class="num"><span class="hl">19</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
+  </div>
+</section>
+
+<!-- 20 CTA -->
+<section class="slide" data-act="Act 3 · CTA">
+  <div class="chrome">
+    <div class="brand"><span class="dot"></span><span>Velo Working</span></div>
+    <div class="act">Act 3 · One Next Step · 20</div>
+  </div>
+
+  <div class="hairline-blue"></div>
+  <div class="eyebrow">One small step. Zero commitment.</div>
+
+  <div class="grid-2" style="gap:80px; align-items:start; margin-top:8px">
+    <div>
+      <h2 class="display display-xl" style="max-width:14ch">
+        Book a<br/>30-minute<br/><span class="italic">diagnostic.</span>
+      </h2>
+    </div>
+
+    <div class="stack-lg" style="padding-top:24px">
+      <p class="body-lg" style="max-width:46ch">
+        Not a sales call. We walk your floor (or your screens), quantify what the current operation is actually costing you — in hours, dollars, risk — and tell you straight whether a system is worth it.
+      </p>
+      <p class="body-lg" style="max-width:46ch; font-family:var(--serif); font-style:italic; color:var(--blue)">
+        If it's not worth it for your business — we'll say so.
+      </p>
+
+      <a href="https://www.veloworking.com" class="cta-btn">
+        Book the diagnostic
+        <span class="arrow">→</span>
+      </a>
+
+      <div class="cta-contact">
+        <div class="item">
+          <div class="k">Founder</div>
+          <div class="v">Ronnie Yap</div>
+        </div>
+        <div class="item">
+          <div class="k">WhatsApp / Phone</div>
+          <div class="v">+65 9894 3004</div>
+        </div>
+        <div class="item">
+          <div class="k">Email</div>
+          <div class="v" style="font-size:18px">ronnie.yap@veloworking.com</div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-
-<!-- ================================================================
-  PRICING
-================================================================ -->
-<section class="section section--divider" id="pricing">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 09 / Investment</div>
-      <h2 class="section__title reveal">Fixed scope. Fixed fee. <span class="italic-accent accent--blue">Published.</span></h2>
-    </div>
-
-    <div class="pricing">
-      <div class="tier reveal">
-        <div class="tier__label mono">Tier 01</div>
-        <div class="tier__name">Standard Implementation</div>
-        <div class="tier__price">S$3,500 – S$15,000</div>
-        <p>Configuration of standard modules, data migration, training, go-live support, and post-launch stabilisation. For companies starting fresh or moving off spreadsheets and WhatsApp.</p>
-      </div>
-      <div class="tier reveal">
-        <div class="tier__label mono">Tier 02</div>
-        <div class="tier__name">Customisation &amp; Hardware</div>
-        <div class="tier__price">S$15,000 – S$30,000</div>
-        <p>Custom-developed modules, integrations with your existing software, hardware sourcing, and design and build of control panels, wire harnesses, PCBA, and IoT sensor deployments. For companies with non-standard needs.</p>
-      </div>
-    </div>
-
-    <p class="pricing__note">All pricing is fixed-scope, fixed-price. No open-ended time-and-materials. No surprises. PSG and EDG grant navigation included at no extra charge.</p>
+  <div class="footer" style="margin-top:auto">
+    <div class="mono" style="font-family:var(--serif); font-style:italic; color:var(--blue); font-size:16px; letter-spacing:0; text-transform:none">Built for the ones still standing.</div>
+    <div class="num"><span class="hl">20</span> <span style="opacity:.4">/</span> <span style="opacity:.4">20</span></div>
   </div>
 </section>
 
+</div>
+</div>
+</div>
 
-<!-- ================================================================
-  MANIFESTO
-================================================================ -->
-<section class="section section--divider" id="manifesto">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="section__eyebrow mono">Section 10 / Manifesto</div>
-      <h2 class="section__title reveal">Why Velo Working <span class="italic-accent accent--blue">exists</span>.</h2>
-    </div>
-
-    <div class="manifesto__grid">
-      <div class="manifesto__lead reveal">
-        <p>Singapore and Malaysia run on SMEs. They are not a secondary economy — they <em>are</em> the economy.</p>
-        <p>99% of enterprises in Singapore. 70% of the workforce. Nearly half of GDP. These are the precision machinists supplying global semiconductor lines, the family stamping shops that have exported to Japan for thirty years, the second-generation traders digitising businesses their parents built by hand.</p>
-        <p>But the ground is shifting. AI-ready competitors compound their advantages every year. SMEs still running on WhatsApp, email, and spreadsheets are not falling behind linearly — they are falling behind exponentially. Once that gap opens, no amount of grant money closes it, because the foundation was never laid.</p>
-        <p>We built Velo Working to close that gap — with fair pricing, real engineering understanding, and the accountability to stay until it works.</p>
-        <p style="color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: 16px; margin-top: 32px;"><strong>Ronnie Yap</strong> · Founder &amp; Director · PMP</p>
-      </div>
-
-      <div class="reveal">
-        <ul class="beliefs">
-          <li><span class="mono">01</span><p>Good quality work should not be a luxury only big companies can afford.</p></li>
-          <li><span class="mono">02</span><p>SMEs deserve vendors who are honest about pricing.</p></li>
-          <li><span class="mono">03</span><p>The right operating system is the great equaliser for small companies.</p></li>
-          <li><span class="mono">04</span><p>The value is not in the software — it is in understanding your business process.</p></li>
-          <li><span class="mono">05</span><p>If a solution isn't right for you, we'll tell you.</p></li>
-          <li><span class="mono">06</span><p>Digitalisation is not optional anymore — it is survival.</p></li>
-          <li><span class="mono">07</span><p>Local SMEs don't need to shrink. They need the right partner.</p></li>
-        </ul>
-        <div class="manifesto__signoff">Built for the ones still standing.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ================================================================
-  FINAL CTA — soft
-================================================================ -->
-<section class="final-cta" id="contact">
-  <div class="wrap">
-    <div class="mono" style="margin-bottom: 32px;">Start the conversation</div>
-    <h2 class="reveal">
-      Still <span class="italic-accent accent--blue">standing?</span><br>
-      Let's talk.
-    </h2>
-    <p class="lede reveal">A thirty-minute call. No deck, no pitch, no NDA theatre. If we can help, we'll tell you. If we can't, we'll tell you that too — and point you somewhere that can.</p>
-    <div class="cta-group reveal">
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="cta cta--primary" target="_blank" rel="noopener" style="font-size: 16px; padding: 20px 32px;">WhatsApp +65 9894 3004 <span class="arr">→</span></a>
-      <div class="mono">Or email <a href="mailto:ronnie.yap@veloworking.com" style="color: var(--fg); text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 4px;">ronnie.yap@veloworking.com</a></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ================================================================
-  FOOTER
-================================================================ -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <a href="#top" class="logo">
-          <svg class="logo__svg" aria-hidden="true"><use href="#velo-logo"/></svg>
-        </a>
-        <p>Integrated operational systems for SMEs in Singapore and Malaysia. Built on no-code platforms you own — not licences you rent.</p>
-      </div>
-
-      <div class="footer__col">
-        <h4>Navigate</h4>
-        <a href="#approach">Approach</a>
-        <a href="#modules">Modules</a>
-        <a href="#positioning">Why us</a>
-        <a href="#manifesto">Manifesto</a>
-        <a href="assessment/assessment.html">Assessment</a>
-        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
-        <a href="pitch-deck.html">About Us</a>
-      </div>
-
-      <div class="footer__col">
-        <h4>Contact</h4>
-        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
-        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
-        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
-      </div>
-
-      <div class="footer__col">
-        <h4>Legal</h4>
-        <span>Velo Working Pte. Ltd.</span>
-        <span>UEN 202609930G</span>
-        <span>Incorporated 2026</span>
-      </div>
-    </div>
-
-    <div class="footer__bottom">
-      <span>© 2026 Velo Working Pte. Ltd.</span>
-      <span>Built for the ones still standing.</span>
-    </div>
-  </div>
-</footer>
-
-<!-- Cookie banner -->
-<div class="cookie-bar" id="cookieBar">
-  <span>This site uses privacy-friendly analytics. No tracking. No ad cookies.</span>
-  <button id="cookieDismiss">OK</button>
+<div class="hud">
+  <button onclick="nav(-1)">← Prev</button>
+  <span class="sep">·</span>
+  <button onclick="nav(1)">Next →</button>
+  <span class="sep">·</span>
+  <button onclick="printAll()">Print / Save as PDF</button>
 </div>
 
 <script>
-/* Nav */
 (function(){
-  const nav = document.getElementById('nav');
-  const toggle = document.getElementById('navToggle');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('nav--open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.querySelectorAll('.nav__link').forEach(l => {
-    l.addEventListener('click', () => nav.classList.remove('nav--open'));
-  });
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const progress = document.getElementById('progress');
+  const stage = document.getElementById('stage');
+  const scaleWrap = document.getElementById('scaleWrap');
+  let i = 0;
 
-  const dropdown = document.getElementById('diaryDropdown');
-  if (dropdown) {
-    const dToggle = document.getElementById('diaryToggle');
-    dToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = dropdown.classList.toggle('is-open');
-      dToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('is-open');
-        dToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dropdown.classList.remove('is-open');
-        dToggle.setAttribute('aria-expanded', 'false');
-      }
+  function fit(){
+    const pad = 32;
+    const scale = Math.min(
+      (window.innerWidth - pad) / 1440,
+      1
+    );
+    const finalScale = Math.min(scale, 1);
+    scaleWrap.style.transform = `scale(${finalScale})`;
+    scaleWrap.style.width  = 1440 * finalScale + 'px';
+    requestAnimationFrame(() => {
+      const h = stage.offsetHeight;
+      scaleWrap.style.height = h * finalScale + 'px';
     });
   }
-})();
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  fit();
 
-/* Reveal on scroll */
-(function(){
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(e => e.classList.add('visible'));
-    return;
-  }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+    progress.style.width = ((i / (slides.length - 1)) * 100) + '%';
+    requestAnimationFrame(() => {
+      fit();
+      window.scrollTo({top:0, behavior:'smooth'});
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-})();
-
-/* Timeline progressive lighting */
-(function(){
-  const tl = document.getElementById('timeline');
-  if (!tl || !('IntersectionObserver' in window)) return;
-  const steps = tl.querySelectorAll('.timeline__step');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        tl.classList.add('visible');
-        steps.forEach((s, i) => setTimeout(() => s.classList.add('active'), 500 + i * 700));
-        io.unobserve(tl);
-      }
-    });
-  }, { threshold: 0.3 });
-  io.observe(tl);
-})();
-
-/* Cookie banner */
-(function(){
-  const bar = document.getElementById('cookieBar');
-  const btn = document.getElementById('cookieDismiss');
-  if (!localStorage.getItem('vw_cookie_dismissed')) {
-    setTimeout(() => bar.classList.add('show'), 1400);
   }
-  btn.addEventListener('click', () => {
-    bar.classList.remove('show');
-    localStorage.setItem('vw_cookie_dismissed', '1');
+  window.nav = function(d){ show(i + d); };
+
+  // For print: temporarily reveal all slides, trigger print, restore.
+  window.printAll = function(){
+    document.body.classList.add('printing');
+    // Force all slides visible inline so the browser pagination engine sees every page.
+    slides.forEach(s => {
+      s.style.position = 'relative';
+      s.style.opacity = '1';
+      s.style.pointerEvents = 'auto';
+    });
+    setTimeout(() => {
+      window.print();
+      // Restore active-slide behaviour after print dialog closes.
+      setTimeout(() => {
+        document.body.classList.remove('printing');
+        slides.forEach((s, idx) => {
+          s.style.position = '';
+          s.style.opacity = '';
+          s.style.pointerEvents = '';
+          s.classList.toggle('is-active', idx === i);
+        });
+        fit();
+      }, 500);
+    }, 100);
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp')   { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') { show(0); }
+    if (e.key === 'End')  { show(slides.length - 1); }
+    if ((e.metaKey || e.ctrlKey) && e.key === 'p') { e.preventDefault(); window.printAll(); }
   });
+
+  show(0);
 })();
 </script>
-
 </body>
 </html>
