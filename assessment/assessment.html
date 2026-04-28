@@ -685,6 +685,52 @@ html, body {
 </section>
 
 <!-- =============================================
+     CONTACT GATE — collect candidate details before survey
+     ============================================= -->
+<section class="screen" id="screen-contact">
+  <div class="eyebrow">
+    <span class="dot"></span>
+    <span class="mono">Before we begin</span>
+  </div>
+
+  <h1 class="display headline" style="font-size: clamp(1.8rem, 4vw, 2.6rem);">
+    Quick — who are <span class="em">you</span>?
+  </h1>
+
+  <p class="lede">
+    So we know who's taking the diagnostic and can send your verdict back if you want a human read on it.
+    We won't subscribe you to anything.
+  </p>
+
+  <form id="contactForm" class="input-group" style="margin-top: 28px;" novalidate>
+    <div class="input-row">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="input-row">
+      <label for="cf-email">Work email</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required />
+    </div>
+    <div class="input-row">
+      <label for="cf-company">Company</label>
+      <input id="cf-company" name="company" type="text" autocomplete="organization" required />
+    </div>
+    <div class="input-row">
+      <label for="cf-phone">Phone (optional)</label>
+      <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+    </div>
+    <div id="contactError" style="color:#c1121f;font-size:0.85rem;min-height:1.1em;"></div>
+    <div class="btn-row" style="margin-top: 6px;">
+      <button class="btn" type="submit" id="contactSubmit">
+        <span id="contactSubmitLabel">Start the diagnostic</span>
+        <svg class="btn-arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <button class="btn btn-ghost" type="button" id="contactBack">← Back</button>
+    </div>
+  </form>
+</section>
+
+<!-- =============================================
      QUESTION SCREENS — generated dynamically
      ============================================= -->
 <section class="screen" id="screen-question"></section>
@@ -948,13 +994,66 @@ const MODULES = {
 };
 
 /* ============================================================
+   SUPABASE CONFIG
+   ============================================================ */
+const SUPABASE_URL = 'https://uxhdxmkuxgsaeoqddmel.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_qztwzXWzUNdm5zSOmMJYuw_-GOsFNqc';
+const SUPABASE_TABLE = 'assessment_responses';
+const ENQUIRY_EMAIL = 'ronnie.yap@veloworking.com';
+
+async function supabaseInsert(payload) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
+    const data = await res.json();
+    return Array.isArray(data) ? data[0] : data;
+  } catch (err) {
+    console.warn('Supabase insert failed:', err);
+    return null;
+  }
+}
+
+async function supabaseUpdate(id, payload) {
+  if (!id) return false;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?id=eq.${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
+    return true;
+  } catch (err) {
+    console.warn('Supabase update failed:', err);
+    return false;
+  }
+}
+
+/* ============================================================
    STATE
    ============================================================ */
 let state = {
   current: 0,
   answers: {},        // questionId -> selected key
   scores: {},         // moduleId -> total score
-  profile: {}         // industry, headcount, volume
+  profile: {},        // industry, headcount, volume
+  contact: { name: '', email: '', phone: '', company: '' },
+  responseId: null,   // Supabase row id
+  results: null       // cached results payload
 };
 
 const totalQuestions = QUESTIONS.length;
@@ -964,9 +1063,62 @@ const totalQuestions = QUESTIONS.length;
    ============================================================ */
 function startAssessment() {
   document.getElementById('screen-intro').classList.remove('active');
+  document.getElementById('screen-contact').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function submitContactGate(e) {
+  e.preventDefault();
+  const errorEl = document.getElementById('contactError');
+  const submitBtn = document.getElementById('contactSubmit');
+  const submitLabel = document.getElementById('contactSubmitLabel');
+  errorEl.textContent = '';
+
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const company = document.getElementById('cf-company').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+
+  if (!name || !email || !company) {
+    errorEl.textContent = 'Name, email and company are required.';
+    return;
+  }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    errorEl.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  state.contact = { name, email, phone, company };
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.6';
+  submitBtn.style.cursor = 'wait';
+  submitLabel.textContent = 'Loading…';
+
+  const row = await supabaseInsert({
+    name, email,
+    phone: phone || null,
+    company,
+    user_agent: navigator.userAgent,
+    referrer: document.referrer || null
+  });
+  if (row && row.id) state.responseId = row.id;
+
+  document.getElementById('screen-contact').classList.remove('active');
   document.getElementById('progressWrap').style.display = 'block';
   state.current = 0;
   renderQuestion();
+
+  // restore button for re-entry via restart
+  submitBtn.disabled = false;
+  submitBtn.style.opacity = '1';
+  submitBtn.style.cursor = 'pointer';
+  submitLabel.textContent = 'Start the diagnostic';
+}
+
+function backToIntro() {
+  document.getElementById('screen-contact').classList.remove('active');
+  document.getElementById('screen-intro').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function renderQuestion() {
@@ -1204,11 +1356,32 @@ function computeAndShowResults() {
 
 function showResults(data) {
   document.getElementById('screen-question').classList.remove('active');
+  document.getElementById('screen-contact').classList.remove('active');
   document.getElementById('progressWrap').style.display = 'none';
   document.getElementById('progFill').style.width = '100%';
 
   const screen = document.getElementById('screen-results');
   screen.classList.add('active');
+
+  // cache for enquiry submission later
+  state.results = data;
+
+  // persist full payload to Supabase (best-effort)
+  if (state.responseId) {
+    supabaseUpdate(state.responseId, {
+      answers: state.answers,
+      profile: state.profile,
+      scores: data.scores,
+      tier1: data.t1.map(m => ({ id: m.id, name: m.name, short: m.short, score: m.score })),
+      tier2: data.t2.map(m => ({ id: m.id, name: m.name, short: m.short, score: m.score })),
+      pain_index: data.pain,
+      verdict: data.verdict.eyebrow,
+      engagement_label: data.engagement.label,
+      engagement_value: data.engagement.value,
+      engagement_range: data.engagement.range,
+      completed_at: new Date().toISOString()
+    });
+  }
 
   // verdict headline
   const headlineHtml = data.verdict.headline.map(part => {
@@ -1316,21 +1489,34 @@ function showResults(data) {
 
     <div class="cta-block">
       <h3 class="cta-headline">Want a <span class="em">human</span> to walk through this with you?</h3>
-      <p class="cta-sub">Send the result via WhatsApp. We'll respond within a working day with a no-obligation read on whether it makes sense to engage — or whether you should hold off.</p>
+      <p class="cta-sub">Leave a short message and we'll respond within a working day with a no-obligation read on whether it makes sense to engage — or whether you should hold off.</p>
+
+      <form id="enquiryForm" style="display:grid; gap:14px; max-width:560px; margin-bottom:22px;">
+        <textarea id="enquiryMessage" rows="4" placeholder="What would you like to discuss? (optional)"
+          style="padding:12px 14px; background:rgba(247,245,240,0.08); border:1.5px solid rgba(247,245,240,0.2); color:var(--paper); font-family:inherit; font-size:1rem; resize:vertical; min-height:88px;"></textarea>
+        <div id="enquiryStatus" style="font-size:0.85rem; color:rgba(247,245,240,0.7); min-height:1.1em;"></div>
+      </form>
+
       <div class="cta-row">
-        <a class="btn btn-paper" href="https://wa.me/6598943004?text=${encodeURIComponent(buildWhatsAppText(data))}" target="_blank" rel="noopener">
-          Send result via WhatsApp
+        <button class="btn btn-paper" type="button" id="enquirySubmit">
+          <span id="enquirySubmitLabel">Send enquiry</span>
           <svg class="btn-arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <a class="btn btn-paper-ghost" href="https://wa.me/6598943004?text=${encodeURIComponent(buildWhatsAppText(data))}" target="_blank" rel="noopener">
+          Or send via WhatsApp
         </a>
-        <button class="btn btn-paper-ghost" onclick="window.print()">
+        <button class="btn btn-paper-ghost" type="button" onclick="window.print()">
           Print / save as PDF
         </button>
-        <button class="btn btn-paper-ghost" onclick="restart()">
+        <button class="btn btn-paper-ghost" type="button" onclick="restart()">
           Restart diagnostic
         </button>
       </div>
     </div>
   `;
+
+  const enquiryBtn = document.getElementById('enquirySubmit');
+  if (enquiryBtn) enquiryBtn.addEventListener('click', submitEnquiry);
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1387,14 +1573,92 @@ Profile: ${state.profile.industry || '—'} / ${state.profile.headcount || '—'
 Can we have a quick conversation?`;
 }
 
+/* --------- Enquiry submission (end-of-results) --------- */
+async function submitEnquiry() {
+  const msgEl = document.getElementById('enquiryMessage');
+  const statusEl = document.getElementById('enquiryStatus');
+  const btn = document.getElementById('enquirySubmit');
+  const label = document.getElementById('enquirySubmitLabel');
+  const message = (msgEl && msgEl.value || '').trim();
+
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+  btn.style.cursor = 'wait';
+  label.textContent = 'Sending…';
+  statusEl.style.color = 'rgba(247,245,240,0.7)';
+  statusEl.textContent = '';
+
+  // persist message + final completion timestamp
+  await supabaseUpdate(state.responseId, {
+    message: message || null,
+    message_sent_at: new Date().toISOString()
+  });
+
+  // open prefilled email
+  const data = state.results || {};
+  const t1Names = (data.t1 || []).map(m => `- ${m.name} (score ${m.score})`).join('\n') || '- (none)';
+  const t2Names = (data.t2 || []).map(m => `- ${m.name} (score ${m.score})`).join('\n') || '- (none)';
+  const c = state.contact;
+  const subject = `Velo Working diagnostic — ${c.company || c.name || 'enquiry'}`;
+  const body =
+`Hi Ronnie,
+
+I just completed the Velo Working operations diagnostic. My details:
+
+Name:    ${c.name}
+Email:   ${c.email}
+Phone:   ${c.phone || '—'}
+Company: ${c.company}
+
+Verdict:           ${data.verdict ? data.verdict.eyebrow : '—'}
+Pain index:        ${data.pain != null ? data.pain : '—'}
+Tier-1 modules:    ${(data.t1 || []).length}
+Tier-2 modules:    ${(data.t2 || []).length}
+Engagement scope:  ${data.engagement ? data.engagement.value + ' (' + data.engagement.range + ')' : '—'}
+
+TIER 1 — BUILD NOW
+${t1Names}
+
+TIER 2 — BUILD NEXT
+${t2Names}
+
+${message ? 'Message:\n' + message + '\n\n' : ''}Thanks,
+${c.name}`;
+
+  const mailto = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+
+  statusEl.style.color = '#9ee493';
+  statusEl.textContent = 'Saved. Your email client should now open — hit send to deliver the enquiry.';
+  label.textContent = 'Sent';
+}
+
 /* --------- Restart --------- */
 function restart() {
-  state = { current: 0, answers: {}, scores: {}, profile: {} };
+  state = {
+    current: 0,
+    answers: {},
+    scores: {},
+    profile: {},
+    contact: { name: '', email: '', phone: '', company: '' },
+    responseId: null,
+    results: null
+  };
   document.getElementById('screen-results').classList.remove('active');
+  document.getElementById('screen-contact').classList.remove('active');
   document.getElementById('screen-intro').classList.add('active');
   document.getElementById('progressWrap').style.display = 'none';
+  // clear contact inputs
+  ['cf-name','cf-email','cf-phone','cf-company'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  const err = document.getElementById('contactError'); if (err) err.textContent = '';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+/* --------- Contact form wiring --------- */
+document.getElementById('contactForm').addEventListener('submit', submitContactGate);
+document.getElementById('contactBack').addEventListener('click', backToIntro);
 
 /* --------- Keyboard nav --------- */
 document.addEventListener('keydown', (e) => {
