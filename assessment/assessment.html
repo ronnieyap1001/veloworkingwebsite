@@ -1,199 +1,1418 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Assessment — Velo Working</title>
-
-<meta name="description" content="Book a Velo Working operations assessment. A two-week diagnostic of how work actually flows through your business — written report, fixed-fee proposal, no sales pitch." />
-<link rel="canonical" href="https://www.veloworking.com/assessment/assessment.html" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Operations Diagnostic — Velo Working</title>
+<meta name="description" content="A 5-minute diagnostic for business owners and operations managers. Find out if you need a digital system, and which modules to build first." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&family=Libre+Baskerville:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Cg fill='%230A0A0A'%3E%3Crect x='14.5' y='6' width='3' height='20'/%3E%3Cpath d='M16 4 L10 10 L22 10 Z'/%3E%3Cpath d='M16 28 L10 22 L22 22 Z'/%3E%3Cpath d='M4 16 L10 10 L10 22 Z'/%3E%3Cpath d='M28 16 L22 10 L22 22 Z'/%3E%3C/g%3E%3C/svg%3E" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Libre+Baskerville:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
+/* ==========================================================
+   VELO WORKING v3 — STRICT BRAND SYSTEM
+   ========================================================== */
 :root {
   --ink: #0A0A0A;
   --paper: #F7F5F0;
   --paper-soft: #EDEAE2;
+  --paper-darker: #DCD8CC;
   --blue: #1317E4;
-  --bg: var(--paper);
-  --fg: var(--ink);
-  --fg-dim: rgba(10, 10, 10, 0.66);
-  --fg-ghost: rgba(10, 10, 10, 0.46);
-  --rule: rgba(10, 10, 10, 0.10);
-  --rule-strong: rgba(10, 10, 10, 0.20);
-  --f-display: "DM Sans", system-ui, sans-serif;
-  --f-accent: "Libre Baskerville", Georgia, serif;
-  --f-body: "DM Sans", system-ui, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, monospace;
-  --max: 1440px;
-  --gut: clamp(24px, 6vw, 120px);
+  --muted: #6B6B6B;
+  --line: rgba(10,10,10,0.12);
+  --line-strong: rgba(10,10,10,0.25);
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font-family: var(--f-body); font-size: 17px; line-height: 1.55;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-a { color: inherit; text-decoration: none; }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gut); padding-right: var(--gut); }
+/* ---------- TYPOGRAPHY ---------- */
+.display { font-family: 'DM Sans', sans-serif; font-weight: 900; letter-spacing: -0.025em; line-height: 1.05; }
+.italic-accent { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; }
+.mono { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
 
-.mono {
-  font-family: var(--f-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim);
+/* ---------- LAYOUT ---------- */
+.shell {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 28px;
 }
 
-.italic-accent { font-family: var(--f-accent); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
-.accent--blue { color: var(--blue); }
-
-h1, h2 { margin: 0; font-family: var(--f-display); font-weight: 800; letter-spacing: -0.035em; line-height: 0.96; color: var(--fg); }
-h1 { font-size: clamp(48px, 9vw, 120px); font-weight: 900; }
-h2 { font-size: clamp(32px, 4.5vw, 56px); }
-p { margin: 0 0 1rem; }
-
-.cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 26px; border-radius: 999px;
-  font-weight: 500; font-size: 15px; white-space: nowrap;
-  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+/* ---------- TOP BAR ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
 }
-.cta--primary { background: var(--blue); color: var(--paper); }
-.cta--primary:hover { transform: translateY(-2px); }
-.cta--ghost { border: 1px solid var(--rule-strong); color: var(--fg); }
-.cta--ghost:hover { border-color: var(--fg); }
-.cta .arr { display: inline-block; transition: transform 220ms ease; }
-.cta:hover .arr { transform: translateX(4px); }
-
-.nav { position: sticky; top: 0; z-index: 50; background: rgba(247, 245, 240, 0.85); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); }
-.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-top: 18px; padding-bottom: 18px; }
-.logo { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.02em; font-size: 18px; }
-.nav__links { display: flex; align-items: center; gap: 28px; }
-.nav__link { font-size: 14px; color: var(--fg-dim); transition: color 180ms ease; }
-.nav__link:hover { color: var(--fg); }
-.nav__cta {
-  background: var(--ink); color: var(--paper); padding: 10px 18px;
-  border-radius: 999px; font-size: 13px; transition: background 180ms ease;
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.nav__cta:hover { background: var(--blue); }
-@media (max-width: 760px) { .nav__links a:not(.nav__cta) { display: none; } }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--ink);
+  position: relative;
+}
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: var(--ink);
+}
+.brand-name {
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+.brand-tag {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
 
-.hero { padding: clamp(80px, 14vw, 160px) 0 clamp(60px, 10vw, 120px); }
-.hero__eyebrow { margin-bottom: 24px; }
-.hero h1 { margin-bottom: 28px; max-width: 18ch; }
-.hero p { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 58ch; margin-bottom: 36px; }
-.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+/* ---------- PROGRESS ---------- */
+.progress-wrap { padding: 18px 0 8px; border-bottom: 1px solid var(--line); }
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.progress-bar {
+  height: 2px;
+  background: var(--paper-darker);
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--ink);
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
-.section { padding: clamp(64px, 10vw, 120px) 0; border-top: 1px solid var(--rule); }
-.section__head { max-width: 64ch; margin-bottom: 56px; }
-.section__eyebrow { margin-bottom: 18px; }
+/* ---------- SCREENS ---------- */
+.screen { display: none; padding: 56px 0 80px; animation: fadeIn 0.4s ease; }
+.screen.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-.steps { display: grid; gap: 28px; }
-.step { display: grid; grid-template-columns: 80px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--rule); }
-.step:first-child { border-top: 0; padding-top: 0; }
-.step__num { font-family: var(--f-mono); font-size: 13px; color: var(--blue); letter-spacing: 0.14em; }
-.step h2 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
-.step p { color: var(--fg-dim); }
-@media (max-width: 600px) { .step { grid-template-columns: 1fr; gap: 10px; } }
+/* ---------- INTRO ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.eyebrow .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.headline {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  margin-bottom: 22px;
+  max-width: 18ch;
+}
+.headline .em { color: var(--blue); font-style: italic; font-family: 'Libre Baskerville', serif; font-weight: 400; }
+.lede {
+  font-size: 1.15rem;
+  color: #2a2a2a;
+  max-width: 60ch;
+  margin-bottom: 38px;
+}
 
-.cta-block { padding: clamp(48px, 8vw, 88px) 0; border-top: 1px solid var(--rule); }
-.cta-block h2 { max-width: 22ch; margin-bottom: 28px; }
-.cta-block .ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 32px 0 40px;
+}
+.principle {
+  padding: 22px 22px 22px 0;
+  border-right: 1px solid var(--line);
+}
+.principle:last-child { border-right: none; padding-right: 0; }
+.principle-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.principle-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.principle-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
 
-.footer { border-top: 1px solid var(--rule); padding: 48px 0; color: var(--fg-ghost); font-family: var(--f-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.footer a { color: var(--fg-ghost); }
-.footer a:hover { color: var(--fg); }
+/* ---------- BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.btn:hover { background: var(--blue); border-color: var(--blue); }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn-arrow { width: 14px; height: 14px; }
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* ---------- QUESTIONS ---------- */
+.q-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.q-title {
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  max-width: 30ch;
+}
+.q-help {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+  max-width: 56ch;
+}
+
+.options { display: grid; gap: 10px; max-width: 600px; }
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--paper-soft);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-size: 0.97rem;
+}
+.option:hover { border-color: var(--line-strong); transform: translateX(2px); }
+.option.selected {
+  border-color: var(--ink);
+  background: var(--paper);
+}
+.option.selected .option-mark { background: var(--ink); border-color: var(--ink); }
+.option.selected .option-mark::after { opacity: 1; }
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.option-mark {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+.option-mark::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: var(--paper);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.option-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  max-width: 600px;
+}
+
+/* ---------- INPUTS ---------- */
+.input-group {
+  display: grid;
+  gap: 18px;
+  max-width: 600px;
+}
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.input-row label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.input-row select,
+.input-row input {
+  padding: 12px 14px;
+  background: var(--paper-soft);
+  border: 1.5px solid transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.input-row select:focus,
+.input-row input:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: var(--paper);
+}
+.input-row select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%230A0A0A' stroke-width='1.5' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+
+/* ---------- RESULTS ---------- */
+.results { padding: 0; }
+.verdict-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 44px 64px;
+  margin: 0 -28px;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: rgba(247,245,240,0.5);
+  margin-bottom: 18px;
+}
+.verdict-headline {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  max-width: 22ch;
+}
+.verdict-headline .em { color: var(--paper); font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; }
+.verdict-sub {
+  color: rgba(247,245,240,0.78);
+  font-size: 1.05rem;
+  max-width: 60ch;
+  margin-bottom: 30px;
+}
+.verdict-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(247,245,240,0.18);
+  padding-top: 26px;
+  gap: 18px;
+}
+.stat-num {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(247,245,240,0.55);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+.section:last-child { border-bottom: none; }
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.section-title .em { color: var(--blue); font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; }
+.section-lede { color: var(--muted); margin-bottom: 32px; max-width: 60ch; }
+
+/* ---------- MODULES ---------- */
+.tier {
+  margin-bottom: 32px;
+}
+.tier-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.tier-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tier-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  background: var(--ink);
+  color: var(--paper);
+  text-transform: uppercase;
+}
+.tier-pill.t2 { background: var(--paper-darker); color: var(--ink); }
+.tier-desc { font-size: 0.85rem; color: var(--muted); }
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.module {
+  background: var(--paper);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.module-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.module-icon {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.module-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.module-name { font-weight: 700; font-size: 1rem; }
+.module-why { font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+
+.empty-tier {
+  padding: 18px;
+  background: var(--paper-soft);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- ENGAGEMENT ---------- */
+.engagement {
+  background: var(--paper-soft);
+  padding: 32px;
+  border-left: 3px solid var(--blue);
+}
+.engagement-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.engagement-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.engagement-value {
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+.engagement-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- CTA ---------- */
+.cta-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 48px 36px;
+  margin: 40px -28px 0;
+  text-align: left;
+}
+.cta-headline {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  max-width: 22ch;
+}
+.cta-headline .em {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--paper);
+}
+.cta-sub { color: rgba(247,245,240,0.7); margin-bottom: 26px; max-width: 50ch; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-paper {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.btn-paper:hover { background: var(--blue); color: var(--paper); border-color: var(--blue); }
+.btn-paper-ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(247,245,240,0.3);
+}
+.btn-paper-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+/* ---------- FOOTER ---------- */
+.foot {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- ARIZ CONTRADICTION CALLOUT ---------- */
+.contradiction {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 20px;
+  background: var(--paper-soft);
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+}
+.contradiction-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--blue);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 700px) {
+  .principles { grid-template-columns: 1fr; }
+  .principle { border-right: none; border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .principle:last-child { border-bottom: none; }
+  .verdict-stats { grid-template-columns: 1fr; gap: 14px; }
+  .verdict-block, .cta-block { padding: 36px 24px; margin: 0 -28px; }
+  .module-grid { grid-template-columns: 1fr; }
+  .contradiction { grid-template-columns: 1fr; gap: 8px; }
+  .engagement-row { grid-template-columns: 1fr; }
+  .shell { padding: 0 22px; }
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+  .topbar, .q-nav, .cta-block, .foot { display: none !important; }
+  .screen.active { padding: 0; }
+  .verdict-block { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); margin: 0; }
+  .verdict-stats { color: var(--ink); }
+  .stat-label { color: var(--muted); }
+  .verdict-sub, .verdict-eyebrow { color: var(--muted); }
+}
 </style>
 </head>
-
 <body>
 
-<nav class="nav">
-  <div class="wrap nav__inner">
-    <a href="../index.html" class="logo">Velo Working</a>
-    <div class="nav__links">
-      <a href="../index.html#approach" class="nav__link">Approach</a>
-      <a href="../index.html#modules" class="nav__link">Modules</a>
-      <a href="../index.html#positioning" class="nav__link">Why us</a>
-      <a href="./assessment.html" class="nav__link">Assessment</a>
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="nav__cta" target="_blank" rel="noopener">Talk to Ronnie</a>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <div class="brand-name">Velo Working</div>
+      </div>
+    </div>
+    <div class="brand-tag mono">Operations Diagnostic / v1</div>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progressWrap" style="display:none;">
+  <div class="shell">
+    <div class="progress-meta">
+      <span class="mono" id="progStep">01 / 14</span>
+      <span class="mono" id="progLabel">Profile</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+</div>
+
+<main class="shell">
+
+<!-- =============================================
+     INTRO
+     ============================================= -->
+<section class="screen active" id="screen-intro">
+  <div class="eyebrow">
+    <span class="dot"></span>
+    <span class="mono">5-minute diagnostic</span>
+  </div>
+
+  <h1 class="display headline">
+    Do you actually <span class="em">need</span> a digital system?
+  </h1>
+
+  <p class="lede">
+    Most operations don't need more software. They need the right software, in the right order,
+    after the right diagnosis. This tool tells you which is which — in 14 questions, with no email
+    capture and no pitch.
+  </p>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num mono">01</div>
+      <div class="principle-title">Honest verdict</div>
+      <div class="principle-desc">If you don't need a system, we'll say so. If you do, we'll say which modules — and which ones can wait.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num mono">02</div>
+      <div class="principle-title">No score-padding</div>
+      <div class="principle-desc">Every "yes" is weighted by operational reality. A small business with simple flows shouldn't be told it needs an ERP.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num mono">03</div>
+      <div class="principle-title">Built by engineers</div>
+      <div class="principle-desc">We've watched too many companies buy software they don't use. This tool reverses that — diagnose first, build second.</div>
     </div>
   </div>
-</nav>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="mono hero__eyebrow">Velo Working · Operations assessment</div>
-    <h1>Walk the floor. Quantify the <span class="italic-accent accent--blue">cost</span>.</h1>
-    <p>A two-week diagnostic of how work actually flows through your business. We watch the real process — not the org chart — and put a number on the hidden cost of the status quo. You get a written report, honest, with a fixed-scope, fixed-price proposal attached. No sales pitch.</p>
-    <div class="hero__ctas">
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="cta cta--primary" target="_blank" rel="noopener">Book an assessment <span class="arr">→</span></a>
-      <a href="../index.html#approach" class="cta cta--ghost">See the approach</a>
-    </div>
+  <div class="btn-row">
+    <button class="btn" onclick="startAssessment()">Begin diagnostic
+      <svg class="btn-arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <span class="mono" style="color:var(--muted)">~5 minutes · 14 questions · no signup</span>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section__head">
-      <div class="mono">What's in it</div>
-      <h2>Two weeks. One honest report.</h2>
-    </div>
+<!-- =============================================
+     QUESTION SCREENS — generated dynamically
+     ============================================= -->
+<section class="screen" id="screen-question"></section>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step__num">01</div>
-        <div>
-          <h2>On-site observation</h2>
-          <p>We spend time with the people who actually do the work — operations, procurement, production, finance. We watch how orders move, where information lives, and where it gets lost.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step__num">02</div>
-        <div>
-          <h2>Process mapping</h2>
-          <p>We map the current flow end-to-end and mark every handoff that depends on memory, spreadsheets, or chat messages. These are the points where work stalls and cost accumulates.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step__num">03</div>
-        <div>
-          <h2>Cost quantification</h2>
-          <p>We put a number on the status quo: hours lost to rework, duplicate data entry, chasing approvals, looking for files. The number is conservative and defensible.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step__num">04</div>
-        <div>
-          <h2>Written report &amp; proposal</h2>
-          <p>You receive a written report — what we saw, what it costs, what to fix first — with a fixed-scope, fixed-price proposal attached. You decide what to do next. No retainer, no obligation.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- =============================================
+     RESULTS
+     ============================================= -->
+<section class="screen results" id="screen-results"></section>
 
-<section class="cta-block">
-  <div class="wrap">
-    <h2>Ready when you are.</h2>
-    <div class="ctas">
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="cta cta--primary" target="_blank" rel="noopener">Book an assessment <span class="arr">→</span></a>
-      <a href="mailto:ronnie.yap@veloworking.com" class="cta cta--ghost">Email Ronnie</a>
-    </div>
-  </div>
-</section>
+</main>
 
-<footer class="footer">
-  <div class="wrap" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%;">
-    <span>© 2026 Velo Working Pte. Ltd.</span>
-    <a href="../index.html">← Back to home</a>
-  </div>
+<footer class="shell foot">
+  <span>Velo Working Pte. Ltd. · Singapore</span>
+  <span>Built for the ones still standing.</span>
 </footer>
 
+<script>
+/* ==================================================================
+   QUESTION DATA + SCORING MODEL
+   ==================================================================
+   Each question has options. Each option contributes weighted scores
+   to one or more modules. Final scores determine tiering.
+   ================================================================== */
+
+const QUESTIONS = [
+  // ---- PROFILE (3) ----
+  {
+    id: 'industry',
+    section: 'Profile',
+    title: 'What kind of business do you run?',
+    help: 'This shapes which modules typically matter for you.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Manufacturing / fabrication / assembly', tag: 'mfg' },
+      { key: 'B', label: 'Trading / distribution / wholesale', tag: 'trade' },
+      { key: 'C', label: 'Engineering services / projects', tag: 'project' },
+      { key: 'D', label: 'F&B / retail / consumer-facing', tag: 'retail' },
+      { key: 'E', label: 'Other / mixed', tag: 'mixed' }
+    ],
+    score: () => ({}) // profile only — no module scoring
+  },
+  {
+    id: 'headcount',
+    section: 'Profile',
+    title: 'How many people work in operations?',
+    help: 'Including production, warehouse, admin — anyone who touches an order.',
+    type: 'single',
+    options: [
+      { key: 'A', label: '1–5', tag: 'micro' },
+      { key: 'B', label: '6–20', tag: 'small' },
+      { key: 'C', label: '21–50', tag: 'mid' },
+      { key: 'D', label: '50+', tag: 'large' }
+    ],
+    score: () => ({})
+  },
+  {
+    id: 'volume',
+    section: 'Profile',
+    title: 'How many orders or jobs do you handle per month?',
+    help: 'Roughly. Volume changes everything — manual works at low volume, breaks at high.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Under 20', tag: 'low' },
+      { key: 'B', label: '20–100', tag: 'medium' },
+      { key: 'C', label: '100–500', tag: 'high' },
+      { key: 'D', label: '500+', tag: 'very-high' }
+    ],
+    score: () => ({})
+  },
+
+  // ---- DIAGNOSTIC (11) ----
+  {
+    id: 'inventory',
+    section: 'Operations',
+    title: 'Do you know your real-time stock without checking the warehouse?',
+    help: 'A reliable inventory system means you can quote, plan, and commit without physically counting.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Yes — always accurate', val: 0 },
+      { key: 'B', label: 'Mostly — but I verify before promising', val: 1 },
+      { key: 'C', label: 'No — I check the floor or call someone', val: 2 },
+      { key: 'D', label: 'Not applicable — we don\'t hold stock', val: -1 }
+    ],
+    score: (v) => v <= 0 ? {} : ({ inventory: v * 2, production: v })
+  },
+  {
+    id: 'job_status',
+    section: 'Operations',
+    title: 'Can you see the status of any job or order in under 30 seconds?',
+    help: 'Sales asks "where\'s order #2341?" — what happens?',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Yes — open dashboard, done', val: 0 },
+      { key: 'B', label: 'Sometimes — depends on who\'s in', val: 1 },
+      { key: 'C', label: 'No — I have to ask production', val: 2 }
+    ],
+    score: (v) => ({ production: v * 2, projectMgmt: v, customer: v })
+  },
+  {
+    id: 'quotes',
+    section: 'Sales',
+    title: 'How are quotations prepared today?',
+    help: 'Quotes are the front door. If they\'re slow, you lose deals you don\'t see.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Generated from a system / configurator', val: 0 },
+      { key: 'B', label: 'Templated in Excel/Word — copy & adjust', val: 1 },
+      { key: 'C', label: 'Built from scratch every time', val: 2 }
+    ],
+    score: (v) => ({ crm: v * 2, finance: v })
+  },
+  {
+    id: 'customer_chase',
+    section: 'Sales',
+    title: 'Do customers chase you for delivery or status updates?',
+    help: 'When customers ask "is it ready yet?" — the system has already failed.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Rarely — they trust our timelines', val: 0 },
+      { key: 'B', label: 'Sometimes — for big or late jobs', val: 1 },
+      { key: 'C', label: 'Often — it\'s part of the day', val: 2 }
+    ],
+    score: (v) => ({ customer: v * 2, production: v })
+  },
+  {
+    id: 'reports',
+    section: 'Visibility',
+    title: 'How long does it take to compile a month-end report?',
+    help: 'Sales, costs, margins, WIP — the full picture.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Minutes — it\'s automatic', val: 0 },
+      { key: 'B', label: 'A few hours', val: 1 },
+      { key: 'C', label: 'A full day or more', val: 2 },
+      { key: 'D', label: 'We don\'t really do month-end reporting', val: 2 }
+    ],
+    score: (v) => ({ reporting: v * 2, finance: v })
+  },
+  {
+    id: 'profitability',
+    section: 'Visibility',
+    title: 'Can you tell which jobs or products are most profitable right now?',
+    help: 'Not last quarter — right now, this month.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Yes — by job, customer, and SKU', val: 0 },
+      { key: 'B', label: 'Roughly — gut feel + spreadsheet', val: 1 },
+      { key: 'C', label: 'No — we know after the fact, if at all', val: 2 }
+    ],
+    score: (v) => ({ reporting: v * 2, finance: v, projectMgmt: v })
+  },
+  {
+    id: 'po',
+    section: 'Procurement',
+    title: 'How are purchase orders raised?',
+    help: 'POs to suppliers, raw materials, sub-contracted work.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Through a system with approval flow', val: 0 },
+      { key: 'B', label: 'Word/Excel templates emailed', val: 1 },
+      { key: 'C', label: 'Verbally / WhatsApp / handwritten', val: 2 },
+      { key: 'D', label: 'Not applicable — we don\'t purchase', val: -1 }
+    ],
+    score: (v) => v <= 0 ? {} : ({ procurement: v * 2 })
+  },
+  {
+    id: 'invoices',
+    section: 'Finance',
+    title: 'How are invoices created after delivery?',
+    help: 'Speed of invoicing = speed of cash.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Auto-generated from delivery / job completion', val: 0 },
+      { key: 'B', label: 'Manually created in accounting software', val: 1 },
+      { key: 'C', label: 'Manually typed in Word/Excel', val: 2 }
+    ],
+    score: (v) => ({ finance: v * 2 })
+  },
+  {
+    id: 'timesheet',
+    section: 'People',
+    title: 'How is staff time / attendance tracked?',
+    help: 'Including production hours, OT, leave.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Digital system with payroll integration', val: 0 },
+      { key: 'B', label: 'Spreadsheet tracked by HR / admin', val: 1 },
+      { key: 'C', label: 'Paper / punch card / WhatsApp', val: 2 }
+    ],
+    score: (v) => ({ hr: v * 2 })
+  },
+  {
+    id: 'quality',
+    section: 'Quality',
+    title: 'How are quality issues, rework, or defects tracked?',
+    help: 'If you can\'t measure it, you\'re paying for it without seeing it.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Logged systematically with root cause', val: 0 },
+      { key: 'B', label: 'Mentioned in meetings, sometimes recorded', val: 1 },
+      { key: 'C', label: 'Not formally tracked', val: 2 }
+    ],
+    score: (v) => ({ quality: v * 2, production: Math.floor(v / 2) })
+  },
+  {
+    id: 'maintenance',
+    section: 'Equipment',
+    title: 'Are equipment / machine maintenance records up-to-date?',
+    help: 'Last service date, parts changed, downtime hours.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Yes — digital log with schedules', val: 0 },
+      { key: 'B', label: 'Some logbooks, but inconsistent', val: 1 },
+      { key: 'C', label: 'No formal record', val: 2 },
+      { key: 'D', label: 'Not applicable — no equipment', val: -1 }
+    ],
+    score: (v) => v <= 0 ? {} : ({ maintenance: v * 2 })
+  },
+  {
+    id: 'documents',
+    section: 'Knowledge',
+    title: 'Do you spend time hunting for files, drawings, or specs?',
+    help: 'Old quotes, customer drawings, BOMs, certificates.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Rarely — everything is findable', val: 0 },
+      { key: 'B', label: 'Sometimes — depends on the file', val: 1 },
+      { key: 'C', label: 'Often — it\'s a real time-sink', val: 2 }
+    ],
+    score: (v) => ({ document: v * 2 })
+  },
+  {
+    id: 'handoff',
+    section: 'Coordination',
+    title: 'Does information get lost between teams (sales ↔ ops ↔ finance)?',
+    help: 'Wrong specs going to production, delivered jobs not invoiced, quotes not following up.',
+    type: 'single',
+    options: [
+      { key: 'A', label: 'Rarely — we have clear handoffs', val: 0 },
+      { key: 'B', label: 'Sometimes — depends on the deal', val: 1 },
+      { key: 'C', label: 'Often — it\'s a known weak point', val: 2 }
+    ],
+    score: (v) => ({ crm: v, production: v, finance: v, projectMgmt: v })
+  }
+];
+
+/* ----------------- MODULE METADATA ----------------- */
+const MODULES = {
+  crm:         { name: 'CRM & Quotations',     short: 'CRM',  why: 'Customer records, quotes, follow-ups in one place.' },
+  inventory:   { name: 'Inventory Control',    short: 'INV',  why: 'Real-time stock, reorder points, batch traceability.' },
+  production:  { name: 'Production / MES',     short: 'PRD',  why: 'Job tracking, work orders, shopfloor visibility.' },
+  procurement: { name: 'Procurement',          short: 'PUR',  why: 'PO workflow, supplier records, GR matching.' },
+  finance:     { name: 'Finance & Invoicing',  short: 'FIN',  why: 'Invoicing, AR/AP, GST, P&L by job/customer.' },
+  hr:          { name: 'HR & Timesheet',       short: 'HR',   why: 'Attendance, leave, payroll prep, OT control.' },
+  quality:     { name: 'Quality / NCR',        short: 'QC',   why: 'Defect logging, RCA, supplier quality scoring.' },
+  maintenance: { name: 'Maintenance (CMMS)',   short: 'MNT',  why: 'PM schedules, asset register, downtime tracking.' },
+  document:    { name: 'Document Management',  short: 'DMS',  why: 'Drawings, BOMs, specs, certs — versioned, searchable.' },
+  reporting:   { name: 'Reporting & Dashboard',short: 'BI',   why: 'Live KPIs, profitability views, exec dashboards.' },
+  projectMgmt: { name: 'Project Management',   short: 'PRJ',  why: 'Milestones, dependencies, project P&L.' },
+  customer:    { name: 'Customer Portal',      short: 'CUS',  why: 'Self-serve order status — fewer phone calls.' }
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let state = {
+  current: 0,
+  answers: {},        // questionId -> selected key
+  scores: {},         // moduleId -> total score
+  profile: {}         // industry, headcount, volume
+};
+
+const totalQuestions = QUESTIONS.length;
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+function startAssessment() {
+  document.getElementById('screen-intro').classList.remove('active');
+  document.getElementById('progressWrap').style.display = 'block';
+  state.current = 0;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.current];
+  if (!q) { showResults(); return; }
+
+  // progress
+  const pct = ((state.current) / totalQuestions) * 100;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progStep').textContent =
+    String(state.current + 1).padStart(2, '0') + ' / ' + String(totalQuestions).padStart(2, '0');
+  document.getElementById('progLabel').textContent = q.section;
+
+  // question screen
+  const screen = document.getElementById('screen-question');
+  screen.classList.add('active');
+
+  const selectedKey = state.answers[q.id];
+
+  screen.innerHTML = `
+    <div class="q-section-label">${q.section} · Question ${state.current + 1} of ${totalQuestions}</div>
+    <h2 class="q-title">${q.title}</h2>
+    ${q.help ? `<p class="q-help">${q.help}</p>` : ''}
+    <div class="options" id="opts">
+      ${q.options.map(o => `
+        <div class="option ${selectedKey === o.key ? 'selected' : ''}" data-key="${o.key}">
+          <div class="option-label">
+            <div class="option-mark"></div>
+            <div>${o.label}</div>
+          </div>
+          <div class="option-key">${o.key}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="q-nav">
+      <button class="btn btn-ghost" id="backBtn" ${state.current === 0 ? 'style="visibility:hidden"' : ''}>
+        ← Back
+      </button>
+      <button class="btn" id="nextBtn" ${selectedKey ? '' : 'disabled style="opacity:0.4;cursor:not-allowed"'}>
+        ${state.current === totalQuestions - 1 ? 'See verdict' : 'Next'}
+        <svg class="btn-arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  `;
+
+  // events
+  document.querySelectorAll('#opts .option').forEach(el => {
+    el.addEventListener('click', () => selectOption(q, el.dataset.key));
+  });
+  document.getElementById('backBtn').addEventListener('click', goBack);
+  document.getElementById('nextBtn').addEventListener('click', goNext);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function selectOption(q, key) {
+  state.answers[q.id] = key;
+
+  // visual update
+  document.querySelectorAll('#opts .option').forEach(el => {
+    el.classList.toggle('selected', el.dataset.key === key);
+  });
+
+  // enable next
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.disabled = false;
+  nextBtn.style.opacity = '1';
+  nextBtn.style.cursor = 'pointer';
+}
+
+function goNext() {
+  const q = QUESTIONS[state.current];
+  if (!state.answers[q.id]) return;
+  state.current++;
+  if (state.current >= totalQuestions) {
+    computeAndShowResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+function goBack() {
+  if (state.current === 0) return;
+  state.current--;
+  renderQuestion();
+}
+
+/* ============================================================
+   SCORING
+   ============================================================ */
+function computeScores() {
+  const scores = {};
+  Object.keys(MODULES).forEach(k => scores[k] = 0);
+
+  QUESTIONS.forEach(q => {
+    const ansKey = state.answers[q.id];
+    if (!ansKey) return;
+    const opt = q.options.find(o => o.key === ansKey);
+    if (!opt) return;
+
+    // profile capture
+    if (['industry','headcount','volume'].includes(q.id)) {
+      state.profile[q.id] = opt.tag;
+      return;
+    }
+
+    const v = opt.val;
+    if (v === undefined) return;
+    const contribution = q.score(v) || {};
+    Object.entries(contribution).forEach(([m, val]) => {
+      scores[m] = (scores[m] || 0) + val;
+    });
+  });
+
+  // adjust by profile context
+  // if no equipment → maintenance excluded
+  // if no purchasing → procurement excluded
+  // if low volume → soften everything slightly
+  if (state.profile.volume === 'low') {
+    Object.keys(scores).forEach(k => scores[k] = Math.max(0, scores[k] - 1));
+  }
+
+  // industry-specific dampening
+  if (state.profile.industry === 'trade') {
+    scores.production = Math.floor(scores.production / 2);
+    scores.maintenance = Math.floor(scores.maintenance / 2);
+    scores.quality = Math.floor(scores.quality / 2);
+  }
+  if (state.profile.industry === 'retail') {
+    scores.production = 0;
+    scores.maintenance = Math.floor(scores.maintenance / 2);
+  }
+  if (state.profile.industry === 'project') {
+    scores.projectMgmt += 1;
+  }
+
+  state.scores = scores;
+  return scores;
+}
+
+function tierize(scores) {
+  // sort modules
+  const arr = Object.entries(scores)
+    .map(([id, s]) => ({ id, score: s, ...MODULES[id] }))
+    .sort((a, b) => b.score - a.score);
+
+  const t1 = arr.filter(m => m.score >= 4);   // must build
+  const t2 = arr.filter(m => m.score >= 2 && m.score < 4); // next
+  const skip = arr.filter(m => m.score < 2);
+
+  return { t1, t2, skip, all: arr };
+}
+
+function totalPainScore(scores) {
+  return Object.values(scores).reduce((a, b) => a + b, 0);
+}
+
+function getVerdict(painScore, t1Count) {
+  if (painScore <= 4) {
+    return {
+      eyebrow: 'Verdict',
+      headline: ['You don\'t', { em: 'urgently' }, 'need a system.'],
+      sub: 'Your operations are running cleanly enough that adding software now would create more friction than it removes. Re-run this diagnostic in 6 months — or when volume jumps.',
+      tone: 'low'
+    };
+  }
+  if (painScore <= 10) {
+    return {
+      eyebrow: 'Verdict',
+      headline: ['Selective digitization is', { em: 'worth it' }, 'now.'],
+      sub: 'You\'re not yet buried, but specific friction points are quietly costing you money. Build the few modules that matter — skip the rest.',
+      tone: 'medium'
+    };
+  }
+  if (painScore <= 18) {
+    return {
+      eyebrow: 'Verdict',
+      headline: ['You\'re at the', { em: 'tipping point' }, '.'],
+      sub: 'The cost of staying manual is now higher than the cost of building. Your team is absorbing problems with overtime and goodwill — that\'s not free.',
+      tone: 'high'
+    };
+  }
+  return {
+    eyebrow: 'Verdict',
+    headline: ['You\'re losing', { em: 'visible money' }, 'to manual work.'],
+    sub: 'Multiple operational areas are simultaneously failing. The risk is no longer "should we build" — it\'s "what do we build first to stop the bleeding."',
+    tone: 'critical'
+  };
+}
+
+function getEngagementTier(t1Count) {
+  if (t1Count === 0) {
+    return {
+      label: 'Recommended next step',
+      value: 'Operations review',
+      range: '1-day diagnostic',
+      note: 'No build required yet. A short workshop maps your flows so you can spot tipping points early.'
+    };
+  }
+  if (t1Count === 1) {
+    return {
+      label: 'Recommended engagement',
+      value: 'Standard module build',
+      range: 'S$3,500 – S$15,000',
+      note: 'Single-module build, deployed in 4–8 weeks. Tight scope, fixed price, no scope creep.'
+    };
+  }
+  if (t1Count <= 3) {
+    return {
+      label: 'Recommended engagement',
+      value: 'Custom integrated build',
+      range: 'S$15,000 – S$30,000',
+      note: '2–3 connected modules, deployed in 8–14 weeks. We architect the data model first so the modules actually talk.'
+    };
+  }
+  return {
+    label: 'Recommended engagement',
+    value: 'Phased programme',
+    range: 'Multi-stage · Quote on scope',
+    note: '4+ modules implies a sequenced roadmap, not a single build. We start with the highest-leverage module and stage the rest over 6–12 months.'
+  };
+}
+
+/* ============================================================
+   RESULTS
+   ============================================================ */
+function computeAndShowResults() {
+  const scores = computeScores();
+  const { t1, t2, skip } = tierize(scores);
+  const pain = totalPainScore(scores);
+  const verdict = getVerdict(pain, t1.length);
+  const engagement = getEngagementTier(t1.length);
+  showResults({ scores, t1, t2, skip, pain, verdict, engagement });
+}
+
+function showResults(data) {
+  document.getElementById('screen-question').classList.remove('active');
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('progFill').style.width = '100%';
+
+  const screen = document.getElementById('screen-results');
+  screen.classList.add('active');
+
+  // verdict headline
+  const headlineHtml = data.verdict.headline.map(part => {
+    if (typeof part === 'string') return part;
+    if (part.em) return `<span class="em">${part.em}</span>`;
+    return '';
+  }).join(' ');
+
+  // tier 1 modules
+  const t1Html = data.t1.length ? `
+    <div class="module-grid">
+      ${data.t1.map(m => `
+        <div class="module">
+          <div class="module-top">
+            <div class="module-icon">${m.short}</div>
+            <div class="module-score">SCORE ${m.score}</div>
+          </div>
+          <div class="module-name">${m.name}</div>
+          <div class="module-why">${m.why}</div>
+        </div>
+      `).join('')}
+    </div>
+  ` : `<div class="empty-tier">No must-build modules at this stage. That's a healthy result — keep watching for volume or complexity tipping points.</div>`;
+
+  // tier 2
+  const t2Html = data.t2.length ? `
+    <div class="module-grid">
+      ${data.t2.map(m => `
+        <div class="module">
+          <div class="module-top">
+            <div class="module-icon">${m.short}</div>
+            <div class="module-score">SCORE ${m.score}</div>
+          </div>
+          <div class="module-name">${m.name}</div>
+          <div class="module-why">${m.why}</div>
+        </div>
+      `).join('')}
+    </div>
+  ` : `<div class="empty-tier">No second-priority modules — your secondary flows are holding up.</div>`;
+
+  // contradictions (ARIZ-style framing of top pains)
+  const contradictionList = buildContradictions(data.t1);
+
+  screen.innerHTML = `
+    <div class="verdict-block">
+      <div class="verdict-eyebrow">${data.verdict.eyebrow.toUpperCase()}</div>
+      <h2 class="verdict-headline">${headlineHtml}</h2>
+      <p class="verdict-sub">${data.verdict.sub}</p>
+      <div class="verdict-stats">
+        <div>
+          <div class="stat-num">${data.pain}</div>
+          <div class="stat-label">Operational pain index</div>
+        </div>
+        <div>
+          <div class="stat-num">${data.t1.length}</div>
+          <div class="stat-label">Tier-1 modules</div>
+        </div>
+        <div>
+          <div class="stat-num">${data.t2.length}</div>
+          <div class="stat-label">Tier-2 modules</div>
+        </div>
+      </div>
+    </div>
+
+    ${contradictionList ? `
+    <div class="section">
+      <div class="section-eyebrow">The contradictions you're carrying</div>
+      <h3 class="section-title">What you want · <span class="em">vs.</span> · what's costing you</h3>
+      <p class="section-lede">Every operational pain hides a contradiction. Listing them clearly is the first step to dissolving them — instead of trading one off against the other.</p>
+      ${contradictionList}
+    </div>
+    ` : ''}
+
+    <div class="section">
+      <div class="section-eyebrow">Tier 1 · Build now</div>
+      <h3 class="section-title">Modules that pay back <span class="em">first</span></h3>
+      <p class="section-lede">${data.t1.length ? 'These are the highest-pain areas based on your answers. Build these and most other problems shrink with them.' : 'Your operations don\'t have any module showing critical pain — a healthy place to be.'}</p>
+      ${t1Html}
+    </div>
+
+    <div class="section">
+      <div class="section-eyebrow">Tier 2 · Build next</div>
+      <h3 class="section-title">Wait, but watch</h3>
+      <p class="section-lede">These show real friction but aren't critical yet. Revisit after Tier 1 stabilizes — or if volume grows.</p>
+      ${t2Html}
+    </div>
+
+    <div class="section">
+      <div class="section-eyebrow">Engagement scope</div>
+      <h3 class="section-title">What this <span class="em">looks like</span> as a build</h3>
+      <div class="engagement">
+        <div class="engagement-row">
+          <div>
+            <div class="engagement-label">${data.engagement.label}</div>
+            <div class="engagement-value">${data.engagement.value}</div>
+          </div>
+          <div style="text-align:right">
+            <div class="engagement-label">Range</div>
+            <div class="engagement-value mono" style="font-size:1.05rem">${data.engagement.range}</div>
+          </div>
+        </div>
+        <div class="engagement-note">${data.engagement.note}</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h3 class="cta-headline">Want a <span class="em">human</span> to walk through this with you?</h3>
+      <p class="cta-sub">Send the result via WhatsApp. We'll respond within a working day with a no-obligation read on whether it makes sense to engage — or whether you should hold off.</p>
+      <div class="cta-row">
+        <a class="btn btn-paper" href="https://wa.me/6598943004?text=${encodeURIComponent(buildWhatsAppText(data))}" target="_blank" rel="noopener">
+          Send result via WhatsApp
+          <svg class="btn-arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <button class="btn btn-paper-ghost" onclick="window.print()">
+          Print / save as PDF
+        </button>
+        <button class="btn btn-paper-ghost" onclick="restart()">
+          Restart diagnostic
+        </button>
+      </div>
+    </div>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* --------- Contradictions (ARIZ-flavoured framing) --------- */
+const CONTRADICTIONS = {
+  inventory:   { want: 'Accurate stock without daily counts', cost: 'Stock-outs, over-ordering, working capital tied up' },
+  production:  { want: 'Visibility on every job in real time', cost: 'Hours lost asking, calling, walking the floor' },
+  crm:         { want: 'Faster quotes that still feel custom', cost: 'Lost deals to whoever responded first' },
+  customer:    { want: 'Customers who don\'t need to chase', cost: 'Phone calls, escalations, eroded trust' },
+  reporting:   { want: 'Decisions on real-time data', cost: 'Decisions on month-old gut feel' },
+  finance:     { want: 'Faster invoicing, cleaner books', cost: 'Cash arriving late, GST headaches' },
+  procurement: { want: 'Suppliers held to clear terms', cost: 'Verbal POs, missed deliveries, no leverage' },
+  hr:          { want: 'Fair OT pay without admin burden', cost: 'Errors, disputes, payroll surprises' },
+  quality:     { want: 'Fewer defects without slowing down', cost: 'Rework, rejects, customer complaints' },
+  maintenance: { want: 'Equipment uptime without over-servicing', cost: 'Breakdowns mid-job, scrambles, downtime' },
+  document:    { want: 'Right file in seconds, every time', cost: 'Hours hunting, wrong revision used' },
+  projectMgmt: { want: 'Projects on time and on margin', cost: 'Scope creep, surprises at handover' }
+};
+
+function buildContradictions(tier1) {
+  if (!tier1.length) return '';
+  return tier1.slice(0, 4).map(m => {
+    const c = CONTRADICTIONS[m.id];
+    if (!c) return '';
+    return `
+      <div class="contradiction">
+        <div><strong>${c.want}</strong></div>
+        <div class="contradiction-arrow">VS.</div>
+        <div style="color:var(--muted)">${c.cost}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* --------- WhatsApp text --------- */
+function buildWhatsAppText(data) {
+  const t1Names = data.t1.map(m => '• ' + m.name).join('\n') || '• None';
+  const t2Names = data.t2.map(m => '• ' + m.name).join('\n') || '• None';
+  return `Hi Velo Working — I just completed the operations diagnostic.
+
+VERDICT
+Pain index: ${data.pain}
+Engagement: ${data.engagement.value} (${data.engagement.range})
+
+TIER 1 — BUILD NOW
+${t1Names}
+
+TIER 2 — BUILD NEXT
+${t2Names}
+
+Profile: ${state.profile.industry || '—'} / ${state.profile.headcount || '—'} people / ${state.profile.volume || '—'} volume
+
+Can we have a quick conversation?`;
+}
+
+/* --------- Restart --------- */
+function restart() {
+  state = { current: 0, answers: {}, scores: {}, profile: {} };
+  document.getElementById('screen-results').classList.remove('active');
+  document.getElementById('screen-intro').classList.add('active');
+  document.getElementById('progressWrap').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* --------- Keyboard nav --------- */
+document.addEventListener('keydown', (e) => {
+  const qActive = document.getElementById('screen-question').classList.contains('active');
+  if (!qActive) return;
+  const q = QUESTIONS[state.current];
+  if (!q) return;
+  // A/B/C/D for options
+  const upper = e.key.toUpperCase();
+  if (['A','B','C','D','E'].includes(upper)) {
+    const opt = q.options.find(o => o.key === upper);
+    if (opt) selectOption(q, upper);
+  }
+  if (e.key === 'Enter') {
+    if (state.answers[q.id]) goNext();
+  }
+  if (e.key === 'ArrowLeft') goBack();
+});
+</script>
 </body>
 </html>
