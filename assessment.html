@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Assessment — Velo Working</title>
+
+<meta name="description" content="Book a Velo Working operations assessment. A two-week diagnostic of how work actually flows through your business — written report, fixed-fee proposal, no sales pitch." />
+<link rel="canonical" href="https://www.veloworking.com/assessment.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&family=Libre+Baskerville:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F5F0'/%3E%3Cg fill='%230A0A0A'%3E%3Crect x='14.5' y='6' width='3' height='20'/%3E%3Cpath d='M16 4 L10 10 L22 10 Z'/%3E%3Cpath d='M16 28 L10 22 L22 22 Z'/%3E%3Cpath d='M4 16 L10 10 L10 22 Z'/%3E%3Cpath d='M28 16 L22 10 L22 22 Z'/%3E%3C/g%3E%3C/svg%3E" />
+
+<style>
+:root {
+  --ink: #0A0A0A;
+  --paper: #F7F5F0;
+  --paper-soft: #EDEAE2;
+  --blue: #1317E4;
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-dim: rgba(10, 10, 10, 0.66);
+  --fg-ghost: rgba(10, 10, 10, 0.46);
+  --rule: rgba(10, 10, 10, 0.10);
+  --rule-strong: rgba(10, 10, 10, 0.20);
+  --f-display: "DM Sans", system-ui, sans-serif;
+  --f-accent: "Libre Baskerville", Georgia, serif;
+  --f-body: "DM Sans", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  --max: 1440px;
+  --gut: clamp(24px, 6vw, 120px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.55;
+}
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gut); padding-right: var(--gut); }
+
+.mono {
+  font-family: var(--f-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim);
+}
+
+.italic-accent { font-family: var(--f-accent); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.accent--blue { color: var(--blue); }
+
+h1, h2 { margin: 0; font-family: var(--f-display); font-weight: 800; letter-spacing: -0.035em; line-height: 0.96; color: var(--fg); }
+h1 { font-size: clamp(48px, 9vw, 120px); font-weight: 900; }
+h2 { font-size: clamp(32px, 4.5vw, 56px); }
+p { margin: 0 0 1rem; }
+
+.cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 26px; border-radius: 999px;
+  font-weight: 500; font-size: 15px; white-space: nowrap;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.cta--primary { background: var(--blue); color: var(--paper); }
+.cta--primary:hover { transform: translateY(-2px); }
+.cta--ghost { border: 1px solid var(--rule-strong); color: var(--fg); }
+.cta--ghost:hover { border-color: var(--fg); }
+.cta .arr { display: inline-block; transition: transform 220ms ease; }
+.cta:hover .arr { transform: translateX(4px); }
+
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(247, 245, 240, 0.85); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-top: 18px; padding-bottom: 18px; }
+.logo { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.02em; font-size: 18px; }
+.nav__links { display: flex; align-items: center; gap: 28px; }
+.nav__link { font-size: 14px; color: var(--fg-dim); transition: color 180ms ease; }
+.nav__link:hover { color: var(--fg); }
+.nav__cta {
+  background: var(--ink); color: var(--paper); padding: 10px 18px;
+  border-radius: 999px; font-size: 13px; transition: background 180ms ease;
+}
+.nav__cta:hover { background: var(--blue); }
+@media (max-width: 760px) { .nav__links a:not(.nav__cta) { display: none; } }
+
+.hero { padding: clamp(80px, 14vw, 160px) 0 clamp(60px, 10vw, 120px); }
+.hero__eyebrow { margin-bottom: 24px; }
+.hero h1 { margin-bottom: 28px; max-width: 18ch; }
+.hero p { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; color: var(--fg-dim); max-width: 58ch; margin-bottom: 36px; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.section { padding: clamp(64px, 10vw, 120px) 0; border-top: 1px solid var(--rule); }
+.section__head { max-width: 64ch; margin-bottom: 56px; }
+.section__eyebrow { margin-bottom: 18px; }
+
+.steps { display: grid; gap: 28px; }
+.step { display: grid; grid-template-columns: 80px 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--rule); }
+.step:first-child { border-top: 0; padding-top: 0; }
+.step__num { font-family: var(--f-mono); font-size: 13px; color: var(--blue); letter-spacing: 0.14em; }
+.step h2 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+.step p { color: var(--fg-dim); }
+@media (max-width: 600px) { .step { grid-template-columns: 1fr; gap: 10px; } }
+
+.cta-block { padding: clamp(48px, 8vw, 88px) 0; border-top: 1px solid var(--rule); }
+.cta-block h2 { max-width: 22ch; margin-bottom: 28px; }
+.cta-block .ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.footer { border-top: 1px solid var(--rule); padding: 48px 0; color: var(--fg-ghost); font-family: var(--f-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer a { color: var(--fg-ghost); }
+.footer a:hover { color: var(--fg); }
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a href="index.html" class="logo">Velo Working</a>
+    <div class="nav__links">
+      <a href="index.html#approach" class="nav__link">Approach</a>
+      <a href="index.html#modules" class="nav__link">Modules</a>
+      <a href="index.html#positioning" class="nav__link">Why us</a>
+      <a href="assessment.html" class="nav__link">Assessment</a>
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="nav__cta" target="_blank" rel="noopener">Talk to Ronnie</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="mono hero__eyebrow">Velo Working · Operations assessment</div>
+    <h1>Walk the floor. Quantify the <span class="italic-accent accent--blue">cost</span>.</h1>
+    <p>A two-week diagnostic of how work actually flows through your business. We watch the real process — not the org chart — and put a number on the hidden cost of the status quo. You get a written report, honest, with a fixed-scope, fixed-price proposal attached. No sales pitch.</p>
+    <div class="hero__ctas">
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="cta cta--primary" target="_blank" rel="noopener">Book an assessment <span class="arr">→</span></a>
+      <a href="index.html#approach" class="cta cta--ghost">See the approach</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="mono">What's in it</div>
+      <h2>Two weeks. One honest report.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">01</div>
+        <div>
+          <h2>On-site observation</h2>
+          <p>We spend time with the people who actually do the work — operations, procurement, production, finance. We watch how orders move, where information lives, and where it gets lost.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">02</div>
+        <div>
+          <h2>Process mapping</h2>
+          <p>We map the current flow end-to-end and mark every handoff that depends on memory, spreadsheets, or chat messages. These are the points where work stalls and cost accumulates.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">03</div>
+        <div>
+          <h2>Cost quantification</h2>
+          <p>We put a number on the status quo: hours lost to rework, duplicate data entry, chasing approvals, looking for files. The number is conservative and defensible.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">04</div>
+        <div>
+          <h2>Written report &amp; proposal</h2>
+          <p>You receive a written report — what we saw, what it costs, what to fix first — with a fixed-scope, fixed-price proposal attached. You decide what to do next. No retainer, no obligation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>Ready when you are.</h2>
+    <div class="ctas">
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20book%20an%20operations%20assessment." class="cta cta--primary" target="_blank" rel="noopener">Book an assessment <span class="arr">→</span></a>
+      <a href="mailto:ronnie.yap@veloworking.com" class="cta cta--ghost">Email Ronnie</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; width: 100%;">
+    <span>© 2026 Velo Working Pte. Ltd.</span>
+    <a href="index.html">← Back to home</a>
+  </div>
+</footer>
+
+</body>
+</html>
