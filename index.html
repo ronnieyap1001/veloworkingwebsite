@@ -468,6 +468,29 @@ h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.0
 @media (max-width: 900px) { .position { grid-template-columns: 1fr; gap: 18px; padding: 48px 0; } }
 
 /* ================================================================
+   PARTNERSHIP — Jodoo
+================================================================ */
+.partnership { border-top: 1px solid var(--rule); background: var(--bg-alt); padding: clamp(72px, 11vw, 132px) 0; }
+.partnership__inner { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(48px, 7vw, 104px); align-items: center; }
+.partnership__eyebrow { display: inline-block; margin-bottom: 22px; }
+.partnership__title { font-family: var(--f-display); font-weight: 800; font-size: clamp(36px, 5.4vw, 72px); letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 26px; color: var(--fg); max-width: 16ch; }
+.partnership__title .italic-accent { font-weight: 400; }
+.partnership__lede { color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; letter-spacing: -0.01em; max-width: 48ch; margin-bottom: 22px; }
+.partnership__copy p { color: var(--fg-dim); font-size: 16px; line-height: 1.6; max-width: 50ch; }
+.partnership__meta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 28px; }
+.partnership__meta div { display: flex; flex-direction: column; gap: 6px; }
+.partnership__meta .mono { color: var(--fg-ghost); }
+.partnership__meta strong { font-family: var(--f-display); font-weight: 700; color: var(--fg); font-size: 15px; letter-spacing: -0.005em; }
+.partnership__card { background: var(--bg); border: 1px solid var(--rule); padding: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; min-height: 280px; transition: border-color 220ms ease; }
+.partnership__card:hover { border-color: var(--rule-strong); }
+.partnership__card img { max-width: min(280px, 80%); height: auto; display: block; }
+.partnership__card-tag { font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-ghost); }
+@media (max-width: 900px) {
+  .partnership__inner { grid-template-columns: 1fr; gap: 48px; }
+  .partnership__card { min-height: 220px; }
+}
+
+/* ================================================================
    MECHANISM TRIANGLE
 ================================================================ */
 .mechanism { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
@@ -644,6 +667,7 @@ h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.0
       <a href="#approach" class="nav__link">Approach</a>
       <a href="#modules" class="nav__link">Modules</a>
       <a href="#positioning" class="nav__link">Why us</a>
+      <a href="#partners" class="nav__link">Partners</a>
       <a href="#manifesto" class="nav__link">Manifesto</a>
       <a href="assessment/assessment.html" class="nav__link">Assessment</a>
       <div class="nav__dropdown" id="diaryDropdown">
@@ -1194,6 +1218,43 @@ h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.0
 
 
 <!-- ================================================================
+  PARTNERSHIP — Jodoo
+================================================================ -->
+<section class="partnership" id="partners">
+  <div class="wrap">
+    <div class="partnership__inner">
+      <div class="partnership__copy reveal">
+        <div class="section__eyebrow mono partnership__eyebrow">Strategic partnership</div>
+        <h2 class="partnership__title">Engineered with <span class="italic-accent accent--blue">Jodoo</span>.</h2>
+        <p class="partnership__lede">We've partnered with Jodoo — Asia's leading no-code workflow platform — to put enterprise-grade operational infrastructure in the hands of every SME we serve.</p>
+        <p>Their engine, our engineering. Jodoo gives us a battle-tested foundation trusted by tens of thousands of companies across the region; we configure, integrate and hand it back to your team. The result: faster deployments, lower total cost of ownership, and zero vendor lock-in — because the platform is yours to run.</p>
+
+        <div class="partnership__meta">
+          <div>
+            <span class="mono">Foundation</span>
+            <strong>Jodoo no-code platform</strong>
+          </div>
+          <div>
+            <span class="mono">Delivery</span>
+            <strong>Velo Working engineering</strong>
+          </div>
+          <div>
+            <span class="mono">Ownership</span>
+            <strong>Your team, day one</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership__card reveal" aria-label="Jodoo — strategic platform partner">
+        <span class="partnership__card-tag">Platform partner</span>
+        <img src="asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
   MECHANISM TRIANGLE — soft
 ================================================================ -->
 <section class="section section--divider section--soft" id="mechanism">
@@ -1372,6 +1433,7 @@ h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -0.0
         <a href="#approach">Approach</a>
         <a href="#modules">Modules</a>
         <a href="#positioning">Why us</a>
+        <a href="#partners">Partners</a>
         <a href="#manifesto">Manifesto</a>
         <a href="assessment/assessment.html">Assessment</a>
         <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
