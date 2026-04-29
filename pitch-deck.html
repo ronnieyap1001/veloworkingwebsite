@@ -4,6 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Velo Working · Pitch Deck v3 · Print Edition</title>
+
+<!-- Favicon — Velo Working mark -->
+<link rel="icon" type="image/svg+xml" href="asset/favicon.svg" />
+<link rel="apple-touch-icon" href="asset/favicon.svg" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -145,18 +150,72 @@ body{
 .hud{
   position:fixed; bottom:18px; left:50%; transform:translateX(-50%);
   display:flex; gap:8px; z-index:100;
+  background:rgba(255,255,255,0.92); backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border:1px solid var(--rule-soft); border-radius:999px; padding:6px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.10);
 }
 .hud button{
   font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-  border:1px solid #1f1f1f; background:#fff; color:#1f1f1f;
-  padding:10px 14px; cursor:pointer;
+  border:0; background:transparent; color:#1f1f1f;
+  padding:10px 14px; cursor:pointer; border-radius:999px;
   transition:all .15s ease;
 }
-.hud button:hover{background:var(--blue); color:#fff; border-color:var(--blue)}
+.hud button:hover{background:var(--blue); color:#fff}
 .hud .sep{opacity:.4; align-self:center; color:#1f1f1f}
+.hud .slide-count{
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  color:var(--muted); padding:10px 6px; align-self:center;
+}
 .progress{
   position:fixed; top:0; left:0; height:2px; background:var(--blue);
   z-index:30; width:0%; transition:width .3s ease;
+}
+
+/* Mobile tap zones — left half prev, right half next */
+.tap-zone{
+  position:fixed; top:0; bottom:80px; width:30%; z-index:40;
+  display:none; -webkit-tap-highlight-color:transparent;
+}
+.tap-zone.prev{ left:0; }
+.tap-zone.next{ right:0; }
+
+/* Rotation / mobile hint — portrait only */
+.mobile-hint{
+  display:none;
+  position:fixed; top:14px; left:50%; transform:translateX(-50%);
+  z-index:60; max-width:calc(100vw - 28px);
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border:1px solid var(--rule-soft); border-radius:8px;
+  padding:10px 14px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); text-align:center; line-height:1.45;
+  box-shadow:0 6px 24px rgba(0,0,0,0.08);
+}
+.mobile-hint a{ color:var(--blue); text-decoration:none; }
+
+/* ============= MOBILE LAYOUT ============= */
+@media (max-width:768px){
+  body{ background:#f4f1ea; }
+  .deck-wrapper{ padding:8px 0 88px; align-items:center; min-height:100dvh; }
+  .stage{ background:#fff; }
+  .hud{
+    bottom:14px; gap:4px; padding:6px;
+    width:calc(100vw - 24px); max-width:520px;
+    justify-content:space-between;
+  }
+  .hud button{ flex:1; padding:12px 10px; font-size:11px; }
+  .hud .sep{ display:none; }
+  .hud .slide-count{ flex-shrink:0; padding:10px 8px; }
+  .hud .hud-print{ display:none; }
+  .tap-zone{ display:block; }
+  .mobile-hint{ display:block; }
+  .mobile-hint.is-hidden{ display:none; }
+}
+@media (max-width:768px) and (orientation:landscape){
+  .mobile-hint{ display:none; }
 }
 
 /* Cover grid lines — light gray, prints near-zero ink */
@@ -1543,12 +1602,21 @@ body{
 </div>
 </div>
 
+<div class="mobile-hint" id="mobileHint" role="status">
+  Best viewed on desktop, or rotate device to landscape · <a href="index.html">Back to site</a>
+</div>
+
+<button class="tap-zone prev" type="button" aria-label="Previous slide" onclick="nav(-1)"></button>
+<button class="tap-zone next" type="button" aria-label="Next slide" onclick="nav(1)"></button>
+
 <div class="hud">
-  <button onclick="nav(-1)">← Prev</button>
+  <button onclick="nav(-1)" aria-label="Previous slide">← Prev</button>
   <span class="sep">·</span>
-  <button onclick="nav(1)">Next →</button>
+  <span class="slide-count" id="slideCount">1 / 21</span>
   <span class="sep">·</span>
-  <button onclick="printAll()">Print / Save as PDF</button>
+  <button onclick="nav(1)" aria-label="Next slide">Next →</button>
+  <span class="sep">·</span>
+  <button class="hud-print" onclick="printAll()" aria-label="Print or save as PDF">Print / PDF</button>
 </div>
 
 <script>
@@ -1557,10 +1625,13 @@ body{
   const progress = document.getElementById('progress');
   const stage = document.getElementById('stage');
   const scaleWrap = document.getElementById('scaleWrap');
+  const slideCount = document.getElementById('slideCount');
+  const mobileHint = document.getElementById('mobileHint');
   let i = 0;
 
   function fit(){
-    const pad = 32;
+    // Tighter padding on small screens to maximize legibility.
+    const pad = window.innerWidth < 768 ? 12 : 32;
     const scale = Math.min(
       (window.innerWidth - pad) / 1440,
       1
@@ -1581,12 +1652,35 @@ body{
     i = Math.max(0, Math.min(slides.length - 1, n));
     slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
     progress.style.width = ((i / (slides.length - 1)) * 100) + '%';
+    if (slideCount) slideCount.textContent = (i + 1) + ' / ' + slides.length;
+    if (mobileHint && i > 0) mobileHint.classList.add('is-hidden');
     requestAnimationFrame(() => {
       fit();
       window.scrollTo({top:0, behavior:'smooth'});
     });
   }
   window.nav = function(d){ show(i + d); };
+
+  // Touch swipe navigation (mobile)
+  let touchStartX = 0, touchStartY = 0, touchStartT = 0;
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchStartT = Date.now();
+  }, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (!touchStartT) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dt = Date.now() - touchStartT;
+    touchStartT = 0;
+    // Horizontal swipe: >50px, mostly horizontal, under 600ms
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4 && dt < 600){
+      show(i + (dx < 0 ? 1 : -1));
+    }
+  }, {passive:true});
 
   // For print: temporarily reveal all slides, trigger print, restore.
   window.printAll = function(){
