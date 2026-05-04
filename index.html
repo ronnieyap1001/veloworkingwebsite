@@ -6,20 +6,20 @@
 <title>Velo Working — Operations systems SMEs actually own</title>
 
 <!-- SEO -->
-<meta name="description" content="Velo Working helps SMEs in Singapore and Malaysia automate and digitise operations with no-code software and hardware your own team runs. Fixed fee. No subscription. No vendor lock-in." />
+<meta name="description" content="Velo Working — official Jodoo partner in Singapore. We engineer operations systems for SMEs on Jodoo, Asia's leading no-code workflow platform. Fixed fee. No subscription. No vendor lock-in." />
 <meta name="author" content="Velo Working Pte. Ltd." />
 <link rel="canonical" href="https://www.veloworking.com/" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Velo Working — Operations systems SMEs actually own" />
-<meta property="og:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in. Built for SMEs in Singapore and Malaysia." />
+<meta property="og:title" content="Velo Working — Engineered with Jodoo. Owned by your team." />
+<meta property="og:description" content="Official Jodoo partner. Enterprise-grade no-code operations infrastructure for SMEs in Singapore and Malaysia. Fixed scope. Fixed fee. No vendor lock-in." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.veloworking.com/" />
 <meta property="og:site_name" content="Velo Working" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Velo Working — Operations systems SMEs actually own" />
-<meta name="twitter:description" content="No-code business systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in." />
+<meta name="twitter:title" content="Velo Working — Engineered with Jodoo. Owned by your team." />
+<meta name="twitter:description" content="Official Jodoo partner. No-code operations systems your team actually owns. Fixed scope. Fixed fee. No vendor lock-in." />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,7 +47,13 @@
     "addressCountry": "SG"
   },
   "founder": { "@type": "Person", "name": "Ronnie Yap" },
-  "description": "Velo Working helps SMEs with non-continuous and discrete business systems, providing a full solution in automating and digitising operations with no-code software and hardware that is cost-efficient and self-manageable by their own employees."
+  "description": "Velo Working is the official Jodoo partner in Singapore, helping SMEs automate and digitise operations on Jodoo — Asia's leading no-code workflow platform — with software and hardware that is cost-efficient and self-manageable by their own employees.",
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Jodoo",
+    "url": "https://jodoo.com",
+    "description": "Asia's leading no-code workflow platform"
+  }
 }
 </script>
 
@@ -181,6 +187,17 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 .nav__links { display: flex; align-items: center; gap: 28px; }
 .nav__link { font-size: 12.5px; color: var(--fg-dim); transition: color 180ms ease; }
 .nav__link:hover { color: var(--fg); }
+.nav__link--accent {
+  color: var(--blue);
+  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.nav__link--accent::before {
+  content: ''; width: 6px; height: 6px; border-radius: 999px;
+  background: var(--blue); display: inline-block;
+  box-shadow: 0 0 0 3px rgba(19, 23, 228, 0.18);
+}
+.nav__link--accent:hover { color: var(--blue); opacity: 0.82; }
 .nav__cta {
   padding: 8px 16px; background: var(--ink); color: var(--paper);
   border-radius: 999px; font-size: 12px; font-weight: 500;
@@ -281,6 +298,36 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 .hero h1 .accent--blue { font-weight: 400; }
 .hero__sub { font-size: clamp(15px, 1.3vw, 18px); line-height: 1.55; color: var(--fg-dim); max-width: 54ch; margin-bottom: 32px; }
 .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero__partner {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-top: 36px; padding: 12px 18px;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--blue);
+  border-radius: 4px;
+  max-width: 100%;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.hero__partner:hover { border-color: var(--rule-strong); border-left-color: var(--blue); transform: translateY(-1px); }
+.hero__partner-tag {
+  color: var(--blue); flex-shrink: 0;
+  font-size: 9.5px; letter-spacing: 0.18em;
+}
+.hero__partner-divider { width: 1px; height: 14px; background: var(--rule-strong); flex-shrink: 0; }
+.hero__partner-text {
+  font-size: 13px; color: var(--fg);
+  line-height: 1.4;
+  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.hero__partner-logo { height: 16px; width: auto; display: inline-block; vertical-align: middle; }
+.hero__partner-arr { color: var(--blue); font-family: var(--f-mono); transition: transform 220ms ease; flex-shrink: 0; }
+.hero__partner:hover .hero__partner-arr { transform: translateX(4px); }
+@media (max-width: 560px) {
+  .hero__partner { gap: 10px; padding: 10px 14px; }
+  .hero__partner-divider { display: none; }
+  .hero__partner-text { font-size: 12px; }
+}
 
 .hero__visual { position: relative; width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
 .hero__visual svg { width: 100%; height: auto; }
@@ -469,26 +516,76 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 @media (max-width: 900px) { .position { grid-template-columns: 1fr; gap: 18px; padding: 48px 0; } }
 
 /* ================================================================
-   PARTNERSHIP — Jodoo
+   PARTNERSHIP — Jodoo (flagship section)
 ================================================================ */
-.partnership { border-top: 1px solid var(--rule); background: var(--bg-alt); padding: clamp(60px, 9vw, 108px) 0; }
+.partnership {
+  border-top: 1px solid var(--rule);
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(19, 23, 228, 0.04), transparent 60%),
+    radial-gradient(ellipse at 100% 100%, rgba(19, 23, 228, 0.05), transparent 55%),
+    var(--bg-alt);
+  padding: clamp(72px, 10vw, 132px) 0;
+  position: relative;
+}
+.partnership::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--blue); opacity: 0.65;
+}
+.partnership__head { margin-bottom: clamp(40px, 5vw, 72px); }
 .partnership__inner { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
-.partnership__eyebrow { display: inline-block; margin-bottom: 18px; }
-.partnership__title { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 4.2vw, 56px); letter-spacing: -0.035em; line-height: 1.04; margin: 0 0 22px; color: var(--fg); max-width: 16ch; }
+.partnership__eyebrow { display: inline-block; margin-bottom: 20px; color: var(--blue); }
+.partnership__title { font-family: var(--f-display); font-weight: 800; font-size: clamp(34px, 5.4vw, 76px); letter-spacing: -0.04em; line-height: 1.02; margin: 0 0 22px; color: var(--fg); max-width: 18ch; }
 .partnership__title .italic-accent { font-weight: 400; }
-.partnership__lede { color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.5; letter-spacing: -0.01em; max-width: 50ch; margin-bottom: 18px; }
-.partnership__copy p { color: var(--fg-dim); font-size: 14px; line-height: 1.65; max-width: 52ch; }
-.partnership__meta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 24px; }
+.partnership__lede { color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: clamp(16px, 1.4vw, 20px); line-height: 1.45; letter-spacing: -0.01em; max-width: 50ch; margin-bottom: 18px; }
+.partnership__copy p { color: var(--fg-dim); font-size: 14.5px; line-height: 1.65; max-width: 52ch; }
+.partnership__meta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 28px; }
 .partnership__meta div { display: flex; flex-direction: column; gap: 6px; }
 .partnership__meta .mono { color: var(--fg-ghost); }
 .partnership__meta strong { font-family: var(--f-display); font-weight: 700; color: var(--fg); font-size: 13.5px; letter-spacing: -0.005em; }
-.partnership__card { background: var(--bg); border: 1px solid var(--rule); padding: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; min-height: 280px; transition: border-color 220ms ease; }
-.partnership__card:hover { border-color: var(--rule-strong); }
-.partnership__card img { max-width: min(280px, 80%); height: auto; display: block; }
-.partnership__card-tag { font-family: var(--f-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-ghost); }
+
+.partnership__card {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  padding: clamp(44px, 5vw, 72px) clamp(32px, 4vw, 56px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 22px; min-height: 320px;
+  position: relative;
+  transition: border-color 220ms ease, transform 220ms ease;
+  box-shadow: 0 1px 0 rgba(10,10,10,0.02);
+}
+.partnership__card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--blue);
+}
+.partnership__card:hover { border-color: var(--rule-strong); transform: translateY(-2px); }
+.partnership__card img { max-width: min(300px, 82%); height: auto; display: block; }
+.partnership__card-tag { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); }
+.partnership__card-foot { color: var(--fg-dim); font-size: 9.5px; letter-spacing: 0.16em; max-width: 28ch; text-align: center; line-height: 1.5; }
+
+.partnership__stats {
+  margin-top: clamp(48px, 6vw, 80px);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.partnership__stat { background: var(--bg); padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.partnership__stat-num {
+  font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em;
+  color: var(--blue); line-height: 1.05;
+}
+.partnership__stat-label { color: var(--fg-dim); line-height: 1.5; }
+
+@media (max-width: 1024px) {
+  .partnership__stats { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
   .partnership__inner { grid-template-columns: 1fr; gap: 48px; }
-  .partnership__card { min-height: 220px; }
+  .partnership__card { min-height: 240px; }
+}
+@media (max-width: 560px) {
+  .partnership__stats { grid-template-columns: 1fr; }
 }
 
 /* ================================================================
@@ -555,6 +652,18 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 .footer__brand .logo { margin-bottom: 18px; }
 .footer__brand .logo__svg { height: 36px; }
 .footer__brand p { color: var(--fg-dim); max-width: 44ch; font-size: 13px; line-height: 1.6; }
+.footer__partner {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin-top: 22px; padding: 10px 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--blue);
+  border-radius: 4px;
+  transition: border-color 200ms ease;
+}
+.footer__partner:hover { border-color: var(--rule-strong); }
+.footer__partner-tag { color: var(--blue); font-size: 9.5px; letter-spacing: 0.18em; }
+.footer__partner-logo { height: 18px; width: auto; display: block; }
 .footer__col h4 { font-family: var(--f-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-ghost); margin: 0 0 14px; }
 .footer__col a, .footer__col span { display: block; color: var(--fg); font-size: 13px; margin-bottom: 9px; line-height: 1.55; }
 .footer__col a:hover { color: var(--blue); }
@@ -665,10 +774,10 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
     </a>
 
     <div class="nav__links" id="navLinks">
+      <a href="#partners" class="nav__link nav__link--accent">Jodoo Partner</a>
       <a href="#approach" class="nav__link">Approach</a>
       <a href="#modules" class="nav__link">Modules</a>
       <a href="#positioning" class="nav__link">Why us</a>
-      <a href="#partners" class="nav__link">Partners</a>
       <a href="#manifesto" class="nav__link">Manifesto</a>
       <a href="assessment/assessment.html" class="nav__link">Assessment</a>
       <div class="nav__dropdown" id="diaryDropdown">
@@ -706,6 +815,12 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
         <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20our%20operations." class="cta cta--primary" target="_blank" rel="noopener">Talk to Ronnie <span class="arr">→</span></a>
         <a href="#approach" class="cta cta--ghost">See the approach</a>
       </div>
+      <a href="#partners" class="hero__partner reveal" aria-label="Engineered with Jodoo — see our strategic partnership">
+        <span class="hero__partner-tag mono">Strategic platform partner</span>
+        <span class="hero__partner-divider" aria-hidden="true"></span>
+        <span class="hero__partner-text">Engineered with <img src="asset/jodoo_logo.png" alt="Jodoo" class="hero__partner-logo" loading="lazy" /> — Asia's leading no-code workflow platform.</span>
+        <span class="hero__partner-arr" aria-hidden="true">→</span>
+      </a>
     </div>
 
     <!-- Hero visual: module network on paper -->
@@ -906,12 +1021,72 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 
 
 <!-- ================================================================
+  PARTNERSHIP — Jodoo  (Section 04 — promoted to flagship position)
+================================================================ -->
+<section class="partnership" id="partners">
+  <div class="wrap">
+    <div class="partnership__head">
+      <div class="section__eyebrow mono partnership__eyebrow">Section 04 / Strategic platform partner</div>
+      <h2 class="partnership__title reveal">Engineered with <span class="italic-accent accent--blue">Jodoo</span>.<br>Owned by <span class="italic-accent accent--blue">your team</span>.</h2>
+    </div>
+
+    <div class="partnership__inner">
+      <div class="partnership__copy reveal">
+        <p class="partnership__lede">Velo Working is the official Jodoo partner in Singapore. We engineer SME operations on Jodoo — Asia's leading no-code workflow platform — and hand the keys to your team.</p>
+        <p>Their engine, our engineering. Jodoo is a battle-tested foundation trusted by tens of thousands of companies across the region. We configure, integrate, and train your staff to run it. The result: faster deployments, lower total cost of ownership, and zero vendor lock-in — because the platform is yours to operate, extend, and own.</p>
+
+        <div class="partnership__meta">
+          <div>
+            <span class="mono">Foundation</span>
+            <strong>Jodoo no-code platform</strong>
+          </div>
+          <div>
+            <span class="mono">Delivery</span>
+            <strong>Velo Working engineering</strong>
+          </div>
+          <div>
+            <span class="mono">Ownership</span>
+            <strong>Your team, day one</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership__card reveal" aria-label="Jodoo — strategic platform partner">
+        <span class="partnership__card-tag">Official platform partner</span>
+        <img src="asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
+        <span class="partnership__card-foot mono">Asia's leading no-code workflow platform</span>
+      </div>
+    </div>
+
+    <div class="partnership__stats reveal" aria-label="Why Jodoo">
+      <div class="partnership__stat">
+        <span class="partnership__stat-num">80,000+</span>
+        <span class="partnership__stat-label mono">Companies on Jodoo across Asia</span>
+      </div>
+      <div class="partnership__stat">
+        <span class="partnership__stat-num">No-code</span>
+        <span class="partnership__stat-label mono">Drag-and-drop — your staff configure it</span>
+      </div>
+      <div class="partnership__stat">
+        <span class="partnership__stat-num">Zero</span>
+        <span class="partnership__stat-label mono">Vendor lock-in. Yours to run, day one.</span>
+      </div>
+      <div class="partnership__stat">
+        <span class="partnership__stat-num">Enterprise-grade</span>
+        <span class="partnership__stat-label mono">Audit trail · permissions · API · BI built in</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
   CONCEPT — soft section
 ================================================================ -->
 <section class="section section--divider section--soft" id="concept">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 04 / What we offer</div>
+      <div class="section__eyebrow mono">Section 05 / What we offer</div>
       <h2 class="section__title reveal">Not a piece of software. A way of <span class="italic-accent accent--blue">operating</span>.</h2>
       <p class="section__intro reveal">Six principles that separate what we build from what most vendors sell.</p>
     </div>
@@ -950,7 +1125,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
           <svg class="principle__glyph" aria-hidden="true"><use href="#g-coin"/></svg>
         </div>
         <h3>Lean software costs.</h3>
-        <p>Built on established open-source operational platforms — no heavy licence fees. Global engineering talent without the local agency overhead. You pay when there's work. Nothing when there isn't.</p>
+        <p>Built on Jodoo — a battle-tested no-code platform trusted across Asia — instead of heavy enterprise licence fees. Global engineering talent without the local agency overhead. You pay when there's work. Nothing when there isn't.</p>
       </article>
 
       <article class="principle reveal">
@@ -981,9 +1156,9 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 <section class="section section--divider" id="modules">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 05 / What we build</div>
+      <div class="section__eyebrow mono">Section 06 / What we build</div>
       <h2 class="section__title reveal">Twelve modules. One <span class="italic-accent accent--blue">flow</span>.</h2>
-      <p class="section__intro reveal">A single customer order crosses every module in the system — without the data ever being re-entered. That's what "integrated" actually means.</p>
+      <p class="section__intro reveal">Every module configured on Jodoo and integrated into a single database. A customer order crosses the entire system — without the data ever being re-entered. That's what "integrated" actually means.</p>
     </div>
 
     <!-- Process flow diagram -->
@@ -1145,7 +1320,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 <section class="section section--divider section--soft" id="approach">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 06 / How we work</div>
+      <div class="section__eyebrow mono">Section 07 / How we work</div>
       <h2 class="section__title reveal">Diagnose. Implement. Hand it <span class="italic-accent accent--blue">back</span>.</h2>
       <p class="section__intro reveal">Ninety days from first meeting to your team running the system themselves. Fixed scope. Fixed fee. Written in plain English before we start.</p>
     </div>
@@ -1187,7 +1362,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 <section class="section section--divider" id="positioning">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 07 / Why Velo Working</div>
+      <div class="section__eyebrow mono">Section 08 / Why Velo Working</div>
       <h2 class="section__title reveal">Three things nobody else offers at SME <span class="italic-accent accent--blue">scale</span>.</h2>
     </div>
 
@@ -1219,49 +1394,12 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 
 
 <!-- ================================================================
-  PARTNERSHIP — Jodoo
-================================================================ -->
-<section class="partnership" id="partners">
-  <div class="wrap">
-    <div class="partnership__inner">
-      <div class="partnership__copy reveal">
-        <div class="section__eyebrow mono partnership__eyebrow">Strategic partnership</div>
-        <h2 class="partnership__title">Engineered with <span class="italic-accent accent--blue">Jodoo</span>.</h2>
-        <p class="partnership__lede">We've partnered with Jodoo — Asia's leading no-code workflow platform — to put enterprise-grade operational infrastructure in the hands of every SME we serve.</p>
-        <p>Their engine, our engineering. Jodoo gives us a battle-tested foundation trusted by tens of thousands of companies across the region; we configure, integrate and hand it back to your team. The result: faster deployments, lower total cost of ownership, and zero vendor lock-in — because the platform is yours to run.</p>
-
-        <div class="partnership__meta">
-          <div>
-            <span class="mono">Foundation</span>
-            <strong>Jodoo no-code platform</strong>
-          </div>
-          <div>
-            <span class="mono">Delivery</span>
-            <strong>Velo Working engineering</strong>
-          </div>
-          <div>
-            <span class="mono">Ownership</span>
-            <strong>Your team, day one</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="partnership__card reveal" aria-label="Jodoo — strategic platform partner">
-        <span class="partnership__card-tag">Platform partner</span>
-        <img src="asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ================================================================
   MECHANISM TRIANGLE — soft
 ================================================================ -->
 <section class="section section--divider section--soft" id="mechanism">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 08 / The ultimate goal</div>
+      <div class="section__eyebrow mono">Section 09 / The ultimate goal</div>
       <h2 class="section__title reveal">Deploy the right mechanism for every <span class="italic-accent accent--blue">task</span>.</h2>
     </div>
 
@@ -1337,7 +1475,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 <section class="section section--divider" id="pricing">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 09 / Investment</div>
+      <div class="section__eyebrow mono">Section 10 / Investment</div>
       <h2 class="section__title reveal">Fixed scope. Fixed fee. <span class="italic-accent accent--blue">Published.</span></h2>
     </div>
 
@@ -1367,7 +1505,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
 <section class="section section--divider" id="manifesto">
   <div class="wrap">
     <div class="section__head">
-      <div class="section__eyebrow mono">Section 10 / Manifesto</div>
+      <div class="section__eyebrow mono">Section 11 / Manifesto</div>
       <h2 class="section__title reveal">Why Velo Working <span class="italic-accent accent--blue">exists</span>.</h2>
     </div>
 
@@ -1426,15 +1564,20 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
         <a href="#top" class="logo">
           <svg class="logo__svg" aria-hidden="true"><use href="#velo-logo"/></svg>
         </a>
-        <p>Integrated operational systems for SMEs in Singapore and Malaysia. Built on no-code platforms you own — not licences you rent.</p>
+        <p>Integrated operational systems for SMEs in Singapore and Malaysia. Engineered on Jodoo — Asia's leading no-code workflow platform — and handed back to your team to own.</p>
+
+        <a href="#partners" class="footer__partner" aria-label="Engineered with Jodoo — strategic platform partner">
+          <span class="footer__partner-tag mono">Strategic platform partner</span>
+          <img src="asset/jodoo_logo.png" alt="Jodoo" class="footer__partner-logo" loading="lazy" />
+        </a>
       </div>
 
       <div class="footer__col">
         <h4>Navigate</h4>
+        <a href="#partners">Jodoo Partner</a>
         <a href="#approach">Approach</a>
         <a href="#modules">Modules</a>
         <a href="#positioning">Why us</a>
-        <a href="#partners">Partners</a>
         <a href="#manifesto">Manifesto</a>
         <a href="assessment/assessment.html">Assessment</a>
         <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
@@ -1457,7 +1600,7 @@ h3 { font-size: clamp(19px, 1.85vw, 26px); font-weight: 700; letter-spacing: -0.
     </div>
 
     <div class="footer__bottom">
-      <span>© 2026 Velo Working Pte. Ltd.</span>
+      <span>© 2026 Velo Working Pte. Ltd. · Official Jodoo partner</span>
       <span>Built for the ones still standing.</span>
     </div>
   </div>
