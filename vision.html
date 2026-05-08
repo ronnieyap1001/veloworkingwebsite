@@ -49,7 +49,7 @@
 
   --gut: clamp(20px, 4vw, 40px);
   --max: 1180px;
-  --read-max: 720px;
+  --read-max: 680px;
   --tile-gap: 12px;
 }
 
@@ -72,7 +72,6 @@ p { margin: 0 0 1em; }
 p:last-child { margin: 0; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
-.read { max-width: var(--read-max); margin: 0 auto; padding-inline: var(--gut); }
 
 .eyebrow {
   font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
@@ -80,7 +79,7 @@ p:last-child { margin: 0; }
 }
 .eyebrow--muted { color: var(--ink-2); }
 
-h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
 h1 { font-size: clamp(40px, 6.6vw, 80px); letter-spacing: -0.045em; }
 h2 { font-size: clamp(32px, 4.4vw, 52px); }
 h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 1.12; }
@@ -107,7 +106,10 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 
 .link::after { content: '›'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
 
 /* =================================================================
-   NAV
+   NAV — fixed to be consistent in height and item spacing
+   - Brand and links share the same vertical centre line
+   - All links: same font-size, same x/y padding, no wrap
+   - Mobile breakpoint bumped to keep desktop layout from cramming
 ================================================================= */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
@@ -116,21 +118,47 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: -0.01em;
 }
 .nav__inner {
-  max-width: 1024px; margin: 0 auto; height: 100%;
-  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-inline: 22px;
+  gap: 16px;
 }
-.nav__brand { color: var(--ink); display: inline-flex; align-items: center; }
-.nav__brand-svg { height: 18px; width: auto; }
-.nav__links { display: flex; align-items: center; gap: 4px; list-style: none; padding: 0; margin: 0; }
+.nav__brand {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+}
+.nav__brand-svg { height: 18px; width: auto; display: block; }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.nav__links li { display: flex; align-items: center; height: 100%; }
 .nav__link {
-  display: inline-block; padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
   color: rgba(29, 29, 31, 0.8);
-  font-size: 12px; font-weight: 400; letter-spacing: -0.01em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   transition: color 150ms ease;
 }
 .nav__link:hover { color: var(--ink); }
@@ -143,6 +171,7 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 
   border-radius: 50%;
   align-items: center; justify-content: center;
   color: var(--ink);
+  flex-shrink: 0;
 }
 .nav__toggle svg { width: 18px; height: 18px; }
 
@@ -151,7 +180,8 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 
   .nav__toggle { display: inline-flex; }
   .nav.nav--open .nav__links {
     position: absolute; top: 48px; left: 0; right: 0;
-    flex-direction: column; gap: 0;
+    flex-direction: column;
+    height: auto;
     background: rgba(251, 251, 253, 0.96);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -159,12 +189,19 @@ h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 
     padding: 8px 22px 16px;
     display: flex;
   }
-  .nav.nav--open .nav__link {
-    width: 100%; padding: 14px 0;
+  .nav.nav--open .nav__links li {
+    width: 100%;
+    height: auto;
     border-bottom: 1px solid var(--rule);
-    font-size: 17px; font-weight: 500;
   }
-  .nav.nav--open .nav__link:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__links li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__link {
+    width: 100%;
+    height: auto;
+    padding: 14px 0;
+    font-size: 17px;
+    font-weight: 500;
+  }
 }
 
 main { padding-top: 48px; }
@@ -173,7 +210,7 @@ main { padding-top: 48px; }
    HERO — founder portrait + title
 ================================================================= */
 .hero {
-  padding: clamp(56px, 8vw, 112px) var(--gut) clamp(40px, 6vw, 72px);
+  padding: clamp(48px, 7vw, 96px) var(--gut) clamp(32px, 5vw, 56px);
   background: var(--bg);
 }
 .hero__inner {
@@ -188,7 +225,7 @@ main { padding-top: 48px; }
   .hero__inner { grid-template-columns: 1fr; text-align: center; }
 }
 .hero__title {
-  font-size: clamp(40px, 6.4vw, 76px);
+  font-size: clamp(40px, 6.4vw, 72px);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.04;
@@ -200,11 +237,11 @@ main { padding-top: 48px; }
   color: transparent;
 }
 .hero__lead {
-  margin-top: 22px;
-  font-size: clamp(19px, 1.8vw, 23px);
-  line-height: 1.4;
+  margin-top: 18px;
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.45;
   color: var(--ink-2);
-  max-width: 30ch;
+  max-width: 32ch;
 }
 @media (max-width: 833px) { .hero__lead { margin-inline: auto; } }
 
@@ -233,76 +270,43 @@ main { padding-top: 48px; }
 @media (max-width: 833px) { .hero__caption { text-align: center; } }
 
 /* =================================================================
-   STORY — long-form essay layout
+   STORY — one compact, small-text block
+   Cosmetic narrative. Quick to skim, easy to ignore.
 ================================================================= */
 .story {
-  padding-block: clamp(40px, 5vw, 64px);
+  max-width: var(--read-max);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) var(--gut) clamp(40px, 5vw, 64px);
 }
-.story__chapter {
-  padding-block: clamp(32px, 4vw, 56px);
-  border-top: 1px solid var(--rule);
-}
-.story__chapter:first-child { border-top: 0; }
-
-.story__index {
-  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--link); text-transform: uppercase;
+.story__eyebrow {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--ink-3); text-transform: uppercase;
   margin-bottom: 14px;
 }
-.story__head {
-  font-size: clamp(28px, 3.4vw, 42px);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-  margin-bottom: 22px;
-}
 .story p {
-  font-size: clamp(17px, 1.4vw, 19px);
-  line-height: 1.55;
-  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 0.9em;
 }
-.story p + p { margin-top: 14px; }
+.story p:last-child { margin: 0; }
+.story strong { color: var(--ink); font-weight: 600; }
 
 /* =================================================================
-   PULL TILE — the turning point
-================================================================= */
-.pull {
-  margin: clamp(40px, 5vw, 64px) auto;
-  max-width: var(--max);
-  padding-inline: var(--gut);
-}
-.pull__tile {
-  background: #000; color: #f5f5f7;
-  border-radius: var(--r-tile);
-  padding: clamp(48px, 7vw, 96px) clamp(28px, 5vw, 80px);
-  text-align: center;
-}
-.pull__tile h2 {
-  color: #fff;
-  font-size: clamp(32px, 4.6vw, 56px);
-  letter-spacing: -0.04em;
-  line-height: 1.08;
-  max-width: 22ch;
-  margin-inline: auto;
-}
-.pull__tile p {
-  margin-top: 20px;
-  max-width: 56ch; margin-inline: auto;
-  font-size: clamp(17px, 1.6vw, 21px);
-  line-height: 1.4;
-  color: rgba(245, 245, 247, 0.75);
-}
-
-/* =================================================================
-   VISION — the forward statement
+   VISION — the forward statement (kept; this is the real one)
 ================================================================= */
 .vision {
   background: var(--surface-2);
   border-radius: var(--r-tile);
   padding: clamp(48px, 6vw, 80px);
-  margin: clamp(40px, 5vw, 64px) auto;
+  margin: 0 auto;
   max-width: var(--max);
   margin-inline: auto;
+}
+.vision__wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gut);
 }
 .vision__inner {
   display: grid;
@@ -480,7 +484,7 @@ main { padding-top: 48px; }
     <div class="reveal">
       <figure style="margin: 0;">
         <div class="hero__photo">
-          <img src="asset/founder_photo" alt="Ronnie Yap, Founder of Velo Working" />
+          <img src="asset/founder_photo.png" alt="Ronnie Yap, Founder of Velo Working" />
         </div>
         <figcaption class="hero__caption">Ronnie Yap · Founder &amp; Director</figcaption>
       </figure>
@@ -489,92 +493,40 @@ main { padding-top: 48px; }
 </section>
 
 <!-- ===========================================================
-  STORY
+  STORY — single compact block, small text
 =========================================================== -->
-<section class="story">
-  <div class="read">
-
-    <article class="story__chapter reveal">
-      <div class="story__index">01 · The pattern</div>
-      <h2 class="story__head">Capability becomes a burden.</h2>
-      <p>I spent over a decade inside companies, watching the same pattern repeat.</p>
-      <p>The more capable I was, the more I got loaded. Not with the work in my job description — with everyone else's. I could hold more resources, so resources came to me. I could carry more political weight, so politics came to me.</p>
-      <p>I became the senior person's assistant doing low-end work. My actual scope slowly shifted, became the culture, and started costing me my performance and my promotion.</p>
-    </article>
-
-    <article class="story__chapter reveal">
-      <div class="story__index">02 · The room at the top</div>
-      <h2 class="story__head">Decisions ran on words, not numbers.</h2>
-      <p>At the top, no one knew what was happening on the floor. The data didn't reach the room.</p>
-      <p>Meetings ran on confidence and proximity. Whoever was closest to the boss got heard. Whoever told the better story got believed. Decisions came out biased and reckless because there was nothing else to base them on.</p>
-    </article>
-
-    <article class="story__chapter reveal">
-      <div class="story__index">03 · The cost</div>
-      <h2 class="story__head">What broke.</h2>
-      <p>Competent people left, one at a time. The ones who stayed learned to dig emails for accountability. Every conversation had to be black-and-white. Whoever didn't get it in writing got blamed.</p>
-      <p>The hardworking person became the careful person. The careful person stopped doing real work. Reputations were rewritten by narrative, not by output.</p>
-    </article>
-
-  </div>
+<section class="story reveal">
+  <div class="story__eyebrow">The short version</div>
+  <p>I spent over a decade inside companies, watching the same pattern repeat. <strong>Capability becomes a burden</strong> — the more capable you are, the more you carry that isn't yours. Resources came to me. Politics came to me. My actual scope shifted, became the culture, and quietly cost me my performance and my promotion.</p>
+  <p>At the top, no one knew what was happening on the floor. <strong>Decisions ran on words, not numbers.</strong> The data didn't reach the room. Whoever was closest to the boss got heard. Whoever told the better story got believed.</p>
+  <p>Competent people left, one at a time. The ones who stayed learned to dig emails for accountability. Every conversation had to be black-and-white. The hardworking became the careful, and the careful stopped doing real work.</p>
+  <p>It is <strong>a systems problem disguised as a people problem.</strong> Not better leadership. Not more training. A system that captures what actually happened, in numbers, the moment it happened — so decisions stop running on memory and politics.</p>
+  <p>Existing systems don't reach SMEs. The licences are heavy, the implementation heavier, and the implementer rarely understands how an SME actually runs. So I built Velo Working: <strong>no-code operational systems for SMEs. Vendor-neutral. Fixed scope. Fixed fee. Your team owns it after I leave.</strong> The same systems the big companies have, sized for an operation that can't afford a six-figure rollout — so nobody on your team has to become careful before they can do real work again.</p>
 </section>
 
 <!-- ===========================================================
-  PULL — the realisation
+  VISION — the real one. Kept.
 =========================================================== -->
-<section class="pull">
-  <div class="pull__tile reveal">
-    <div class="eyebrow" style="color: #2997ff;">The realisation</div>
-    <h2>A systems problem<br>disguised as a people problem.</h2>
-    <p>Every one of these failures could be solved by a proper operational system. Not better leadership. Not more training. A system. One that captures what actually happened, in numbers, the moment it happened — so decisions stop running on memory and politics.</p>
-  </div>
-</section>
-
-<!-- ===========================================================
-  STORY — continued
-=========================================================== -->
-<section class="story">
-  <div class="read">
-
-    <article class="story__chapter reveal">
-      <div class="story__index">04 · The gap in the market</div>
-      <h2 class="story__head">Why existing systems don't reach SMEs.</h2>
-      <p>Most operational software is sold in packages bonded to one vendor's stack. The licences are heavy. The implementation is heavier. The implementer rarely understands how an SME actually runs.</p>
-      <p>SMEs that buy in often fail — not because the software is bad, but because no one looked at their operation first.</p>
-    </article>
-
-    <article class="story__chapter reveal">
-      <div class="story__index">05 · The answer</div>
-      <h2 class="story__head">What I built instead.</h2>
-      <p>Velo Working sets up no-code operational systems for SMEs. Vendor-neutral. Fixed scope. Fixed fee. Your team owns it after I leave.</p>
-      <p>The same systems the big companies have, sized for an operation that can't afford a six-figure implementation or a five-year contract.</p>
-      <p>The point isn't the software. The point is that nobody on your team has to become careful before they can do real work again.</p>
-    </article>
-
-  </div>
-</section>
-
-<!-- ===========================================================
-  VISION — forward statement + principles
-=========================================================== -->
-<section class="vision reveal">
-  <div class="vision__inner">
-    <div>
-      <div class="eyebrow">Our vision</div>
-      <h2>Real work. Restored.</h2>
-      <p>An operating reality where capability is rewarded, not punished. Where the floor and the boardroom share the same numbers. Where SMEs run on the same caliber of system the giants do — without the licence trap or the five-year contract.</p>
-      <p>That is what Velo Working is here to build, one company at a time.</p>
-      <p class="vision__sig">Ronnie Yap · Founder &amp; Director · PMP</p>
-    </div>
-    <div>
-      <ul class="principles">
-        <li><span>01</span><div>Capture what happened, in numbers, the moment it happened.</div></li>
-        <li><span>02</span><div>Decisions belong to the data, not to whoever is closest to the boss.</div></li>
-        <li><span>03</span><div>Capability should compound, not get rerouted into other people's work.</div></li>
-        <li><span>04</span><div>Vendor-neutral by default. Your team owns the system after we leave.</div></li>
-        <li><span>05</span><div>Fixed scope. Fixed fee. Written in plain English before we start.</div></li>
-        <li><span>06</span><div>The hardworking person should never have to become the careful person.</div></li>
-      </ul>
+<section class="vision__wrap">
+  <div class="vision reveal">
+    <div class="vision__inner">
+      <div>
+        <div class="eyebrow">Our vision</div>
+        <h2>Real work. Restored.</h2>
+        <p>An operating reality where capability is rewarded, not punished. Where the floor and the boardroom share the same numbers. Where SMEs run on the same caliber of system the giants do — without the licence trap or the five-year contract.</p>
+        <p>That is what Velo Working is here to build, one company at a time.</p>
+        <p class="vision__sig">Ronnie Yap · Founder &amp; Director · PMP</p>
+      </div>
+      <div>
+        <ul class="principles">
+          <li><span>01</span><div>Capture what happened, in numbers, the moment it happened.</div></li>
+          <li><span>02</span><div>Decisions belong to the data, not to whoever is closest to the boss.</div></li>
+          <li><span>03</span><div>Capability should compound, not get rerouted into other people's work.</div></li>
+          <li><span>04</span><div>Vendor-neutral by default. Your team owns the system after we leave.</div></li>
+          <li><span>05</span><div>Fixed scope. Fixed fee. Written in plain English before we start.</div></li>
+          <li><span>06</span><div>The hardworking person should never have to become the careful person.</div></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
