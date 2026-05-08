@@ -166,21 +166,47 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: -0.01em;
 }
 .nav__inner {
-  max-width: 1024px; margin: 0 auto; height: 100%;
-  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-inline: 22px;
+  gap: 16px;
 }
-.nav__brand { color: var(--ink); display: inline-flex; align-items: center; }
-.nav__brand-svg { height: 18px; width: auto; }
-.nav__links { display: flex; align-items: center; gap: 4px; list-style: none; padding: 0; margin: 0; }
+.nav__brand {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+}
+.nav__brand-svg { height: 18px; width: auto; display: block; }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.nav__links li { display: flex; align-items: center; height: 100%; }
 .nav__link {
-  display: inline-block; padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
   color: rgba(29, 29, 31, 0.8);
-  font-size: 12px; font-weight: 400; letter-spacing: -0.01em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   transition: color 150ms ease;
 }
 .nav__link:hover { color: var(--ink); }
@@ -193,6 +219,7 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
   border-radius: 50%;
   align-items: center; justify-content: center;
   color: var(--ink);
+  flex-shrink: 0;
 }
 .nav__toggle svg { width: 18px; height: 18px; }
 
@@ -201,7 +228,8 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
   .nav__toggle { display: inline-flex; }
   .nav.nav--open .nav__links {
     position: absolute; top: 48px; left: 0; right: 0;
-    flex-direction: column; gap: 0;
+    flex-direction: column;
+    height: auto;
     background: rgba(251, 251, 253, 0.96);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -209,12 +237,19 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
     padding: 8px 22px 16px;
     display: flex;
   }
-  .nav.nav--open .nav__link {
-    width: 100%; padding: 14px 0;
+  .nav.nav--open .nav__links li {
+    width: 100%;
+    height: auto;
     border-bottom: 1px solid var(--rule);
-    font-size: 17px; font-weight: 500;
   }
-  .nav.nav--open .nav__link:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__links li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__link {
+    width: 100%;
+    height: auto;
+    padding: 14px 0;
+    font-size: 17px;
+    font-weight: 500;
+  }
 }
 
 /* Push content below fixed nav */
@@ -662,10 +697,8 @@ main { padding-top: 48px; }
       <li><a href="#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
       <li><a href="#approach" class="nav__link">Approach</a></li>
       <li><a href="#modules" class="nav__link">Modules</a></li>
-      <li><a href="#why" class="nav__link">Why us</a></li>
       <li><a href="vision.html" class="nav__link">Vision</a></li>
       <li><a href="#pricing" class="nav__link">Pricing</a></li>
-      <li><a href="#manifesto" class="nav__link">Manifesto</a></li>
       <li><a href="assessment/assessment.html" class="nav__link">Assessment</a></li>
       <li><a href="#contact" class="nav__link">Contact</a></li>
     </ul>
