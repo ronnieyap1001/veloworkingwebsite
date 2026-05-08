@@ -1154,12 +1154,27 @@ const MODULES = {
 /* ============================================================
    SUPABASE CONFIG
    ============================================================ */
-const SUPABASE_URL = 'https://uxhdxmkuxgsaeoqddmel.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_qztwzXWzUNdm5zSOmMJYuw_-GOsFNqc';
+const SUPABASE_URL = 'https://uenbnsnafnxyqqtbmmzh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_d5rYEDBIjQg3L6ZtKEPMhA_Z-AqbaK5';
 const SUPABASE_TABLE = 'assessment_responses';
 const ENQUIRY_EMAIL = 'ronnie.yap@veloworking.com';
 
+function generateId() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+  // RFC4122 v4 fallback for older browsers
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 async function supabaseInsert(payload) {
+  // Anon RLS allows INSERT but no SELECT, so we generate the id client-side
+  // and use return=minimal — otherwise PostgREST tries to re-read the row
+  // and fails with an RLS violation. We also never UPDATE for the same
+  // reason (UPDATE needs SELECT visibility under Postgres RLS).
+  const row = { id: generateId(), ...payload };
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
       method: 'POST',
@@ -1167,37 +1182,15 @@ async function supabaseInsert(payload) {
         'apikey': SUPABASE_KEY,
         'Authorization': `Bearer ${SUPABASE_KEY}`,
         'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
+        'Prefer': 'return=minimal'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(row)
     });
     if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
-    const data = await res.json();
-    return Array.isArray(data) ? data[0] : data;
+    return { id: row.id };
   } catch (err) {
     console.warn('Supabase insert failed:', err);
     return null;
-  }
-}
-
-async function supabaseUpdate(id, payload) {
-  if (!id) return false;
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?id=eq.${encodeURIComponent(id)}`, {
-      method: 'PATCH',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify(payload)
-    });
-    if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
-    return true;
-  } catch (err) {
-    console.warn('Supabase update failed:', err);
-    return false;
   }
 }
 
@@ -1210,7 +1203,8 @@ let state = {
   scores: {},
   profile: {},
   contact: { name: '', email: '', phone: '', company: '' },
-  responseId: null,
+  responseId: null,   // set after the single INSERT at results render
+  resultsLogged: false,
   results: null
 };
 
@@ -1225,11 +1219,9 @@ function startAssessment() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-async function submitContactGate(e) {
+function submitContactGate(e) {
   e.preventDefault();
   const errorEl = document.getElementById('contactError');
-  const submitBtn = document.getElementById('contactSubmit');
-  const submitLabel = document.getElementById('contactSubmitLabel');
   errorEl.textContent = '';
 
   const name = document.getElementById('cf-name').value.trim();
@@ -1247,25 +1239,11 @@ async function submitContactGate(e) {
   }
 
   state.contact = { name, email, phone, company };
-  submitBtn.classList.add('is-disabled');
-  submitLabel.textContent = 'Loading…';
-
-  const row = await supabaseInsert({
-    name, email,
-    phone: phone || null,
-    company,
-    user_agent: navigator.userAgent,
-    referrer: document.referrer || null
-  });
-  if (row && row.id) state.responseId = row.id;
 
   document.getElementById('screen-contact').classList.remove('active');
   document.getElementById('progressWrap').classList.add('is-visible');
   state.current = 0;
   renderQuestion();
-
-  submitBtn.classList.remove('is-disabled');
-  submitLabel.textContent = 'Start the diagnostic';
 }
 
 function backToIntro() {
@@ -1515,8 +1493,17 @@ function showResults(data) {
 
   state.results = data;
 
-  if (state.responseId) {
-    supabaseUpdate(state.responseId, {
+  // One INSERT per completed flow. Anon RLS only allows INSERT (not SELECT
+  // or UPDATE), so we capture every field we know about in a single row.
+  if (!state.resultsLogged) {
+    state.resultsLogged = true;
+    supabaseInsert({
+      name: state.contact.name,
+      email: state.contact.email,
+      phone: state.contact.phone || null,
+      company: state.contact.company,
+      user_agent: navigator.userAgent,
+      referrer: document.referrer || null,
       answers: state.answers,
       profile: state.profile,
       scores: data.scores,
@@ -1528,6 +1515,8 @@ function showResults(data) {
       engagement_value: data.engagement.value,
       engagement_range: data.engagement.range,
       completed_at: new Date().toISOString()
+    }).then(row => {
+      if (row && row.id) state.responseId = row.id;
     });
   }
 
@@ -1740,12 +1729,13 @@ async function submitEnquiry() {
   statusEl.classList.remove('cta__status--ok');
   statusEl.textContent = '';
 
-  await supabaseUpdate(state.responseId, {
-    message: message || null,
-    message_sent_at: new Date().toISOString()
-  });
-
   const data = state.results || {};
+
+  // Note: anon RLS doesn't allow UPDATE, so the enquiry message is delivered
+  // via the mailto below (and the WhatsApp link). The completed assessment
+  // is already in Supabase from showResults().
+
+
   const t1Names = (data.t1 || []).map(m => `- ${m.name} (score ${m.score})`).join('\n') || '- (none)';
   const t2Names = (data.t2 || []).map(m => `- ${m.name} (score ${m.score})`).join('\n') || '- (none)';
   const c = state.contact;
@@ -1792,6 +1782,7 @@ function restart() {
     profile: {},
     contact: { name: '', email: '', phone: '', company: '' },
     responseId: null,
+    resultsLogged: false,
     results: null
   };
   document.getElementById('screen-results').classList.remove('active');
