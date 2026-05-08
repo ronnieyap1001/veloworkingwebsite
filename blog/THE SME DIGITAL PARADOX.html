@@ -9,9 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="../asset/favicon.svg">
 <link rel="apple-touch-icon" href="../asset/favicon.svg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Fonts: native system sans-serif only — no webfont request -->
 <style>
 :root {
   --bg: #0b0e14;
@@ -33,7 +31,7 @@ html, body {
   height: 100%;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Geist', -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
@@ -117,7 +115,7 @@ body::after {
 
 /* Typography */
 .eyebrow {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.66rem;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -136,7 +134,7 @@ body::after {
 }
 
 .display {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   font-optical-sizing: auto;
   line-height: 1.02;
@@ -144,7 +142,7 @@ body::after {
 }
 
 .headline-xl {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(2.4rem, 5.6vw, 5.2rem);
   line-height: 1;
@@ -152,7 +150,7 @@ body::after {
 }
 
 .headline-l {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(1.85rem, 3.6vw, 3.2rem);
   line-height: 1.08;
@@ -160,7 +158,7 @@ body::after {
 }
 
 .headline-m {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: clamp(1.45rem, 2.4vw, 2.2rem);
   line-height: 1.15;
@@ -184,14 +182,14 @@ body::after {
 }
 
 .mono {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.72rem;
   color: var(--ink-mute);
   letter-spacing: 0.04em;
 }
 
 em.italic {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: italic;
   font-weight: 300;
   color: var(--accent);
@@ -203,7 +201,7 @@ em.italic {
 
 /* Number showcase */
 .big-number {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(4.8rem, 13vw, 11rem);
   line-height: 0.92;
@@ -257,20 +255,20 @@ em.italic {
   50%      { opacity: 0.6; transform: scale(1.3); }
 }
 .timeline-date {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.74rem;
   color: var(--ink-mute);
   letter-spacing: 0.05em;
 }
 .timeline-label {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(0.95rem, 1.35vw, 1.2rem);
   font-weight: 400;
   color: var(--ink);
 }
 .timeline-label .sub {
   display: block;
-  font-family: 'Geist', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.7rem;
   color: var(--ink-mute);
   font-weight: 400;
@@ -291,7 +289,7 @@ em.italic {
   align-items: center;
 }
 .bar-label {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: var(--ink);
@@ -312,7 +310,7 @@ em.italic {
 .bar-fill.accent { background: var(--accent); }
 .bar-fill.red { background: var(--red); }
 .bar-value {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.85rem;
   color: var(--ink-mute);
   min-width: 76px;
@@ -343,14 +341,14 @@ em.italic {
 }
 .flow-step.bad { border-color: var(--red); background: rgba(232, 90, 79, 0.05); }
 .flow-step-num {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.62rem;
   color: var(--ink-mute);
   margin-bottom: 0.7rem;
   letter-spacing: 0.15em;
 }
 .flow-step-label {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.25;
@@ -386,14 +384,14 @@ em.italic {
   padding-top: 1.5rem;
 }
 .country-flag {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.66rem;
   color: var(--accent);
   letter-spacing: 0.2em;
   margin-bottom: 0.7rem;
 }
 .country-head {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
   margin-bottom: 0.9rem;
@@ -415,14 +413,14 @@ em.italic {
 }
 .principle:last-child { border-bottom: 1px solid var(--rule); }
 .principle-num {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 2rem;
   font-weight: 300;
   color: var(--accent);
   line-height: 1;
 }
 .principle-body h3 {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.15rem;
   font-weight: 400;
   margin-bottom: 0.35rem;
@@ -436,7 +434,7 @@ em.italic {
 
 /* Quote */
 .quote {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1.6rem, 3.6vw, 3.2rem);
@@ -486,7 +484,7 @@ em.italic {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   color: var(--ink-mute);
@@ -528,7 +526,7 @@ em.italic {
 }
 
 .counter {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.66rem;
   color: var(--ink-mute);
   letter-spacing: 0.1em;
@@ -539,7 +537,7 @@ em.italic {
 }
 
 .nav-hint {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.58rem;
   color: var(--ink-dim);
   letter-spacing: 0.2em;
@@ -549,7 +547,7 @@ em.italic {
   align-items: center;
 }
 .nav-hint kbd {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   background: var(--bg-soft);
   border: 1px solid var(--rule);
   padding: 2px 6px;
@@ -597,7 +595,7 @@ em.italic {
 
 /* Act marker */
 .act-marker {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.62rem;
   letter-spacing: 0.3em;
   color: var(--accent);
@@ -631,7 +629,7 @@ em.italic {
 /* Small caps callouts */
 .callout {
   display: inline-block;
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -656,7 +654,7 @@ em.italic {
 .duel-card.good { border-color: var(--green); background: rgba(125, 211, 160, 0.03); }
 .duel-card.bad  { border-color: var(--red); background: rgba(232, 90, 79, 0.03); }
 .duel-tag {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -665,7 +663,7 @@ em.italic {
 .duel-card.good .duel-tag { color: var(--green); }
 .duel-card.bad .duel-tag { color: var(--red); }
 .duel-card h3 {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
   margin-bottom: 0.9rem;
@@ -699,7 +697,7 @@ em.italic {
   margin-top: 2rem;
 }
 .comp-label {
-  font-family: 'Fraunces', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 0.95rem;
 }
 .comp-track {
@@ -715,7 +713,7 @@ em.italic {
 }
 .slide.active .comp-fill { width: var(--w); }
 .comp-date {
-  font-family: 'Geist Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.7rem;
   color: var(--ink-mute);
   min-width: 100px;
