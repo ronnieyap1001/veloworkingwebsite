@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Fabrication &amp; Production — Velo Working</title>
+
+<!-- SEO -->
+<meta name="description" content="Velo Working's fabrication and production service — metal fabrication, cable harnessing, control panels, PCB assembly, and new energy infrastructure. One partner, a curated network across Singapore, China, and India. Delivered to your site." />
+<meta name="author" content="Velo Working Pte. Ltd." />
+<link rel="canonical" href="https://www.veloworking.com/fabrication.html" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Fabrication &amp; Production — Velo Working" />
+<meta property="og:description" content="Production hardware, sourced, managed, and delivered. One partner. A curated vendor network. Singapore quality, global cost." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.veloworking.com/fabrication.html" />
+<meta property="og:site_name" content="Velo Working" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fabrication &amp; Production — Velo Working" />
+<meta name="twitter:description" content="Metal, cable, panels, PCB, new energy hardware. Sourced, managed, delivered — one accountable partner." />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="asset/favicon.svg" />
+<link rel="apple-touch-icon" href="asset/favicon.svg" />
+
+<style>
+/* =================================================================
+   APPLE-INSPIRED DESIGN SYSTEM (matches index.html)
+================================================================= */
+:root {
+  --bg:        #fbfbfd;
+  --surface:   #ffffff;
+  --surface-2: #f5f5f7;
+  --ink:       #1d1d1f;
+  --ink-2:     #6e6e73;
+  --ink-3:     #86868b;
+  --rule:      #d2d2d7;
+  --dark:      #0b0b0d;
+  --link:      #0071e3;
+  --link-hov:  #0077ed;
+  --jodoo:     #1317E4;
+
+  --r-tile:    24px;
+  --r-pill:    980px;
+
+  --f: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --gut: clamp(20px, 4vw, 40px);
+  --max: 1180px;
+  --tile-gap: 12px;
+  --section-pad: clamp(80px, 10vw, 120px);
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f);
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+p { margin: 0 0 1em; }
+p:last-child { margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
+
+/* TYPE */
+.eyebrow {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
+  color: var(--link); margin-bottom: 12px;
+}
+.eyebrow--muted { color: var(--ink-2); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
+h1 { font-size: clamp(40px, 6.6vw, 80px); font-weight: 600; letter-spacing: -0.045em; }
+h2 { font-size: clamp(32px, 4.8vw, 56px); }
+h3 { font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em; line-height: 1.1; }
+h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 600; }
+
+.lead {
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.4;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  font-weight: 400;
+}
+.muted { color: var(--ink-2); }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px; border-radius: var(--r-pill);
+  font-size: 17px; font-weight: 400; letter-spacing: -0.022em;
+  white-space: nowrap;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease, opacity 200ms ease;
+}
+.btn--primary { background: var(--link); color: #fff; }
+.btn--primary:hover { background: var(--link-hov); }
+.btn--ghost { color: var(--link); border: 1px solid var(--link); }
+.btn--ghost:hover { background: var(--link); color: #fff; }
+.btn--on-dark.btn--primary { background: var(--link); }
+.btn--on-dark.btn--ghost { color: #2997ff; border-color: #2997ff; }
+.btn--on-dark.btn--ghost:hover { background: #2997ff; color: #000; }
+
+.link {
+  color: var(--link); font-size: 17px; font-weight: 400;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: opacity 200ms ease;
+}
+.link:hover { text-decoration: underline; }
+.link::after { content: '›'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
+.link--on-dark { color: #2997ff; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  height: 48px;
+  background: rgba(251, 251, 253, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+.nav__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 22px;
+  gap: 16px;
+}
+.nav__brand {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+}
+.nav__brand-svg { height: 18px; width: auto; display: block; }
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.nav__links li { display: flex; align-items: center; height: 100%; }
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  color: rgba(29, 29, 31, 0.8);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+.nav__link:hover { color: var(--ink); }
+.nav__link--accent { color: var(--link); font-weight: 500; }
+.nav__link--accent:hover { color: var(--link-hov); }
+
+.nav__toggle {
+  display: none;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  align-items: center; justify-content: center;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.nav__toggle svg { width: 18px; height: 18px; }
+
+@media (max-width: 833px) {
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+  .nav.nav--open .nav__links {
+    position: absolute; top: 48px; left: 0; right: 0;
+    flex-direction: column;
+    height: auto;
+    background: rgba(251, 251, 253, 0.96);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 22px 16px;
+    display: flex;
+  }
+  .nav.nav--open .nav__links li {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav.nav--open .nav__links li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__link {
+    width: 100%;
+    height: auto;
+    padding: 14px 0;
+    font-size: 17px;
+    font-weight: 500;
+  }
+}
+
+main { padding-top: 48px; }
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: clamp(56px, 8vw, 96px) var(--gut) clamp(40px, 6vw, 64px);
+  background: var(--bg);
+}
+.hero__title {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+.hero__title em {
+  font-style: normal;
+  background: linear-gradient(120deg, var(--link), #5e5ce6 50%, var(--jodoo));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.hero__sub {
+  font-size: clamp(21px, 2.2vw, 28px);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  margin: 12px auto 0;
+  max-width: 720px;
+}
+.hero__lead {
+  margin: 24px auto 0;
+  max-width: 620px;
+  font-size: 19px; line-height: 1.42; color: var(--ink-2);
+}
+.hero__ctas {
+  margin-top: 28px;
+  display: inline-flex; flex-wrap: wrap; gap: 18px; justify-content: center;
+}
+
+/* GRID + TILES */
+.grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gut);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--tile-gap);
+}
+.grid--single { grid-template-columns: 1fr; }
+.grid--three { grid-template-columns: repeat(3, 1fr); }
+.tile-row { margin-bottom: var(--tile-gap); }
+
+@media (max-width: 833px) {
+  .grid, .grid--three { grid-template-columns: 1fr; }
+}
+
+.tile {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--r-tile);
+  padding: clamp(40px, 5vw, 64px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.tile--gray { background: var(--surface-2); }
+.tile--dark { background: #000; color: #f5f5f7; }
+.tile--dark h2, .tile--dark h3, .tile--dark h4 { color: #f5f5f7; }
+.tile--dark .muted { color: rgba(245, 245, 247, 0.66); }
+
+.tile--center { text-align: center; }
+.tile--tall { min-height: clamp(440px, 50vh, 560px); display: flex; flex-direction: column; justify-content: space-between; }
+
+.tile__eyebrow {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
+  color: var(--link); margin-bottom: 14px;
+}
+.tile--dark .tile__eyebrow { color: #2997ff; }
+.tile__title {
+  font-size: clamp(28px, 3.6vw, 44px);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  font-weight: 600;
+}
+.tile__title--lg { font-size: clamp(34px, 4.4vw, 56px); }
+.tile__sub {
+  margin-top: 16px;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.4;
+  color: var(--ink-2);
+  max-width: 56ch;
+}
+.tile--dark .tile__sub { color: rgba(245, 245, 247, 0.72); }
+.tile--center .tile__sub { margin-inline: auto; }
+.tile__ctas { margin-top: 24px; display: inline-flex; flex-wrap: wrap; gap: 18px; }
+.tile--center .tile__ctas { justify-content: center; }
+
+/* SECTION */
+.section { padding-block: clamp(48px, 6vw, 80px); }
+.section__head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
+  padding-inline: var(--gut);
+}
+.section__head h2 { letter-spacing: -0.04em; }
+.section__head p { margin-top: 16px; color: var(--ink-2); font-size: 19px; }
+
+/* CAPABILITY TILES — five categories, bento grid */
+.caps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--tile-gap);
+}
+.caps__tile {
+  background: var(--surface);
+  border-radius: var(--r-tile);
+  padding: clamp(28px, 3.4vw, 44px);
+  display: flex; flex-direction: column;
+  min-height: 360px;
+}
+.caps__tile--gray { background: var(--surface-2); }
+.caps__tile--dark { background: #0b0b0d; color: #f5f5f7; }
+.caps__tile--dark h3 { color: #fff; }
+.caps__tile--dark .caps__tag { color: rgba(245, 245, 247, 0.66); }
+.caps__tile--dark .caps__list li { color: rgba(245, 245, 247, 0.78); }
+.caps__tile--dark .caps__list li::before { color: #2997ff; }
+.caps__tile--dark .caps__eyebrow { color: #2997ff; }
+
+.caps__tile--span3 { grid-column: span 3; }
+.caps__tile--span2 { grid-column: span 2; }
+@media (max-width: 1080px) {
+  .caps { grid-template-columns: repeat(2, 1fr); }
+  .caps__tile--span3, .caps__tile--span2 { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+  .caps { grid-template-columns: 1fr; }
+}
+
+.caps__eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+  color: var(--link); margin-bottom: 14px;
+}
+.caps__title {
+  font-size: clamp(22px, 2.2vw, 28px);
+  letter-spacing: -0.028em;
+  line-height: 1.12;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.caps__sub {
+  font-size: 15px; line-height: 1.45; color: var(--ink-2);
+  margin: 0 0 18px;
+}
+.caps__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; gap: 6px;
+  font-size: 14px; line-height: 1.45;
+}
+.caps__list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-2);
+}
+.caps__list li::before {
+  content: '—';
+  position: absolute; left: 0; top: 0;
+  color: var(--link);
+  font-weight: 600;
+}
+.caps__tag {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* DELIVERY STEPS — 5-step row */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--tile-gap);
+  margin-top: 32px;
+}
+@media (max-width: 1080px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .flow { grid-template-columns: 1fr; } }
+
+.flow__step {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 28px;
+}
+.flow__num {
+  font-size: 40px; font-weight: 600; letter-spacing: -0.04em;
+  background: linear-gradient(120deg, var(--link), #5e5ce6);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+.flow__name { font-size: 18px; font-weight: 600; letter-spacing: -0.022em; margin: 14px 0 8px; }
+.flow__desc { font-size: 14px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+/* CLIENTS — list with hairline rows */
+.clients {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.clients__row {
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 8px;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 833px) { .clients { grid-template-columns: 1fr; } }
+.clients__num {
+  font-size: 13px; color: var(--link); font-weight: 600; letter-spacing: -0.01em;
+}
+.clients__name { font-size: 16px; font-weight: 600; letter-spacing: -0.022em; }
+.clients__desc { font-size: 14px; color: var(--ink-2); margin-top: 4px; line-height: 1.45; }
+
+/* PILLARS (why) */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--tile-gap);
+  margin-top: 24px;
+}
+@media (max-width: 833px) { .pillars { grid-template-columns: 1fr; } }
+.pillar {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 32px;
+}
+.pillar__num {
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+  color: var(--link); margin-bottom: 12px;
+}
+.pillar h3 { font-size: 22px; letter-spacing: -0.025em; line-height: 1.18; margin-bottom: 12px; }
+.pillar p { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+
+/* FOOTER */
+.foot {
+  background: var(--surface-2);
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.33337;
+  letter-spacing: -0.01em;
+  padding-block: 24px 22px;
+  border-top: 1px solid var(--rule);
+}
+.foot__partner {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 22px 22px;
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.foot__partner-row {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.foot__partner-row img { height: 18px; }
+.foot__partner-row strong { color: var(--ink); font-weight: 600; }
+.foot__partner-tag {
+  font-size: 11px; font-weight: 600; color: var(--link);
+  letter-spacing: -0.01em;
+}
+.foot__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 22px 22px 0;
+}
+.foot__cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 833px) { .foot__cols { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+.foot__col h5 { color: var(--ink); font-size: 12px; font-weight: 600; margin: 0 0 10px; }
+.foot__col a, .foot__col span { display: block; padding: 4px 0; color: var(--ink-2); font-size: 12px; }
+.foot__col a:hover { text-decoration: underline; color: var(--ink); }
+.foot__legal {
+  padding-top: 16px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  color: var(--ink-3);
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE — Velo logotype -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <symbol id="velo-logo" viewBox="-67 125 310 50">
+    <g fill="currentColor">
+      <path d="m -63.08431,159.73324 v -11.95468 h 1.711254 1.711254 v 11.95468 11.95468 h -1.711254 -1.711254 z m 13.473111,-0.82354 c -2.7838,-2.88889 -5.165724,-5.36884 -5.293161,-5.51098 l -0.231706,-0.25846 0.549761,-1.29497 0.549763,-1.29498 7.635659,0.0174 c 4.199613,0.01 7.642322,0.0236 7.650469,0.0309 0.01335,0.0121 -1.513544,3.63653 -1.544387,3.66591 -0.0071,0.007 -1.932699,-0.0391 -4.279044,-0.10194 -2.346348,-0.0628 -4.407082,-0.11379 -4.579413,-0.11326 l -0.313328,9e-4 3.263591,3.23912 3.263592,3.23912 -0.776198,1.81972 c -0.42691,1.00085 -0.789235,1.81842 -0.80517,1.81682 -0.01595,-0.001 -2.306627,-2.36654 -5.090428,-5.25543 z m -29.666932,3.11343 c -0.40939,-1.01953 -0.73477,-1.86111 -0.72306,-1.87019 0.11854,-0.0919 6.601154,-6.26625 6.601154,-6.28717 0,-0.0155 -2.06247,-0.0194 -4.583264,-0.009 l -4.58327,0.0194 -0.74007,-1.83176 -0.74007,-1.83177 0.15342,-0.0131 c 0.34112,-0.0292 15.135529,0.27402 15.167398,0.31083 0.01891,0.0219 0.267301,0.61697 0.551984,1.32251 l 0.517602,1.28278 -3.365959,3.34337 c -1.851279,1.83885 -4.288204,4.26051 -5.415385,5.38145 -1.12719,1.12096 -2.05995,2.03766 -2.0728,2.03711 -0.0129,-4.5e-4 -0.3583,-0.83516 -0.76768,-1.85469 z m 33.041236,-14.34438 c -3.791272,-0.0741 -7.098103,-0.14163 -7.348513,-0.15003 l -0.455294,-0.0153 -0.520844,-1.3003 c -0.286465,-0.71518 -0.520846,-1.31372 -0.520846,-1.3301 0,-0.0374 3.03224,-3.04993 5.890442,-5.87067 2.539166,-2.5059 4.940976,-4.86047 4.957427,-4.84345 0.02131,0.0221 0.36701,0.85212 0.768213,1.84455 l 0.729459,1.80441 -0.207484,0.20195 c -0.114116,0.11108 -1.519848,1.44395 -3.123846,2.96192 -1.603998,1.51799 -3.013976,2.85516 -3.133281,2.9715 l -0.21692,0.21154 4.60739,-0.0328 c 3.946267,-0.028 4.611369,-0.023 4.635133,0.0354 0.249971,0.61373 1.323165,3.26153 1.390383,3.43038 l 0.09115,0.22896 -0.324674,-0.007 c -0.178575,-0.003 -3.426627,-0.0673 -7.217897,-0.14137 z m -31.875116,-0.22557 c -3.49313,-0.008 -5.89298,-0.0303 -5.89298,-0.0563 0,-0.0603 1.49413,-3.5857 1.54033,-3.63439 0.0204,-0.0215 2.08435,0.0149 4.58652,0.0808 2.502157,0.066 4.555892,0.1135 4.56385,0.1055 0.008,-0.008 -1.450958,-1.46694 -3.24204,-3.24218 l -3.2565,-3.22771 0.78062,-1.84246 0.78062,-1.84246 0.13009,0.13515 c 0.0715,0.0743 2.464747,2.55971 5.318224,5.52307 l 5.188142,5.38792 -0.06524,0.15558 c -0.03588,0.0856 -0.288522,0.6816 -0.561424,1.32453 l -0.496185,1.16895 -1.740524,-0.0119 c -0.957288,-0.007 -4.392364,-0.0174 -7.633503,-0.0243 z m 19.589652,-5.24138 c -0.712179,-0.30247 -1.305328,-0.56039 -1.318105,-0.57317 -0.01277,-0.0128 -0.0072,-3.45913 0.01238,-7.65856 l 0.03563,-7.63531 1.788624,0.75983 c 0.983744,0.41792 1.814974,0.7774 1.847178,0.79886 0.04578,0.0305 0.03288,0.98466 -0.05923,4.37741 -0.06479,2.38612 -0.117559,4.44686 -0.117282,4.57942 l 4.48e-4,0.24102 3.24018,-3.26967 3.240214,-3.26966 1.78356,0.75711 c 0.980959,0.41641 1.801446,0.77332 1.823303,0.79314 0.02185,0.0199 -2.320873,2.30888 -5.206069,5.08681 -2.885194,2.77793 -5.365114,5.16596 -5.510933,5.30673 l -0.265123,0.25597 z m -12.34695,-4.8958 c -2.942875,-2.96981 -5.356102,-5.41524 -5.362732,-5.43431 -0.0104,-0.0301 3.575683,-1.50529 3.65865,-1.505 0.0172,6e-5 1.436368,1.48058 3.153703,3.29005 1.717335,1.80948 3.14167,3.29761 3.165188,3.30699 0.02476,0.01 0.03646,-1.91609 0.02778,-4.57516 l -0.01498,-4.5922 1.828043,-0.73907 c 1.005424,-0.40649 1.833188,-0.73378 1.839475,-0.72732 0.01771,0.0182 -0.27252,15.28791 -0.290931,15.30631 -0.01962,0.0197 -2.434208,1.00013 -2.563044,1.04078 -0.07161,0.0227 -1.205843,-1.097 -5.441159,-5.37107 z"/>
+      <path d="m -19.089294,160.84717 h 6.702763 l 8.4666472,-24.69439 h -5.1152663 l -6.3499859,19.04996 h -0.705554 l -6.349986,-19.04996 h -5.115266 z m 17.9916369,0 H 15.482861 v -4.23333 H 3.4884437 v -5.9972 H 14.777307 v -4.23333 H 3.4884437 V 140.3861 H 15.482861 v -4.23332 H -1.0976571 Z m 21.1666331,0 h 16.227742 v -4.40971 H 24.655077 v -20.28468 h -4.586101 z m 29.104079,-4.05694 c -4.233324,0 -7.408317,-3.21027 -7.408317,-8.29026 0,-5.07999 3.174993,-8.29026 7.408317,-8.29026 4.233323,0 7.408316,3.21027 7.408316,8.29026 0,5.07999 -3.174993,8.29026 -7.408316,8.29026 z m 0,-20.99023 c -6.667485,0 -11.994418,5.25638 -11.994418,12.69997 0,7.4436 5.326933,12.69997 11.994418,12.69997 6.667485,0 11.994417,-5.25637 11.994417,-12.69997 0,-7.44359 -5.326932,-12.69997 -11.994417,-12.69997 z m 27.692983,25.04717 h 6.349986 l 4.233324,-16.9333 h 0.705554 l 4.233323,16.9333 h 6.349986 l 6.173599,-24.69439 h -5.115268 l -4.233324,17.28607 h -0.705554 l -4.409712,-17.28607 h -5.291655 l -4.409712,17.28607 h -0.705554 l -4.233324,-17.28607 h -5.115266 z m 41.804052,-4.05694 c -4.23332,0 -7.40831,-3.21027 -7.40831,-8.29026 0,-5.07999 3.17499,-8.29026 7.40831,-8.29026 4.23333,0 7.40832,3.21027 7.40832,8.29026 0,5.07999 -3.17499,8.29026 -7.40832,8.29026 z m 0,-20.99023 c -6.66748,0 -11.99441,5.25638 -11.99441,12.69997 0,7.4436 5.32693,12.69997 11.99441,12.69997 6.66749,0 11.99442,-5.25637 11.99442,-12.69997 0,-7.44359 -5.32693,-12.69997 -11.99442,-12.69997 z m 16.22777,25.04717 h 4.5861 v -8.46665 h 1.41111 l 7.93748,8.46665 h 5.82082 l -7.93748,-8.46665 c 3.88054,-0.17639 7.23192,-3.17499 7.23192,-7.93748 0,-4.93888 -3.38666,-8.29026 -7.76109,-8.29026 h -11.28886 z m 4.5861,-12.69997 v -7.58471 h 6.52637 c 1.76389,0 3.35138,1.5875 3.35138,3.88055 0,2.11666 -1.58749,3.70416 -3.35138,3.70416 z m 18.8736,12.69997 h 4.5861 v -11.46525 l 9.1722,11.46525 h 5.64443 l -10.05414,-12.52359 9.34859,-12.1708 h -5.64443 l -8.46665,11.11247 v -11.11247 h -4.5861 z m 21.34299,0 h 4.5861 v -24.69439 h -4.5861 z m 9.87777,0 h 4.5861 v -17.10969 h 0.70556 l 8.99581,17.10969 h 6.1736 v -24.69439 h -4.5861 v 17.10968 h -0.70556 l -8.99581,-17.10968 h -6.1736 z m 44.44988,0 h 3.52777 v -13.05275 h -10.75969 v 3.52777 h 6.17359 v 0.17639 c 0,1.58749 -2.11666,5.29165 -6.70276,5.29165 -4.23332,0 -7.40832,-3.21027 -7.40832,-8.29026 0,-5.07999 3.175,-8.29026 7.40832,-8.29026 3.3161,0 5.29165,2.11667 6.34999,4.40972 h 4.76248 C 236.53292,140.73888 232.93459,135.8 226.26711,135.8 c -6.66749,0 -11.99442,5.25638 -11.99442,12.69997 0,7.4436 5.32693,12.69997 11.99442,12.69997 2.50472,0 4.23332,-0.7761 5.46804,-1.58749 0.70556,-0.45861 1.30528,-0.98778 1.76389,-1.5875 h 0.17639 z"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="Velo Working — home">
+      <svg class="nav__brand-svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
+      <li><a href="index.html#approach" class="nav__link">Approach</a></li>
+      <li><a href="index.html#modules" class="nav__link">Modules</a></li>
+      <li><a href="fabrication.html" class="nav__link">Fabrication</a></li>
+      <li><a href="vision.html" class="nav__link">Vision</a></li>
+      <li><a href="index.html#pricing" class="nav__link">Pricing</a></li>
+      <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow eyebrow--muted">Fabrication &amp; Production · Singapore</div>
+  <h1 class="hero__title reveal">
+    Production hardware.<br>Sourced, managed, <em>delivered.</em>
+  </h1>
+  <p class="hero__sub reveal">One partner. A curated vendor network. Singapore quality, global cost.</p>
+  <p class="hero__lead reveal">Beyond software, Velo Working delivers the hardware your projects depend on — metal, cable, panels, PCBA, and new energy infrastructure. We absorb the sourcing, the QA, and the logistics. You receive a finished product, on spec, on schedule.</p>
+  <div class="hero__ctas reveal">
+    <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20fabrication%20or%20production%20requirement." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+    <a href="#capabilities" class="link">See what we produce</a>
+  </div>
+</section>
+
+<!-- POSITIONING TILE -->
+<section class="tile-row">
+  <div class="grid grid--single">
+    <div class="tile tile--dark tile--center reveal" style="padding-block: clamp(56px, 7vw, 96px);">
+      <div class="tile__eyebrow">The model</div>
+      <h2 class="tile__title tile__title--lg" style="max-width: 22ch; margin-inline: auto;">
+        We are your production partner — not another manufacturer.
+      </h2>
+      <p class="tile__sub" style="max-width: 60ch;">
+        You deal with us. We scope the requirement, select the right vendor, manage the production schedule, run quality assurance, and arrange delivery. No juggling three factories. No overseas vendor risk. One point of accountability — local.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TWO-UP TILES — Singapore reach + global cost -->
+<section class="tile-row">
+  <div class="grid">
+    <div class="tile tile--gray tile--tall reveal">
+      <div>
+        <div class="tile__eyebrow">Curated network</div>
+        <h3 class="tile__title">Pre-qualified manufacturers across Singapore, China, and India.</h3>
+        <p class="tile__sub">Not a marketplace. A short list of partners we have vetted for quality, capability, and reliability — selected so the right job goes to the right vendor at the right price point.</p>
+      </div>
+    </div>
+
+    <div class="tile tile--gray tile--tall reveal">
+      <div>
+        <div class="tile__eyebrow">Lean by design</div>
+        <h3 class="tile__title">No factory floor overhead. Sharper pricing for your project.</h3>
+        <p class="tile__sub">Our internal team focuses on project management, procurement, and QA. We do not carry permanent factory headcount — and that cost discipline shows up in your quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES — five categories, bento -->
+<section class="section" id="capabilities">
+  <div class="section__head">
+    <div class="eyebrow">What we produce</div>
+    <h2>Five production categories. One supply partner.</h2>
+    <p>Each category is backed by proven vendors with the equipment, tooling, and track record to deliver to industrial spec.</p>
+  </div>
+  <div class="wrap">
+    <div class="caps">
+
+      <div class="caps__tile caps__tile--span3 reveal">
+        <div class="caps__eyebrow">A · Structural Metal Fabrication</div>
+        <h3 class="caps__title">Custom metal structures, enclosures, and assemblies.</h3>
+        <p class="caps__sub">For industrial, commercial, rail, and infrastructure applications — from one-off enclosures to multi-batch architectural runs.</p>
+        <ul class="caps__list">
+          <li>Steel structures and custom metal assemblies</li>
+          <li>Electrical enclosures and control boxes</li>
+          <li>Architectural aluminium panels and fluorocarbon metal cladding</li>
+          <li>Rail transit components — platform screen doors, cable trays, signal cabinets</li>
+          <li>Curtain wall systems for commercial and infrastructure projects</li>
+          <li>EV, energy storage, and lithium battery equipment housings</li>
+        </ul>
+        <div class="caps__tag">Metal · structural · enclosure</div>
+      </div>
+
+      <div class="caps__tile caps__tile--span3 caps__tile--gray reveal">
+        <div class="caps__eyebrow">B · Cable Harnessing &amp; Wiring Assembly</div>
+        <h3 class="caps__title">End-to-end cable assembly — single harness to batch production.</h3>
+        <p class="caps__sub">Industrial, automotive, defense, and commercial applications, including high-spec environments.</p>
+        <ul class="caps__list">
+          <li>Industrial wire harnesses (single and multi-branch)</li>
+          <li>Automotive-grade cable assemblies with EMI shielding and chemical resistance</li>
+          <li>Military and defense-grade cables (high-temperature, EMI-protected)</li>
+          <li>Custom power cables</li>
+          <li>Fiber optic and defense optics cabling</li>
+          <li>Complex harnessing for manufacturing and production equipment</li>
+        </ul>
+        <div class="caps__tag">Cable · harness · wiring</div>
+      </div>
+
+      <div class="caps__tile caps__tile--span2 caps__tile--dark reveal">
+        <div class="caps__eyebrow">C · Control Panel Engineering</div>
+        <h3 class="caps__title">Industrial panels and automation hardware — relay logic to PLC.</h3>
+        <p class="caps__sub" style="color: rgba(245, 245, 247, 0.72);">Design and build of industrial control panels and automation hardware for clean, harsh, and hazardous environments.</p>
+        <ul class="caps__list">
+          <li>Industrial control panels and remote I/O panels</li>
+          <li>Stainless steel panels for clean or harsh environments</li>
+          <li>Pre-wired and box-build control assemblies</li>
+          <li>Ex-rated junction boxes for hazardous areas</li>
+          <li>Schneider PLC systems (M580, M340, M241/M251/M221) and Magelis HMI</li>
+          <li>Altivar VFDs · Wago, Weidmuller, Eaton components</li>
+        </ul>
+        <div class="caps__tag" style="color: rgba(245, 245, 247, 0.55);">Panel · PLC · automation</div>
+      </div>
+
+      <div class="caps__tile caps__tile--span2 reveal">
+        <div class="caps__eyebrow">D · PCB &amp; Electronic Assembly</div>
+        <h3 class="caps__title">Printed circuit board assembly and box-build electronics.</h3>
+        <p class="caps__sub">For industrial, semiconductor, biometric, medical, and railway sector projects.</p>
+        <ul class="caps__list">
+          <li>SMT (surface mount technology) PCB assembly</li>
+          <li>Through-hole and mixed-technology PCB production</li>
+          <li>Box-build electronics assembly</li>
+          <li>Industrial and defense-grade electronics</li>
+          <li>Biometric, medical, and railway sector electronics</li>
+        </ul>
+        <div class="caps__tag">PCB · SMT · box-build</div>
+      </div>
+
+      <div class="caps__tile caps__tile--span2 caps__tile--gray reveal">
+        <div class="caps__eyebrow">E · New Energy Infrastructure</div>
+        <h3 class="caps__title">Enclosures and structural hardware for new energy projects.</h3>
+        <p class="caps__sub">For EV, energy storage, and grid-tied infrastructure deployments.</p>
+        <ul class="caps__list">
+          <li>EV charging station cabinets and enclosures</li>
+          <li>Energy storage unit (ESU) control cabinets</li>
+          <li>Lithium battery coating oven equipment housing</li>
+          <li>Grid-tied energy infrastructure structural components</li>
+        </ul>
+        <div class="caps__tag">EV · ESU · grid</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY MODEL -->
+<section class="section">
+  <div class="section__head">
+    <div class="eyebrow">How we deliver</div>
+    <h2>Five steps. Same flow, every project.</h2>
+    <p>Whether it is one enclosure or a full multi-category production package, the engagement runs the same way — so you always know where the project stands.</p>
+  </div>
+  <div class="wrap">
+    <div class="flow">
+      <div class="flow__step reveal">
+        <div class="flow__num">01</div>
+        <div class="flow__name">Scope &amp; capture</div>
+        <p class="flow__desc">We meet, walk the requirement, and translate drawings, specs, and quantities into a clean production brief — owned by us, not passed raw to vendors.</p>
+      </div>
+      <div class="flow__step reveal">
+        <div class="flow__num">02</div>
+        <div class="flow__name">Vendor selection</div>
+        <p class="flow__desc">The right vendor is engaged for quotation. You receive one consolidated, client-facing proposal — not three quotes to compare.</p>
+      </div>
+      <div class="flow__step reveal">
+        <div class="flow__num">03</div>
+        <div class="flow__name">Production management</div>
+        <p class="flow__desc">Once confirmed, we manage the schedule end-to-end — material sourcing, production milestones, and factory-level QA where it matters.</p>
+      </div>
+      <div class="flow__step reveal">
+        <div class="flow__num">04</div>
+        <div class="flow__name">Quality assurance</div>
+        <p class="flow__desc">Before shipment, items are inspected against the agreed specification. We hold the vendor to account on non-conformance — not you.</p>
+      </div>
+      <div class="flow__step reveal">
+        <div class="flow__num">05</div>
+        <div class="flow__name">Delivery &amp; handover</div>
+        <p class="flow__desc">Hardware is delivered to your site or warehouse with full documentation. Repeat-order schedules available for ongoing requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET CLIENTS -->
+<section class="section">
+  <div class="section__head">
+    <div class="eyebrow">Who it's for</div>
+    <h2>Buyers we work well with.</h2>
+    <p>If you build, integrate, or contract physical infrastructure, this is what we exist to support.</p>
+  </div>
+  <div class="wrap">
+    <div class="clients">
+      <div class="clients__row reveal"><div class="clients__num">01</div><div><div class="clients__name">System integrators</div><div class="clients__desc">Requiring fabricated enclosures, control panels, and cable assemblies for client projects.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">02</div><div><div class="clients__name">Industrial automation companies</div><div class="clients__desc">Building or upgrading control rooms, PLC systems, and drive infrastructure.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">03</div><div><div class="clients__name">Engineering &amp; manufacturing SMEs</div><div class="clients__desc">That outsource hardware production rather than carry in-house fabrication capability.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">04</div><div><div class="clients__name">Offshore &amp; marine contractors</div><div class="clients__desc">Needing rugged cable assemblies, junction boxes, and custom enclosures.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">05</div><div><div class="clients__name">Rail &amp; infrastructure contractors</div><div class="clients__desc">Sourcing platform screen doors, cable trays, signal enclosures, and architectural cladding.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">06</div><div><div class="clients__name">Data centre builders</div><div class="clients__desc">Requiring control panels, power distribution hardware, and structural enclosures.</div></div></div>
+      <div class="clients__row reveal"><div class="clients__num">07</div><div><div class="clients__name">New energy &amp; EV infrastructure developers</div><div class="clients__desc">Sourcing certified enclosures, energy storage cabinets, and grid-tied hardware.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="section__head">
+    <div class="eyebrow">Why work with us</div>
+    <h2>The case is simple.</h2>
+  </div>
+  <div class="wrap">
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pillar__num">01</div>
+        <h3>One vendor instead of five.</h3>
+        <p>Metal, cable, panels, PCB, new energy — managed under a single project lead. The coordination overhead disappears. You get one schedule, one delivery, one accountable contact.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__num">02</div>
+        <h3>The right job at the right price.</h3>
+        <p>Compliance-sensitive precision work goes to Singapore. Volume metal and enclosures go offshore where they are cost-effective. Same quality bar — sharper pricing.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__num">03</div>
+        <h3>Quality you do not have to chase.</h3>
+        <p>We translate the spec, run QA before shipment, and stand behind the result. If a vendor misses, we own the recovery — not you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING NOTE -->
+<section class="section">
+  <div class="section__head">
+    <div class="eyebrow">Pricing</div>
+    <h2>Project-based. Quote-driven.</h2>
+    <p>Every job is priced against your specification, quantity, and timeline. Multi-category engagements (e.g. metal + cable + panels for one facility) are bundled under a single project schedule and a consolidated quote.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="tile-row" id="contact">
+  <div class="grid grid--single">
+    <div class="tile tile--gray tile--center reveal" style="padding-block: clamp(64px, 8vw, 112px);">
+      <div class="tile__eyebrow">Start with a spec</div>
+      <h2 class="tile__title tile__title--lg" style="max-width: 20ch; margin-inline: auto;">Send drawings.<br>Get a quote.</h2>
+      <p class="tile__sub" style="max-width: 56ch;">Drawings, BOMs, or a one-paragraph description — whatever you have. We will tell you whether it is a good fit, what it costs, and how long it takes.</p>
+      <div class="tile__ctas">
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20fabrication%20or%20production%20requirement." class="btn btn--primary" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com?subject=Fabrication%20enquiry" class="link">Email Ronnie</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__partner">
+    <div class="foot__partner-tag">Strategic platform partner</div>
+    <div class="foot__partner-row">
+      <strong>Engineered with</strong>
+      <img src="asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
+      <span>· Asia's leading no-code workflow platform</span>
+    </div>
+  </div>
+
+  <div class="foot__inner">
+    <div class="foot__cols">
+      <div class="foot__col">
+        <h5>Velo Working</h5>
+        <a href="index.html#partner">Jodoo Partner</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#modules">Modules</a>
+        <a href="fabrication.html">Fabrication</a>
+        <a href="index.html#pricing">Pricing</a>
+      </div>
+      <div class="foot__col">
+        <h5>Resources</h5>
+        <a href="vision.html">Vision</a>
+        <a href="index.html#manifesto">Manifesto</a>
+        <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
+        <a href="pitch-deck.html">About Us</a>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+      <div class="foot__col">
+        <h5>Legal</h5>
+        <span>Velo Working Pte. Ltd.</span>
+        <span>UEN 202609930G</span>
+        <span>Incorporated 2026</span>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>Copyright © 2026 Velo Working Pte. Ltd. All rights reserved. · Official Jodoo partner.</span>
+      <span>Built for the ones still standing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Mobile nav toggle */
+(function(){
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav__link').forEach(function(l){
+    l.addEventListener('click', function(){
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
