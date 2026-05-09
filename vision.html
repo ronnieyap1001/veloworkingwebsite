@@ -225,10 +225,11 @@ main { padding-top: 48px; }
   .hero__inner { grid-template-columns: 1fr; text-align: center; }
 }
 .hero__title {
-  font-size: clamp(40px, 6.4vw, 72px);
+  font-size: clamp(30px, 4vw, 46px);
   font-weight: 600;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--ink);
 }
 .hero__title em {
   font-style: normal;
@@ -238,9 +239,11 @@ main { padding-top: 48px; }
 }
 .hero__lead {
   margin-top: 18px;
-  font-size: clamp(17px, 1.5vw, 19px);
-  line-height: 1.45;
-  color: var(--ink-2);
+  font-size: clamp(20px, 1.8vw, 24px);
+  line-height: 1.3;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.025em;
   max-width: 32ch;
 }
 @media (max-width: 833px) { .hero__lead { margin-inline: auto; } }
@@ -270,106 +273,144 @@ main { padding-top: 48px; }
 @media (max-width: 833px) { .hero__caption { text-align: center; } }
 
 /* =================================================================
-   STORY — one compact, small-text block
-   Cosmetic narrative. Quick to skim, easy to ignore.
+   STORY — long-form first-person essay
+   4 sub-sections, an italicised break, founder voice
 ================================================================= */
 .story {
   max-width: var(--read-max);
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 48px) var(--gut) clamp(40px, 5vw, 64px);
+  padding: clamp(24px, 4vw, 48px) var(--gut) clamp(32px, 4vw, 48px);
 }
-.story__eyebrow {
-  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-  color: var(--ink-3); text-transform: uppercase;
-  margin-bottom: 14px;
+.story__chapter + .story__chapter { margin-top: clamp(28px, 3.5vw, 44px); }
+.story__head {
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 14px;
 }
 .story p {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin: 0 0 0.9em;
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 14px;
 }
 .story p:last-child { margin: 0; }
-.story strong { color: var(--ink); font-weight: 600; }
+.story strong { font-weight: 600; }
+
+.story__break {
+  max-width: var(--read-max);
+  margin: clamp(28px, 3.5vw, 40px) auto;
+  padding-inline: var(--gut);
+  text-align: center;
+  font-size: clamp(18px, 1.7vw, 22px);
+  font-style: italic;
+  color: var(--ink-2);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
 
 /* =================================================================
-   VISION — the forward statement (kept; this is the real one)
+   BRIDGE — single declarative line between story and vision
 ================================================================= */
-.vision {
-  background: var(--surface-2);
-  border-radius: var(--r-tile);
-  padding: clamp(48px, 6vw, 80px);
-  margin: 0 auto;
-  max-width: var(--max);
-  margin-inline: auto;
+.bridge {
+  max-width: var(--read-max);
+  margin: clamp(32px, 4vw, 48px) auto;
+  padding: clamp(24px, 3vw, 36px) var(--gut);
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: var(--ink);
 }
+
+/* =================================================================
+   VISION — three Singapore-context pillars
+================================================================= */
 .vision__wrap {
   max-width: var(--max);
   margin: 0 auto;
-  padding-inline: var(--gut);
+  padding: clamp(32px, 4vw, 56px) var(--gut);
 }
-.vision__inner {
+.vision__intro {
+  max-width: var(--read-max);
+  margin: 0 auto clamp(28px, 3.5vw, 40px);
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.pillars {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(32px, 4vw, 56px);
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--tile-gap);
 }
-@media (max-width: 833px) { .vision__inner { grid-template-columns: 1fr; } }
-.vision h2 {
-  font-size: clamp(28px, 3.4vw, 44px);
-  letter-spacing: -0.035em;
-  line-height: 1.08;
+@media (max-width: 833px) { .pillars { grid-template-columns: 1fr; } }
+.pillar {
+  background: var(--surface-2);
+  border-radius: var(--r-tile);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex; flex-direction: column;
 }
-.vision p { font-size: 17px; line-height: 1.5; color: var(--ink-2); }
-.vision p strong { color: var(--ink); }
+.pillar__num {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--link); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.pillar h3 {
+  font-size: clamp(20px, 2vw, 24px);
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.pillar p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
 .vision__sig {
-  margin-top: 24px;
-  font-weight: 600; color: var(--ink); font-size: 15px;
-}
-
-.principles { list-style: none; padding: 0; margin: 0; }
-.principles li {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--rule);
-  display: grid; grid-template-columns: 32px 1fr; gap: 14px;
-  font-size: 16px; line-height: 1.5;
-}
-.principles li:last-child { border-bottom: 0; }
-.principles span {
-  color: var(--link); font-weight: 600; font-size: 13px; padding-top: 3px;
+  max-width: var(--read-max);
+  margin: clamp(28px, 3.5vw, 40px) auto 0;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 15px;
+  letter-spacing: -0.01em;
 }
 
 /* =================================================================
-   FINAL CTA TILE
+   QUIET CLOSE — founder-to-founder, no marketing
 ================================================================= */
-.cta {
-  margin: clamp(40px, 5vw, 64px) auto clamp(64px, 8vw, 96px);
-  max-width: var(--max);
+.close {
+  max-width: var(--read-max);
+  margin: clamp(32px, 4vw, 56px) auto clamp(64px, 8vw, 96px);
   padding-inline: var(--gut);
 }
-.cta__tile {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-tile);
-  padding: clamp(48px, 6vw, 80px);
-  text-align: center;
+.close p {
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 24px;
 }
-.cta__tile h2 {
-  font-size: clamp(28px, 3.4vw, 44px);
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-  max-width: 20ch; margin-inline: auto;
+.close__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  background: var(--link);
+  color: #fff;
+  font-size: 17px;
+  letter-spacing: -0.022em;
+  white-space: nowrap;
+  transition: background 200ms ease;
 }
-.cta__tile p {
-  margin-top: 18px;
-  max-width: 56ch; margin-inline: auto;
-  color: var(--ink-2);
-  font-size: 17px; line-height: 1.5;
-}
-.cta__ctas {
-  margin-top: 28px;
-  display: inline-flex; flex-wrap: wrap; gap: 18px; justify-content: center;
-}
+.close__cta:hover { background: var(--link-hov); }
 
 /* =================================================================
    FOOTER
@@ -472,14 +513,13 @@ main { padding-top: 48px; }
 <main>
 
 <!-- ===========================================================
-  HERO
+  HERO — Section 1
 =========================================================== -->
 <section class="hero">
   <div class="hero__inner">
     <div class="reveal">
-      <div class="eyebrow eyebrow--muted">Founder's note · Our vision</div>
-      <h1 class="hero__title">Why I started <em>Velo Working.</em></h1>
-      <p class="hero__lead">A decade inside companies. The same pattern, repeating. A systems problem disguised as a people problem.</p>
+      <h1 class="hero__title">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
+      <p class="hero__lead">This is what I'm doing about it.</p>
     </div>
     <div class="reveal">
       <figure style="margin: 0;">
@@ -493,57 +533,71 @@ main { padding-top: 48px; }
 </section>
 
 <!-- ===========================================================
-  STORY — single compact block, small text
+  STORY — Section 2 (~430 words, 4 sub-sections + italic break)
 =========================================================== -->
-<section class="story reveal">
-  <div class="story__eyebrow">The short version</div>
-  <p>I spent over a decade inside companies, watching the same pattern repeat. <strong>Capability becomes a burden</strong> — the more capable you are, the more you carry that isn't yours. Resources came to me. Politics came to me. My actual scope shifted, became the culture, and quietly cost me my performance and my promotion.</p>
-  <p>At the top, no one knew what was happening on the floor. <strong>Decisions ran on words, not numbers.</strong> The data didn't reach the room. Whoever was closest to the boss got heard. Whoever told the better story got believed.</p>
-  <p>Competent people left, one at a time. The ones who stayed learned to dig emails for accountability. Every conversation had to be black-and-white. The hardworking became the careful, and the careful stopped doing real work.</p>
-  <p>It is <strong>a systems problem disguised as a people problem.</strong> Not better leadership. Not more training. A system that captures what actually happened, in numbers, the moment it happened — so decisions stop running on memory and politics.</p>
-  <p>Existing systems don't reach SMEs. The licences are heavy, the implementation heavier, and the implementer rarely understands how an SME actually runs. So I built Velo Working: <strong>no-code operational systems for SMEs. Vendor-neutral. Fixed scope. Fixed fee. Your team owns it after I leave.</strong> The same systems the big companies have, sized for an operation that can't afford a six-figure rollout — so nobody on your team has to become careful before they can do real work again.</p>
+<section class="story">
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Capability becomes a burden.</h2>
+    <p>The more capable I was, the more I got loaded. Not with the work in my job description — with everyone else's. I could hold more resources, so resources came to me. I could carry more political weight, so politics came to me. I became the senior person's assistant, doing low-end work for someone else's KPI. My actual scope quietly shifted, became the culture, and started costing me my performance and my promotion. The more I delivered, the deeper the loop went.</p>
+    <p>Competent people left, one at a time. The ones who stayed learned to dig emails for accountability. Every conversation had to be black-and-white — whoever didn't get it in writing got blamed. The hardworking became the careful. The careful stopped doing real work. Reputations were rewritten by narrative, not by output.</p>
+  </article>
+
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Decisions ran on words, not numbers.</h2>
+    <p>At the top, no one knew what was happening on the floor. The data didn't reach the room. Meetings ran on confidence and proximity. Whoever was closest to the boss got heard. Whoever told the better story got believed. Decisions came out biased and reckless because there was nothing else to base them on. I watched bad calls get made — over and over — because the room couldn't see the floor, and the floor couldn't get a number into the room.</p>
+  </article>
+</section>
+
+<p class="story__break reveal"><em>A systems problem disguised as a people problem.</em></p>
+
+<section class="story">
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Why existing systems don't reach SMEs.</h2>
+    <p>Most operational software is sold in packages bonded to one vendor's stack. The licences are heavy. The implementation is heavier. The implementer rarely understands how an SME actually runs — what a one-off engineer-to-order job looks like, where the WhatsApp shortcuts hide, why the spreadsheets refuse to die. SMEs that buy in often fail. Not because the software is bad. Because no one looked at the operation first.</p>
+  </article>
+
+  <article class="story__chapter reveal">
+    <h2 class="story__head">What I built instead.</h2>
+    <p>Velo Working is what I built instead. I run it myself — twenty years across fabrication, project delivery, and operations, PMP-certified, no consultancy overhead between you and the engineering. We engineer no-code operational systems on Jodoo, the same kind of platform the big companies use, vendor-neutral. Fixed scope. Fixed fee — S$3,500 to S$15,000 for a standard implementation. Your team owns the system after I leave. The same caliber the giants have, sized for an operation that can't afford a six-figure rollout or a five-year contract.</p>
+  </article>
 </section>
 
 <!-- ===========================================================
-  VISION — the real one. Kept.
+  BRIDGE — Section 3 (single declarative line)
+=========================================================== -->
+<p class="bridge reveal">The vision came from this. Three things I want made standard in Singapore.</p>
+
+<!-- ===========================================================
+  VISION — Section 4 (3 pillars + Singapore-context anchors)
 =========================================================== -->
 <section class="vision__wrap">
-  <div class="vision reveal">
-    <div class="vision__inner">
-      <div>
-        <div class="eyebrow">Our vision</div>
-        <h2>Real work. Restored.</h2>
-        <p>An operating reality where capability is rewarded, not punished. Where the floor and the boardroom share the same numbers. Where SMEs run on the same caliber of system the giants do — without the licence trap or the five-year contract.</p>
-        <p>That is what Velo Working is here to build, one company at a time.</p>
-        <p class="vision__sig">Ronnie Yap · Founder &amp; Director · PMP</p>
-      </div>
-      <div>
-        <ul class="principles">
-          <li><span>01</span><div>Capture what happened, in numbers, the moment it happened.</div></li>
-          <li><span>02</span><div>Decisions belong to the data, not to whoever is closest to the boss.</div></li>
-          <li><span>03</span><div>Capability should compound, not get rerouted into other people's work.</div></li>
-          <li><span>04</span><div>Vendor-neutral by default. Your team owns the system after we leave.</div></li>
-          <li><span>05</span><div>Fixed scope. Fixed fee. Written in plain English before we start.</div></li>
-          <li><span>06</span><div>The hardworking person should never have to become the careful person.</div></li>
-        </ul>
-      </div>
+  <p class="vision__intro reveal">None of these three is solved in Singapore. They aren't aspirations — they're long-standing problems I'd like to see closed in my working lifetime.</p>
+  <div class="pillars">
+    <div class="pillar reveal">
+      <div class="pillar__num">01</div>
+      <h3>Capable people do work that matters.</h3>
+      <p>Singapore SMEs lose their best people to MNCs and overseas every year — because the work inside isn't worth staying for. I want to build the SME I'd have stayed in. One where capability gets rewarded with leverage, not loaded with someone else's job.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar__num">02</div>
+      <h3>Singapore engineering keeps its bar high.</h3>
+      <p>The country still designs, but the building is moving offshore. The factories are shrinking, the trades are aging out, the next generation isn't being formed. I want some of that work to stay here — operationally, in the SMEs that still make and ship things from this island.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar__num">03</div>
+      <h3>SMEs survive long enough to compound.</h3>
+      <p>More than half of Singapore SMEs don't make it past the founder. Operations are usually the reason — not the market. A second generation needs a system to inherit, not a hero to replace. We build the system.</p>
     </div>
   </div>
+  <p class="vision__sig">Ronnie Yap · Founder &amp; Director · PMP</p>
 </section>
 
 <!-- ===========================================================
-  FINAL CTA
+  QUIET CLOSE — Section 5
 =========================================================== -->
-<section class="cta">
-  <div class="cta__tile reveal">
-    <div class="eyebrow">If this sounds familiar</div>
-    <h2>You don't need a better team. You need a better system.</h2>
-    <p>A thirty-minute call. No deck, no pitch, no NDA theatre. If we can help, we'll tell you. If we can't, we'll tell you that too.</p>
-    <div class="cta__ctas">
-      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20your%20vision%20page%20and%20I%27d%20like%20to%20talk." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
-      <a href="index.html#approach" class="link">See the approach</a>
-    </div>
-  </div>
+<section class="close reveal">
+  <p>If your operation looks anything like the ones I left behind, tell me. I'll tell you whether we can fix it, what it costs, and how long it takes.</p>
+  <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20your%20vision%20page%20and%20I%27d%20like%20to%20talk." class="close__cta" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
 </section>
 
 </main>
