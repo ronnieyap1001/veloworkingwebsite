@@ -580,18 +580,35 @@ main { padding-top: 48px; }
 <main>
 
 <!-- ===========================================================
-  HERO — title only
-=========================================================== -->
 <section class="hero">
   <div class="hero__inner reveal">
     <h1 class="hero__title">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
     <p class="hero__lead">This is what I'm doing about it.</p>
+  HERO — Section 1 (title only)
+<section class="hero">
+  <div class="hero__inner reveal">
+    <h1 class="hero__title">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
+    <p class="hero__lead">This is what I'm doing about it.</p>
+  HERO — Section 1
+<section class="hero">
+  <div class="hero__inner">
+    <div class="reveal">
+      <h1 class="hero__title">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
+      <p class="hero__lead">This is what I'm doing about it.</p>
+    </div>
+    <div class="reveal">
+      <figure style="margin: 0;">
+        <div class="hero__photo">
+          <img src="asset/founder_photo.png" alt="Ronnie Yap, Founder of Velo Working" />
+        </div>
+        <figcaption class="hero__caption">Ronnie Yap · Founder &amp; Director</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
 <!-- ===========================================================
-  ESSAY — photo + scrollable small-text story side by side
-=========================================================== -->
+  ESSAY — Section 2: photo + scrollable small-text story
 <section class="essay">
   <div class="essay__inner">
     <figure class="essay__photo reveal">
@@ -624,6 +641,32 @@ main { padding-top: 48px; }
       </div>
     </div>
   </div>
+  STORY — Section 2 (~430 words, 4 sub-sections + italic break)
+<section class="story">
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Capability becomes a burden.</h2>
+    <p>The more capable I was, the more I got loaded. Not with the work in my job description — with everyone else's. I could hold more resources, so resources came to me. I could carry more political weight, so politics came to me. I became the senior person's assistant, doing low-end work for someone else's KPI. My actual scope quietly shifted, became the culture, and started costing me my performance and my promotion. The more I delivered, the deeper the loop went.</p>
+    <p>Competent people left, one at a time. The ones who stayed learned to dig emails for accountability. Every conversation had to be black-and-white — whoever didn't get it in writing got blamed. The hardworking became the careful. The careful stopped doing real work. Reputations were rewritten by narrative, not by output.</p>
+  </article>
+
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Decisions ran on words, not numbers.</h2>
+    <p>At the top, no one knew what was happening on the floor. The data didn't reach the room. Meetings ran on confidence and proximity. Whoever was closest to the boss got heard. Whoever told the better story got believed. Decisions came out biased and reckless because there was nothing else to base them on. I watched bad calls get made — over and over — because the room couldn't see the floor, and the floor couldn't get a number into the room.</p>
+  </article>
+</section>
+
+<p class="story__break reveal"><em>A systems problem disguised as a people problem.</em></p>
+
+<section class="story">
+  <article class="story__chapter reveal">
+    <h2 class="story__head">Why existing systems don't reach SMEs.</h2>
+    <p>Most operational software is sold in packages bonded to one vendor's stack. The licences are heavy. The implementation is heavier. The implementer rarely understands how an SME actually runs — what a one-off engineer-to-order job looks like, where the WhatsApp shortcuts hide, why the spreadsheets refuse to die. SMEs that buy in often fail. Not because the software is bad. Because no one looked at the operation first.</p>
+  </article>
+
+  <article class="story__chapter reveal">
+    <h2 class="story__head">What I built instead.</h2>
+    <p>Velo Working is what I built instead. I run it myself — twenty years across fabrication, project delivery, and operations, PMP-certified, no consultancy overhead between you and the engineering. We engineer no-code operational systems on Jodoo, the same kind of platform the big companies use, vendor-neutral. Fixed scope. Fixed fee — S$3,500 to S$15,000 for a standard implementation. Your team owns the system after I leave. The same caliber the giants have, sized for an operation that can't afford a six-figure rollout or a five-year contract.</p>
+  </article>
 </section>
 
 <!-- ===========================================================
