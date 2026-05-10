@@ -576,30 +576,6 @@ main { padding-top: 48px; }
 .step p { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin: 0; }
 
 /* =================================================================
-   PRICING — two big tiles
-================================================================= */
-.pricing {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--tile-gap);
-}
-@media (max-width: 833px) { .pricing { grid-template-columns: 1fr; } }
-.tier {
-  background: var(--surface);
-  border-radius: var(--r-tile);
-  padding: 48px;
-}
-.tier--gray { background: var(--surface-2); }
-.tier__label { font-size: 13px; color: var(--link); font-weight: 600; margin-bottom: 14px; }
-.tier__name { font-size: 28px; font-weight: 600; letter-spacing: -0.03em; }
-.tier__price { margin: 16px 0; font-size: 36px; font-weight: 600; letter-spacing: -0.03em; }
-.tier p { color: var(--ink-2); }
-.pricing__note {
-  margin-top: 28px;
-  font-size: 14px; color: var(--ink-3); text-align: center;
-}
-
-/* =================================================================
    MANIFESTO
 ================================================================= */
 .manifesto {
@@ -737,7 +713,6 @@ main { padding-top: 48px; }
       <li><a href="#modules" class="nav__link">Modules</a></li>
       <li><a href="fabrication.html" class="nav__link">Fabrication</a></li>
       <li><a href="vision.html" class="nav__link">Vision</a></li>
-      <li><a href="#pricing" class="nav__link">Pricing</a></li>
       <li><a href="assessment/assessment.html" class="nav__link" target="_blank" rel="noopener">Assessment</a></li>
       <li><a href="#contact" class="nav__link">Contact</a></li>
     </ul>
@@ -989,33 +964,6 @@ main { padding-top: 48px; }
 </section>
 
 <!-- ===========================================================
-  PRICING
-=========================================================== -->
-<section class="section" id="pricing">
-  <div class="section__head">
-    <div class="eyebrow">Investment</div>
-    <h2>Fixed scope. Fixed fee. Published.</h2>
-  </div>
-  <div class="wrap">
-    <div class="pricing">
-      <div class="tier reveal">
-        <div class="tier__label">Tier 01</div>
-        <div class="tier__name">Standard Implementation</div>
-        <div class="tier__price">S$3,500 – S$15,000</div>
-        <p>Configuration of standard modules, data migration, training, go-live support, and post-launch stabilisation. For companies starting fresh or moving off spreadsheets and WhatsApp.</p>
-      </div>
-      <div class="tier tier--gray reveal">
-        <div class="tier__label">Tier 02</div>
-        <div class="tier__name">Customisation &amp; Hardware</div>
-        <div class="tier__price">S$15,000 – S$30,000</div>
-        <p>Custom-developed modules, integrations with your existing software, hardware sourcing, and design and build of control panels, wire harnesses, PCBA, and IoT sensor deployments.</p>
-      </div>
-    </div>
-    <p class="pricing__note">All pricing is fixed-scope, fixed-price. No open-ended time-and-materials. PSG and EDG grant navigation included at no extra charge.</p>
-  </div>
-</section>
-
-<!-- ===========================================================
   MANIFESTO
 =========================================================== -->
 <section class="section" id="manifesto">
@@ -1088,7 +1036,6 @@ main { padding-top: 48px; }
         <a href="#modules">Modules</a>
         <a href="fabrication.html">Fabrication</a>
         <a href="#why">Why us</a>
-        <a href="#pricing">Pricing</a>
       </div>
       <div class="foot__col">
         <h5>Resources</h5>
