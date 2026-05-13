@@ -1,0 +1,540 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Three Positioning Framings — Velo Working Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=Libre+Baskerville:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F5F0;
+  --paper-soft:#EDEAE2;
+  --paper-line:#D7D0BF;
+  --ink:#1a1a1a;
+  --ink-soft:#3d3d3d;
+  --ink-mute:#5e5e5e;
+  --blue:#1317E4;
+  --blue-tint:rgba(19,23,228,.06);
+  --blue-strong:rgba(19,23,228,.14);
+  --f-sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --f-serif:'Libre Baskerville',Georgia,serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:0!important;transition-duration:0!important}
+}
+html,body{background:var(--paper);color:var(--ink)}
+body{
+  font-family:var(--f-sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.page{max-width:1280px;margin:0 auto;padding:64px 32px 96px}
+@media (max-width:768px){.page{padding:48px 16px 64px}}
+
+.eyebrow{
+font-family:var(–f-mono);
+font-size:12px;
+font-weight:500;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(–ink-mute);
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:24px;
+}
+.eyebrow::before{
+content:””;
+width:24px;
+height:1px;
+background:var(–blue);
+}
+
+h1{
+font-weight:900;
+font-size:clamp(32px,4vw,40px);
+line-height:1.1;
+letter-spacing:-.015em;
+margin-bottom:24px;
+}
+h1 .accent{font-family:var(–f-serif);font-style:italic;font-weight:400}
+.lede{
+font-size:18px;
+line-height:1.5;
+color:var(–ink-soft);
+margin-bottom:48px;
+max-width:720px;
+}
+h2{
+font-weight:700;
+font-size:22px;
+line-height:1.3;
+letter-spacing:-.01em;
+margin-bottom:16px;
+}
+
+/* Section header strip */
+.section-strip{
+display:flex;
+align-items:baseline;
+gap:16px;
+padding:16px 0;
+border-top:1px solid var(–paper-line);
+border-bottom:1px solid var(–paper-line);
+font-family:var(–f-mono);
+font-size:12px;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(–ink-mute);
+margin-bottom:32px;
+}
+.section-strip .label{flex:1}
+.section-strip .meta{color:var(–ink)}
+
+/* Grid of 3 matrices */
+.grid-3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin:32px 0;
+}
+@media (max-width:1024px){.grid-3{grid-template-columns:1fr;gap:32px}}
+
+.card{
+background:var(–paper-soft);
+border:1px solid var(–paper-line);
+padding:24px;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+.card.is-pick{
+background:var(–blue-tint);
+border:2px solid var(–blue);
+padding:23px;
+}
+.card-eyebrow{
+font-family:var(–f-mono);
+font-size:11px;
+font-weight:500;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(–ink-mute);
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+.card.is-pick .card-eyebrow{color:var(–blue)}
+.card-eyebrow .badge{
+font-family:var(–f-mono);
+font-size:10px;
+font-weight:500;
+letter-spacing:.08em;
+background:var(–blue);
+color:var(–paper);
+padding:4px 8px;
+border-radius:2px;
+}
+.card-title{
+font-weight:700;
+font-size:18px;
+line-height:1.3;
+letter-spacing:-.005em;
+color:var(–ink);
+}
+.card-axes{
+font-family:var(–f-mono);
+font-size:11px;
+letter-spacing:.04em;
+color:var(–ink-mute);
+line-height:1.5;
+}
+.card-axes strong{color:var(–ink);font-weight:500}
+.card-svg{
+background:var(–paper);
+padding:8px;
+border:1px solid var(–paper-line);
+}
+.card.is-pick .card-svg{border-color:var(–blue);border-opacity:.3}
+.card-svg svg{width:100%;height:auto;display:block}
+.card-story{
+font-family:var(–f-serif);
+font-style:italic;
+font-size:15px;
+line-height:1.5;
+color:var(–ink);
+padding:16px;
+background:var(–paper);
+border-left:2px solid var(–ink-mute);
+}
+.card.is-pick .card-story{border-left-color:var(–blue);color:var(–ink)}
+.card-meta{
+display:grid;
+grid-template-columns:auto 1fr;
+gap:8px 16px;
+font-size:13px;
+line-height:1.4;
+}
+.card-meta dt{
+font-family:var(–f-mono);
+font-size:10px;
+letter-spacing:.05em;
+text-transform:uppercase;
+color:var(–ink-mute);
+}
+.card-meta dd{color:var(–ink-soft)}
+
+/* Recommendation block */
+.rec{
+margin-top:64px;
+padding:32px;
+background:var(–ink);
+color:var(–paper);
+}
+.rec-eyebrow{
+font-family:var(–f-mono);
+font-size:11px;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:rgba(247,245,240,.6);
+margin-bottom:16px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+.rec-eyebrow::before{
+content:””;
+width:24px;
+height:1px;
+background:var(–blue);
+}
+.rec h2{color:var(–paper);margin-bottom:16px;font-size:24px}
+.rec h2 .accent{font-family:var(–f-serif);font-style:italic;font-weight:400}
+.rec p{color:rgba(247,245,240,.85);line-height:1.6;margin-bottom:12px;max-width:680px}
+.rec p:last-child{margin-bottom:0}
+.rec strong{color:var(–paper);font-weight:600}
+.rec-grid{
+margin-top:24px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:1px;
+background:rgba(247,245,240,.15);
+}
+@media (max-width:768px){.rec-grid{grid-template-columns:1fr}}
+.rec-cell{
+background:var(–ink);
+padding:16px;
+}
+.rec-cell .ax{
+font-family:var(–f-mono);
+font-size:10px;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:rgba(247,245,240,.5);
+margin-bottom:6px;
+}
+.rec-cell .label{
+font-family:var(–f-sans);
+font-weight:600;
+font-size:14px;
+color:var(–blue);
+}
+.rec-cell.is-base .label{color:var(–paper)}
+.rec-cell .desc{
+font-size:12px;
+line-height:1.5;
+color:rgba(247,245,240,.7);
+margin-top:4px;
+}
+
+/* Decision buttons */
+.actions{
+margin-top:48px;
+padding-top:24px;
+border-top:1px solid var(–paper-line);
+display:flex;
+flex-wrap:wrap;
+gap:16px;
+font-family:var(–f-mono);
+font-size:12px;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(–ink-mute);
+}
+.actions strong{color:var(–ink);font-weight:500}
+
+footer{
+margin-top:64px;
+padding-top:24px;
+border-top:1px solid var(–paper-line);
+font-family:var(–f-mono);
+font-size:11px;
+letter-spacing:.08em;
+text-transform:uppercase;
+color:var(–ink-mute);
+display:flex;
+flex-wrap:wrap;
+gap:16px;
+}
+footer strong{color:var(–ink);font-family:var(–f-sans);font-weight:700;letter-spacing:.04em}
+</style>
+
+</head>
+<body>
+<div class="page">
+
+<header>
+<div class="eyebrow">Pre-deck review</div>
+<h1>Three framings — <span class="accent">one battlefield</span> chosen.</h1>
+<p class="lede">The same three categories — Cloud ERP, Low-Code, No-Code — plotted on three different sets of axes. Each framing tells a different story to a different buyer mindset. The third is the recommended battlefield for Velo Working's positioning.</p>
+</header>
+
+<div class="section-strip">
+<div class="label">Three candidate framings</div>
+<div class="meta">A · Economics framing &nbsp;·&nbsp; B · Organisational framing &nbsp;·&nbsp; C · Battlefield framing →</div>
+</div>
+
+<div class="grid-3">
+
+<!-- FRAMING A: Economics -->
+
+<div class="card">
+<div class="card-eyebrow">
+<span>Framing A</span>
+<span>Economics</span>
+</div>
+<div class="card-title">3-year TCO &times; Time to adapt</div>
+<div class="card-axes">X-axis: <strong>Total cost of ownership (3 years)</strong><br>Y-axis: <strong>Time to adapt to a process change</strong></div>
+
+<div class="card-svg">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Economics framing matrix">
+<!-- Frame -->
+<rect x="60" y="40" width="320" height="280" fill="#F7F5F0" stroke="#D7D0BF"/>
+<line x1="220" y1="40" x2="220" y2="320" stroke="#D7D0BF" stroke-dasharray="3 3"/>
+<line x1="60" y1="180" x2="380" y2="180" stroke="#D7D0BF" stroke-dasharray="3 3"/>
+
+<!-- Axes -->
+
+<line x1="60" y1="340" x2="380" y2="340" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="375,336 383,340 375,344" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+<line x1="40" y1="320" x2="40" y2="40" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="36,46 40,38 44,46" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+
+<!-- Axis labels -->
+
+<text x="220" y="358" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1">LOW COST →</text>
+<text x="20" y="180" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1" transform="rotate(-90 20 180)">FASTER →</text>
+
+<!-- Quadrant micro-labels -->
+
+<text x="68" y="56" font-size="8" fill="#9a958a" font-family="JetBrains Mono,monospace" letter-spacing="1">SLOW + EXPENSIVE</text>
+<text x="372" y="56" text-anchor="end" font-size="8" fill="#9a958a" font-family="JetBrains Mono,monospace" letter-spacing="1">FAST + CHEAP</text>
+
+<!-- ERP: high cost, slow adapt = bottom-left -->
+
+<circle cx="115" cy="270" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="115" cy="270" r="4" fill="#1a1a1a"/>
+<text x="115" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Cloud ERP</text>
+<text x="115" y="295" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">S$3M–15M · months</text>
+
+<!-- LCAP: middle -->
+
+<circle cx="220" cy="180" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="220" cy="180" r="4" fill="#1a1a1a"/>
+<text x="220" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Low-Code</text>
+<text x="220" y="205" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">S$800K–3M · weeks</text>
+
+<!-- No-Code: top-right -->
+
+<circle cx="320" cy="95" r="40" fill="#1317E4" fill-opacity=".12" stroke="#1317E4" stroke-width="1.5"/>
+<circle cx="320" cy="95" r="4" fill="#1317E4"/>
+<text x="320" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#1317E4" font-family="DM Sans,sans-serif">No-Code</text>
+<text x="320" y="120" text-anchor="middle" font-size="8" fill="#1317E4" font-family="JetBrains Mono,monospace">S$50–300K · hours</text>
+</svg>
+</div>
+
+<div class="card-story">"ERP costs millions and takes months to change. No-Code costs thousands and changes in hours."</div>
+
+<dl class="card-meta">
+<dt>Buyer mindset</dt><dd>CFO — money in, money out.</dd>
+<dt>Strength</dt><dd>Universal recognition. Numbers speak.</dd>
+<dt>Weakness</dt><dd>Frames Jodoo as the "cheap" option — risk of being seen as light-weight.</dd>
+</dl>
+</div>
+
+<!-- FRAMING B: Organisational -->
+
+<div class="card">
+<div class="card-eyebrow">
+<span>Framing B</span>
+<span>Organisational</span>
+</div>
+<div class="card-title">Resource demand &times; Self-sufficiency</div>
+<div class="card-axes">X-axis: <strong>Resource demand (capital + people + time)</strong><br>Y-axis: <strong>Operational self-sufficiency</strong></div>
+
+<div class="card-svg">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organisational framing matrix">
+<rect x="60" y="40" width="320" height="280" fill="#F7F5F0" stroke="#D7D0BF"/>
+<line x1="220" y1="40" x2="220" y2="320" stroke="#D7D0BF" stroke-dasharray="3 3"/>
+<line x1="60" y1="180" x2="380" y2="180" stroke="#D7D0BF" stroke-dasharray="3 3"/>
+
+<line x1="60" y1="340" x2="380" y2="340" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="375,336 383,340 375,344" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+<line x1="40" y1="320" x2="40" y2="40" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="36,46 40,38 44,46" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+
+<text x="220" y="358" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1">LOWER DEMAND →</text>
+<text x="20" y="180" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1" transform="rotate(-90 20 180)">MORE SELF-SUFFICIENT →</text>
+
+<text x="68" y="56" font-size="8" fill="#9a958a" font-family="JetBrains Mono,monospace" letter-spacing="1">NEEDS DEPARTMENT</text>
+<text x="372" y="56" text-anchor="end" font-size="8" fill="#9a958a" font-family="JetBrains Mono,monospace" letter-spacing="1">NEEDS TRAINED STAFF</text>
+
+<!-- ERP: high demand, low self-sufficiency -->
+
+<circle cx="115" cy="270" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="115" cy="270" r="4" fill="#1a1a1a"/>
+<text x="115" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Cloud ERP</text>
+<text x="115" y="295" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">IT dept + SI partner</text>
+
+<!-- LCAP: middle -->
+
+<circle cx="220" cy="180" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="220" cy="180" r="4" fill="#1a1a1a"/>
+<text x="220" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Low-Code</text>
+<text x="220" y="205" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">In-house developers</text>
+
+<!-- No-Code: top-right -->
+
+<circle cx="320" cy="95" r="40" fill="#1317E4" fill-opacity=".12" stroke="#1317E4" stroke-width="1.5"/>
+<circle cx="320" cy="95" r="4" fill="#1317E4"/>
+<text x="320" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#1317E4" font-family="DM Sans,sans-serif">No-Code</text>
+<text x="320" y="120" text-anchor="middle" font-size="8" fill="#1317E4" font-family="JetBrains Mono,monospace">Trained ops staff</text>
+</svg>
+</div>
+
+<div class="card-story">"ERP needs an IT department. Low-Code needs developers. No-Code needs trained operations staff."</div>
+
+<dl class="card-meta">
+<dt>Buyer mindset</dt><dd>MD / board — org structure &amp; hiring plan.</dd>
+<dt>Strength</dt><dd>Maps directly to "do we need an IT team?" — answer the SME already knows.</dd>
+<dt>Weakness</dt><dd>Less immediate than money. Requires the buyer to think one step.</dd>
+</dl>
+</div>
+
+<!-- FRAMING C: Battlefield (RECOMMENDED) -->
+
+<div class="card is-pick">
+<div class="card-eyebrow">
+<span>Framing C</span>
+<span class="badge">Recommended</span>
+</div>
+<div class="card-title">Cost to evolve &times; Operational autonomy</div>
+<div class="card-axes">X-axis: <strong>Cost of every change after deployment</strong><br>Y-axis: <strong>Operational autonomy (no outside help needed)</strong></div>
+
+<div class="card-svg">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Battlefield framing matrix — recommended">
+<rect x="60" y="40" width="320" height="280" fill="#F7F5F0" stroke="#1317E4" stroke-opacity=".3"/>
+<line x1="220" y1="40" x2="220" y2="320" stroke="#1317E4" stroke-opacity=".25" stroke-dasharray="3 3"/>
+<line x1="60" y1="180" x2="380" y2="180" stroke="#1317E4" stroke-opacity=".25" stroke-dasharray="3 3"/>
+
+<line x1="60" y1="340" x2="380" y2="340" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="375,336 383,340 375,344" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+<line x1="40" y1="320" x2="40" y2="40" stroke="#1a1a1a" stroke-width="1.2"/>
+<polyline points="36,46 40,38 44,46" stroke="#1a1a1a" stroke-width="1.2" fill="none"/>
+
+<text x="220" y="358" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1">CHEAPER TO CHANGE →</text>
+<text x="20" y="180" text-anchor="middle" font-size="10" fill="#5e5e5e" font-family="JetBrains Mono,monospace" letter-spacing="1" transform="rotate(-90 20 180)">MORE AUTONOMOUS →</text>
+
+<text x="68" y="56" font-size="8" fill="#9a958a" font-family="JetBrains Mono,monospace" letter-spacing="1">PAYS RENT TO CHANGE</text>
+<text x="372" y="56" text-anchor="end" font-size="8" fill="#1317E4" font-family="JetBrains Mono,monospace" letter-spacing="1" font-weight="500">OWNS & EVOLVES</text>
+
+<!-- ERP -->
+
+<circle cx="115" cy="270" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="115" cy="270" r="4" fill="#1a1a1a"/>
+<text x="115" y="252" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Cloud ERP</text>
+<text x="115" y="295" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">Consultant per change</text>
+
+<!-- LCAP -->
+
+<circle cx="220" cy="180" r="38" fill="#1a1a1a" fill-opacity=".06" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="220" cy="180" r="4" fill="#1a1a1a"/>
+<text x="220" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a1a" font-family="DM Sans,sans-serif">Low-Code</text>
+<text x="220" y="205" text-anchor="middle" font-size="8" fill="#5e5e5e" font-family="JetBrains Mono,monospace">Dev sprint per change</text>
+
+<!-- No-Code: highlighted -->
+
+<circle cx="320" cy="95" r="44" fill="#1317E4" fill-opacity=".16" stroke="#1317E4" stroke-width="2"/>
+<circle cx="320" cy="95" r="5" fill="#1317E4"/>
+<text x="320" y="74" text-anchor="middle" font-size="11" font-weight="700" fill="#1317E4" font-family="DM Sans,sans-serif">No-Code</text>
+<text x="320" y="122" text-anchor="middle" font-size="8" fill="#1317E4" font-family="JetBrains Mono,monospace">Staff edits live</text>
+
+<!-- Annotation arrow to No-Code -->
+
+<path d="M 280 65 Q 295 50 308 65" stroke="#1317E4" stroke-width="1" fill="none" opacity=".5"/>
+</svg>
+</div>
+
+<div class="card-story">"Implementation is one-time. Evolution is forever. Only No-Code keeps you free."</div>
+
+<dl class="card-meta">
+<dt>Buyer mindset</dt><dd>Owner-operator — long-term cost of dependency.</dd>
+<dt>Strength</dt><dd>Renders Velo Working's whole thesis visually. Assumes implementation done.</dd>
+<dt>Bonus</dt><dd>Doesn't undermine Velo's implementation revenue — both axes are post-deployment.</dd>
+</dl>
+</div>
+
+</div>
+
+<!-- RECOMMENDATION BLOCK -->
+
+<aside class="rec">
+<div class="rec-eyebrow">Recommendation</div>
+<h2>Framing C wins because it shows the <span class="accent">ongoing</span> relationship.</h2>
+<p>Framings A and B both place No-Code in the right quadrant — but they describe what's true <strong>before</strong> the system goes live. Once a category is bought and deployed, its cost-to-buy stops mattering. What matters is the rent it charges for every subsequent change.</p>
+<p>Framing C is the only one of the three where both axes describe the <strong>life of the system after Velo Working leaves the room</strong>. That's the actual moat — and the only framing that doesn't accidentally reduce Velo's own implementation work to "the cheap option."</p>
+
+<div class="rec-grid">
+<div class="rec-cell is-base">
+<div class="ax">Framing A · Economics</div>
+<div class="label">Strong but limiting</div>
+<div class="desc">Frames Jodoo as the budget choice. Good for cost-conscious buyers, weak for premium positioning.</div>
+</div>
+<div class="rec-cell is-base">
+<div class="ax">Framing B · Organisational</div>
+<div class="label">Smart but indirect</div>
+<div class="desc">Requires buyer to translate "needs IT department" into "we don't have one." Works on reflective buyers, slower on transactional ones.</div>
+</div>
+<div class="rec-cell">
+<div class="ax">Framing C · Battlefield</div>
+<div class="label">Both axes favour Jodoo</div>
+<div class="desc">No tradeoff narrative for the buyer to entertain. ERP sits in the worst quadrant, Jodoo alone in the best. Mirrors the article's closing line.</div>
+</div>
+</div>
+</aside>
+
+<div class="actions">
+<strong>If approved:</strong>
+<span>→ Replace article matrix with Framing C</span>
+<span>→ Build pitch-deck slide version</span>
+<span>→ Optional alternate framings in deck appendix</span>
+</div>
+
+<footer>
+<strong>Velo Working</strong>
+<span>Pre-deck positioning review</span>
+<span>Internal · For Ronnie's approval</span>
+</footer>
+
+</div>
+</body>
+</html>
