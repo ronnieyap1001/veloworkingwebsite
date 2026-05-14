@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Positioning Jodoo — Three framings, one battlefield · Velo Working</title>
+
+<!-- SEO -->
+<meta name="description" content="ERP, Low-Code, No-Code — plotted on three different sets of axes. The same three categories tell three different stories. Velo Working on why one framing wins for SMEs choosing Jodoo." />
+<meta name="author" content="Velo Working Pte. Ltd." />
+<link rel="canonical" href="https://www.veloworking.com/blog/positioning-of-jodoo.html" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Positioning Jodoo — Three framings, one battlefield" />
+<meta property="og:description" content="ERP, Low-Code, No-Code on three different matrices. Why the cost-to-evolve framing wins — and what it means for SMEs choosing an operations system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.veloworking.com/blog/positioning-of-jodoo.html" />
+<meta property="og:site_name" content="Velo Working" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Positioning Jodoo — Three framings, one battlefield" />
+<meta name="twitter:description" content="The same three categories — Cloud ERP, Low-Code, No-Code — told three ways. Only one survives the long-term test." />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="../asset/favicon.svg" />
+<link rel="apple-touch-icon" href="../asset/favicon.svg" />
+
+<style>
+/* =================================================================
+   APPLE-INSPIRED DESIGN SYSTEM (matches index.html / fabrication.html)
+================================================================= */
+:root {
+  --bg:        #fbfbfd;
+  --surface:   #ffffff;
+  --surface-2: #f5f5f7;
+  --ink:       #1d1d1f;
+  --ink-2:     #6e6e73;
+  --ink-3:     #86868b;
+  --rule:      #d2d2d7;
+  --dark:      #0b0b0d;
+  --link:      #0071e3;
+  --link-hov:  #0077ed;
+  --jodoo:     #1317E4;
+  --jodoo-tint: rgba(19, 23, 228, 0.06);
+  --jodoo-strong: rgba(19, 23, 228, 0.14);
+
+  --r-tile:    24px;
+  --r-pill:    980px;
+
+  --f: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --gut: clamp(20px, 4vw, 40px);
+  --max: 1180px;
+  --max-prose: 720px;
+  --section-pad: clamp(64px, 8vw, 96px);
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f);
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+p { margin: 0 0 1em; }
+p:last-child { margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
+.wrap--prose { max-width: var(--max-prose); margin: 0 auto; padding-inline: var(--gut); }
+
+/* TYPE */
+.eyebrow {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
+  color: var(--link); margin-bottom: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.eyebrow--muted { color: var(--ink-2); }
+.eyebrow--mono {
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 500; color: var(--ink-2);
+}
+.eyebrow--mono::before {
+  content: ""; width: 24px; height: 1px; background: var(--jodoo);
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
+h1 { font-size: clamp(36px, 5.6vw, 64px); font-weight: 600; letter-spacing: -0.045em; line-height: 1.05; }
+h2 { font-size: clamp(28px, 3.6vw, 40px); }
+h3 { font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.03em; line-height: 1.15; }
+h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 600; }
+em.italic { font-style: italic; font-weight: 400; }
+
+.lead {
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.4;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  font-weight: 400;
+}
+.muted { color: var(--ink-2); }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px; border-radius: var(--r-pill);
+  font-size: 17px; font-weight: 400; letter-spacing: -0.022em;
+  white-space: nowrap;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease, opacity 200ms ease;
+}
+.btn--primary { background: var(--link); color: #fff; }
+.btn--primary:hover { background: var(--link-hov); }
+.btn--ghost { color: var(--link); border: 1px solid var(--link); }
+.btn--ghost:hover { background: var(--link); color: #fff; }
+.btn--on-dark.btn--primary { background: #2997ff; }
+.btn--on-dark.btn--ghost { color: #2997ff; border-color: #2997ff; }
+.btn--on-dark.btn--ghost:hover { background: #2997ff; color: #000; }
+
+.link {
+  color: var(--link); font-size: 17px; font-weight: 400;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: opacity 200ms ease;
+}
+.link:hover { text-decoration: underline; }
+.link::after { content: '›'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
+.link--on-dark { color: #2997ff; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  height: 48px;
+  background: rgba(251, 251, 253, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+.nav__inner {
+  max-width: 1024px; margin: 0 auto; height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: 22px; gap: 16px;
+}
+.nav__brand { color: var(--ink); display: inline-flex; align-items: center; flex-shrink: 0; height: 100%; }
+.nav__brand-svg { height: 18px; width: auto; display: block; }
+.nav__links {
+  display: flex; align-items: center; gap: 0;
+  list-style: none; padding: 0; margin: 0; height: 100%;
+}
+.nav__links li { display: flex; align-items: center; height: 100%; }
+.nav__link {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 12px;
+  color: rgba(29, 29, 31, 0.8);
+  font-size: 12px; font-weight: 400; letter-spacing: -0.01em; white-space: nowrap;
+  transition: color 150ms ease;
+}
+.nav__link:hover { color: var(--ink); }
+.nav__link--accent { color: var(--link); font-weight: 500; }
+.nav__link--accent:hover { color: var(--link-hov); }
+
+.nav__toggle {
+  display: none; width: 36px; height: 36px; border-radius: 50%;
+  align-items: center; justify-content: center; color: var(--ink); flex-shrink: 0;
+}
+.nav__toggle svg { width: 18px; height: 18px; }
+
+@media (max-width: 833px) {
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+  .nav.nav--open .nav__links {
+    position: absolute; top: 48px; left: 0; right: 0;
+    flex-direction: column; height: auto;
+    background: rgba(251, 251, 253, 0.96);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 22px 16px; display: flex;
+  }
+  .nav.nav--open .nav__links li {
+    height: auto; border-bottom: 1px solid var(--rule);
+  }
+  .nav.nav--open .nav__links li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__link {
+    height: 44px; width: 100%; padding: 0; font-size: 15px;
+  }
+}
+
+main { padding-top: 48px; }
+
+/* HERO */
+.hero {
+  padding: clamp(48px, 8vw, 96px) 0 clamp(40px, 6vw, 64px);
+  border-bottom: 1px solid var(--rule);
+}
+.hero__crumb {
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero__crumb a { color: var(--link); }
+.hero__crumb a:hover { color: var(--link-hov); }
+.hero__crumb .sep { color: var(--ink-3); }
+.hero__title {
+  margin-bottom: 24px; max-width: 22ch;
+}
+.hero__title em {
+  font-style: italic; font-weight: 400;
+  color: var(--jodoo);
+}
+.hero__lead {
+  max-width: 60ch; color: var(--ink-2); margin-bottom: 32px;
+}
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2);
+  padding-top: 24px; border-top: 1px solid var(--rule);
+  margin-top: 16px;
+}
+.hero__meta strong { color: var(--ink); font-weight: 500; }
+
+/* SECTION HEADERS */
+.section { padding: var(--section-pad) 0; }
+.section--tight { padding: clamp(48px, 6vw, 64px) 0; }
+
+.section-head {
+  margin-bottom: 40px;
+}
+.section-strip {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 32px;
+}
+.section-strip .label { flex: 1; min-width: 0; }
+.section-strip .meta { color: var(--ink); }
+
+.intro {
+  max-width: var(--max-prose);
+  margin: 0 auto;
+  font-size: 18px; line-height: 1.6; color: var(--ink);
+}
+.intro p { margin: 0 0 1.2em; }
+.intro p:last-child { margin: 0; }
+.intro strong { font-weight: 600; }
+
+/* CARDS GRID */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1024px) { .grid-3 { grid-template-columns: 1fr; gap: 24px; } }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 28px;
+  display: flex; flex-direction: column;
+  gap: 18px;
+}
+.card.is-pick {
+  background: var(--jodoo-tint);
+  border: 2px solid var(--jodoo);
+  padding: 27px;
+}
+
+.card-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.card.is-pick .card-eyebrow { color: var(--jodoo); }
+.card-eyebrow .badge {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+  background: var(--jodoo); color: #fff;
+  padding: 4px 8px; border-radius: 4px;
+}
+.card-title {
+  font-weight: 600; font-size: 20px;
+  line-height: 1.2; letter-spacing: -0.022em;
+  color: var(--ink);
+}
+.card-axes {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.04em;
+  color: var(--ink-2); line-height: 1.55;
+}
+.card-axes strong { color: var(--ink); font-weight: 500; }
+.card-svg {
+  background: var(--surface-2);
+  padding: 12px; border-radius: 12px;
+  border: 1px solid var(--rule);
+}
+.card.is-pick .card-svg {
+  background: var(--surface);
+  border-color: rgba(19, 23, 228, 0.2);
+}
+.card-svg svg { width: 100%; height: auto; display: block; }
+
+.card-story {
+  font-style: italic; font-size: 15px; line-height: 1.5;
+  color: var(--ink);
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border-left: 2px solid var(--ink-3);
+  border-radius: 6px;
+}
+.card.is-pick .card-story {
+  background: var(--surface);
+  border-left-color: var(--jodoo);
+}
+.card-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  font-size: 13px; line-height: 1.45;
+  margin: 0;
+}
+.card-meta dt {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.card-meta dd { color: var(--ink); margin: 0; }
+
+/* RECOMMENDATION (dark block) */
+.rec {
+  background: var(--dark);
+  color: #f5f5f7;
+  border-radius: var(--r-tile);
+  padding: clamp(28px, 4vw, 44px);
+}
+.rec-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.6);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.rec-eyebrow::before { content: ""; width: 24px; height: 1px; background: #2997ff; }
+.rec h2 { color: #fff; margin-bottom: 16px; }
+.rec h2 em { font-style: italic; font-weight: 400; color: #2997ff; }
+.rec p { color: rgba(245, 245, 247, 0.78); line-height: 1.6; max-width: 64ch; }
+.rec p strong { color: #fff; font-weight: 600; }
+
+.rec-grid {
+  margin-top: 32px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245, 245, 247, 0.14);
+  border-radius: 12px;
+  overflow: hidden;
+}
+@media (max-width: 768px) { .rec-grid { grid-template-columns: 1fr; } }
+.rec-cell {
+  background: var(--dark);
+  padding: 20px;
+}
+.rec-cell .ax {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.5);
+  margin-bottom: 6px;
+}
+.rec-cell .label {
+  font-weight: 600; font-size: 15px;
+  color: #f5f5f7;
+}
+.rec-cell.is-pick .label { color: #2997ff; }
+.rec-cell .desc {
+  font-size: 13px; line-height: 1.5;
+  color: rgba(245, 245, 247, 0.7);
+  margin-top: 6px;
+}
+
+/* TAKEAWAY / IMPLICATIONS */
+.takeaways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+@media (max-width: 833px) { .takeaways { grid-template-columns: 1fr; } }
+.takeaway {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 28px;
+}
+.takeaway .num {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--jodoo); margin-bottom: 10px;
+}
+.takeaway h4 { margin-bottom: 8px; font-size: 19px; }
+.takeaway p { color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+
+/* CLOSING CTA */
+.closing {
+  background: var(--surface-2);
+  border-radius: var(--r-tile);
+  padding: clamp(36px, 5vw, 56px);
+  text-align: center;
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.closing .eyebrow { justify-content: center; margin-bottom: 14px; }
+.closing h2 { margin-bottom: 14px; max-width: 22ch; margin-inline: auto; }
+.closing p { color: var(--ink-2); max-width: 56ch; margin: 0 auto 28px; }
+.closing__ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+/* FOOTER */
+.foot {
+  padding-top: 64px; padding-bottom: 48px;
+  background: var(--surface-2);
+  margin-top: var(--section-pad);
+  border-top: 1px solid var(--rule);
+}
+.foot__partner {
+  max-width: var(--max); margin: 0 auto 40px; padding-inline: var(--gut);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.foot__partner-tag {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.foot__partner-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--ink-2);
+}
+.foot__partner-row strong { color: var(--ink); font-weight: 500; }
+.foot__partner-row img { height: 18px; width: auto; opacity: 0.85; }
+
+.foot__inner {
+  max-width: var(--max); margin: 0 auto; padding-inline: var(--gut);
+}
+.foot__cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 833px) { .foot__cols { grid-template-columns: repeat(2, 1fr); } }
+.foot__col { display: flex; flex-direction: column; gap: 8px; }
+.foot__col h5 {
+  font-size: 12px; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; margin: 0 0 4px;
+  text-transform: none;
+}
+.foot__col a, .foot__col span {
+  font-size: 12px; color: var(--ink-2); line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.foot__col a:hover { color: var(--link); }
+.foot__legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  padding-top: 16px;
+  font-size: 11px; color: var(--ink-3); gap: 12px;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===========================================================
+  SVG SPRITE — Velo Working logotype (matches index.html)
+=========================================================== -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <symbol id="velo-logo" viewBox="-67 125 310 50">
+    <g fill="currentColor">
+      <path d="m -63.08431,159.73324 v -11.95468 h 1.711254 1.711254 v 11.95468 11.95468 h -1.711254 -1.711254 z m 13.473111,-0.82354 c -2.7838,-2.88889 -5.165724,-5.36884 -5.293161,-5.51098 l -0.231706,-0.25846 0.549761,-1.29497 0.549763,-1.29498 7.635659,0.0174 c 4.199613,0.01 7.642322,0.0236 7.650469,0.0309 0.01335,0.0121 -1.513544,3.63653 -1.544387,3.66591 -0.0071,0.007 -1.932699,-0.0391 -4.279044,-0.10194 -2.346348,-0.0628 -4.407082,-0.11379 -4.579413,-0.11326 l -0.313328,9e-4 3.263591,3.23912 3.263592,3.23912 -0.776198,1.81972 c -0.42691,1.00085 -0.789235,1.81842 -0.80517,1.81682 -0.01595,-0.001 -2.306627,-2.36654 -5.090428,-5.25543 z m -29.666932,3.11343 c -0.40939,-1.01953 -0.73477,-1.86111 -0.72306,-1.87019 0.11854,-0.0919 6.601154,-6.26625 6.601154,-6.28717 0,-0.0155 -2.06247,-0.0194 -4.583264,-0.009 l -4.58327,0.0194 -0.74007,-1.83176 -0.74007,-1.83177 0.15342,-0.0131 c 0.34112,-0.0292 15.135529,0.27402 15.167398,0.31083 0.01891,0.0219 0.267301,0.61697 0.551984,1.32251 l 0.517602,1.28278 -3.365959,3.34337 c -1.851279,1.83885 -4.288204,4.26051 -5.415385,5.38145 -1.12719,1.12096 -2.05995,2.03766 -2.0728,2.03711 -0.0129,-4.5e-4 -0.3583,-0.83516 -0.76768,-1.85469 z m 33.041236,-14.34438 c -3.791272,-0.0741 -7.098103,-0.14163 -7.348513,-0.15003 l -0.455294,-0.0153 -0.520844,-1.3003 c -0.286465,-0.71518 -0.520846,-1.31372 -0.520846,-1.3301 0,-0.0374 3.03224,-3.04993 5.890442,-5.87067 2.539166,-2.5059 4.940976,-4.86047 4.957427,-4.84345 0.02131,0.0221 0.36701,0.85212 0.768213,1.84455 l 0.729459,1.80441 -0.207484,0.20195 c -0.114116,0.11108 -1.519848,1.44395 -3.123846,2.96192 -1.603998,1.51799 -3.013976,2.85516 -3.133281,2.9715 l -0.21692,0.21154 4.60739,-0.0328 c 3.946267,-0.028 4.611369,-0.023 4.635133,0.0354 0.249971,0.61373 1.323165,3.26153 1.390383,3.43038 l 0.09115,0.22896 -0.324674,-0.007 c -0.178575,-0.003 -3.426627,-0.0673 -7.217897,-0.14137 z m -31.875116,-0.22557 c -3.49313,-0.008 -5.89298,-0.0303 -5.89298,-0.0563 0,-0.0603 1.49413,-3.5857 1.54033,-3.63439 0.0204,-0.0215 2.08435,0.0149 4.58652,0.0808 2.502157,0.066 4.555892,0.1135 4.56385,0.1055 0.008,-0.008 -1.450958,-1.46694 -3.24204,-3.24218 l -3.2565,-3.22771 0.78062,-1.84246 0.78062,-1.84246 0.13009,0.13515 c 0.0715,0.0743 2.464747,2.55971 5.318224,5.52307 l 5.188142,5.38792 -0.06524,0.15558 c -0.03588,0.0856 -0.288522,0.6816 -0.561424,1.32453 l -0.496185,1.16895 -1.740524,-0.0119 c -0.957288,-0.007 -4.392364,-0.0174 -7.633503,-0.0243 z m 19.589652,-5.24138 c -0.712179,-0.30247 -1.305328,-0.56039 -1.318105,-0.57317 -0.01277,-0.0128 -0.0072,-3.45913 0.01238,-7.65856 l 0.03563,-7.63531 1.788624,0.75983 c 0.983744,0.41792 1.814974,0.7774 1.847178,0.79886 0.04578,0.0305 0.03288,0.98466 -0.05923,4.37741 -0.06479,2.38612 -0.117559,4.44686 -0.117282,4.57942 l 4.48e-4,0.24102 3.24018,-3.26967 3.240214,-3.26966 1.78356,0.75711 c 0.980959,0.41641 1.801446,0.77332 1.823303,0.79314 0.02185,0.0199 -2.320873,2.30888 -5.206069,5.08681 -2.885194,2.77793 -5.365114,5.16596 -5.510933,5.30673 l -0.265123,0.25597 z m -12.34695,-4.8958 c -2.942875,-2.96981 -5.356102,-5.41524 -5.362732,-5.43431 -0.0104,-0.0301 3.575683,-1.50529 3.65865,-1.505 0.0172,6e-5 1.436368,1.48058 3.153703,3.29005 1.717335,1.80948 3.14167,3.29761 3.165188,3.30699 0.02476,0.01 0.03646,-1.91609 0.02778,-4.57516 l -0.01498,-4.5922 1.828043,-0.73907 c 1.005424,-0.40649 1.833188,-0.73378 1.839475,-0.72732 0.01771,0.0182 -0.27252,15.28791 -0.290931,15.30631 -0.01962,0.0197 -2.434208,1.00013 -2.563044,1.04078 -0.07161,0.0227 -1.205843,-1.097 -5.441159,-5.37107 z"/>
+      <path d="m -19.089294,160.84717 h 6.702763 l 8.4666472,-24.69439 h -5.1152663 l -6.3499859,19.04996 h -0.705554 l -6.349986,-19.04996 h -5.115266 z m 17.9916369,0 H 15.482861 v -4.23333 H 3.4884437 v -5.9972 H 14.777307 v -4.23333 H 3.4884437 V 140.3861 H 15.482861 v -4.23332 H -1.0976571 Z m 21.1666331,0 h 16.227742 v -4.40971 H 24.655077 v -20.28468 h -4.586101 z m 29.104079,-4.05694 c -4.233324,0 -7.408317,-3.21027 -7.408317,-8.29026 0,-5.07999 3.174993,-8.29026 7.408317,-8.29026 4.233323,0 7.408316,3.21027 7.408316,8.29026 0,5.07999 -3.174993,8.29026 -7.408316,8.29026 z m 0,-20.99023 c -6.667485,0 -11.994418,5.25638 -11.994418,12.69997 0,7.4436 5.326933,12.69997 11.994418,12.69997 6.667485,0 11.994417,-5.25637 11.994417,-12.69997 0,-7.44359 -5.326932,-12.69997 -11.994417,-12.69997 z m 27.692983,25.04717 h 6.349986 l 4.233324,-16.9333 h 0.705554 l 4.233323,16.9333 h 6.349986 l 6.173599,-24.69439 h -5.115268 l -4.233324,17.28607 h -0.705554 l -4.409712,-17.28607 h -5.291655 l -4.409712,17.28607 h -0.705554 l -4.233324,-17.28607 h -5.115266 z m 41.804052,-4.05694 c -4.23332,0 -7.40831,-3.21027 -7.40831,-8.29026 0,-5.07999 3.17499,-8.29026 7.40831,-8.29026 4.23333,0 7.40832,3.21027 7.40832,8.29026 0,5.07999 -3.17499,8.29026 -7.40832,8.29026 z m 0,-20.99023 c -6.66748,0 -11.99441,5.25638 -11.99441,12.69997 0,7.4436 5.32693,12.69997 11.99441,12.69997 6.66749,0 11.99442,-5.25637 11.99442,-12.69997 0,-7.44359 -5.32693,-12.69997 -11.99442,-12.69997 z m 16.22777,25.04717 h 4.5861 v -8.46665 h 1.41111 l 7.93748,8.46665 h 5.82082 l -7.93748,-8.46665 c 3.88054,-0.17639 7.23192,-3.17499 7.23192,-7.93748 0,-4.93888 -3.38666,-8.29026 -7.76109,-8.29026 h -11.28886 z m 4.5861,-12.69997 v -7.58471 h 6.52637 c 1.76389,0 3.35138,1.5875 3.35138,3.88055 0,2.11666 -1.58749,3.70416 -3.35138,3.70416 z m 18.8736,12.69997 h 4.5861 v -11.46525 l 9.1722,11.46525 h 5.64443 l -10.05414,-12.52359 9.34859,-12.1708 h -5.64443 l -8.46665,11.11247 v -11.11247 h -4.5861 z m 21.34299,0 h 4.5861 v -24.69439 h -4.5861 z m 9.87777,0 h 4.5861 v -17.10969 h 0.70556 l 8.99581,17.10969 h 6.1736 v -24.69439 h -4.5861 v 17.10968 h -0.70556 l -8.99581,-17.10968 h -6.1736 z m 44.44988,0 h 3.52777 v -13.05275 h -10.75969 v 3.52777 h 6.17359 v 0.17639 c 0,1.58749 -2.11666,5.29165 -6.34999,5.29165 -4.23332,0 -7.40832,-3.21027 -7.40832,-8.29026 0,-5.07999 3.175,-8.29026 7.40832,-8.29026 3.3161,0 5.29165,2.11667 6.34999,4.40972 h 4.76248 C 236.53292,140.73888 232.93459,135.8 226.26711,135.8 c -6.66749,0 -11.99442,5.25638 -11.99442,12.69997 0,7.4436 5.32693,12.69997 11.99442,12.69997 2.50472,0 4.23332,-0.7761 5.46804,-1.58749 0.70556,-0.45861 1.30528,-0.98778 1.76389,-1.5875 h 0.17639 z"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand" aria-label="Velo Working — home">
+      <svg class="nav__brand-svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="../index.html#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
+      <li><a href="../index.html#approach" class="nav__link">Approach</a></li>
+      <li><a href="../index.html#modules" class="nav__link">Modules</a></li>
+      <li><a href="../fabrication.html" class="nav__link">Fabrication</a></li>
+      <li><a href="../vision.html" class="nav__link">Vision</a></li>
+      <li><a href="../assessment/assessment.html" class="nav__link" target="_blank" rel="noopener">Assessment</a></li>
+      <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__crumb">
+      <a href="../index.html">Velo Working</a>
+      <span class="sep">/</span>
+      <span>Field notes</span>
+      <span class="sep">/</span>
+      <span>Positioning Jodoo</span>
+    </div>
+    <h1 class="hero__title reveal">
+      Three framings.<br>
+      One <em>battlefield.</em>
+    </h1>
+    <p class="lead hero__lead reveal">
+      Cloud ERP, Low-Code, No-Code — the same three categories, plotted three different ways.
+      Each framing tells a different story to a different buyer. Only one survives the long-term test.
+    </p>
+    <div class="hero__meta">
+      <span><strong>Field notes</strong></span>
+      <span>Positioning</span>
+      <span>May 2026</span>
+      <span>~6 min read</span>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="intro reveal">
+      <p>
+        When an SME owner asks "should we go for SAP, build it ourselves on a low-code platform, or run it on Jodoo?" — the honest answer depends on which axes you choose to compare them on.
+      </p>
+      <p>
+        We worked through three framings before we settled on how to talk about Jodoo on the rest of this site. We're publishing the full comparison because the choice itself is instructive: <strong>positioning isn't about which category wins on paper. It's about which axis matters once the system is live.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE FRAMINGS -->
+<section class="section section--tight" id="framings">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">Three candidate framings</div>
+      <div class="meta">A · Economics &nbsp;·&nbsp; B · Organisational &nbsp;·&nbsp; C · Battlefield</div>
+    </div>
+
+    <div class="grid-3">
+
+      <!-- FRAMING A -->
+      <article class="card reveal">
+        <div class="card-eyebrow">
+          <span>Framing A</span>
+          <span>Economics</span>
+        </div>
+        <h3 class="card-title">3-year TCO &times; Time to adapt</h3>
+        <div class="card-axes">
+          X-axis: <strong>Total cost of ownership (3 years)</strong><br>
+          Y-axis: <strong>Time to adapt to a process change</strong>
+        </div>
+
+        <div class="card-svg">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Economics framing matrix">
+            <rect x="60" y="40" width="320" height="280" fill="#ffffff" stroke="#d2d2d7"/>
+            <line x1="220" y1="40" x2="220" y2="320" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+            <line x1="60" y1="180" x2="380" y2="180" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+
+            <line x1="60" y1="340" x2="380" y2="340" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="375,336 383,340 375,344" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+            <line x1="40" y1="320" x2="40" y2="40" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="36,46 40,38 44,46" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+
+            <text x="220" y="358" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1">LOW COST →</text>
+            <text x="20" y="180" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1" transform="rotate(-90 20 180)">FASTER →</text>
+
+            <text x="68" y="56" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">SLOW + EXPENSIVE</text>
+            <text x="372" y="56" text-anchor="end" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">FAST + CHEAP</text>
+
+            <circle cx="115" cy="270" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="115" cy="270" r="4" fill="#1d1d1f"/>
+            <text x="115" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Cloud ERP</text>
+            <text x="115" y="295" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">S$3M–15M · months</text>
+
+            <circle cx="220" cy="180" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="220" cy="180" r="4" fill="#1d1d1f"/>
+            <text x="220" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Low-Code</text>
+            <text x="220" y="205" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">S$800K–3M · weeks</text>
+
+            <circle cx="320" cy="95" r="40" fill="#1317E4" fill-opacity=".12" stroke="#1317E4" stroke-width="1.5"/>
+            <circle cx="320" cy="95" r="4" fill="#1317E4"/>
+            <text x="320" y="76" text-anchor="middle" font-size="11" font-weight="600" fill="#1317E4" font-family="-apple-system,sans-serif">No-Code</text>
+            <text x="320" y="120" text-anchor="middle" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace">S$50–300K · hours</text>
+          </svg>
+        </div>
+
+        <p class="card-story">"ERP costs millions and takes months to change. No-Code costs thousands and changes in hours."</p>
+
+        <dl class="card-meta">
+          <dt>Buyer</dt><dd>CFO — money in, money out.</dd>
+          <dt>Strength</dt><dd>Universal recognition. Numbers speak.</dd>
+          <dt>Risk</dt><dd>Frames Jodoo as the "cheap" option — risks looking lightweight.</dd>
+        </dl>
+      </article>
+
+      <!-- FRAMING B -->
+      <article class="card reveal">
+        <div class="card-eyebrow">
+          <span>Framing B</span>
+          <span>Organisational</span>
+        </div>
+        <h3 class="card-title">Resource demand &times; Self-sufficiency</h3>
+        <div class="card-axes">
+          X-axis: <strong>Resource demand (capital + people + time)</strong><br>
+          Y-axis: <strong>Operational self-sufficiency</strong>
+        </div>
+
+        <div class="card-svg">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organisational framing matrix">
+            <rect x="60" y="40" width="320" height="280" fill="#ffffff" stroke="#d2d2d7"/>
+            <line x1="220" y1="40" x2="220" y2="320" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+            <line x1="60" y1="180" x2="380" y2="180" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+
+            <line x1="60" y1="340" x2="380" y2="340" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="375,336 383,340 375,344" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+            <line x1="40" y1="320" x2="40" y2="40" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="36,46 40,38 44,46" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+
+            <text x="220" y="358" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1">LOWER DEMAND →</text>
+            <text x="20" y="180" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1" transform="rotate(-90 20 180)">MORE SELF-SUFFICIENT →</text>
+
+            <text x="68" y="56" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">NEEDS DEPARTMENT</text>
+            <text x="372" y="56" text-anchor="end" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">NEEDS TRAINED STAFF</text>
+
+            <circle cx="115" cy="270" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="115" cy="270" r="4" fill="#1d1d1f"/>
+            <text x="115" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Cloud ERP</text>
+            <text x="115" y="295" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">IT dept + SI partner</text>
+
+            <circle cx="220" cy="180" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="220" cy="180" r="4" fill="#1d1d1f"/>
+            <text x="220" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Low-Code</text>
+            <text x="220" y="205" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">In-house developers</text>
+
+            <circle cx="320" cy="95" r="40" fill="#1317E4" fill-opacity=".12" stroke="#1317E4" stroke-width="1.5"/>
+            <circle cx="320" cy="95" r="4" fill="#1317E4"/>
+            <text x="320" y="76" text-anchor="middle" font-size="11" font-weight="600" fill="#1317E4" font-family="-apple-system,sans-serif">No-Code</text>
+            <text x="320" y="120" text-anchor="middle" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace">Trained ops staff</text>
+          </svg>
+        </div>
+
+        <p class="card-story">"ERP needs an IT department. Low-Code needs developers. No-Code needs trained operations staff."</p>
+
+        <dl class="card-meta">
+          <dt>Buyer</dt><dd>MD &amp; board — org structure and hiring plan.</dd>
+          <dt>Strength</dt><dd>Maps to "do we need an IT team?" — an answer the SME already knows.</dd>
+          <dt>Risk</dt><dd>Less immediate than money. Buyer has to think one step.</dd>
+        </dl>
+      </article>
+
+      <!-- FRAMING C — RECOMMENDED -->
+      <article class="card is-pick reveal">
+        <div class="card-eyebrow">
+          <span>Framing C</span>
+          <span class="badge">Chosen</span>
+        </div>
+        <h3 class="card-title">Cost to evolve &times; Operational autonomy</h3>
+        <div class="card-axes">
+          X-axis: <strong>Cost of every change after deployment</strong><br>
+          Y-axis: <strong>Operational autonomy (no outside help needed)</strong>
+        </div>
+
+        <div class="card-svg">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Battlefield framing matrix — chosen">
+            <rect x="60" y="40" width="320" height="280" fill="#ffffff" stroke="#1317E4" stroke-opacity=".3"/>
+            <line x1="220" y1="40" x2="220" y2="320" stroke="#1317E4" stroke-opacity=".25" stroke-dasharray="3 3"/>
+            <line x1="60" y1="180" x2="380" y2="180" stroke="#1317E4" stroke-opacity=".25" stroke-dasharray="3 3"/>
+
+            <line x1="60" y1="340" x2="380" y2="340" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="375,336 383,340 375,344" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+            <line x1="40" y1="320" x2="40" y2="40" stroke="#1d1d1f" stroke-width="1.2"/>
+            <polyline points="36,46 40,38 44,46" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+
+            <text x="220" y="358" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1">CHEAPER TO CHANGE →</text>
+            <text x="20" y="180" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1" transform="rotate(-90 20 180)">MORE AUTONOMOUS →</text>
+
+            <text x="68" y="56" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">PAYS RENT TO CHANGE</text>
+            <text x="372" y="56" text-anchor="end" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace" letter-spacing="1" font-weight="500">OWNS &amp; EVOLVES</text>
+
+            <circle cx="115" cy="270" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="115" cy="270" r="4" fill="#1d1d1f"/>
+            <text x="115" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Cloud ERP</text>
+            <text x="115" y="295" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">Consultant per change</text>
+
+            <circle cx="220" cy="180" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
+            <circle cx="220" cy="180" r="4" fill="#1d1d1f"/>
+            <text x="220" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Low-Code</text>
+            <text x="220" y="205" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">Dev sprint per change</text>
+
+            <circle cx="320" cy="95" r="44" fill="#1317E4" fill-opacity=".16" stroke="#1317E4" stroke-width="2"/>
+            <circle cx="320" cy="95" r="5" fill="#1317E4"/>
+            <text x="320" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="#1317E4" font-family="-apple-system,sans-serif">No-Code</text>
+            <text x="320" y="122" text-anchor="middle" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace">Staff edits live</text>
+
+            <path d="M 280 65 Q 295 50 308 65" stroke="#1317E4" stroke-width="1" fill="none" opacity=".5"/>
+          </svg>
+        </div>
+
+        <p class="card-story">"Implementation is one-time. Evolution is forever. Only No-Code keeps you free."</p>
+
+        <dl class="card-meta">
+          <dt>Buyer</dt><dd>Owner-operator — long-term cost of dependency.</dd>
+          <dt>Strength</dt><dd>Renders the whole thesis visually. Both axes describe life after deployment.</dd>
+          <dt>Bonus</dt><dd>Doesn't undermine implementation revenue — both axes are post-deployment.</dd>
+        </dl>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section class="section section--tight">
+  <div class="wrap">
+    <aside class="rec reveal">
+      <div class="rec-eyebrow">Why Framing C wins</div>
+      <h2>Both axes describe the <em>life after</em> the system goes live.</h2>
+      <p>
+        Framings A and B both place No-Code in the right quadrant — but they describe what's true <strong>before</strong> the system goes live. Once the category is bought and deployed, its cost-to-buy stops mattering. What matters is the rent the system charges for every subsequent change.
+      </p>
+      <p>
+        Framing C is the only one of the three where both axes describe the <strong>life of the system after the implementation partner leaves the room</strong>. That's the actual moat — and the only framing that doesn't accidentally reduce the implementation work to "the cheap option."
+      </p>
+
+      <div class="rec-grid">
+        <div class="rec-cell">
+          <div class="ax">Framing A · Economics</div>
+          <div class="label">Strong but limiting</div>
+          <p class="desc">Frames Jodoo as the budget choice. Good for cost-conscious buyers, weak for premium positioning.</p>
+        </div>
+        <div class="rec-cell">
+          <div class="ax">Framing B · Organisational</div>
+          <div class="label">Smart but indirect</div>
+          <p class="desc">Requires the buyer to translate "needs IT department" into "we don't have one." Slower in transactional rooms.</p>
+        </div>
+        <div class="rec-cell is-pick">
+          <div class="ax">Framing C · Battlefield</div>
+          <div class="label">Both axes favour No-Code</div>
+          <p class="desc">No tradeoff for the buyer to weigh. ERP sits in the worst quadrant, No-Code alone in the best — over the entire life of the system.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- IMPLICATIONS -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow eyebrow--mono">What it means in practice</div>
+      <h2>Three implications for SMEs choosing an operations system.</h2>
+    </div>
+
+    <div class="takeaways">
+      <article class="takeaway reveal">
+        <div class="num">01</div>
+        <h4>Compare on the change, not the launch.</h4>
+        <p>The first deployment is roughly the same headache for any of the three categories. The difference is what each one costs to alter on day 200, day 800, day 2,000.</p>
+      </article>
+      <article class="takeaway reveal">
+        <div class="num">02</div>
+        <h4>Autonomy is a balance-sheet item.</h4>
+        <p>If every form change requires a vendor invoice, you've turned an operations system into a permanent rent. Operational autonomy compounds — quietly — on every change you make in-house.</p>
+      </article>
+      <article class="takeaway reveal">
+        <div class="num">03</div>
+        <h4>Implementation work isn't the discount.</h4>
+        <p>The right framing distinguishes "the platform you bought" from "the system you'll evolve." Real partners earn fees on the build and hand the keys over for the long, ongoing evolution.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="closing reveal">
+      <div class="eyebrow">Velo Working &middot; Official Jodoo partner, Singapore</div>
+      <h2>Engineered with Jodoo. <em>Owned by your team.</em></h2>
+      <p>
+        Velo Working engineers SME operations on Jodoo — Asia's leading no-code workflow platform — and hands the keys to your team. Fixed scope. Fixed fee. No subscription. No vendor dependency.
+      </p>
+      <div class="closing__ctas">
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20the%20Positioning%20of%20Jodoo%20note%20and%20I%27d%20like%20to%20talk." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+        <a href="../index.html#approach" class="link">See the 90-day approach</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__partner">
+    <div class="foot__partner-tag">Strategic platform partner</div>
+    <div class="foot__partner-row">
+      <strong>Engineered with</strong>
+      <img src="../asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
+      <span>· Asia's leading no-code workflow platform</span>
+    </div>
+  </div>
+
+  <div class="foot__inner">
+    <div class="foot__cols">
+      <div class="foot__col">
+        <h5>Velo Working</h5>
+        <a href="../index.html#partner">Jodoo Partner</a>
+        <a href="../index.html#approach">Approach</a>
+        <a href="../index.html#modules">Modules</a>
+        <a href="../fabrication.html">Fabrication</a>
+        <a href="../index.html#why">Why us</a>
+      </div>
+      <div class="foot__col">
+        <h5>Resources</h5>
+        <a href="../vision.html">Vision</a>
+        <a href="../index.html#manifesto">Manifesto</a>
+        <a href="../assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="positioning-of-jodoo.html">Positioning of Jodoo</a>
+        <a href="THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
+        <a href="../pitch-deck.html">About Us</a>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+      <div class="foot__col">
+        <h5>Legal</h5>
+        <span>Velo Working Pte. Ltd.</span>
+        <span>UEN 202609930G</span>
+        <span>Incorporated 2026</span>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>Copyright © 2026 Velo Working Pte. Ltd. All rights reserved. · Official Jodoo partner.</span>
+      <span>Built for the ones still standing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Mobile nav toggle */
+(function(){
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav__link').forEach(function(l){
+    l.addEventListener('click', function(){
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* Reveal on scroll */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
