@@ -158,7 +158,58 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
   margin: 0;
   height: 100%;
 }
-.nav__links li { display: flex; align-items: center; height: 100%; }
+.nav__links > li { display: flex; align-items: center; height: 100%; position: relative; }
+.nav__link--caret::after {
+  content: ""; display: inline-block; margin-left: 6px;
+  width: 6px; height: 6px;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 150ms ease;
+}
+.nav__submenu {
+  position: absolute; top: 44px; left: 4px;
+  min-width: 240px;
+  background: rgba(251, 251, 253, 0.96);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 6px;
+  list-style: none; margin: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+}
+.nav__item--has-children:hover > .nav__submenu,
+.nav__item--has-children:focus-within > .nav__submenu,
+.nav__item--has-children.is-open > .nav__submenu {
+  opacity: 1; visibility: visible; transform: none;
+}
+.nav__sublink {
+  display: block;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: rgba(29, 29, 31, 0.85);
+  border-radius: 8px;
+  white-space: normal;
+  line-height: 1.3;
+}
+.nav__sublink small {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  letter-spacing: 0;
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+}
+.nav__sublink:hover { background: rgba(0,0,0,0.04); color: var(--ink); }
+.nav__sublink--all {
+  border-top: 1px solid var(--rule);
+  margin-top: 4px; padding-top: 12px;
+  color: var(--link); font-weight: 500;
+}
 .nav__link {
   display: inline-flex;
   align-items: center;
@@ -199,19 +250,30 @@ h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 6
     padding: 8px 22px 16px;
     display: flex;
   }
-  .nav.nav--open .nav__links li {
+  .nav.nav--open .nav__links > li {
     width: 100%;
     height: auto;
     border-bottom: 1px solid var(--rule);
+    flex-direction: column; align-items: stretch;
   }
-  .nav.nav--open .nav__links li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__links > li:last-child { border-bottom: 0; }
   .nav.nav--open .nav__link {
     width: 100%;
     height: auto;
     padding: 14px 0;
     font-size: 17px;
     font-weight: 500;
+    justify-content: space-between;
   }
+  .nav__submenu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    background: none; border: 0; border-radius: 0; padding: 0 0 12px;
+    box-shadow: none; min-width: 0;
+    display: none;
+  }
+  .nav.nav--open .nav__item--has-children.is-open .nav__submenu { display: block; }
+  .nav.nav--open .nav__sublink { padding: 10px 0 10px 14px; font-size: 15px; }
+  .nav.nav--open .nav__item--has-children.is-open .nav__link--caret::after { transform: translateY(2px) rotate(-135deg); }
 }
 
 main { padding-top: 48px; }
@@ -577,6 +639,15 @@ main { padding-top: 48px; }
       <li><a href="index.html#modules" class="nav__link">Modules</a></li>
       <li><a href="fabrication.html" class="nav__link">Fabrication</a></li>
       <li><a href="vision.html" class="nav__link">Vision</a></li>
+      <li class="nav__item--has-children" data-dropdown>
+        <a href="blog/index.html" class="nav__link nav__link--caret" aria-haspopup="true" aria-expanded="false">Blog</a>
+        <ul class="nav__submenu" role="menu">
+          <li><a href="blog/operational-tasks-first-principles.html" class="nav__sublink" role="menuitem">Operational tasks at first principles<small>Value × Effort</small></a></li>
+          <li><a href="blog/positioning-of-jodoo.html" class="nav__sublink" role="menuitem">Positioning of Jodoo<small>Org-chart test</small></a></li>
+          <li><a href="blog/THE%20SME%20DIGITAL%20PARADOX.html" class="nav__sublink" role="menuitem">The SME Digital Paradox<small>Diary · slide deck</small></a></li>
+          <li><a href="blog/index.html" class="nav__sublink nav__sublink--all" role="menuitem">All field notes</a></li>
+        </ul>
+      </li>
       <li><a href="index.html#pricing" class="nav__link">Pricing</a></li>
       <li><a href="index.html#contact" class="nav__link">Contact</a></li>
     </ul>
@@ -856,6 +927,7 @@ main { padding-top: 48px; }
         <a href="vision.html">Vision</a>
         <a href="index.html#manifesto">Manifesto</a>
         <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="blog/index.html">Field notes</a>
         <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
         <a href="pitch-deck.html">About Us</a>
       </div>
@@ -889,7 +961,19 @@ main { padding-top: 48px; }
     var open = nav.classList.toggle('nav--open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  nav.querySelectorAll('.nav__link').forEach(function(l){
+  nav.querySelectorAll('.nav__item--has-children').forEach(function(item){
+    var trigger = item.querySelector('.nav__link--caret');
+    if (!trigger) return;
+    trigger.addEventListener('click', function(e){
+      if (window.matchMedia('(max-width: 833px)').matches) {
+        e.preventDefault();
+        var open = item.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+    });
+  });
+  nav.querySelectorAll('.nav__link, .nav__sublink').forEach(function(l){
+    if (l.classList.contains('nav__link--caret')) return;
     l.addEventListener('click', function(){
       nav.classList.remove('nav--open');
       toggle.setAttribute('aria-expanded', 'false');
