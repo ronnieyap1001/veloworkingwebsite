@@ -838,7 +838,7 @@ main { padding-top: 48px; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--tile-gap);
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 833px) {
   .pricing-cards { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
@@ -898,26 +898,6 @@ main { padding-top: 48px; }
 .pricing-card--featured .pricing-card__desc {
   color: rgba(245,245,247,0.72);
   border-bottom-color: rgba(255,255,255,0.12);
-}
-.pricing-card__cta {
-  display: block; width: 100%;
-  text-align: center;
-  padding: 12px 22px;
-  border-radius: var(--r-pill);
-  font-size: 17px; font-weight: 400;
-  letter-spacing: -0.022em;
-  transition: background 200ms ease, color 200ms ease;
-  margin-bottom: 28px;
-}
-.pricing-card__cta--primary { background: var(--link); color: #fff; }
-.pricing-card__cta--primary:hover { background: var(--link-hov); }
-.pricing-card__cta--ghost { color: var(--link); border: 1px solid var(--link); }
-.pricing-card__cta--ghost:hover { background: var(--link); color: #fff; }
-.pricing-card--featured .pricing-card__cta--ghost {
-  color: #2997ff; border-color: #2997ff;
-}
-.pricing-card--featured .pricing-card__cta--ghost:hover {
-  background: #2997ff; color: #000;
 }
 .pricing-card__includes {
   font-size: 13px; font-weight: 600;
@@ -1412,7 +1392,6 @@ main { padding-top: 48px; }
         <div class="pricing-card__name">Free</div>
         <div class="pricing-card__price">$0<span class="pricing-card__price-unit"> /month</span></div>
         <p class="pricing-card__desc">Kickstart efficient data collection and management. Best for personal use and small teams getting started.</p>
-        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20get%20started%20with%20the%20free%20plan." class="pricing-card__cta pricing-card__cta--ghost" target="_blank" rel="noopener">Start free</a>
         <div class="pricing-card__includes">Includes:</div>
         <ul class="pricing-card__features">
           <li><strong>5 users</strong> included</li>
@@ -1439,7 +1418,6 @@ main { padding-top: 48px; }
         <div class="pricing-card__price">$12<span class="pricing-card__price-unit"> /user /month</span></div>
         <p class="pricing-card__note">Billed yearly · starts at $60/month (5 users)</p>
         <p class="pricing-card__desc">Obtain a light permission system and connect work across teams. Best for small and medium-sized businesses.</p>
-        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27m%20interested%20in%20the%20Business%20plan." class="pricing-card__cta pricing-card__cta--primary" target="_blank" rel="noopener">Get started</a>
         <div class="pricing-card__includes">Everything in Free, plus:</div>
         <ul class="pricing-card__features">
           <li>Up to <strong>1,000 users</strong></li>
@@ -1466,7 +1444,6 @@ main { padding-top: 48px; }
         <div class="pricing-card__name">Enterprise</div>
         <div class="pricing-card__price">Custom</div>
         <p class="pricing-card__desc">Gain more branding options, security, and controls. Connect the tools you already use via API &amp; Webhook.</p>
-        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20discuss%20Enterprise%20pricing." class="pricing-card__cta pricing-card__cta--ghost" target="_blank" rel="noopener">Contact us</a>
         <div class="pricing-card__includes">Everything in Business, plus:</div>
         <ul class="pricing-card__features">
           <li>Up to <strong>1,000 users</strong></li>
