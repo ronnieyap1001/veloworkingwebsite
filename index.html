@@ -771,6 +771,184 @@ main { padding-top: 48px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* =================================================================
+   TRUSTED-BY MARQUEE
+================================================================= */
+.trusted {
+  text-align: center;
+  padding-bottom: clamp(32px, 4vw, 48px);
+}
+.trusted__headline {
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 36px;
+  padding-inline: var(--gut);
+}
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 5vw, 64px);
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.marquee__logo {
+  flex-shrink: 0;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0.35;
+  user-select: none;
+  line-height: 1;
+}
+.marquee__logo--light { font-weight: 400; }
+.marquee__logo--italic { font-style: italic; }
+.marquee__logo-sub {
+  display: block;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+}
+
+/* =================================================================
+   PRICING CARDS
+================================================================= */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--tile-gap);
+  align-items: start;
+}
+@media (max-width: 833px) {
+  .pricing-cards { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+}
+.pricing-card {
+  background: var(--surface);
+  border-radius: var(--r-tile);
+  padding: clamp(32px, 4vw, 44px) clamp(24px, 3vw, 36px);
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.pricing-card--featured {
+  background: var(--dark);
+  color: #f5f5f7;
+  border-color: transparent;
+}
+.pricing-card__badge {
+  position: absolute;
+  top: 18px; right: 18px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.02em; text-transform: uppercase;
+  background: var(--link); color: #fff;
+  padding: 4px 10px; border-radius: 999px;
+}
+.pricing-card__name {
+  font-size: 14px; font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--link);
+  margin-bottom: 10px;
+}
+.pricing-card--featured .pricing-card__name { color: #2997ff; }
+.pricing-card__price {
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.pricing-card--featured .pricing-card__price { color: #fff; }
+.pricing-card__price-unit {
+  font-size: 16px; font-weight: 400;
+  letter-spacing: -0.02em; color: var(--ink-2);
+}
+.pricing-card--featured .pricing-card__price-unit { color: rgba(245,245,247,0.6); }
+.pricing-card__note {
+  font-size: 13px; color: var(--ink-2);
+  margin-top: 4px; line-height: 1.4;
+}
+.pricing-card--featured .pricing-card__note { color: rgba(245,245,247,0.6); }
+.pricing-card__desc {
+  font-size: 15px; line-height: 1.5;
+  color: var(--ink-2);
+  margin: 16px 0 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.pricing-card--featured .pricing-card__desc {
+  color: rgba(245,245,247,0.72);
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+.pricing-card__cta {
+  display: block; width: 100%;
+  text-align: center;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  font-size: 17px; font-weight: 400;
+  letter-spacing: -0.022em;
+  transition: background 200ms ease, color 200ms ease;
+  margin-bottom: 28px;
+}
+.pricing-card__cta--primary { background: var(--link); color: #fff; }
+.pricing-card__cta--primary:hover { background: var(--link-hov); }
+.pricing-card__cta--ghost { color: var(--link); border: 1px solid var(--link); }
+.pricing-card__cta--ghost:hover { background: var(--link); color: #fff; }
+.pricing-card--featured .pricing-card__cta--ghost {
+  color: #2997ff; border-color: #2997ff;
+}
+.pricing-card--featured .pricing-card__cta--ghost:hover {
+  background: #2997ff; color: #000;
+}
+.pricing-card__includes {
+  font-size: 13px; font-weight: 600;
+  color: var(--ink); margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.pricing-card--featured .pricing-card__includes { color: #f5f5f7; }
+.pricing-card__features {
+  list-style: none; padding: 0; margin: 0;
+}
+.pricing-card__features li {
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink-2);
+  padding: 5px 0 5px 22px;
+  position: relative;
+}
+.pricing-card--featured .pricing-card__features li { color: rgba(245,245,247,0.72); }
+.pricing-card__features li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--link); font-weight: 600; font-size: 13px;
+}
+.pricing-card--featured .pricing-card__features li::before { color: #2997ff; }
+.pricing-card__features li strong {
+  color: var(--ink); font-weight: 500;
+}
+.pricing-card--featured .pricing-card__features li strong { color: #f5f5f7; }
+.pricing-trial {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 15px; color: var(--ink-2);
+}
 </style>
 </head>
 <body>
@@ -798,6 +976,7 @@ main { padding-top: 48px; }
     <ul class="nav__links" id="navLinks">
       <li><a href="#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
       <li><a href="#approach" class="nav__link">Approach</a></li>
+      <li><a href="#pricing" class="nav__link">Pricing</a></li>
       <li><a href="#modules" class="nav__link">Modules</a></li>
       <li><a href="fabrication.html" class="nav__link">Fabrication</a></li>
       <li><a href="vision.html" class="nav__link">Vision</a></li>
@@ -1183,6 +1362,137 @@ main { padding-top: 48px; }
 </section>
 
 <!-- ===========================================================
+  PLATFORM PRICING
+=========================================================== -->
+<section class="section" id="pricing">
+  <div class="trusted reveal">
+    <p class="trusted__headline">Trusted by companies from Fortune 500, Fortune Global 500, and 20,000+ customers.</p>
+    <div class="marquee">
+      <div class="marquee__track">
+        <span class="marquee__logo">BASF<span class="marquee__logo-sub">We create chemistry</span></span>
+        <span class="marquee__logo">Valmet<span class="marquee__logo-sub">Forward</span></span>
+        <span class="marquee__logo marquee__logo--italic">StanleyBlack&amp;Decker</span>
+        <span class="marquee__logo">HARDIS<span class="marquee__logo-sub">Group</span></span>
+        <span class="marquee__logo" style="letter-spacing:0.06em;">KRÜSS</span>
+        <span class="marquee__logo marquee__logo--light">Goldwin</span>
+        <span class="marquee__logo">NTT DATA</span>
+        <span class="marquee__logo marquee__logo--light">Panasonic</span>
+        <span class="marquee__logo">Toyota</span>
+        <span class="marquee__logo" style="letter-spacing:0.04em;">DENSO</span>
+        <span class="marquee__logo marquee__logo--light">Ricoh</span>
+        <span class="marquee__logo">Mitsubishi</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee__logo">BASF<span class="marquee__logo-sub">We create chemistry</span></span>
+        <span class="marquee__logo">Valmet<span class="marquee__logo-sub">Forward</span></span>
+        <span class="marquee__logo marquee__logo--italic">StanleyBlack&amp;Decker</span>
+        <span class="marquee__logo">HARDIS<span class="marquee__logo-sub">Group</span></span>
+        <span class="marquee__logo" style="letter-spacing:0.06em;">KRÜSS</span>
+        <span class="marquee__logo marquee__logo--light">Goldwin</span>
+        <span class="marquee__logo">NTT DATA</span>
+        <span class="marquee__logo marquee__logo--light">Panasonic</span>
+        <span class="marquee__logo">Toyota</span>
+        <span class="marquee__logo" style="letter-spacing:0.04em;">DENSO</span>
+        <span class="marquee__logo marquee__logo--light">Ricoh</span>
+        <span class="marquee__logo">Mitsubishi</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section__head">
+    <div class="eyebrow">Platform pricing</div>
+    <h2>Make unlimited business apps — all on one platform.</h2>
+    <p>Start free. Scale when you're ready. 15-day trial for full features on every paid plan.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="pricing-cards">
+
+      <!-- FREE -->
+      <div class="pricing-card reveal">
+        <div class="pricing-card__name">Free</div>
+        <div class="pricing-card__price">$0<span class="pricing-card__price-unit"> /month</span></div>
+        <p class="pricing-card__desc">Kickstart efficient data collection and management. Best for personal use and small teams getting started.</p>
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20get%20started%20with%20the%20free%20plan." class="pricing-card__cta pricing-card__cta--ghost" target="_blank" rel="noopener">Start free</a>
+        <div class="pricing-card__includes">Includes:</div>
+        <ul class="pricing-card__features">
+          <li><strong>5 users</strong> included</li>
+          <li><strong>Unlimited</strong> apps</li>
+          <li><strong>20,000</strong> records</li>
+          <li><strong>10,000</strong> automation runs / year</li>
+          <li><strong>200 MB</strong> file upload / year</li>
+          <li><strong>1,000</strong> monthly submissions</li>
+          <li>100+ templates</li>
+          <li>Form builder &amp; cross-form data linkage</li>
+          <li>Approval workflows &amp; conditional branches</li>
+          <li>Dashboards — 20+ chart components</li>
+          <li>Email notifications</li>
+          <li>Granular permissions</li>
+          <li>Two-factor authentication (SMS)</li>
+          <li>1 data factory (no-code SQL)</li>
+        </ul>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="pricing-card pricing-card--featured reveal">
+        <div class="pricing-card__badge">Most popular</div>
+        <div class="pricing-card__name">Business</div>
+        <div class="pricing-card__price">$12<span class="pricing-card__price-unit"> /user /month</span></div>
+        <p class="pricing-card__note">Billed yearly · starts at $60/month (5 users)</p>
+        <p class="pricing-card__desc">Obtain a light permission system and connect work across teams. Best for small and medium-sized businesses.</p>
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27m%20interested%20in%20the%20Business%20plan." class="pricing-card__cta pricing-card__cta--primary" target="_blank" rel="noopener">Get started</a>
+        <div class="pricing-card__includes">Everything in Free, plus:</div>
+        <ul class="pricing-card__features">
+          <li>Up to <strong>1,000 users</strong></li>
+          <li><strong>750,000</strong> records</li>
+          <li><strong>300,000</strong> automation runs / year</li>
+          <li><strong>120 GB</strong> file upload / year</li>
+          <li><strong>Unlimited</strong> monthly submissions</li>
+          <li>E-signature capability</li>
+          <li>Print to PDF templates</li>
+          <li>Custom buttons</li>
+          <li>Logo removal on public forms</li>
+          <li>Plugin marketplace</li>
+          <li>40 available views</li>
+          <li>20 data factories</li>
+          <li>5 system admins · 10 regular admins</li>
+          <li>App-level admin roles</li>
+          <li>Data &amp; field recovery — 45 days</li>
+          <li>Audit trail</li>
+        </ul>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card reveal">
+        <div class="pricing-card__name">Enterprise</div>
+        <div class="pricing-card__price">Custom</div>
+        <p class="pricing-card__desc">Gain more branding options, security, and controls. Connect the tools you already use via API &amp; Webhook.</p>
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20discuss%20Enterprise%20pricing." class="pricing-card__cta pricing-card__cta--ghost" target="_blank" rel="noopener">Contact us</a>
+        <div class="pricing-card__includes">Everything in Business, plus:</div>
+        <ul class="pricing-card__features">
+          <li>Up to <strong>1,000 users</strong></li>
+          <li><strong>3,000,000</strong> records</li>
+          <li><strong>1,000,000</strong> automation runs / year</li>
+          <li><strong>360 GB</strong> file upload / year</li>
+          <li>120 available views · 50 data factories</li>
+          <li>API access — unlimited calls</li>
+          <li>Webhook support</li>
+          <li>Zapier &amp; Make integration</li>
+          <li>SSO (SAML)</li>
+          <li>Custom branding &amp; business style</li>
+          <li>Custom login page</li>
+          <li>Global watermark</li>
+          <li>Permission set query</li>
+          <li>Data &amp; field recovery — 180 days</li>
+          <li>VIP support group</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="pricing-trial reveal">All paid plans include a <strong>15-day trial</strong> with full features — no credit card required.</p>
+  </div>
+</section>
+
+<!-- ===========================================================
   MANIFESTO
 =========================================================== -->
 <section class="section" id="manifesto">
@@ -1252,6 +1562,7 @@ main { padding-top: 48px; }
         <h5>Velo Working</h5>
         <a href="#partner">Jodoo Partner</a>
         <a href="#approach">Approach</a>
+        <a href="#pricing">Pricing</a>
         <a href="#modules">Modules</a>
         <a href="fabrication.html">Fabrication</a>
         <a href="#why">Why us</a>
