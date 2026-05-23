@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Do you need an IT department? — Positioning Jodoo · Velo Working</title>
+<title>Operational tasks at first principles — Value &times; Effort · Velo Working</title>
 
 <!-- SEO -->
-<meta name="description" content="ERP needs an IT department. Low-Code needs developers. No-Code needs trained operations staff. The org-chart test for choosing between Cloud ERP, Low-Code, and Jodoo — explained by Velo Working." />
+<meta name="description" content="Every operation converts inputs into customer value. The six functional groups of SME work — Demand, Fulfillment, Finance, Resources, Infrastructure, Coordination — plotted on a Value × Effort matrix, with one rule for each quadrant." />
 <meta name="author" content="Velo Working Pte. Ltd." />
-<link rel="canonical" href="https://www.veloworking.com/blog/positioning-of-jodoo.html" />
+<link rel="canonical" href="https://www.veloworking.com/blog/operational-tasks-first-principles.html" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Do you need an IT department? — Positioning Jodoo" />
-<meta property="og:description" content="Resource demand × operational self-sufficiency. The cleanest test for choosing between Cloud ERP, Low-Code, and No-Code — and why the answer decides who has to run the system after launch." />
+<meta property="og:title" content="Operational tasks at first principles — Value × Effort" />
+<meta property="og:description" content="Six functional groups, four quadrants. The cleanest way to sort SME operations into what to automate, invest in, fill in, or kill." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.veloworking.com/blog/positioning-of-jodoo.html" />
+<meta property="og:url" content="https://www.veloworking.com/blog/operational-tasks-first-principles.html" />
 <meta property="og:site_name" content="Velo Working" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Do you need an IT department? — Positioning Jodoo" />
-<meta name="twitter:description" content="ERP needs an IT department. Low-Code needs developers. No-Code needs trained operations staff. Choose the system that matches your org." />
+<meta name="twitter:title" content="Operational tasks at first principles — Value × Effort" />
+<meta name="twitter:description" content="Six functional groups, four quadrants. Sort SME operations into what to automate, invest in, fill in, or kill." />
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="../asset/favicon.svg" />
@@ -43,6 +43,13 @@
   --jodoo:     #1317E4;
   --jodoo-tint: rgba(19, 23, 228, 0.06);
   --jodoo-strong: rgba(19, 23, 228, 0.14);
+
+  --good:      #0a7d3d;
+  --good-tint: rgba(10, 125, 61, 0.08);
+  --warn:      #b35d00;
+  --warn-tint: rgba(179, 93, 0, 0.08);
+  --bad:       #c0392b;
+  --bad-tint:  rgba(192, 57, 43, 0.08);
 
   --r-tile:    24px;
   --r-pill:    980px;
@@ -121,9 +128,6 @@ em.italic { font-style: italic; font-weight: 400; }
 .btn--primary:hover { background: var(--link-hov); }
 .btn--ghost { color: var(--link); border: 1px solid var(--link); }
 .btn--ghost:hover { background: var(--link); color: #fff; }
-.btn--on-dark.btn--primary { background: #2997ff; }
-.btn--on-dark.btn--ghost { color: #2997ff; border-color: #2997ff; }
-.btn--on-dark.btn--ghost:hover { background: #2997ff; color: #000; }
 
 .link {
   color: var(--link); font-size: 17px; font-weight: 400;
@@ -132,7 +136,6 @@ em.italic { font-style: italic; font-weight: 400; }
 }
 .link:hover { text-decoration: underline; }
 .link::after { content: '›'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
-.link--on-dark { color: #2997ff; }
 
 /* NAV */
 .nav {
@@ -230,13 +233,11 @@ main { padding-top: 48px; }
 }
 .hero__meta strong { color: var(--ink); font-weight: 500; }
 
-/* SECTION HEADERS */
+/* SECTIONS */
 .section { padding: var(--section-pad) 0; }
 .section--tight { padding: clamp(48px, 6vw, 64px) 0; }
 
-.section-head {
-  margin-bottom: 40px;
-}
+.section-head { margin-bottom: 40px; }
 .section-strip {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px;
   padding: 16px 0;
@@ -259,7 +260,28 @@ main { padding-top: 48px; }
 .intro p:last-child { margin: 0; }
 .intro strong { font-weight: 600; }
 
-/* FRAMING FEATURE (single matrix) */
+/* SIX GROUPS */
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 833px) { .groups { grid-template-columns: 1fr; } }
+.group {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 24px;
+}
+.group .num {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--jodoo); margin-bottom: 10px;
+}
+.group h4 { margin-bottom: 8px; font-size: 19px; }
+.group p { color: var(--ink-2); font-size: 14px; line-height: 1.55; }
+
+/* MATRIX FEATURE */
 .framing {
   background: var(--surface);
   border: 1px solid var(--rule);
@@ -268,9 +290,7 @@ main { padding-top: 48px; }
   display: grid;
   gap: clamp(24px, 3vw, 32px);
 }
-.framing__head {
-  display: grid; gap: 14px;
-}
+.framing__head { display: grid; gap: 14px; }
 .framing__eyebrow {
   font-family: var(--f-mono);
   font-size: 11px; font-weight: 500;
@@ -300,7 +320,7 @@ main { padding-top: 48px; }
   padding: clamp(16px, 2vw, 24px);
   border: 1px solid var(--rule);
   border-radius: 12px;
-  max-width: 640px;
+  max-width: 760px;
   margin: 0 auto;
   width: 100%;
 }
@@ -317,56 +337,51 @@ main { padding-top: 48px; }
   max-width: 64ch;
 }
 
-.framing__notes {
+/* QUADRANT ACTION CARDS */
+.quadrants {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-@media (max-width: 833px) { .framing__notes { grid-template-columns: 1fr; } }
-.framing__note {
-  background: var(--surface-2);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 20px;
-}
-.framing__note .num {
-  font-family: var(--f-mono);
-  font-size: 11px; letter-spacing: 0.06em;
-  font-weight: 600; color: var(--ink-2);
-  margin-bottom: 8px;
-}
-.framing__note h4 { margin-bottom: 6px; font-size: 17px; }
-.framing__note p { color: var(--ink-2); font-size: 14px; line-height: 1.55; }
-
-.framing__note--pick {
-  background: var(--jodoo-tint);
-  border-color: var(--jodoo);
-}
-.framing__note--pick .num { color: var(--jodoo); }
-.framing__note--pick h4 { color: var(--ink); }
-.framing__note--pick p { color: var(--ink); }
-
-/* TAKEAWAY / IMPLICATIONS */
-.takeaways {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-top: 24px;
 }
-@media (max-width: 833px) { .takeaways { grid-template-columns: 1fr; } }
-.takeaway {
+@media (max-width: 833px) { .quadrants { grid-template-columns: 1fr; } }
+.quadrant {
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: var(--r-tile);
   padding: 28px;
+  border-left-width: 4px;
 }
-.takeaway .num {
+.quadrant .num {
   font-family: var(--f-mono);
   font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--jodoo); margin-bottom: 10px;
+  margin-bottom: 10px; color: var(--ink-2);
 }
-.takeaway h4 { margin-bottom: 8px; font-size: 19px; }
-.takeaway p { color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+.quadrant h4 { margin-bottom: 8px; font-size: 19px; }
+.quadrant p { color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+.quadrant--good { border-left-color: var(--good); background: var(--good-tint); }
+.quadrant--good .num { color: var(--good); }
+.quadrant--major { border-left-color: var(--link); background: var(--jodoo-tint); }
+.quadrant--major .num { color: var(--link); }
+.quadrant--fill { border-left-color: var(--ink-3); }
+.quadrant--bad { border-left-color: var(--bad); background: var(--bad-tint); }
+.quadrant--bad .num { color: var(--bad); }
+
+/* CAVEAT */
+.caveat {
+  max-width: var(--max-prose);
+  margin: 0 auto;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: clamp(24px, 3vw, 32px);
+}
+.caveat .label {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 10px;
+}
+.caveat p { font-size: 16px; line-height: 1.55; color: var(--ink); margin: 0; }
 
 /* CLOSING CTA */
 .closing {
@@ -378,6 +393,7 @@ main { padding-top: 48px; }
 }
 .closing .eyebrow { justify-content: center; margin-bottom: 14px; }
 .closing h2 { margin-bottom: 14px; max-width: 22ch; margin-inline: auto; }
+.closing h2 em { font-style: italic; font-weight: 400; color: var(--jodoo); }
 .closing p { color: var(--ink-2); max-width: 56ch; margin: 0 auto 28px; }
 .closing__ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 
@@ -404,9 +420,7 @@ main { padding-top: 48px; }
 .foot__partner-row strong { color: var(--ink); font-weight: 500; }
 .foot__partner-row img { height: 18px; width: auto; opacity: 0.85; }
 
-.foot__inner {
-  max-width: var(--max); margin: 0 auto; padding-inline: var(--gut);
-}
+.foot__inner { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
 .foot__cols {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -419,7 +433,6 @@ main { padding-top: 48px; }
 .foot__col h5 {
   font-size: 12px; font-weight: 600; color: var(--ink);
   letter-spacing: -0.01em; margin: 0 0 4px;
-  text-transform: none;
 }
 .foot__col a, .foot__col span {
   font-size: 12px; color: var(--ink-2); line-height: 1.6;
@@ -486,22 +499,23 @@ main { padding-top: 48px; }
       <span class="sep">/</span>
       <span>Field notes</span>
       <span class="sep">/</span>
-      <span>Positioning Jodoo</span>
+      <span>Operational tasks at first principles</span>
     </div>
     <h1 class="hero__title reveal">
-      Do you need an<br>
-      <em>IT department?</em>
+      Operational tasks<br>
+      <em>at first principles.</em>
     </h1>
     <p class="lead hero__lead reveal">
-      Before you choose between Cloud ERP, Low-Code, and No-Code, answer one
-      question — who in your own building has to keep the system alive after launch?
-      The honest test is the org chart you'd need to support each option.
+      Every operation exists to convert inputs into customer value. From there, the work
+      clusters into six functional groups — and plotted on Value &times; Effort, it sorts
+      itself into four quadrants that tell you exactly what to automate, invest in, fill in,
+      or kill.
     </p>
     <div class="hero__meta">
       <span><strong>Field notes</strong></span>
-      <span>Positioning</span>
+      <span>Operations</span>
       <span>May 2026</span>
-      <span>~4 min read</span>
+      <span>~5 min read</span>
     </div>
   </div>
 </header>
@@ -511,122 +525,204 @@ main { padding-top: 48px; }
   <div class="wrap">
     <div class="intro reveal">
       <p>
-        Most SMEs don't pick an operations system off a feature list. They pick it on a
-        hidden question they never quite say out loud: <strong>who in our own building has to
-        keep this thing alive once the implementation partner leaves the room?</strong>
+        Every operation, stripped back, is the same machine: <strong>inputs converted into
+        customer value.</strong> The work that happens inside that machine looks chaotic
+        until you cluster it — and once you do, six functional groups account for almost
+        everything an SME actually does.
       </p>
       <p>
-        Cloud ERP needs an IT department and a system integrator on retainer. Low-Code
-        needs an in-house development team. Only No-Code can be run, day-to-day, by
-        trained operations staff. The org chart you'd need to support each option is a
-        faster, more honest filter than any three-year TCO spreadsheet.
+        Six groups is the easy half. The harder question is which of those tasks deserve
+        your time. The cleanest filter is a two-axis grid: <strong>Value</strong> (revenue
+        or strategic impact) against <strong>Effort</strong> (time, complexity, resources).
+        The grid sorts every task into one of four quadrants — and each quadrant has its
+        own rule for what to do next.
       </p>
     </div>
   </div>
 </section>
 
-<!-- THE FRAMING -->
-<section class="section section--tight" id="framing">
+<!-- SIX FUNCTIONAL GROUPS -->
+<section class="section section--tight" id="groups">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">The six functional groups</div>
+      <div class="meta">Every SME, every operation</div>
+    </div>
+
+    <div class="groups">
+      <article class="group reveal">
+        <div class="num">01 · Demand</div>
+        <h4>How customers reach you.</h4>
+        <p>Sales pipeline, marketing, CRM, customer service. The top of the machine — without it the rest has nothing to convert.</p>
+      </article>
+      <article class="group reveal">
+        <div class="num">02 · Fulfillment</div>
+        <h4>How value gets delivered.</h4>
+        <p>Production, delivery, QC, logistics. The visible promise — what the customer actually pays for.</p>
+      </article>
+      <article class="group reveal">
+        <div class="num">03 · Finance cycle</div>
+        <h4>How money moves.</h4>
+        <p>Invoicing, AR/AP, payroll. The pulse of the business — late or wrong here and everything else stalls.</p>
+      </article>
+      <article class="group reveal">
+        <div class="num">04 · Resources</div>
+        <h4>What the work needs.</h4>
+        <p>Procurement, inventory, HR. The fuel and the people — slow to feel, expensive to fix when starved.</p>
+      </article>
+      <article class="group reveal">
+        <div class="num">05 · Infrastructure</div>
+        <h4>What keeps the lights on.</h4>
+        <p>IT, equipment maintenance, compliance. Invisible when it works, catastrophic when it doesn't.</p>
+      </article>
+      <article class="group reveal">
+        <div class="num">06 · Coordination</div>
+        <h4>How the parts talk to each other.</h4>
+        <p>Planning, reporting, meetings, documentation. The connective tissue — under-built it splinters, over-built it strangles.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- THE MATRIX -->
+<section class="section section--tight" id="matrix">
   <div class="wrap">
     <div class="section-strip">
       <div class="label">The framing</div>
-      <div class="meta">Resource demand &nbsp;&times;&nbsp; Operational self-sufficiency</div>
+      <div class="meta">Value &nbsp;&times;&nbsp; Effort</div>
     </div>
 
     <article class="framing reveal">
 
       <header class="framing__head">
-        <div class="framing__eyebrow">Organisational lens</div>
-        <h2 class="framing__title">Resource demand &times; Operational self-sufficiency.</h2>
+        <div class="framing__eyebrow">Operational lens</div>
+        <h2 class="framing__title">Value &times; Effort.</h2>
         <div class="framing__axes">
-          <div><span class="ax">X-axis</span><strong>Resource demand (capital + people + time)</strong></div>
-          <div><span class="ax">Y-axis</span><strong>Operational self-sufficiency once live</strong></div>
+          <div><span class="ax">X-axis</span><strong>Effort (time, complexity, resources)</strong></div>
+          <div><span class="ax">Y-axis</span><strong>Value (revenue or strategic impact)</strong></div>
         </div>
       </header>
 
       <div class="framing__svg">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organisational framing matrix — resource demand vs operational self-sufficiency">
-          <rect x="60" y="40" width="320" height="280" fill="#ffffff" stroke="#d2d2d7"/>
-          <line x1="220" y1="40" x2="220" y2="320" stroke="#d2d2d7" stroke-dasharray="3 3"/>
-          <line x1="60" y1="180" x2="380" y2="180" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+        <svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Value × Effort matrix mapping operational tasks into four quadrants">
+          <!-- chart area -->
+          <rect x="80" y="40" width="440" height="340" fill="#ffffff" stroke="#d2d2d7"/>
 
-          <line x1="60" y1="340" x2="380" y2="340" stroke="#1d1d1f" stroke-width="1.2"/>
-          <polyline points="375,336 383,340 375,344" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
-          <line x1="40" y1="320" x2="40" y2="40" stroke="#1d1d1f" stroke-width="1.2"/>
-          <polyline points="36,46 40,38 44,46" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+          <!-- dashed quadrant dividers -->
+          <line x1="300" y1="40" x2="300" y2="380" stroke="#d2d2d7" stroke-dasharray="3 3"/>
+          <line x1="80" y1="210" x2="520" y2="210" stroke="#d2d2d7" stroke-dasharray="3 3"/>
 
-          <text x="220" y="358" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1">LOWER DEMAND &rarr;</text>
-          <text x="20" y="180" text-anchor="middle" font-size="10" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1" transform="rotate(-90 20 180)">MORE SELF-SUFFICIENT &rarr;</text>
+          <!-- quadrant tints -->
+          <rect x="80" y="40" width="220" height="170" fill="#0a7d3d" fill-opacity="0.05"/>
+          <rect x="300" y="40" width="220" height="170" fill="#0071e3" fill-opacity="0.06"/>
+          <rect x="80" y="210" width="220" height="170" fill="#86868b" fill-opacity="0.04"/>
+          <rect x="300" y="210" width="220" height="170" fill="#c0392b" fill-opacity="0.05"/>
 
-          <text x="68" y="56" font-size="8" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">NEEDS DEPARTMENT</text>
-          <text x="372" y="56" text-anchor="end" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace" letter-spacing="1" font-weight="500">NEEDS TRAINED STAFF</text>
+          <!-- axis arrows -->
+          <line x1="80" y1="400" x2="520" y2="400" stroke="#1d1d1f" stroke-width="1.2"/>
+          <polyline points="515,396 523,400 515,404" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
+          <line x1="60" y1="380" x2="60" y2="40" stroke="#1d1d1f" stroke-width="1.2"/>
+          <polyline points="56,46 60,38 64,46" stroke="#1d1d1f" stroke-width="1.2" fill="none"/>
 
-          <circle cx="115" cy="270" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
-          <circle cx="115" cy="270" r="4" fill="#1d1d1f"/>
-          <text x="115" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Cloud ERP</text>
-          <text x="115" y="295" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">IT dept + SI partner</text>
+          <!-- axis labels -->
+          <text x="300" y="420" text-anchor="middle" font-size="11" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1">EFFORT &rarr;</text>
+          <text x="36" y="210" text-anchor="middle" font-size="11" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1" transform="rotate(-90 36 210)">VALUE &rarr;</text>
 
-          <circle cx="220" cy="180" r="38" fill="#1d1d1f" fill-opacity=".06" stroke="#1d1d1f" stroke-width="1"/>
-          <circle cx="220" cy="180" r="4" fill="#1d1d1f"/>
-          <text x="220" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1d1d1f" font-family="-apple-system,sans-serif">Low-Code</text>
-          <text x="220" y="205" text-anchor="middle" font-size="8" fill="#6e6e73" font-family="ui-monospace,monospace">In-house developers</text>
+          <!-- quadrant titles -->
+          <text x="190" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#0a7d3d" font-family="ui-monospace,monospace" letter-spacing="1.2">QUICK WINS</text>
+          <text x="410" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#0071e3" font-family="ui-monospace,monospace" letter-spacing="1.2">MAJOR PROJECTS</text>
+          <text x="190" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#6e6e73" font-family="ui-monospace,monospace" letter-spacing="1.2">FILL-INS</text>
+          <text x="410" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#c0392b" font-family="ui-monospace,monospace" letter-spacing="1.2">TIME SINKS</text>
 
-          <circle cx="320" cy="95" r="44" fill="#1317E4" fill-opacity=".16" stroke="#1317E4" stroke-width="2"/>
-          <circle cx="320" cy="95" r="5" fill="#1317E4"/>
-          <text x="320" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="#1317E4" font-family="-apple-system,sans-serif">No-Code</text>
-          <text x="320" y="122" text-anchor="middle" font-size="8" fill="#1317E4" font-family="ui-monospace,monospace">Trained ops staff</text>
+          <!-- Quick Wins items (high value, low effort) -->
+          <g font-family="-apple-system,sans-serif" font-size="12" fill="#1d1d1f">
+            <text x="100" y="92">• Invoicing</text>
+            <text x="100" y="112">• KPI dashboards</text>
+            <text x="100" y="132">• Customer feedback</text>
+            <text x="100" y="152">• AR collection</text>
+          </g>
 
-          <path d="M 280 65 Q 295 50 308 65" stroke="#1317E4" stroke-width="1" fill="none" opacity=".5"/>
+          <!-- Major Projects items (high value, high effort) -->
+          <g font-family="-apple-system,sans-serif" font-size="12" fill="#1d1d1f">
+            <text x="320" y="92">• Sales pipeline</text>
+            <text x="320" y="112">• Production / delivery</text>
+            <text x="320" y="132">• Marketing campaigns</text>
+            <text x="320" y="152">• Strategic planning</text>
+            <text x="320" y="172">• Customer service</text>
+          </g>
+
+          <!-- Fill-ins items (low value, low effort) -->
+          <g font-family="-apple-system,sans-serif" font-size="12" fill="#1d1d1f">
+            <text x="100" y="262">• Routine reporting</text>
+            <text x="100" y="282">• Documentation</text>
+            <text x="100" y="302">• Internal admin</text>
+          </g>
+
+          <!-- Time Sinks items (low value, high effort) -->
+          <g font-family="-apple-system,sans-serif" font-size="12" fill="#1d1d1f">
+            <text x="320" y="262">• Manual data entry</text>
+            <text x="320" y="282">• Internal meetings</text>
+            <text x="320" y="302">• Compliance paperwork</text>
+          </g>
+
+          <!-- corner anchors (low/high markers) -->
+          <text x="84" y="394" font-size="9" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">LOW</text>
+          <text x="516" y="394" text-anchor="end" font-size="9" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">HIGH</text>
+          <text x="76" y="48" text-anchor="end" font-size="9" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">HIGH</text>
+          <text x="76" y="378" text-anchor="end" font-size="9" fill="#86868b" font-family="ui-monospace,monospace" letter-spacing="1">LOW</text>
         </svg>
       </div>
 
-      <p class="framing__story">"ERP needs an IT department. Low-Code needs developers. No-Code needs trained operations staff."</p>
-
-      <div class="framing__notes">
-        <div class="framing__note">
-          <div class="num">ERP</div>
-          <h4>Needs an IT department.</h4>
-          <p>A full-stack platform that assumes you have a system integrator on retainer and an in-house team to manage upgrades, integrations, and changes. Right answer for large enterprises &mdash; a tax on most SMEs.</p>
-        </div>
-        <div class="framing__note">
-          <div class="num">Low-Code</div>
-          <h4>Needs developers.</h4>
-          <p>Faster than ERP, but every meaningful change still routes through a developer sprint. You've reduced the team to one or two builders &mdash; not eliminated the dependency.</p>
-        </div>
-        <div class="framing__note framing__note--pick">
-          <div class="num">No-Code</div>
-          <h4>Needs trained operations staff.</h4>
-          <p>Your own ops people, after a focused build phase, can configure forms, workflows, and dashboards. The system stops being IT's problem and becomes part of how the business runs.</p>
-        </div>
-      </div>
+      <p class="framing__story">"Quick Wins are the highest ROI per hour invested. Major Projects are the moat. Fill-ins shouldn't grow. Time Sinks quietly consume founder time."</p>
     </article>
   </div>
 </section>
 
-<!-- IMPLICATIONS -->
+<!-- HOW TO ACT -->
 <section class="section section--tight">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow eyebrow--mono">What it means in practice</div>
-      <h2>Three implications for SMEs choosing an operations system.</h2>
+      <div class="eyebrow eyebrow--mono">How to act on each quadrant</div>
+      <h2>One rule per quadrant. Apply it without sentiment.</h2>
     </div>
 
-    <div class="takeaways">
-      <article class="takeaway reveal">
-        <div class="num">01</div>
-        <h4>Match the system to the org you actually have.</h4>
-        <p>The cheapest platform on paper is the wrong one if it demands a department you don't have. Start from your headcount, not the feature list — the system that fits your org chart is the one that will still be running in five years.</p>
+    <div class="quadrants">
+      <article class="quadrant quadrant--good reveal">
+        <div class="num">Quick Wins · High value, low effort</div>
+        <h4>Automate or systematize now.</h4>
+        <p>Highest ROI per hour invested. These are the tasks that already pay for themselves manually — turn them into a workflow and they pay forever. Don't wait for budget approval; build them this quarter.</p>
       </article>
-      <article class="takeaway reveal">
-        <div class="num">02</div>
-        <h4>Self-sufficiency beats licence price.</h4>
-        <p>An ops team that can configure their own forms, workflows, and dashboards is worth more, monthly, than any saving on subscription cost. Self-sufficiency is the strongest defence against vendor lock-in there is.</p>
+      <article class="quadrant quadrant--major reveal">
+        <div class="num">Major Projects · High value, high effort</div>
+        <h4>Your moat. Invest deliberately — don't shortcut.</h4>
+        <p>These are the operations that make you defensible. Sales engine, delivery system, marketing motion. Shortcuts here look cheap on the spreadsheet and expensive on the customer. Pace it, but don't cheap it.</p>
       </article>
-      <article class="takeaway reveal">
-        <div class="num">03</div>
-        <h4>The platform is only half the answer.</h4>
-        <p>No-Code unlocks the org-chart fit — but only if someone teaches your staff how to use the platform. The work is one part build, one part training. Both have to land for the system to belong to your team.</p>
+      <article class="quadrant quadrant--fill reveal">
+        <div class="num">Fill-ins · Low value, low effort</div>
+        <h4>Only when capacity allows. Don't expand them.</h4>
+        <p>Routine reporting, documentation, internal admin. Useful in small doses, cancer in large ones. Keep them lean; if they're growing, something upstream is broken.</p>
       </article>
+      <article class="quadrant quadrant--bad reveal">
+        <div class="num">Time Sinks · Low value, high effort</div>
+        <h4>Kill, delegate, or templatize.</h4>
+        <p>Manual data entry, status meetings, paperwork. These quietly consume founder time without producing customer value. If you can't kill them, template them so any junior hire can clear them in half the time.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CAVEAT -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="caveat reveal">
+      <div class="label">A caveat worth keeping</div>
+      <p>
+        A task's quadrant is operation-specific. <strong>Compliance</strong> is a time sink
+        for a 5-person trading firm and a major project for a regulated SaaS. The exercise
+        only works when you map <strong>your own</strong> tasks against <strong>your own</strong>
+        revenue model — not a generic chart someone else drew. The framing is the tool;
+        the answers are yours.
+      </p>
     </div>
   </div>
 </section>
@@ -636,13 +732,16 @@ main { padding-top: 48px; }
   <div class="wrap">
     <div class="closing reveal">
       <div class="eyebrow">Velo Working &middot; Official Jodoo partner, Singapore</div>
-      <h2>Engineered with Jodoo. <em>Owned by your team.</em></h2>
+      <h2>Map your operations. <em>Then build only what matters.</em></h2>
       <p>
-        Velo Working engineers SME operations on Jodoo — Asia's leading no-code workflow platform — and hands the keys to your team. Fixed scope. Fixed fee. No subscription. No vendor dependency.
+        Velo Working engineers SME operations on Jodoo — Asia's leading no-code workflow
+        platform — and hands the keys to your team. We start by sorting your tasks into
+        the four quadrants, then build the Quick Wins and the Major Projects. The Time
+        Sinks we help you retire.
       </p>
       <div class="closing__ctas">
-        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20the%20Positioning%20of%20Jodoo%20note%20and%20I%27d%20like%20to%20talk." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
-        <a href="../index.html#approach" class="link">See the 90-day approach</a>
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20the%20Operational%20tasks%20at%20first%20principles%20note%20and%20I%27d%20like%20to%20talk." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+        <a href="../assessment/assessment.html" class="link" target="_blank" rel="noopener">Take the assessment</a>
       </div>
     </div>
   </div>
