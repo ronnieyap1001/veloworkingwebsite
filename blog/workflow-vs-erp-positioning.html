@@ -504,6 +504,18 @@ tbody td:first-child {
 tbody tr:hover td { background: var(--surface-2); }
 tbody tr:hover td:first-child { background: #f0f0f2; }
 tbody tr:last-child td { border-bottom: none; }
+tbody td.cell-pro {
+  background: rgba(48, 164, 108, 0.10);
+  color: #1f6b46;
+  box-shadow: inset 3px 0 0 rgba(48, 164, 108, 0.55);
+}
+tbody td.cell-con {
+  background: rgba(214, 64, 69, 0.08);
+  color: #a83239;
+  box-shadow: inset 3px 0 0 rgba(214, 64, 69, 0.55);
+}
+tbody tr:hover td.cell-pro { background: rgba(48, 164, 108, 0.16); }
+tbody tr:hover td.cell-con { background: rgba(214, 64, 69, 0.14); }
 
 /* CLOSING CTA */
 .closing {
@@ -836,31 +848,31 @@ tbody tr:last-child td { border-bottom: none; }
           </tr>
           <tr>
             <td>License cost</td>
-            <td>$0 – $12/user/mo</td>
-            <td>$0 (Community) – $76/user/mo (Enterprise)</td>
-            <td>&euro;38 – $716/user/mo across products</td>
-            <td>$80 – $200+/user/mo</td>
+            <td class="cell-pro">$0 – $12/user/mo</td>
+            <td class="cell-pro">$0 (Community) – $76/user/mo (Enterprise)</td>
+            <td class="cell-con">&euro;38 – $716/user/mo across products</td>
+            <td class="cell-con">$80 – $200+/user/mo</td>
           </tr>
           <tr>
             <td>Pricing transparency</td>
-            <td>Public list price</td>
-            <td>Public list price (regional)</td>
-            <td>Quoted, NDA-bound</td>
-            <td>Quoted, NDA-bound</td>
+            <td class="cell-pro">Public list price</td>
+            <td class="cell-pro">Public list price (regional)</td>
+            <td class="cell-con">Quoted, NDA-bound</td>
+            <td class="cell-con">Quoted, NDA-bound</td>
           </tr>
           <tr>
             <td>Year-1 TCO (realistic)</td>
-            <td>Low five-figures</td>
+            <td class="cell-pro">Low five-figures</td>
             <td>$75K – $135K mid-market</td>
-            <td>$20K (B1) to $5M+ (S/4HANA)</td>
-            <td>~$980K for mid-size deployment</td>
+            <td class="cell-con">$20K (B1) to $5M+ (S/4HANA)</td>
+            <td class="cell-con">~$980K for mid-size deployment</td>
           </tr>
           <tr>
             <td>Implementation</td>
-            <td>Days to weeks, self-service</td>
+            <td class="cell-pro">Days to weeks, self-service</td>
             <td>4 – 16 weeks SMB</td>
-            <td>3 – 24 months</td>
-            <td>12 – 24+ weeks, partner-led</td>
+            <td class="cell-con">3 – 24 months</td>
+            <td class="cell-con">12 – 24+ weeks, partner-led</td>
           </tr>
           <tr>
             <td>Core strength</td>
@@ -871,24 +883,24 @@ tbody tr:last-child td { border-bottom: none; }
           </tr>
           <tr>
             <td>Customization</td>
-            <td>Visual builder + API</td>
-            <td>Python/XML + Studio</td>
-            <td>ABAP/Fiori, partner-dependent</td>
-            <td>Deep but consultant-heavy</td>
+            <td class="cell-pro">Visual builder + API</td>
+            <td class="cell-pro">Python/XML + Studio</td>
+            <td class="cell-con">ABAP/Fiori, partner-dependent</td>
+            <td class="cell-con">Deep but consultant-heavy</td>
           </tr>
           <tr>
             <td>Lock-in risk</td>
-            <td>Low</td>
-            <td>Lowest (open source)</td>
-            <td>Highest (proprietary)</td>
-            <td>High</td>
+            <td class="cell-pro">Low</td>
+            <td class="cell-pro">Lowest (open source)</td>
+            <td class="cell-con">Highest (proprietary)</td>
+            <td class="cell-con">High</td>
           </tr>
           <tr>
             <td>Ecosystem</td>
-            <td>~20K customers, growing</td>
-            <td>1,700+ partners, OCA community</td>
-            <td>Massive global SI network</td>
-            <td>Largest enterprise partner network</td>
+            <td class="cell-con">~20K customers, growing</td>
+            <td class="cell-pro">1,700+ partners, OCA community</td>
+            <td class="cell-pro">Massive global SI network</td>
+            <td class="cell-pro">Largest enterprise partner network</td>
           </tr>
           <tr>
             <td>Best for</td>
