@@ -1,0 +1,1438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Three categories of business software — and the quiet shift underway · Velo Working</title>
+
+<!-- SEO -->
+<meta name="description" content="Cloud ERP, Low-Code, No-Code — three entirely different categories engineered for three different kinds of company. A side-by-side map for SME top management." />
+<meta name="author" content="Velo Working Pte. Ltd." />
+<link rel="canonical" href="https://www.veloworking.com/blog/three-categories-of-business-software.html" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Three categories of business software — and the quiet shift underway" />
+<meta property="og:description" content="SAP, OutSystems and Jodoo aren't three vendors competing for the same job. They sit in three entirely different categories — each engineered for a different size of company." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.veloworking.com/blog/three-categories-of-business-software.html" />
+<meta property="og:site_name" content="Velo Working" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Three categories of business software — and the quiet shift underway" />
+<meta name="twitter:description" content="Cloud ERP, Low-Code, No-Code — three categories, three buyers, one structural shift." />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="../asset/favicon.svg" />
+<link rel="apple-touch-icon" href="../asset/favicon.svg" />
+
+<style>
+:root {
+  --bg:        #fbfbfd;
+  --surface:   #ffffff;
+  --surface-2: #f5f5f7;
+  --ink:       #1d1d1f;
+  --ink-2:     #6e6e73;
+  --ink-3:     #86868b;
+  --rule:      #d2d2d7;
+  --dark:      #0b0b0d;
+  --link:      #0071e3;
+  --link-hov:  #0077ed;
+  --jodoo:     #1317E4;
+  --jodoo-tint: rgba(19, 23, 228, 0.06);
+  --jodoo-strong: rgba(19, 23, 228, 0.14);
+
+  --r-tile:    24px;
+  --r-pill:    980px;
+
+  --f: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --gut: clamp(20px, 4vw, 40px);
+  --max: 1180px;
+  --max-prose: 720px;
+  --section-pad: clamp(64px, 8vw, 96px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f);
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+p { margin: 0 0 1em; }
+p:last-child { margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
+.wrap--prose { max-width: var(--max-prose); margin: 0 auto; padding-inline: var(--gut); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
+h1 { font-size: clamp(36px, 5.6vw, 64px); font-weight: 600; letter-spacing: -0.045em; line-height: 1.05; }
+h2 { font-size: clamp(28px, 3.6vw, 40px); }
+h3 { font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.03em; line-height: 1.15; }
+h4 { font-size: 17px; letter-spacing: -0.022em; line-height: 1.2; font-weight: 600; }
+
+.lead {
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.4;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px; border-radius: var(--r-pill);
+  font-size: 17px; font-weight: 400; letter-spacing: -0.022em;
+  white-space: nowrap;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease, opacity 200ms ease;
+}
+.btn--primary { background: var(--link); color: #fff; }
+.btn--primary:hover { background: var(--link-hov); }
+
+.link {
+  color: var(--link); font-size: 17px; font-weight: 400;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.link:hover { text-decoration: underline; }
+.link::after { content: '>'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
+
+.eyebrow {
+  font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
+  color: var(--link); margin-bottom: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  height: 48px;
+  background: rgba(251, 251, 253, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+.nav__inner {
+  max-width: 1024px; margin: 0 auto; height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: 22px; gap: 16px;
+}
+.nav__brand { color: var(--ink); display: inline-flex; align-items: center; flex-shrink: 0; height: 100%; }
+.nav__brand-svg { height: 18px; width: auto; display: block; }
+.nav__links {
+  display: flex; align-items: center; gap: 0;
+  list-style: none; padding: 0; margin: 0; height: 100%;
+}
+.nav__links > li { display: flex; align-items: center; height: 100%; position: relative; }
+.nav__link--caret::after {
+  content: ""; display: inline-block; margin-left: 6px;
+  width: 6px; height: 6px;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 150ms ease;
+}
+.nav__submenu {
+  position: absolute; top: 44px; left: 4px;
+  min-width: 240px;
+  background: rgba(251, 251, 253, 0.96);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 6px;
+  list-style: none; margin: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+}
+.nav__item--has-children:hover > .nav__submenu,
+.nav__item--has-children:focus-within > .nav__submenu,
+.nav__item--has-children.is-open > .nav__submenu {
+  opacity: 1; visibility: visible; transform: none;
+}
+.nav__sublink {
+  display: block;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: rgba(29, 29, 31, 0.85);
+  border-radius: 8px;
+  white-space: normal;
+  line-height: 1.3;
+}
+.nav__sublink small {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  letter-spacing: 0;
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+}
+.nav__sublink:hover { background: rgba(0,0,0,0.04); color: var(--ink); }
+.nav__sublink--all {
+  border-top: 1px solid var(--rule);
+  margin-top: 4px; padding-top: 12px;
+  color: var(--link); font-weight: 500;
+}
+.nav__link {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 12px;
+  color: rgba(29, 29, 31, 0.8);
+  font-size: 12px; font-weight: 400; letter-spacing: -0.01em; white-space: nowrap;
+  transition: color 150ms ease;
+}
+.nav__link:hover { color: var(--ink); }
+.nav__link--accent { color: var(--link); font-weight: 500; }
+.nav__link--accent:hover { color: var(--link-hov); }
+
+.nav__toggle {
+  display: none; width: 36px; height: 36px; border-radius: 50%;
+  align-items: center; justify-content: center; color: var(--ink); flex-shrink: 0;
+}
+.nav__toggle svg { width: 18px; height: 18px; }
+
+@media (max-width: 833px) {
+  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+  .nav.nav--open .nav__links {
+    position: absolute; top: 48px; left: 0; right: 0;
+    flex-direction: column; height: auto;
+    background: rgba(251, 251, 253, 0.96);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 22px 16px; display: flex;
+  }
+  .nav.nav--open .nav__links > li {
+    height: auto; border-bottom: 1px solid var(--rule);
+    flex-direction: column; align-items: stretch;
+  }
+  .nav.nav--open .nav__links > li:last-child { border-bottom: 0; }
+  .nav.nav--open .nav__link {
+    height: 44px; width: 100%; padding: 0; font-size: 15px;
+    justify-content: space-between;
+  }
+  .nav__submenu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    background: none; border: 0; border-radius: 0; padding: 0 0 12px;
+    box-shadow: none; min-width: 0;
+    display: none;
+  }
+  .nav.nav--open .nav__item--has-children.is-open .nav__submenu { display: block; }
+  .nav.nav--open .nav__sublink { padding: 10px 0 10px 14px; font-size: 14px; }
+  .nav.nav--open .nav__item--has-children.is-open .nav__link--caret::after { transform: translateY(2px) rotate(-135deg); }
+}
+
+main { padding-top: 48px; }
+
+/* HERO */
+.hero {
+  padding: clamp(48px, 8vw, 96px) 0 clamp(40px, 6vw, 64px);
+  border-bottom: 1px solid var(--rule);
+}
+.hero__crumb {
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero__crumb a { color: var(--link); }
+.hero__crumb a:hover { color: var(--link-hov); }
+.hero__crumb .sep { color: var(--ink-3); }
+.hero__title { margin-bottom: 24px; max-width: 22ch; }
+.hero__title em {
+  font-style: italic; font-weight: 400;
+  color: var(--jodoo);
+}
+.hero__lead { max-width: 60ch; color: var(--ink-2); margin-bottom: 32px; }
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2);
+  padding-top: 24px; border-top: 1px solid var(--rule);
+  margin-top: 16px;
+}
+.hero__meta strong { color: var(--ink); font-weight: 500; }
+
+/* SECTIONS */
+.section { padding: var(--section-pad) 0; }
+.section--tight { padding: clamp(48px, 6vw, 64px) 0; }
+
+.section-strip {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 32px;
+}
+.section-strip .label { flex: 1; min-width: 0; }
+.section-strip .meta { color: var(--ink); }
+
+/* PROSE */
+.prose {
+  max-width: var(--max-prose);
+  margin: 0 auto;
+  font-size: 18px; line-height: 1.6; color: var(--ink);
+}
+.prose p { margin: 0 0 1.2em; }
+.prose p:last-child { margin: 0; }
+.prose strong { font-weight: 600; }
+.prose h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 2.5em 0 0.6em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.prose h3 {
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 2em 0 0.5em;
+  letter-spacing: -0.02em;
+}
+.prose ol, .prose ul { margin: 0.5em 0 1.2em; padding-left: 1.4em; }
+.prose li { margin-bottom: 0.5em; line-height: 1.55; }
+.prose li strong { color: var(--ink); }
+
+/* PULL QUOTE */
+.pull {
+  font-style: italic; font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.45; letter-spacing: -0.022em;
+  color: var(--ink);
+  padding: 18px 22px;
+  background: var(--surface-2);
+  border-left: 3px solid var(--jodoo);
+  border-radius: 6px;
+  margin: 1.5em 0;
+}
+
+/* LEDE DROP CAP */
+.lede { font-size: 19px; line-height: 1.6; font-weight: 500; letter-spacing: -0.005em; }
+.lede::first-letter {
+  font-size: 56px; font-weight: 700; float: left; line-height: 0.9;
+  margin: 6px 10px 0 0; color: var(--jodoo);
+}
+@media (max-width: 833px) { .lede::first-letter { font-size: 44px; } }
+
+/* CHAPTER MARKERS */
+.chapter {
+  max-width: var(--max-prose);
+  margin: clamp(48px, 6vw, 72px) auto clamp(24px, 3vw, 36px);
+  padding-inline: var(--gut);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+.chapter__roman {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--jodoo);
+  line-height: 1;
+}
+.chapter__label {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2); flex: 1;
+}
+.chapter__title {
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  text-align: right; letter-spacing: -0.01em;
+}
+
+/* CATEGORY MARKER */
+.cat-marker {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 1em;
+}
+.cat-marker__num {
+  font-family: var(--f-mono);
+  font-size: 13px; font-weight: 600; color: var(--jodoo);
+  letter-spacing: 0.04em;
+}
+.cat-marker h2 { margin: 0; }
+.cat-marker h2 em {
+  font-style: italic; font-weight: 400; color: var(--jodoo);
+}
+
+/* LEADERS CARD */
+.leaders {
+  background: var(--surface-2);
+  padding: 22px 24px;
+  margin: 1.4em 0;
+  border-left: 3px solid var(--rule);
+  border-radius: 6px;
+}
+.leaders.is-focus {
+  border-left-color: var(--jodoo);
+  background: var(--jodoo-tint);
+}
+.leaders__label {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 10px;
+}
+.leaders__list {
+  font-size: 16px; line-height: 1.5; font-weight: 600;
+  color: var(--ink); margin-bottom: 10px;
+}
+.leaders__note {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+.leaders__src {
+  font-family: var(--f-mono);
+  font-size: 11px; color: var(--ink-3);
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+
+/* MATRIX FIGURE */
+.matrix-frame {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px -16px rgba(0,0,0,0.08);
+  margin: 2em 0;
+}
+.matrix-frame svg { width: 100%; height: auto; }
+.matrix-caption {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin-top: 16px; padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  line-height: 1.55;
+}
+
+/* COMPARISON TABLE */
+.table-scroll {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px -16px rgba(0,0,0,0.06);
+  margin: 2em 0;
+}
+table.compare {
+  width: 100%; border-collapse: collapse;
+  font-size: 13.5px; font-variant-numeric: tabular-nums;
+  min-width: 720px;
+}
+table.compare thead th {
+  background: var(--surface-2); text-align: left;
+  padding: 14px 16px; font-weight: 700; font-size: 12px;
+  color: var(--ink); text-transform: uppercase; letter-spacing: 0.04em;
+  border-bottom: 1.5px solid var(--rule); white-space: nowrap;
+  vertical-align: bottom;
+}
+table.compare thead th .sub {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.04em; text-transform: none;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+table.compare tbody td {
+  padding: 12px 16px; border-bottom: 1px solid var(--rule);
+  vertical-align: top; line-height: 1.5; color: var(--ink-2);
+}
+table.compare tbody th {
+  padding: 12px 16px; border-bottom: 1px solid var(--rule);
+  vertical-align: top; line-height: 1.5; text-align: left;
+  font-weight: 600; color: var(--ink); background: var(--bg);
+  min-width: 180px; font-size: 13px;
+}
+table.compare tbody tr.group-row td {
+  background: var(--surface-2);
+  padding: 14px 16px 8px;
+  border-bottom: none;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2); font-weight: 600;
+}
+table.compare tbody tr:not(.group-row):hover td { background: var(--surface-2); }
+table.compare tbody tr:not(.group-row):hover th { background: #f0f0f2; }
+
+/* TIMELINE */
+.timeline {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 32px;
+  margin: 2em 0;
+}
+.timeline__label {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 24px;
+}
+.timeline__track {
+  position: relative;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  padding-top: 32px;
+}
+.timeline__track::before {
+  content: ""; position: absolute;
+  top: 8px; left: 8.33%; right: 8.33%;
+  height: 1px; background: var(--rule);
+}
+.t-dot { position: relative; text-align: center; }
+.t-dot::before {
+  content: ""; position: absolute;
+  top: -32px; left: calc(50% - 5px);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--ink);
+}
+.t-dot.is-future::before {
+  background: var(--jodoo); border-color: var(--jodoo);
+  box-shadow: 0 0 0 4px var(--jodoo-tint);
+}
+.t-dot__year {
+  font-family: var(--f-mono);
+  font-size: 12px; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.04em; margin-bottom: 8px;
+}
+.t-dot.is-future .t-dot__year { color: var(--jodoo); }
+.t-dot__state {
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+}
+.t-dot__skill {
+  font-size: 13px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 640px) {
+  .timeline__track { grid-template-columns: 1fr; padding-top: 0; gap: 24px; }
+  .timeline__track::before { display: none; }
+  .t-dot { text-align: left; padding-left: 24px; }
+  .t-dot::before { top: 6px; left: 0; }
+}
+
+/* STAT HERO + GRID */
+.stat-hero {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--jodoo);
+  border-radius: var(--r-tile);
+  padding: 36px 32px;
+  margin: 2em 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px; align-items: center;
+}
+.stat-hero__num {
+  font-size: clamp(56px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--jodoo);
+}
+.stat-hero__num .unit { font-size: 0.5em; }
+.stat-hero__copy h4 {
+  font-size: 18px; font-weight: 600;
+  color: var(--ink); margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.stat-hero__copy p {
+  font-size: 15px; line-height: 1.55; color: var(--ink-2);
+  margin: 0;
+}
+.stat-hero__src {
+  font-family: var(--f-mono);
+  font-size: 11px; color: var(--ink-3); margin-top: 6px;
+}
+@media (max-width: 640px) {
+  .stat-hero { grid-template-columns: 1fr; gap: 16px; padding: 28px 24px; }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  overflow: hidden;
+  margin: 2em 0;
+}
+.stat {
+  background: var(--surface);
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.stat__num {
+  font-size: 30px; font-weight: 700; line-height: 1;
+  letter-spacing: -0.025em; color: var(--ink);
+}
+.stat__num .unit {
+  font-size: 18px; color: var(--ink-3); letter-spacing: -0.015em;
+}
+.stat__desc {
+  font-size: 13px; line-height: 1.5; color: var(--ink-2);
+}
+.stat__src {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.04em; color: var(--ink-3);
+  margin-top: auto; padding-top: 6px;
+}
+
+/* FORCES */
+.forces {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  overflow: hidden;
+  margin: 2em 0;
+}
+@media (max-width: 833px) { .forces { grid-template-columns: 1fr; } }
+.force {
+  background: var(--surface);
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.force__num {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; color: var(--jodoo);
+}
+.force h4 {
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); margin: 0; line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.force p {
+  font-size: 14px; line-height: 1.55;
+  color: var(--ink-2); margin: 0;
+}
+
+/* COST FRAME */
+.cost-frame {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  padding: 32px;
+  margin: 2em 0;
+}
+.cost-frame__label {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2); margin-bottom: 6px;
+}
+.cost-frame h4 {
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 22px; letter-spacing: -0.01em;
+}
+.cost-row {
+  display: grid; grid-template-columns: 120px 1fr 130px;
+  gap: 16px; align-items: center;
+  margin-bottom: 12px; font-size: 13px;
+}
+.cost-row:last-of-type { margin-bottom: 0; }
+.cost-row__name { font-weight: 600; color: var(--ink); }
+.cost-row__bar-wrap {
+  height: 22px; background: var(--bg);
+  border: 1px solid var(--rule); border-radius: 4px;
+  overflow: hidden;
+}
+.cost-row__bar { height: 100%; background: var(--ink); }
+.cost-row__bar.is-focus { background: var(--jodoo); }
+.cost-row__amount {
+  font-family: var(--f-mono);
+  font-size: 12px; color: var(--ink-2); text-align: right;
+}
+.cost-row__amount strong { color: var(--ink); }
+.cost-note {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.04em;
+  color: var(--ink-3); line-height: 1.55;
+  margin-top: 18px; padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+@media (max-width: 640px) {
+  .cost-row { grid-template-columns: 1fr; gap: 6px; }
+  .cost-row__amount { text-align: left; }
+}
+
+/* DECISION PANEL */
+.decision {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  overflow: hidden;
+  margin: 2em 0;
+}
+@media (max-width: 833px) { .decision { grid-template-columns: 1fr; } }
+.decision__cell {
+  background: var(--surface);
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.decision__when {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.05em; color: var(--ink-3);
+}
+.decision__who {
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.decision__choice {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 8px;
+}
+.decision__verdict {
+  font-size: 17px; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.decision__why {
+  font-size: 13px; line-height: 1.5; color: var(--ink-2);
+  margin-top: 4px;
+}
+.decision__cell.is-fit {
+  background: var(--jodoo-tint);
+  border-left: 3px solid var(--jodoo);
+}
+.decision__cell.is-fit .decision__verdict { color: var(--jodoo); }
+.decision__cell.is-fit .decision__choice {
+  color: var(--jodoo); font-weight: 600;
+}
+
+/* REFERENCES */
+.refs {
+  max-width: var(--max-prose); margin: 0 auto;
+  padding: 24px var(--gut) 0;
+  border-top: 1px solid var(--rule);
+  font-size: 13.5px; line-height: 1.6; color: var(--ink-2);
+}
+.refs h4 {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 600;
+  margin-bottom: 14px;
+}
+.refs ol { padding-left: 22px; margin: 0; }
+.refs li { margin-bottom: 8px; }
+.refs em { font-style: italic; color: var(--ink); }
+
+/* CLOSING CTA */
+.closing {
+  background: var(--surface-2);
+  border-radius: var(--r-tile);
+  padding: clamp(36px, 5vw, 56px);
+  text-align: center;
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.closing .eyebrow { justify-content: center; margin-bottom: 14px; }
+.closing h2 { margin-bottom: 14px; max-width: 22ch; margin-inline: auto; }
+.closing h2 em { font-style: italic; font-weight: 400; color: var(--jodoo); }
+.closing p { color: var(--ink-2); max-width: 56ch; margin: 0 auto 28px; }
+.closing__ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+/* FOOTER */
+.foot {
+  padding-top: 64px; padding-bottom: 48px;
+  background: var(--surface-2);
+  margin-top: var(--section-pad);
+  border-top: 1px solid var(--rule);
+}
+.foot__partner {
+  max-width: var(--max); margin: 0 auto 40px; padding-inline: var(--gut);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.foot__partner-tag {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.foot__partner-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--ink-2);
+}
+.foot__partner-row strong { color: var(--ink); font-weight: 500; }
+.foot__partner-row img { height: 18px; width: auto; opacity: 0.85; }
+
+.foot__inner { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
+.foot__cols {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  padding-bottom: 32px; border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 833px) { .foot__cols { grid-template-columns: repeat(2, 1fr); } }
+.foot__col { display: flex; flex-direction: column; gap: 8px; }
+.foot__col h5 {
+  font-size: 12px; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; margin: 0 0 4px;
+}
+.foot__col a, .foot__col span {
+  font-size: 12px; color: var(--ink-2); line-height: 1.6; letter-spacing: -0.01em;
+}
+.foot__col a:hover { color: var(--link); }
+.foot__legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  padding-top: 16px; font-size: 11px; color: var(--ink-3); gap: 12px;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <symbol id="velo-logo" viewBox="-67 125 310 50">
+    <g fill="currentColor">
+      <path d="m -63.08431,159.73324 v -11.95468 h 1.711254 1.711254 v 11.95468 11.95468 h -1.711254 -1.711254 z m 13.473111,-0.82354 c -2.7838,-2.88889 -5.165724,-5.36884 -5.293161,-5.51098 l -0.231706,-0.25846 0.549761,-1.29497 0.549763,-1.29498 7.635659,0.0174 c 4.199613,0.01 7.642322,0.0236 7.650469,0.0309 0.01335,0.0121 -1.513544,3.63653 -1.544387,3.66591 -0.0071,0.007 -1.932699,-0.0391 -4.279044,-0.10194 -2.346348,-0.0628 -4.407082,-0.11379 -4.579413,-0.11326 l -0.313328,9e-4 3.263591,3.23912 3.263592,3.23912 -0.776198,1.81972 c -0.42691,1.00085 -0.789235,1.81842 -0.80517,1.81682 -0.01595,-0.001 -2.306627,-2.36654 -5.090428,-5.25543 z m -29.666932,3.11343 c -0.40939,-1.01953 -0.73477,-1.86111 -0.72306,-1.87019 0.11854,-0.0919 6.601154,-6.26625 6.601154,-6.28717 0,-0.0155 -2.06247,-0.0194 -4.583264,-0.009 l -4.58327,0.0194 -0.74007,-1.83176 -0.74007,-1.83177 0.15342,-0.0131 c 0.34112,-0.0292 15.135529,0.27402 15.167398,0.31083 0.01891,0.0219 0.267301,0.61697 0.551984,1.32251 l 0.517602,1.28278 -3.365959,3.34337 c -1.851279,1.83885 -4.288204,4.26051 -5.415385,5.38145 -1.12719,1.12096 -2.05995,2.03766 -2.0728,2.03711 -0.0129,-4.5e-4 -0.3583,-0.83516 -0.76768,-1.85469 z m 33.041236,-14.34438 c -3.791272,-0.0741 -7.098103,-0.14163 -7.348513,-0.15003 l -0.455294,-0.0153 -0.520844,-1.3003 c -0.286465,-0.71518 -0.520846,-1.31372 -0.520846,-1.3301 0,-0.0374 3.03224,-3.04993 5.890442,-5.87067 2.539166,-2.5059 4.940976,-4.86047 4.957427,-4.84345 0.02131,0.0221 0.36701,0.85212 0.768213,1.84455 l 0.729459,1.80441 -0.207484,0.20195 c -0.114116,0.11108 -1.519848,1.44395 -3.123846,2.96192 -1.603998,1.51799 -3.013976,2.85516 -3.133281,2.9715 l -0.21692,0.21154 4.60739,-0.0328 c 3.946267,-0.028 4.611369,-0.023 4.635133,0.0354 0.249971,0.61373 1.323165,3.26153 1.390383,3.43038 l 0.09115,0.22896 -0.324674,-0.007 c -0.178575,-0.003 -3.426627,-0.0673 -7.217897,-0.14137 z m -31.875116,-0.22557 c -3.49313,-0.008 -5.89298,-0.0303 -5.89298,-0.0563 0,-0.0603 1.49413,-3.5857 1.54033,-3.63439 0.0204,-0.0215 2.08435,0.0149 4.58652,0.0808 2.502157,0.066 4.555892,0.1135 4.56385,0.1055 0.008,-0.008 -1.450958,-1.46694 -3.24204,-3.24218 l -3.2565,-3.22771 0.78062,-1.84246 0.78062,-1.84246 0.13009,0.13515 c 0.0715,0.0743 2.464747,2.55971 5.318224,5.52307 l 5.188142,5.38792 -0.06524,0.15558 c -0.03588,0.0856 -0.288522,0.6816 -0.561424,1.32453 l -0.496185,1.16895 -1.740524,-0.0119 c -0.957288,-0.007 -4.392364,-0.0174 -7.633503,-0.0243 z m 19.589652,-5.24138 c -0.712179,-0.30247 -1.305328,-0.56039 -1.318105,-0.57317 -0.01277,-0.0128 -0.0072,-3.45913 0.01238,-7.65856 l 0.03563,-7.63531 1.788624,0.75983 c 0.983744,0.41792 1.814974,0.7774 1.847178,0.79886 0.04578,0.0305 0.03288,0.98466 -0.05923,4.37741 -0.06479,2.38612 -0.117559,4.44686 -0.117282,4.57942 l 4.48e-4,0.24102 3.24018,-3.26967 3.240214,-3.26966 1.78356,0.75711 c 0.980959,0.41641 1.801446,0.77332 1.823303,0.79314 0.02185,0.0199 -2.320873,2.30888 -5.206069,5.08681 -2.885194,2.77793 -5.365114,5.16596 -5.510933,5.30673 l -0.265123,0.25597 z m -12.34695,-4.8958 c -2.942875,-2.96981 -5.356102,-5.41524 -5.362732,-5.43431 -0.0104,-0.0301 3.575683,-1.50529 3.65865,-1.505 0.0172,6e-5 1.436368,1.48058 3.153703,3.29005 1.717335,1.80948 3.14167,3.29761 3.165188,3.30699 0.02476,0.01 0.03646,-1.91609 0.02778,-4.57516 l -0.01498,-4.5922 1.828043,-0.73907 c 1.005424,-0.40649 1.833188,-0.73378 1.839475,-0.72732 0.01771,0.0182 -0.27252,15.28791 -0.290931,15.30631 -0.01962,0.0197 -2.434208,1.00013 -2.563044,1.04078 -0.07161,0.0227 -1.205843,-1.097 -5.441159,-5.37107 z"/>
+      <path d="m -19.089294,160.84717 h 6.702763 l 8.4666472,-24.69439 h -5.1152663 l -6.3499859,19.04996 h -0.705554 l -6.349986,-19.04996 h -5.115266 z m 17.9916369,0 H 15.482861 v -4.23333 H 3.4884437 v -5.9972 H 14.777307 v -4.23333 H 3.4884437 V 140.3861 H 15.482861 v -4.23332 H -1.0976571 Z m 21.1666331,0 h 16.227742 v -4.40971 H 24.655077 v -20.28468 h -4.586101 z m 29.104079,-4.05694 c -4.233324,0 -7.408317,-3.21027 -7.408317,-8.29026 0,-5.07999 3.174993,-8.29026 7.408317,-8.29026 4.233323,0 7.408316,3.21027 7.408316,8.29026 0,5.07999 -3.174993,8.29026 -7.408316,8.29026 z m 0,-20.99023 c -6.667485,0 -11.994418,5.25638 -11.994418,12.69997 0,7.4436 5.326933,12.69997 11.994418,12.69997 6.667485,0 11.994417,-5.25637 11.994417,-12.69997 0,-7.44359 -5.326932,-12.69997 -11.994417,-12.69997 z m 27.692983,25.04717 h 6.349986 l 4.233324,-16.9333 h 0.705554 l 4.233323,16.9333 h 6.349986 l 6.173599,-24.69439 h -5.115268 l -4.233324,17.28607 h -0.705554 l -4.409712,-17.28607 h -5.291655 l -4.409712,17.28607 h -0.705554 l -4.233324,-17.28607 h -5.115266 z m 41.804052,-4.05694 c -4.23332,0 -7.40831,-3.21027 -7.40831,-8.29026 0,-5.07999 3.17499,-8.29026 7.40831,-8.29026 4.23333,0 7.40832,3.21027 7.40832,8.29026 0,5.07999 -3.17499,8.29026 -7.40832,8.29026 z m 0,-20.99023 c -6.66748,0 -11.99441,5.25638 -11.99441,12.69997 0,7.4436 5.32693,12.69997 11.99441,12.69997 6.66749,0 11.99442,-5.25637 11.99442,-12.69997 0,-7.44359 -5.32693,-12.69997 -11.99442,-12.69997 z m 16.22777,25.04717 h 4.5861 v -8.46665 h 1.41111 l 7.93748,8.46665 h 5.82082 l -7.93748,-8.46665 c 3.88054,-0.17639 7.23192,-3.17499 7.23192,-7.93748 0,-4.93888 -3.38666,-8.29026 -7.76109,-8.29026 h -11.28886 z m 4.5861,-12.69997 v -7.58471 h 6.52637 c 1.76389,0 3.35138,1.5875 3.35138,3.88055 0,2.11666 -1.58749,3.70416 -3.35138,3.70416 z m 18.8736,12.69997 h 4.5861 v -11.46525 l 9.1722,11.46525 h 5.64443 l -10.05414,-12.52359 9.34859,-12.1708 h -5.64443 l -8.46665,11.11247 v -11.11247 h -4.5861 z m 21.34299,0 h 4.5861 v -24.69439 h -4.5861 z m 9.87777,0 h 4.5861 v -17.10969 h 0.70556 l 8.99581,17.10969 h 6.1736 v -24.69439 h -4.5861 v 17.10968 h -0.70556 l -8.99581,-17.10968 h -6.1736 z m 44.44988,0 h 3.52777 v -13.05275 h -10.75969 v 3.52777 h 6.17359 v 0.17639 c 0,1.58749 -2.11666,5.29165 -6.34999,5.29165 -4.23332,0 -7.40832,-3.21027 -7.40832,-8.29026 0,-5.07999 3.175,-8.29026 7.40832,-8.29026 3.3161,0 5.29165,2.11667 6.34999,4.40972 h 4.76248 C 236.53292,140.73888 232.93459,135.8 226.26711,135.8 c -6.66749,0 -11.99442,5.25638 -11.99442,12.69997 0,7.4436 5.32693,12.69997 11.99442,12.69997 2.50472,0 4.23332,-0.7761 5.46804,-1.58749 0.70556,-0.45861 1.30528,-0.98778 1.76389,-1.5875 h 0.17639 z"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="../index.html" class="nav__brand" aria-label="Velo Working — home">
+      <svg class="nav__brand-svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="../index.html#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
+      <li><a href="../index.html#approach" class="nav__link">Approach</a></li>
+      <li><a href="../index.html#modules" class="nav__link">Modules</a></li>
+      <li><a href="../fabrication.html" class="nav__link">Fabrication</a></li>
+      <li><a href="../vision.html" class="nav__link">Vision</a></li>
+      <li class="nav__item--has-children" data-dropdown>
+        <a href="index.html" class="nav__link nav__link--caret" aria-haspopup="true" aria-expanded="false">Blog</a>
+        <ul class="nav__submenu" role="menu">
+          <li><a href="three-categories-of-business-software.html" class="nav__sublink" role="menuitem">Three categories of business software<small>Cloud ERP · Low-Code · No-Code</small></a></li>
+          <li><a href="workflow-vs-erp-positioning.html" class="nav__sublink" role="menuitem">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
+          <li><a href="operational-tasks-first-principles.html" class="nav__sublink" role="menuitem">Operational tasks at first principles<small>Value &times; Effort</small></a></li>
+          <li><a href="positioning-of-jodoo.html" class="nav__sublink" role="menuitem">Positioning of Jodoo<small>Org-chart test</small></a></li>
+          <li><a href="THE%20SME%20DIGITAL%20PARADOX.html" class="nav__sublink" role="menuitem">The SME Digital Paradox<small>Diary &middot; slide deck</small></a></li>
+          <li><a href="index.html" class="nav__sublink nav__sublink--all" role="menuitem">All field notes</a></li>
+        </ul>
+      </li>
+      <li><a href="../assessment/assessment.html" class="nav__link" target="_blank" rel="noopener">Assessment</a></li>
+      <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__crumb">
+      <a href="../index.html">Velo Working</a>
+      <span class="sep">/</span>
+      <a href="index.html">Field notes</a>
+      <span class="sep">/</span>
+      <span>Three categories of business software</span>
+    </div>
+    <h1 class="hero__title reveal">
+      Three categories of business software —<br>
+      <em>and the quiet shift underway.</em>
+    </h1>
+    <p class="lead hero__lead reveal">
+      Top management still asks the wrong question. It isn't "should we buy SAP or Oracle."
+      It's <strong>which category of software fits our company at all</strong> — and which
+      one our workforce will still be operating in 2030.
+    </p>
+    <div class="hero__meta">
+      <span><strong>Field notes</strong></span>
+      <span>Operational systems</span>
+      <span>May 2026</span>
+      <span>~8 min read</span>
+    </div>
+  </div>
+</header>
+
+<!-- LEDE -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="prose reveal">
+      <p class="lede">When SME boards in Singapore and the region debate operational software, the conversation usually orbits a single vendor name — SAP, Oracle, Microsoft Dynamics. The names carry weight. They sound serious. They sound safe. But SAP, OutSystems, and Jodoo aren't three vendors competing for the same job. They sit in <em>three entirely different software categories</em>, each engineered for a different size of company, a different operating model, and — increasingly — a different generation of workforce. Understanding the categories before choosing the vendor is what separates a strategic technology decision from an expensive accident.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER I -->
+<div class="chapter" id="ch-1">
+  <div class="chapter__roman">I</div>
+  <div class="chapter__label">Chapter one</div>
+  <div class="chapter__title">The three categories</div>
+</div>
+
+<!-- CATEGORY 1 -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">01 &middot; Cloud ERP suites</div>
+      <div class="meta">The giants</div>
+    </div>
+
+    <div class="prose reveal">
+      <div class="cat-marker">
+        <span class="cat-marker__num">01</span>
+        <h2>Cloud ERP Suites <em>— the giants.</em></h2>
+      </div>
+      <p>SAP, Oracle, and Microsoft Dynamics 365 belong to the category Gartner formally calls <strong>Cloud ERP for Product-Centric Enterprises</strong> and <strong>Cloud ERP for Service-Centric Enterprises</strong>. These are pre-built suites of enterprise modules — Finance, Supply Chain, HR, Manufacturing, CRM — built on rigid data models that reflect a vendor's view of best practice.</p>
+      <p>You buy the suite. You configure it. Any deviation from the vendor's model requires customisation in proprietary languages — ABAP for SAP, X++ for Dynamics, PL/SQL for Oracle. Implementation is typically led by a Big Four or Tier-1 system integrator and stretches across 18 to 36 months. Total cost of ownership for a 200-user deployment runs S$3M–S$15M over three years.</p>
+      <p>This category is engineered for one buyer: the large, multi-national, regulated enterprise.</p>
+
+      <aside class="leaders" aria-label="Cloud ERP leaders">
+        <div class="leaders__label">Gartner-recognised leaders &middot; Cloud ERP, 2025</div>
+        <div class="leaders__list">Oracle Fusion Cloud ERP &middot; Microsoft Dynamics 365 &middot; SAP Cloud ERP &middot; Oracle NetSuite &middot; IFS &middot; Epicor &middot; Infor</div>
+        <div class="leaders__note">These platforms dominate enterprise procurement among Fortune 2000 organisations. Their typical customer has more than US$3 billion in revenue.</div>
+        <div class="leaders__src">Source — Gartner Magic Quadrant for Cloud ERP, October 2025</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 2 -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">02 &middot; Low-Code Application Platforms</div>
+      <div class="meta">For builders</div>
+    </div>
+
+    <div class="prose reveal">
+      <div class="cat-marker">
+        <span class="cat-marker__num">02</span>
+        <h2>Low-Code Application Platforms <em>— for builders.</em></h2>
+      </div>
+      <p>OutSystems, Mendix, Microsoft Power Apps, Appian, ServiceNow and Salesforce belong to <strong>Low-Code Application Platforms (LCAP)</strong> — a Gartner Magic Quadrant category in its tenth year.</p>
+      <p>Unlike ERP suites, low-code platforms come with no pre-built business modules. You're not configuring an existing accounting system; you're building a custom application from scratch, but faster than traditional coding. Visual development handles the bulk of the work; professional developers drop into actual code for complex logic, integrations, and custom interfaces.</p>
+      <p>The buyer here is the enterprise with an internal IT team that needs to ship many bespoke applications faster than their developers can hand-write them.</p>
+
+      <aside class="leaders" aria-label="Low-code leaders">
+        <div class="leaders__label">Gartner-recognised leaders &middot; Enterprise LCAP, 2025</div>
+        <div class="leaders__list">OutSystems &middot; Mendix &middot; Microsoft Power Apps &middot; ServiceNow &middot; Appian &middot; Salesforce</div>
+        <div class="leaders__note">SAP Build is positioned as a Visionary. Twelve vendors total were evaluated. The category continues to consolidate around AI-assisted development.</div>
+        <div class="leaders__src">Source — Gartner Magic Quadrant for Enterprise Low-Code Application Platforms, 28 July 2025</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 3 -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">03 &middot; No-Code Platforms</div>
+      <div class="meta">For everyone else</div>
+    </div>
+
+    <div class="prose reveal">
+      <div class="cat-marker">
+        <span class="cat-marker__num">03</span>
+        <h2>No-Code Platforms <em>— for everyone else.</em></h2>
+      </div>
+      <p>Jodoo, AppSheet, Airtable, Bubble, and Glide belong to the emerging category Gartner now formally tracks as <strong>Citizen Automation and Development Platforms (CADP)</strong>. There is no dedicated Magic Quadrant yet — the category is still maturing — but Gartner addresses it directly in its LCAP commentary and forecasting research.</p>
+      <p>No-code platforms eliminate code entirely. Business users — operations managers, accountants, production planners — build forms, workflows, databases, and dashboards by configuring rather than programming. The output is a working operational system that any trained staff member can modify the next morning when the business rule changes.</p>
+      <p>The buyer here is the SME or department that doesn't have an IT team and never will — but whose operations are still unique enough that off-the-shelf SaaS doesn't fit. <strong>This is the segment ERP suites price out and low-code platforms cannot reach.</strong></p>
+
+      <aside class="leaders is-focus" aria-label="No-code platforms">
+        <div class="leaders__label">Established no-code &middot; citizen development platforms</div>
+        <div class="leaders__list">Jodoo &middot; Microsoft AppSheet &middot; Airtable &middot; Bubble &middot; Glide &middot; Notion &middot; Quickbase</div>
+        <div class="leaders__note">Each platform has different specialisations. Jodoo is engineered for operational workflows in manufacturing, trading, and engineering SMEs — the segment Velo Working serves.</div>
+        <div class="leaders__src">Source — Gartner Forecast Analysis: Low-Code Development Technologies, 2025</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER II -->
+<div class="chapter" id="ch-2">
+  <div class="chapter__roman">II</div>
+  <div class="chapter__label">Chapter two</div>
+  <div class="chapter__title">Mapping them</div>
+</div>
+
+<!-- MATRIX -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">The positioning view</div>
+      <div class="meta">Speed of change &times; Operator</div>
+    </div>
+
+    <div class="prose reveal">
+      <h2>Where the three sit <em>on a single map.</em></h2>
+      <p>Gartner publishes its Magic Quadrants <strong>within</strong> categories, never across them. To compare the three categories themselves, the more useful axes are <strong>speed of change</strong> — how fast can you deploy and adapt — and <strong>operator</strong>: who can actually run and modify it.</p>
+    </div>
+
+    <figure class="matrix-frame reveal" style="max-width: var(--max); margin-inline: auto;">
+      <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="matrix-t matrix-d">
+        <title id="matrix-t">Positioning the three software categories</title>
+        <desc id="matrix-d">A four-quadrant chart placing Cloud ERP Suites in the slow / specialist-only quadrant; Low-Code platforms in the middle; and No-Code platforms in the fast / any-staff quadrant. A dashed arrow indicates market motion from 2020 to 2030 moving from ERP toward No-Code.</desc>
+
+        <rect x="100" y="60" width="640" height="400" fill="#fbfbfd" stroke="#d2d2d7" stroke-width="1"/>
+        <line x1="420" y1="60" x2="420" y2="460" stroke="#d2d2d7" stroke-dasharray="4 4"/>
+        <line x1="100" y1="260" x2="740" y2="260" stroke="#d2d2d7" stroke-dasharray="4 4"/>
+
+        <line x1="100" y1="490" x2="740" y2="490" stroke="#1d1d1f" stroke-width="1.5"/>
+        <polyline points="732,485 742,490 732,495" stroke="#1d1d1f" stroke-width="1.5" fill="none"/>
+        <line x1="70" y1="460" x2="70" y2="60" stroke="#1d1d1f" stroke-width="1.5"/>
+        <polyline points="65,68 70,58 75,68" stroke="#1d1d1f" stroke-width="1.5" fill="none"/>
+
+        <text x="420" y="520" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif">Speed of change &amp; adaptation →</text>
+        <text x="30" y="260" text-anchor="middle" font-size="14" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" transform="rotate(-90 30 260)">Anyone can operate it →</text>
+
+        <text x="110" y="480" font-size="11" fill="#6e6e73" font-family="ui-monospace,SFMono-Regular,monospace" letter-spacing="1">SLOW</text>
+        <text x="730" y="480" font-size="11" fill="#6e6e73" font-family="ui-monospace,SFMono-Regular,monospace" text-anchor="end" letter-spacing="1">FAST</text>
+        <text x="70" y="478" font-size="11" fill="#6e6e73" font-family="ui-monospace,SFMono-Regular,monospace" text-anchor="middle" letter-spacing="1">SPECIALIST</text>
+        <text x="70" y="78" font-size="11" fill="#6e6e73" font-family="ui-monospace,SFMono-Regular,monospace" text-anchor="middle" letter-spacing="1">ANY STAFF</text>
+
+        <g>
+          <circle cx="208" cy="392" r="78" fill="#1d1d1f" fill-opacity="0.06" stroke="#1d1d1f" stroke-width="1.5"/>
+          <circle cx="180" cy="376" r="6" fill="#1d1d1f"/>
+          <circle cx="220" cy="408" r="6" fill="#1d1d1f"/>
+          <circle cx="248" cy="372" r="6" fill="#1d1d1f"/>
+          <text x="180" y="364" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">SAP</text>
+          <text x="220" y="428" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Oracle</text>
+          <text x="260" y="360" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Dynamics</text>
+          <text x="208" y="480" font-size="15" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle" letter-spacing="-0.3">Cloud ERP Suites</text>
+        </g>
+
+        <g>
+          <circle cx="448" cy="240" r="78" fill="#1d1d1f" fill-opacity="0.06" stroke="#1d1d1f" stroke-width="1.5"/>
+          <circle cx="416" cy="224" r="6" fill="#1d1d1f"/>
+          <circle cx="464" cy="256" r="6" fill="#1d1d1f"/>
+          <circle cx="492" cy="220" r="6" fill="#1d1d1f"/>
+          <text x="404" y="212" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">OutSystems</text>
+          <text x="464" y="276" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Mendix</text>
+          <text x="510" y="208" font-size="12" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Power Apps</text>
+          <text x="448" y="328" font-size="15" font-weight="700" fill="#1d1d1f" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle" letter-spacing="-0.3">Low-Code (LCAP)</text>
+        </g>
+
+        <g>
+          <circle cx="636" cy="132" r="78" fill="#1317E4" fill-opacity="0.14" stroke="#1317E4" stroke-width="2"/>
+          <circle cx="604" cy="116" r="6" fill="#1317E4"/>
+          <circle cx="652" cy="148" r="6" fill="#1317E4"/>
+          <circle cx="676" cy="112" r="6" fill="#1317E4"/>
+          <text x="600" y="104" font-size="12" font-weight="700" fill="#1317E4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Jodoo</text>
+          <text x="652" y="168" font-size="12" font-weight="700" fill="#1317E4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">AppSheet</text>
+          <text x="690" y="100" font-size="12" font-weight="700" fill="#1317E4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle">Airtable</text>
+          <text x="636" y="220" font-size="15" font-weight="700" fill="#1317E4" font-family="-apple-system,BlinkMacSystemFont,sans-serif" text-anchor="middle" letter-spacing="-0.3">No-Code (CADP)</text>
+        </g>
+
+        <path d="M 220 388 Q 380 270 580 156" stroke="#1317E4" stroke-width="1.5" stroke-dasharray="5 5" fill="none" opacity="0.55"/>
+        <polyline points="572,153 588,158 582,148" stroke="#1317E4" stroke-width="1.5" fill="none" opacity="0.55"/>
+        <text x="400" y="260" font-size="13" font-style="italic" fill="#1317E4" opacity="0.78" text-anchor="middle" font-family="Georgia,serif">market motion, 2020 – 2030</text>
+      </svg>
+      <div class="matrix-caption">Adapted positioning view — categories compared on operational criteria that matter to SME decision-makers, not vendor competition within a category.</div>
+    </figure>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section section--tight" id="comparison">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">Side-by-side</div>
+      <div class="meta">Fifteen dimensions, grouped</div>
+    </div>
+
+    <div class="prose reveal">
+      <h2>Side-by-side, <em>on the dimensions that decide.</em></h2>
+      <p>Fifteen dimensions, grouped by what top management asks first — identity, people, time, cost, adaptability, fit. The pattern is consistent throughout: each category sits in a different operational world.</p>
+    </div>
+
+    <div class="table-scroll reveal" style="max-width: var(--max); margin-inline: auto;">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">Dimension</th>
+            <th scope="col">Cloud ERP Suite<span class="sub">SAP &middot; Oracle &middot; MS Dynamics</span></th>
+            <th scope="col">Low-Code Platform<span class="sub">OutSystems &middot; Mendix &middot; Power Apps</span></th>
+            <th scope="col">No-Code Platform<span class="sub">Jodoo &middot; AppSheet &middot; Airtable</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><td colspan="4">Identity</td></tr>
+          <tr><th scope="row">Gartner category</th><td>Cloud ERP Suite</td><td>Low-Code Application Platform (LCAP)</td><td>Citizen Automation &amp; Development Platform (CADP)</td></tr>
+          <tr><th scope="row">Pre-built modules</th><td>Yes — full enterprise suite</td><td>None — build from scratch</td><td>None — build from scratch</td></tr>
+
+          <tr class="group-row"><td colspan="4">People &amp; code</td></tr>
+          <tr><th scope="row">Who builds it</th><td>Certified consultants + internal IT</td><td>Professional developers</td><td>Trained business staff</td></tr>
+          <tr><th scope="row">Coding required</th><td>ABAP / X++ / PL-SQL</td><td>Yes — for complex logic</td><td>None</td></tr>
+
+          <tr class="group-row"><td colspan="4">Time</td></tr>
+          <tr><th scope="row">Time to first module</th><td>6–18 months</td><td>2–6 months</td><td>2–4 weeks</td></tr>
+          <tr><th scope="row">Time to full deployment</th><td>18–36 months</td><td>9–18 months</td><td>3–9 months</td></tr>
+
+          <tr class="group-row"><td colspan="4">Cost</td></tr>
+          <tr><th scope="row">Typical implementation cost</th><td>S$500K – S$10M+</td><td>S$100K – S$1M+</td><td>S$10K – S$100K</td></tr>
+          <tr><th scope="row">3-year TCO (200 users)</th><td>S$3M – S$15M</td><td>S$800K – S$3M</td><td>S$50K – S$300K</td></tr>
+          <tr><th scope="row">Cost of every change request</th><td>High — consultant hours</td><td>Medium — dev sprint</td><td>Near-zero — staff edits live</td></tr>
+
+          <tr class="group-row"><td colspan="4">Adaptability</td></tr>
+          <tr><th scope="row">Time to adapt to a process change</th><td>Weeks to months</td><td>Days to weeks</td><td>Minutes to hours</td></tr>
+          <tr><th scope="row">Vendor / SI dependency</th><td>Very high</td><td>Medium</td><td>Low</td></tr>
+          <tr><th scope="row">Data portability</th><td>Proprietary, hard to migrate</td><td>Standard DB, exportable</td><td>Standard formats, exportable</td></tr>
+
+          <tr class="group-row"><td colspan="4">Risk &amp; fit</td></tr>
+          <tr><th scope="row">User scale</th><td>Tens of thousands</td><td>Thousands – tens of thousands</td><td>Hundreds – low thousands</td></tr>
+          <tr><th scope="row">Project risk profile</th><td>High — big-bang go-live</td><td>Medium</td><td>Low — module-by-module</td></tr>
+          <tr><th scope="row">Best-fit business size</th><td>1,000+ headcount enterprise</td><td>200–5,000 with IT team</td><td>SME, 10–500 headcount</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER III -->
+<div class="chapter" id="ch-3">
+  <div class="chapter__roman">III</div>
+  <div class="chapter__label">Chapter three</div>
+  <div class="chapter__title">Why this changes</div>
+</div>
+
+<!-- THE MICROSOFT OFFICE ARGUMENT -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">The Microsoft Office argument</div>
+      <div class="meta">Skill → infrastructure</div>
+    </div>
+
+    <div class="prose reveal">
+      <h2>Why no-code becomes <em>infrastructure.</em></h2>
+      <p>In 1985, a small fraction of office workers used computers — typing pool secretaries and specialists in accounting departments. By 2005, every white-collar professional was expected to operate Word, Excel, PowerPoint, and Outlook without thinking about it. The skill ceased to be a skill. It became <strong>infrastructure</strong> — the assumed baseline on which all knowledge work runs.</p>
+    </div>
+
+    <div class="timeline reveal" style="max-width: var(--max); margin-inline: auto;" role="img" aria-label="Three-stage trajectory: 1985 specialist skill, 2005 infrastructure, 2025 no-code following the same path">
+      <div class="timeline__label">Trajectory &middot; From specialist skill to baseline infrastructure</div>
+      <div class="timeline__track">
+        <div class="t-dot">
+          <div class="t-dot__year">1985</div>
+          <div class="t-dot__state">A specialist's tool</div>
+          <div class="t-dot__skill">Word processing belongs to the typing pool. Spreadsheets belong to accountants. Most professionals never touch a keyboard.</div>
+        </div>
+        <div class="t-dot">
+          <div class="t-dot__year">2005</div>
+          <div class="t-dot__state">Workplace infrastructure</div>
+          <div class="t-dot__skill">Excel, Word, PowerPoint, Outlook become baseline competency. The skill is no longer a skill — it is the assumed floor of professional work.</div>
+        </div>
+        <div class="t-dot is-future">
+          <div class="t-dot__year">2025 →</div>
+          <div class="t-dot__state">No-code on the same path</div>
+          <div class="t-dot__skill">Configuring a form, workflow, or dashboard becomes the next Excel. By 2030, building your own operational tools is the new spreadsheet competency.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose reveal">
+      <div class="pull">The capability to build a form, a workflow, or a dashboard is becoming the next Excel.</div>
+    </div>
+
+    <div class="stat-hero reveal" style="max-width: var(--max); margin-inline: auto;">
+      <div class="stat-hero__num">75<span class="unit">%</span></div>
+      <div class="stat-hero__copy">
+        <h4>of new enterprise applications</h4>
+        <p>will be built using low-code or no-code technologies by 2026 — up from less than 25% in 2020. By the same year, citizen developers will outnumber professional developers four to one.</p>
+        <div class="stat-hero__src">Gartner Forecast Analysis &middot; Low-Code Development Technologies, 2025</div>
+      </div>
+    </div>
+
+    <div class="prose reveal">
+      <h3>What the rest of the data says</h3>
+    </div>
+
+    <div class="stats reveal" style="max-width: var(--max); margin-inline: auto;" role="list" aria-label="Supporting statistics">
+      <div class="stat" role="listitem"><div class="stat__num">80<span class="unit">%</span></div><div class="stat__desc">of low-code users will sit outside formal IT departments by 2026</div><div class="stat__src">Gartner</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">4<span class="unit">:1</span></div><div class="stat__desc">citizen developers outnumbering professional developers at large enterprises by 2026</div><div class="stat__src">Gartner</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">85<span class="unit">M</span></div><div class="stat__desc">global shortage of skilled software engineers projected by 2030, with US$8.5T unrealised revenue</div><div class="stat__src">Korn Ferry</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">$58<span class="unit">B</span></div><div class="stat__desc">forecast size of the low-code and no-code market by 2029, growing 14.1% annually</div><div class="stat__src">Gartner</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">74<span class="unit">%</span></div><div class="stat__desc">of the global workforce will be Millennials and Gen Z by 2030 — digital tools as default</div><div class="stat__src">Deloitte</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">39<span class="unit">%</span></div><div class="stat__desc">of today's core workplace skills disrupted by 2030, with technological literacy rising fastest</div><div class="stat__src">WEF Future of Jobs</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">68<span class="unit">%</span></div><div class="stat__desc">of Gen Z report above-average coding skills before entering the workforce</div><div class="stat__src">Dell Technologies</div></div>
+      <div class="stat" role="listitem"><div class="stat__num">30<span class="unit">%+</span></div><div class="stat__desc">of Microsoft's own production code is now AI-generated, per public reporting</div><div class="stat__src">Microsoft, 2025</div></div>
+    </div>
+
+    <div class="prose reveal">
+      <h3>Three forces converging</h3>
+      <p>This shift isn't a fashion. Three structural forces are driving it simultaneously, and none of them reverse.</p>
+    </div>
+
+    <div class="forces reveal" style="max-width: var(--max); margin-inline: auto;">
+      <div class="force">
+        <div class="force__num">01</div>
+        <h4>The developer shortage is permanent</h4>
+        <p>The world will be short 85 million software engineers by 2030. No country's training pipeline can close that gap. Companies that depend on hiring specialists to maintain their operational systems will lose to companies whose own staff can do it.</p>
+      </div>
+      <div class="force">
+        <div class="force__num">02</div>
+        <h4>The incoming workforce expects to build its own tools</h4>
+        <p>Generation Z grew up with computational thinking embedded in K-12 curricula. They will not tolerate waiting six weeks for IT to add a field to a form. They will build it themselves, or they will leave.</p>
+      </div>
+      <div class="force">
+        <div class="force__num">03</div>
+        <h4>AI is collapsing the cost of building software</h4>
+        <p>Microsoft reports that 30%+ of its own code is AI-generated. The bottleneck of software development is shifting from <strong>writing code</strong> to <strong>describing what you want</strong> — a skill every business user already has.</p>
+      </div>
+    </div>
+
+    <div class="prose reveal">
+      <p>Put together, these forces produce a single conclusion: <strong>the ability to configure operational software will become a baseline workplace skill</strong>, much as spreadsheet competency did between 1990 and 2005. The companies that build that capability into their own teams now will compound a structural advantage for the next two decades. The companies that lock themselves into systems only specialists can modify will be paying tomorrow's premium for yesterday's architecture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER IV -->
+<div class="chapter" id="ch-4">
+  <div class="chapter__roman">IV</div>
+  <div class="chapter__label">Chapter four</div>
+  <div class="chapter__title">The SME implication</div>
+</div>
+
+<!-- SME IMPLICATION -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="section-strip">
+      <div class="label">What this means for SMEs</div>
+      <div class="meta">Today</div>
+    </div>
+
+    <div class="prose reveal">
+      <h2>What this means for SME <em>top management today.</em></h2>
+      <p>For a 30-person Singapore manufacturer or a 150-person regional trading firm, the strategic calculation is unusually clean. The cost gap alone tells most of the story.</p>
+    </div>
+
+    <div class="cost-frame reveal" style="max-width: var(--max); margin-inline: auto;" role="img" aria-label="Three-year total cost of ownership comparison for a 200-user deployment: Cloud ERP S$3-15M, Low-Code S$800K-3M, No-Code S$50-300K">
+      <div class="cost-frame__label">3-year total cost of ownership &middot; 200-user deployment &middot; midpoint estimate</div>
+      <h4>The cost gap is not a tradeoff — it is a category boundary.</h4>
+      <div class="cost-row">
+        <div class="cost-row__name">Cloud ERP</div>
+        <div class="cost-row__bar-wrap"><div class="cost-row__bar" style="width:100%"></div></div>
+        <div class="cost-row__amount"><strong>S$9M</strong> midpoint</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-row__name">Low-Code</div>
+        <div class="cost-row__bar-wrap"><div class="cost-row__bar" style="width:21%"></div></div>
+        <div class="cost-row__amount"><strong>S$1.9M</strong> midpoint</div>
+      </div>
+      <div class="cost-row">
+        <div class="cost-row__name">No-Code</div>
+        <div class="cost-row__bar-wrap"><div class="cost-row__bar is-focus" style="width:1.9%"></div></div>
+        <div class="cost-row__amount"><strong>S$175K</strong> midpoint</div>
+      </div>
+      <div class="cost-note">A 50&times; cost gap between Cloud ERP and No-Code at the same headcount. This is not a discount — it is what happens when the buyer profile is different. Cloud ERP is priced for the Fortune 2000 cost base; no-code is priced for SME reality.</div>
+    </div>
+
+    <div class="decision reveal" style="max-width: var(--max); margin-inline: auto;" role="list" aria-label="Decision matrix by company profile">
+      <div class="decision__cell" role="listitem">
+        <div class="decision__when">If your company is</div>
+        <div class="decision__who">A 1,000+ headcount global enterprise</div>
+        <div class="decision__choice">→ Right category</div>
+        <div class="decision__verdict">Cloud ERP</div>
+        <div class="decision__why">Budget, IT team, and cross-border compliance load all justify it.</div>
+      </div>
+      <div class="decision__cell" role="listitem">
+        <div class="decision__when">If your company is</div>
+        <div class="decision__who">A mid-large enterprise with an IT team</div>
+        <div class="decision__choice">→ Right category</div>
+        <div class="decision__verdict">Low-Code</div>
+        <div class="decision__why">The platform amplifies the developers you already employ.</div>
+      </div>
+      <div class="decision__cell is-fit" role="listitem">
+        <div class="decision__when">If your company is</div>
+        <div class="decision__who">An SME, 10–500 staff</div>
+        <div class="decision__choice">→ The only structural fit</div>
+        <div class="decision__verdict">No-Code</div>
+        <div class="decision__why">The other two were not engineered for your scale or your team.</div>
+      </div>
+    </div>
+
+    <div class="prose reveal">
+      <p>You will not be hiring a five-person IT team to support a Tier-1 ERP. The cost is wrong; the talent isn't available; and even if it were, it isn't what your business needs. The category was not engineered for you.</p>
+      <p>You will not be running a low-code platform either. Low-code requires the very developer talent the market is short on. It is a platform for companies whose problem is "we have developers; they're not fast enough" — not "we don't have developers."</p>
+      <p>What an SME actually needs is the same thing it has always needed: a system that fits the unique way <strong>your</strong> operation runs, that can be changed by the people who run that operation when reality changes, and whose total cost matches the scale of the business it serves.</p>
+      <p>That is the no-code category. Not a fashion. Not a tradeoff. The structural fit.</p>
+
+      <div class="pull">Each category exists because each solves a real problem. ERP wins on global scale. Low-code wins on enterprise developer productivity. No-code wins on operational ownership — and on the workforce already walking through the door.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="prose reveal">
+      <h2>A closing <em>perspective.</em></h2>
+      <p>Top management debates over enterprise software usually start with vendor names. They should start with category fit. The right category, badly executed, still beats the wrong category executed perfectly — because the wrong category is built for someone else's company.</p>
+      <p>For SMEs, the next decade's competitive line is being drawn now: between companies whose teams own and evolve their own operations, and companies whose operations live inside a system nobody in the building can change without a quote from outside.</p>
+      <p>The first group will compound. The second will pay rent on every change, every year, forever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="section section--tight">
+  <div class="wrap">
+    <aside class="refs reveal" aria-label="References">
+      <h4>Sources &amp; references</h4>
+      <ol>
+        <li>Gartner, <em>Magic Quadrant for Cloud ERP for Product-Centric Enterprises</em>, October 2025.</li>
+        <li>Gartner, <em>Magic Quadrant for Cloud ERP for Service-Centric Enterprises</em>, October 2025.</li>
+        <li>Gartner, <em>Magic Quadrant for Enterprise Low-Code Application Platforms</em>, 28 July 2025.</li>
+        <li>Gartner, <em>Forecast Analysis: Low-Code Development Technologies, Worldwide</em>, November 2025.</li>
+        <li>Korn Ferry, <em>The Global Talent Crunch</em> — projected 85.2M developer shortage by 2030.</li>
+        <li>World Economic Forum, <em>Future of Jobs Report 2025</em> — 39% of core skills disrupted by 2030.</li>
+        <li>Deloitte, <em>2025 Workforce Demographics Study</em> — Gen Z + Millennials at 74% of workforce by 2030.</li>
+        <li>Dell Technologies, <em>Gen Z Digital Maturity Survey</em>.</li>
+        <li>Microsoft public reporting on AI-generated code share, 2025.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="closing reveal">
+      <div class="eyebrow">Velo Working &middot; Official Jodoo partner, Singapore</div>
+      <h2>The category your SME is <em>actually in.</em></h2>
+      <p>
+        Velo Working engineers SME operations on Jodoo — Asia's leading no-code workflow
+        platform. If you're trying to figure out whether your company belongs in the no-code
+        quadrant, we'll walk you through it honestly.
+      </p>
+      <div class="closing__ctas">
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20the%20three%20categories%20note%20and%20I%27d%20like%20to%20talk." class="btn btn--primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+        <a href="../assessment/assessment.html" class="link" target="_blank" rel="noopener">Take the assessment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__partner">
+    <div class="foot__partner-tag">Strategic platform partner</div>
+    <div class="foot__partner-row">
+      <strong>Engineered with</strong>
+      <img src="../asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
+      <span>&middot; Asia's leading no-code workflow platform</span>
+    </div>
+  </div>
+
+  <div class="foot__inner">
+    <div class="foot__cols">
+      <div class="foot__col">
+        <h5>Velo Working</h5>
+        <a href="../index.html#partner">Jodoo Partner</a>
+        <a href="../index.html#approach">Approach</a>
+        <a href="../index.html#modules">Modules</a>
+        <a href="../fabrication.html">Fabrication</a>
+        <a href="../index.html#why">Why us</a>
+      </div>
+      <div class="foot__col">
+        <h5>Resources</h5>
+        <a href="../vision.html">Vision</a>
+        <a href="../index.html#manifesto">Manifesto</a>
+        <a href="../assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="index.html">Field notes</a>
+        <a href="three-categories-of-business-software.html">Three categories of business software</a>
+        <a href="workflow-vs-erp-positioning.html">Workflow vs ERP positioning</a>
+        <a href="positioning-of-jodoo.html">Positioning of Jodoo</a>
+        <a href="operational-tasks-first-principles.html">Operational tasks at first principles</a>
+        <a href="THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
+        <a href="../pitch-deck.html">About Us</a>
+      </div>
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+      <div class="foot__col">
+        <h5>Legal</h5>
+        <span>Velo Working Pte. Ltd.</span>
+        <span>UEN 202609930G</span>
+        <span>Incorporated 2026</span>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>Copyright &copy; 2026 Velo Working Pte. Ltd. All rights reserved. &middot; Official Jodoo partner.</span>
+      <span>Built for the ones still standing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('.nav__item--has-children').forEach(function(item){
+    var trigger = item.querySelector('.nav__link--caret');
+    if (!trigger) return;
+    trigger.addEventListener('click', function(e){
+      if (window.matchMedia('(max-width: 833px)').matches) {
+        e.preventDefault();
+        var open = item.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+    });
+  });
+  nav.querySelectorAll('.nav__link, .nav__sublink').forEach(function(l){
+    if (l.classList.contains('nav__link--caret')) return;
+    l.addEventListener('click', function(){
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
