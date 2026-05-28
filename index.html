@@ -929,6 +929,129 @@ main { padding-top: 48px; }
   margin-top: 28px;
   font-size: 15px; color: var(--ink-2);
 }
+
+/* =================================================================
+   CATEGORIES COMPARISON — scrollable card on landing page
+================================================================= */
+.categories {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gut);
+}
+.categories__card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tile);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px -16px rgba(0,0,0,0.08);
+}
+.categories__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-2);
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.categories__head .label { flex: 1; min-width: 0; color: var(--ink); font-weight: 600; }
+.categories__head .meta { color: var(--ink-2); }
+.categories__scroll {
+  max-height: 540px;
+  overflow: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.categories__scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.categories__scroll::-webkit-scrollbar-thumb {
+  background: var(--rule); border-radius: 999px;
+  border: 2px solid var(--surface);
+}
+.categories__scroll::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+.categories__scroll::-webkit-scrollbar-track { background: var(--surface); }
+.categories__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  min-width: 760px;
+}
+.categories__table thead th {
+  position: sticky; top: 0; z-index: 3;
+  background: var(--surface-2);
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 700; font-size: 12px;
+  color: var(--ink); text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1.5px solid var(--rule);
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+.categories__table thead th:first-child {
+  position: sticky; left: 0; z-index: 4;
+  background: var(--surface-2);
+}
+.categories__table thead th .sub {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.04em; text-transform: none;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+.categories__table thead th.is-focus { color: var(--jodoo); }
+.categories__table thead th.is-focus .sub { color: var(--jodoo); opacity: 0.7; }
+.categories__table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.categories__table tbody td.is-focus {
+  background: var(--jodoo-tint);
+  color: var(--ink);
+}
+.categories__table tbody th {
+  position: sticky; left: 0; z-index: 2;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  text-align: left;
+  line-height: 1.5;
+  font-weight: 600; font-size: 13px;
+  color: var(--ink);
+  background: var(--bg);
+  min-width: 180px;
+}
+.categories__table tbody tr.group-row td {
+  position: sticky; left: 0;
+  background: var(--surface-2);
+  padding: 14px 16px 8px;
+  border-bottom: none;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.categories__table tbody tr:not(.group-row):hover td:not(.is-focus) { background: var(--surface-2); }
+.categories__table tbody tr:not(.group-row):hover th { background: #f0f0f2; }
+.categories__foot {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  align-items: baseline; justify-content: space-between;
+  padding: 16px 24px;
+  border-top: 1px solid var(--rule);
+  background: var(--surface-2);
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+.categories__foot a { color: var(--link); font-weight: 500; }
+.categories__foot a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  .categories__scroll { max-height: 480px; }
+}
 </style>
 </head>
 <body>
@@ -963,6 +1086,7 @@ main { padding-top: 48px; }
       <li class="nav__item--has-children" data-dropdown>
         <a href="blog/index.html" class="nav__link nav__link--caret" aria-haspopup="true" aria-expanded="false">Blog</a>
         <ul class="nav__submenu" role="menu">
+          <li><a href="blog/three-categories-of-business-software.html" class="nav__sublink" role="menuitem">Three categories of business software<small>Cloud ERP · Low-Code · No-Code</small></a></li>
           <li><a href="blog/workflow-vs-erp-positioning.html" class="nav__sublink" role="menuitem">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
           <li><a href="blog/operational-tasks-first-principles.html" class="nav__sublink" role="menuitem">Operational tasks at first principles<small>Value × Effort</small></a></li>
           <li><a href="blog/positioning-of-jodoo.html" class="nav__sublink" role="menuitem">Positioning of Jodoo<small>Org-chart test</small></a></li>
@@ -1280,6 +1404,72 @@ main { padding-top: 48px; }
 </section>
 
 <!-- ===========================================================
+  CATEGORIES — comparison table (scrollable)
+=========================================================== -->
+<section class="section" id="categories">
+  <div class="section__head">
+    <div class="eyebrow">Before you pick a vendor</div>
+    <h2>Three categories of business software. Only one fits an SME.</h2>
+    <p>Cloud ERP, Low-Code and No-Code aren't three vendors competing for the same job — they're three different categories engineered for three different sizes of company. Fifteen dimensions, side by side. <a href="blog/three-categories-of-business-software.html" style="color: var(--link); text-decoration: underline;">Read the full essay &rsaquo;</a></p>
+  </div>
+
+  <div class="categories reveal">
+    <div class="categories__card">
+      <div class="categories__head">
+        <div class="label">Comparison &middot; Cloud ERP vs Low-Code vs No-Code</div>
+        <div class="meta">Scroll inside &mdash; 15 dimensions, 6 groups</div>
+      </div>
+
+      <div class="categories__scroll" tabindex="0" aria-label="Scrollable comparison table">
+        <table class="categories__table">
+          <thead>
+            <tr>
+              <th scope="col">Dimension</th>
+              <th scope="col">Cloud ERP Suite<span class="sub">SAP &middot; Oracle &middot; MS Dynamics</span></th>
+              <th scope="col">Low-Code Platform<span class="sub">OutSystems &middot; Mendix &middot; Power Apps</span></th>
+              <th scope="col" class="is-focus">No-Code Platform<span class="sub">Jodoo &middot; AppSheet &middot; Airtable</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="group-row"><td colspan="4">Identity</td></tr>
+            <tr><th scope="row">Gartner category</th><td>Cloud ERP Suite</td><td>Low-Code Application Platform (LCAP)</td><td class="is-focus">Citizen Automation &amp; Development Platform (CADP)</td></tr>
+            <tr><th scope="row">Pre-built modules</th><td>Yes &mdash; full enterprise suite</td><td>None &mdash; build from scratch</td><td class="is-focus">None &mdash; build from scratch</td></tr>
+
+            <tr class="group-row"><td colspan="4">People &amp; code</td></tr>
+            <tr><th scope="row">Who builds it</th><td>Certified consultants + internal IT</td><td>Professional developers</td><td class="is-focus">Trained business staff</td></tr>
+            <tr><th scope="row">Coding required</th><td>ABAP / X++ / PL-SQL</td><td>Yes &mdash; for complex logic</td><td class="is-focus">None</td></tr>
+
+            <tr class="group-row"><td colspan="4">Time</td></tr>
+            <tr><th scope="row">Time to first module</th><td>6&ndash;18 months</td><td>2&ndash;6 months</td><td class="is-focus">2&ndash;4 weeks</td></tr>
+            <tr><th scope="row">Time to full deployment</th><td>18&ndash;36 months</td><td>9&ndash;18 months</td><td class="is-focus">3&ndash;9 months</td></tr>
+
+            <tr class="group-row"><td colspan="4">Cost</td></tr>
+            <tr><th scope="row">Typical implementation cost</th><td>S$500K &ndash; S$10M+</td><td>S$100K &ndash; S$1M+</td><td class="is-focus">S$10K &ndash; S$100K</td></tr>
+            <tr><th scope="row">3-year TCO (200 users)</th><td>S$3M &ndash; S$15M</td><td>S$800K &ndash; S$3M</td><td class="is-focus">S$50K &ndash; S$300K</td></tr>
+            <tr><th scope="row">Cost of every change request</th><td>High &mdash; consultant hours</td><td>Medium &mdash; dev sprint</td><td class="is-focus">Near-zero &mdash; staff edits live</td></tr>
+
+            <tr class="group-row"><td colspan="4">Adaptability</td></tr>
+            <tr><th scope="row">Time to adapt to a process change</th><td>Weeks to months</td><td>Days to weeks</td><td class="is-focus">Minutes to hours</td></tr>
+            <tr><th scope="row">Vendor / SI dependency</th><td>Very high</td><td>Medium</td><td class="is-focus">Low</td></tr>
+            <tr><th scope="row">Data portability</th><td>Proprietary, hard to migrate</td><td>Standard DB, exportable</td><td class="is-focus">Standard formats, exportable</td></tr>
+
+            <tr class="group-row"><td colspan="4">Risk &amp; fit</td></tr>
+            <tr><th scope="row">User scale</th><td>Tens of thousands</td><td>Thousands &ndash; tens of thousands</td><td class="is-focus">Hundreds &ndash; low thousands</td></tr>
+            <tr><th scope="row">Project risk profile</th><td>High &mdash; big-bang go-live</td><td>Medium</td><td class="is-focus">Low &mdash; module-by-module</td></tr>
+            <tr><th scope="row">Best-fit business size</th><td>1,000+ headcount enterprise</td><td>200&ndash;5,000 with IT team</td><td class="is-focus">SME, 10&ndash;500 headcount</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="categories__foot">
+        <span>Source &middot; Gartner Magic Quadrants 2025 &middot; Velo Working analysis</span>
+        <a href="blog/three-categories-of-business-software.html">Read the full essay &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================================================
   APPROACH
 =========================================================== -->
 <section class="section" id="approach">
@@ -1550,6 +1740,7 @@ main { padding-top: 48px; }
         <a href="#manifesto">Manifesto</a>
         <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
         <a href="blog/index.html">Field notes</a>
+        <a href="blog/three-categories-of-business-software.html">Three categories of business software</a>
         <a href="blog/positioning-of-jodoo.html">Positioning of Jodoo</a>
         <a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles</a>
         <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
