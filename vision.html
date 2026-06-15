@@ -1,612 +1,188 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Our Vision — Why I Started Velo Working</title>
-
-<!-- SEO -->
-<meta name="description" content="The story behind Velo Working — and the vision that drives it. A systems problem disguised as a people problem, and what we built to fix it for SMEs." />
-<meta name="author" content="Velo Working Pte. Ltd." />
-<link rel="canonical" href="https://www.veloworking.com/vision.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision — why I started Velo Working | Ronnie Yap</title>
+<meta name="description" content="The story behind Velo Working — and the vision that drives it. A systems problem disguised as a people problem, and what I'm building to fix it for Singapore SMEs.">
+<meta name="author" content="Velo Working Pte. Ltd.">
+<link rel="canonical" href="https://www.veloworking.com/vision.html">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Our Vision — Why I Started Velo Working" />
-<meta property="og:description" content="A decade inside companies, watching the same pattern repeat. Capability becomes a burden. Decisions run on words, not numbers. Velo Working exists to fix it." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.veloworking.com/vision.html" />
-<meta property="og:site_name" content="Velo Working" />
+<meta property="og:title" content="Vision — why I started Velo Working">
+<meta property="og:description" content="Ten years inside companies watching the same pattern break good people. A systems problem disguised as a people problem. Here's what I'm building to fix it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.veloworking.com/vision.html">
+<meta property="og:site_name" content="Velo Working">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Our Vision — Why I Started Velo Working" />
-<meta name="twitter:description" content="A systems problem disguised as a people problem — and what we built to fix it." />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vision — why I started Velo Working">
+<meta name="twitter:description" content="A systems problem disguised as a people problem — and what I'm doing about it.">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="asset/favicon.svg" />
-<link rel="apple-touch-icon" href="asset/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="asset/favicon.svg">
+<link rel="apple-touch-icon" href="asset/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* =================================================================
-   APPLE-INSPIRED DESIGN SYSTEM (matches index.html)
-================================================================= */
-:root {
-  --bg:        #fbfbfd;
-  --surface:   #ffffff;
-  --surface-2: #f5f5f7;
-  --ink:       #1d1d1f;
-  --ink-2:     #6e6e73;
-  --ink-3:     #86868b;
-  --rule:      #d2d2d7;
-  --dark:      #0b0b0d;
-  --link:      #0071e3;
-  --link-hov:  #0077ed;
-  --jodoo:     #1317E4;
-
-  --r-tile:    24px;
-  --r-pill:    980px;
-
-  --f: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-  --gut: clamp(20px, 4vw, 40px);
-  --max: 1180px;
-  --read-max: 680px;
-  --tile-gap: 12px;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--f);
-  font-size: 17px;
-  line-height: 1.47059;
-  font-weight: 400;
-  letter-spacing: -0.022em;
-}
-img, svg { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-p { margin: 0 0 1em; }
-p:last-child { margin: 0; }
-
-.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); }
-
-.eyebrow {
-  font-size: 14px; font-weight: 600; letter-spacing: -0.016em;
-  color: var(--link); margin-bottom: 12px;
-}
-.eyebrow--muted { color: var(--ink-2); }
-
-h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; color: var(--ink); }
-h1 { font-size: clamp(40px, 6.6vw, 80px); letter-spacing: -0.045em; }
-h2 { font-size: clamp(32px, 4.4vw, 52px); }
-h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 1.12; }
-
-.muted { color: var(--ink-2); }
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 22px; border-radius: var(--r-pill);
-  font-size: 17px; font-weight: 400; letter-spacing: -0.022em;
-  white-space: nowrap;
-  transition: background 200ms ease, color 200ms ease;
-}
-.btn--primary { background: var(--link); color: #fff; }
-.btn--primary:hover { background: var(--link-hov); }
-.btn--ghost { color: var(--link); border: 1px solid var(--link); }
-.btn--ghost:hover { background: var(--link); color: #fff; }
-
-.link {
-  color: var(--link); font-size: 17px; font-weight: 400;
-  display: inline-flex; align-items: center; gap: 4px;
-}
-.link:hover { text-decoration: underline; }
-.link::after { content: '›'; font-size: 1.2em; line-height: 0; transform: translateY(-1px); }
-
-/* =================================================================
-   NAV — fixed to be consistent in height and item spacing
-   - Brand and links share the same vertical centre line
-   - All links: same font-size, same x/y padding, no wrap
-   - Mobile breakpoint bumped to keep desktop layout from cramming
-================================================================= */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-  height: 48px;
-  background: rgba(251, 251, 253, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  font-size: 12px;
-  letter-spacing: -0.01em;
-}
-.nav__inner {
-  max-width: 1024px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 22px;
-  gap: 16px;
-}
-.nav__brand {
-  color: var(--ink);
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  height: 100%;
-}
-.nav__brand-svg { height: 18px; width: auto; display: block; }
-.nav__links {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-}
-.nav__links > li { display: flex; align-items: center; height: 100%; position: relative; }
-.nav__link--caret::after {
-  content: ""; display: inline-block; margin-left: 6px;
-  width: 6px; height: 6px;
-  border-right: 1.4px solid currentColor;
-  border-bottom: 1.4px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 150ms ease;
-}
-.nav__submenu {
-  position: absolute; top: 44px; left: 4px;
-  min-width: 240px;
-  background: rgba(251, 251, 253, 0.96);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 6px;
-  list-style: none; margin: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  opacity: 0; visibility: hidden; transform: translateY(-4px);
-  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
-}
-.nav__item--has-children:hover > .nav__submenu,
-.nav__item--has-children:focus-within > .nav__submenu,
-.nav__item--has-children.is-open > .nav__submenu {
-  opacity: 1; visibility: visible; transform: none;
-}
-.nav__sublink {
-  display: block;
-  padding: 10px 12px;
-  font-size: 13px;
-  color: rgba(29, 29, 31, 0.85);
-  border-radius: 8px;
-  white-space: normal;
-  line-height: 1.3;
-}
-.nav__sublink small {
-  display: block;
-  font-size: 11px;
-  color: var(--ink-3);
-  margin-top: 2px;
-  letter-spacing: 0;
-  font-family: var(--f-mono);
-  text-transform: uppercase;
-}
-.nav__sublink:hover { background: rgba(0,0,0,0.04); color: var(--ink); }
-.nav__sublink--all {
-  border-top: 1px solid var(--rule);
-  margin-top: 4px; padding-top: 12px;
-  color: var(--link); font-weight: 500;
-}
-.nav__link {
-  display: inline-flex;
-  align-items: center;
-  height: 28px;
-  padding: 0 12px;
-  color: rgba(29, 29, 31, 0.8);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition: color 150ms ease;
-}
-.nav__link:hover { color: var(--ink); }
-.nav__link--accent { color: var(--link); font-weight: 500; }
-.nav__link--accent:hover { color: var(--link-hov); }
-
-.nav__toggle {
-  display: none;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  align-items: center; justify-content: center;
-  color: var(--ink);
-  flex-shrink: 0;
-}
-.nav__toggle svg { width: 18px; height: 18px; }
-
-@media (max-width: 833px) {
-  .nav__links { display: none; }
-  .nav__toggle { display: inline-flex; }
-  .nav.nav--open .nav__links {
-    position: absolute; top: 48px; left: 0; right: 0;
-    flex-direction: column;
-    height: auto;
-    background: rgba(251, 251, 253, 0.96);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--rule);
-    padding: 8px 22px 16px;
-    display: flex;
+  :root{
+    --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+    --paper:#FBFBFD; --surface:#FFFFFF; --surface-2:#F5F5F7;
+    --link:#0071E3; --link-hov:#0077ED;
+    --dark:#0B0B0D; --paper-on-dark:#F5F5F7;
+    --rule:#D2D2D7;
+    --maxw:1180px; --read:680px;
+    --r-tile:24px;
   }
-  .nav.nav--open .nav__links > li {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid var(--rule);
-    flex-direction: column; align-items: stretch;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,"Helvetica Neue",Arial,sans-serif;
+    background:var(--paper); color:var(--ink);
+    font-size:17px; line-height:1.47; letter-spacing:-0.022em;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   }
-  .nav.nav--open .nav__links > li:last-child { border-bottom: 0; }
-  .nav.nav--open .nav__link {
-    width: 100%;
-    height: auto;
-    padding: 14px 0;
-    font-size: 17px;
-    font-weight: 500;
-    justify-content: space-between;
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  @media(max-width:640px){.wrap{padding:0 16px}}
+  img,svg{display:block; max-width:100%}
+
+  /* type */
+  .eyebrow{font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--link); margin-bottom:12px; display:block}
+  h1{font-size:clamp(36px,5.5vw,64px); font-weight:600; letter-spacing:-0.04em; line-height:1.08}
+  h2{font-size:clamp(32px,4.6vw,56px); font-weight:600; letter-spacing:-0.04em; line-height:1.07}
+  h3{font-size:clamp(20px,2.4vw,26px); font-weight:600; letter-spacing:-0.03em; line-height:1.15}
+  em{font-style:italic; color:var(--link); font-weight:600}
+  .lead{font-size:clamp(19px,2.1vw,22px); font-weight:400; color:var(--ink-2); line-height:1.45; max-width:var(--read)}
+  .body{color:var(--ink-2); max-width:var(--read)}
+  .cap{font-size:13px; color:var(--ink-3)}
+
+  /* layout */
+  section{padding:clamp(72px,11vw,120px) 0}
+  .head{max-width:760px}
+  .head h2{margin-top:0}
+  .head .lead{margin-top:24px}
+  .head--center{margin:0 auto; text-align:center}
+  .head--center .lead{margin-left:auto; margin-right:auto}
+
+  /* buttons */
+  .btns{display:flex; gap:12px; flex-wrap:wrap; margin-top:32px}
+  .pill{display:inline-flex; align-items:center; justify-content:center; font-size:17px; font-weight:400; letter-spacing:-0.022em; padding:12px 22px; border-radius:980px; cursor:pointer; text-decoration:none; border:1px solid transparent; transition:background .15s ease, color .15s ease, border-color .15s ease}
+  .pill-primary{background:var(--link); color:#fff}
+  .pill-primary:hover{background:var(--link-hov)}
+  .pill-ghost{background:transparent; color:var(--link); border-color:var(--link)}
+  .pill-ghost:hover{background:rgba(0,113,227,.06)}
+  .pill:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+
+  /* nav (same as landing) */
+  header.nav{position:sticky; top:0; z-index:50; background:rgba(251,251,253,.82); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--rule)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+  .nav-logo{display:inline-flex; align-items:center; color:var(--ink); text-decoration:none; flex-shrink:0}
+  .nav-logo svg{height:17px; width:auto; display:block}
+  .nav-links{display:flex; gap:22px; align-items:center}
+  .nav-links a{color:var(--ink); text-decoration:none; font-size:14px; letter-spacing:-0.01em; white-space:nowrap}
+  .nav-links a:hover{color:var(--ink-2)}
+  .nav-links a.is-current{color:var(--link); font-weight:500}
+  .nav-cta{margin-left:4px}
+  .nav-drop{position:relative}
+  .nav-drop > a::after{content:""; display:inline-block; margin-left:6px; width:6px; height:6px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:translateY(-2px) rotate(45deg)}
+  .nav-menu{position:absolute; top:30px; left:-12px; min-width:260px; background:rgba(251,251,253,.97); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border:1px solid var(--rule); border-radius:14px; padding:6px; box-shadow:0 8px 28px rgba(0,0,0,.08); opacity:0; visibility:hidden; transform:translateY(-4px); transition:opacity .15s ease, transform .15s ease, visibility .15s; list-style:none}
+  .nav-drop:hover .nav-menu, .nav-drop:focus-within .nav-menu, .nav-drop.open .nav-menu{opacity:1; visibility:visible; transform:none}
+  .nav-menu a{display:block; padding:9px 12px; border-radius:9px; font-size:13px; line-height:1.3; white-space:normal; color:var(--ink)}
+  .nav-menu a small{display:block; font-size:11px; color:var(--ink-3); margin-top:2px; text-transform:uppercase; letter-spacing:.04em}
+  .nav-menu a:hover{background:rgba(0,0,0,.04)}
+  .nav-menu .all{border-top:1px solid var(--rule); margin-top:4px; padding-top:11px; color:var(--link); font-weight:500}
+  .nav-toggle{display:none; width:38px; height:38px; border:0; background:none; cursor:pointer; align-items:center; justify-content:center; color:var(--ink); flex-shrink:0}
+  .nav-toggle svg{width:20px; height:20px}
+  @media(max-width:980px){
+    .nav-toggle{display:inline-flex}
+    .nav-links{position:absolute; top:56px; left:0; right:0; display:none; flex-direction:column; align-items:stretch; gap:0; background:rgba(251,251,253,.98); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--rule); padding:8px 24px 16px}
+    header.nav.open .nav-links{display:flex}
+    .nav-links > a, .nav-drop{border-bottom:1px solid var(--rule)}
+    .nav-links > a{padding:14px 0; font-size:16px}
+    .nav-cta{margin:14px 0 0; align-self:flex-start}
+    .nav-drop{position:static}
+    .nav-drop > a{display:block; padding:14px 0; font-size:16px}
+    .nav-menu{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; border:0; background:none; padding:0 0 12px; min-width:0; display:none}
+    .nav-drop.open .nav-menu{display:block}
+    .nav-menu a{font-size:14px; padding:9px 0 9px 12px}
   }
-  .nav__submenu {
-    position: static; opacity: 1; visibility: visible; transform: none;
-    background: none; border: 0; border-radius: 0; padding: 0 0 12px;
-    box-shadow: none; min-width: 0;
-    display: none;
+
+  /* hero */
+  .hero{padding:clamp(72px,11vw,144px) 0 clamp(40px,6vw,72px)}
+  .hero .wrap{text-align:center}
+  .hero h1{max-width:24ch; margin:0 auto 18px}
+  .hero p.lead{max-width:560px; margin:18px auto 0; font-size:clamp(18px,2vw,22px)}
+
+  /* essay (photo + scrollable story) */
+  .essay-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:start}
+  @media(max-width:900px){.essay-grid{grid-template-columns:1fr; gap:32px}}
+  .photo-card{margin:0}
+  .photo-card .frame{width:100%; aspect-ratio:4/5; border-radius:var(--r-tile); overflow:hidden; background:var(--surface-2)}
+  .photo-card img{width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block}
+  .photo-card figcaption{margin-top:14px; font-size:14px; color:var(--ink-3); letter-spacing:-0.005em}
+
+  .story{}
+  .story__eyebrow{font-size:12px; font-weight:600; color:var(--link); letter-spacing:.06em; text-transform:uppercase; margin-bottom:18px; display:block}
+  .story article{padding:18px 0 26px; border-bottom:1px solid var(--rule)}
+  .story article:first-of-type{padding-top:0}
+  .story article h3{font-size:22px; margin-bottom:12px; letter-spacing:-0.025em}
+  .story article p{color:var(--ink-2); font-size:16px; line-height:1.6; margin-bottom:12px}
+  .story article p:last-child{margin-bottom:0}
+  .story__break{
+    text-align:center; font-size:clamp(19px,2vw,22px); color:var(--ink);
+    padding:28px 0; margin:8px 0;
+    border-bottom:1px solid var(--rule);
   }
-  .nav.nav--open .nav__item--has-children.is-open .nav__submenu { display: block; }
-  .nav.nav--open .nav__sublink { padding: 10px 0 10px 14px; font-size: 15px; }
-  .nav.nav--open .nav__item--has-children.is-open .nav__link--caret::after { transform: translateY(2px) rotate(-135deg); }
-}
+  .story__break em{font-style:italic; color:var(--link)}
 
-main { padding-top: 48px; }
+  /* bridge — single declarative line */
+  .bridge{text-align:center; max-width:780px; margin:0 auto; padding:0 24px; font-size:clamp(22px,2.6vw,30px); color:var(--ink); letter-spacing:-0.025em; line-height:1.25; font-weight:500}
+  .bridge em{font-style:italic; color:var(--link)}
 
-/* =================================================================
-   HERO — title only (photo moves into the essay block below)
-================================================================= */
-.hero {
-  padding: clamp(48px, 7vw, 96px) var(--gut) clamp(24px, 3vw, 36px);
-  background: var(--bg);
-}
-.hero__inner {
-  max-width: 880px;
-  margin: 0 auto;
-}
-.hero__title {
-  font-size: clamp(30px, 4vw, 46px);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.12;
-  color: var(--ink);
-}
-.hero__title em {
-  font-style: normal;
-  background: linear-gradient(120deg, var(--link), #5e5ce6 50%, var(--jodoo));
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-}
-.hero__lead {
-  margin-top: 16px;
-  font-size: clamp(18px, 1.6vw, 22px);
-  margin-top: 18px;
-  font-size: clamp(20px, 1.8vw, 24px);
-  line-height: 1.3;
-  color: var(--ink);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  max-width: 32ch;
-}
+  /* vision pillars + intro */
+  .vision-intro{max-width:760px; margin:0 auto 40px; text-align:center; color:var(--ink-2); font-size:clamp(17px,1.8vw,20px); line-height:1.5}
 
-/* =================================================================
-   ESSAY — photo + scrollable small-text story side by side
-   Cosmetic. Hint of story for the reader who wants it.
-================================================================= */
-.essay {
-  padding: clamp(16px, 2vw, 24px) var(--gut) clamp(40px, 5vw, 64px);
-}
-.essay__inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
-  align-items: start;
-}
-@media (max-width: 833px) {
-  .essay__inner { grid-template-columns: 1fr; }
-}
+  /* tile (same as landing) */
+  .tile{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:clamp(28px,3.5vw,44px); display:flex; flex-direction:column; gap:12px}
+  .tile h3{margin-bottom:0}
+  .tile p{color:var(--ink-2); font-size:16px; line-height:1.55}
+  .num{font-size:14px; font-weight:600; color:var(--link); letter-spacing:0.04em}
 
-.essay__photo { margin: 0; display: flex; flex-direction: column; }
-.essay__photo-frame {
-  position: relative;
-  border-radius: var(--r-tile);
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: var(--surface-2);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 12px 40px rgba(0,0,0,0.10);
-}
-.essay__photo-frame img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-.essay__photo figcaption {
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--ink-3);
-  letter-spacing: -0.01em;
-  text-align: right;
-}
+  .grid{display:grid; gap:12px}
+  .g-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:860px){.g-3{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g-3{grid-template-columns:1fr}}
 
-.essay__story { display: flex; flex-direction: column; min-height: 0; }
-.essay__story-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--ink-3);
-  text-transform: uppercase;
-  margin: 0 0 12px;
-}
-.essay__scroll {
-  max-height: clamp(360px, 55vh, 520px);
-  overflow-y: auto;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 18px 16px 18px 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--rule) transparent;
-}
-.essay__scroll::-webkit-scrollbar { width: 4px; }
-.essay__scroll::-webkit-scrollbar-track { background: transparent; }
-.essay__scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
-.essay__scroll::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+  .signature{text-align:center; margin-top:48px; font-weight:600; color:var(--ink); font-size:15px; letter-spacing:-0.005em}
 
-.essay__scroll article + article { margin-top: 18px; }
-.essay__scroll h3 {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 0 6px;
-  line-height: 1.25;
-}
-.essay__scroll p {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-2);
-  margin: 0 0 10px;
-}
-.essay__scroll p:last-child { margin: 0; }
-.essay__break {
-  font-size: 13px;
-  font-style: italic;
-  color: var(--ink-2);
-  text-align: center;
-  margin: 18px 0;
-  padding: 0 8px;
-  letter-spacing: -0.015em;
-}
-/* =================================================================
-   STORY — long-form first-person essay
-   4 sub-sections, an italicised break, founder voice
-.story {
-  max-width: var(--read-max);
-  margin: 0 auto;
-  padding: clamp(24px, 4vw, 48px) var(--gut) clamp(32px, 4vw, 48px);
-}
-.story__chapter + .story__chapter { margin-top: clamp(28px, 3.5vw, 44px); }
-.story__head {
-  font-size: clamp(22px, 2.4vw, 28px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: var(--ink);
-  margin: 0 0 14px;
-}
-.story p {
-  font-size: clamp(16px, 1.4vw, 18px);
-  line-height: 1.6;
-  color: var(--ink);
-  margin: 0 0 14px;
-}
-.story p:last-child { margin: 0; }
-.story strong { font-weight: 600; }
+  /* quiet close */
+  .close-card{max-width:680px; margin:0 auto; text-align:center; padding:clamp(40px,6vw,72px) 24px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+  .close-card p{color:var(--ink); font-size:clamp(19px,2vw,22px); line-height:1.45; margin-bottom:28px; letter-spacing:-0.022em}
 
-.story__break {
-  max-width: var(--read-max);
-  margin: clamp(28px, 3.5vw, 40px) auto;
-  padding-inline: var(--gut);
-  text-align: center;
-  font-size: clamp(18px, 1.7vw, 22px);
-  font-style: italic;
-  color: var(--ink-2);
-  letter-spacing: -0.02em;
-  line-height: 1.4;
-}
+  /* footer (same as landing) */
+  footer{border-top:1px solid var(--rule); padding:40px 0}
+  .foot-in{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start}
+  .foot-in a{color:var(--ink-2); text-decoration:none}
+  .foot-in a:hover{color:var(--link)}
+  .foot-col{font-size:14px; color:var(--ink-2); line-height:1.9; min-width:150px}
+  .foot-col h5{font-size:12px; font-weight:600; color:var(--ink); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em}
+  .foot-col a{display:block}
+  .foot-brand{max-width:260px}
+  .foot-logo svg{height:18px; width:auto; color:var(--ink); margin-bottom:12px}
+  .fine{margin-top:28px; padding-top:20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); line-height:1.6}
 
-/* =================================================================
-   BRIDGE — single declarative line between story and vision
-================================================================= */
-.bridge {
-  max-width: var(--read-max);
-  margin: clamp(32px, 4vw, 48px) auto;
-  padding: clamp(24px, 3vw, 36px) var(--gut);
-  text-align: center;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.25;
-  color: var(--ink);
-}
-
-/* =================================================================
-   VISION — three Singapore-context pillars
-================================================================= */
-.vision__wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: clamp(32px, 4vw, 56px) var(--gut);
-}
-.vision__intro {
-  max-width: var(--read-max);
-  margin: 0 auto clamp(28px, 3.5vw, 40px);
-  font-size: clamp(16px, 1.4vw, 18px);
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-.pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--tile-gap);
-}
-@media (max-width: 833px) { .pillars { grid-template-columns: 1fr; } }
-.pillar {
-  background: var(--surface-2);
-  border-radius: var(--r-tile);
-  padding: clamp(28px, 3vw, 40px);
-  display: flex; flex-direction: column;
-}
-.pillar__num {
-  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--link); text-transform: uppercase;
-  margin-bottom: 14px;
-}
-.pillar h3 {
-  font-size: clamp(20px, 2vw, 24px);
-  letter-spacing: -0.025em;
-  line-height: 1.18;
-  font-weight: 600;
-  margin: 0 0 12px;
-  color: var(--ink);
-}
-.pillar p {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-}
-}
-.pillar p {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-}
-.vision__sig {
-  max-width: var(--read-max);
-  margin: clamp(28px, 3.5vw, 40px) auto 0;
-  font-weight: 600;
-  color: var(--ink);
-  font-size: 15px;
-  letter-spacing: -0.01em;
-}
-
-/* =================================================================
-   QUIET CLOSE — founder-to-founder, no marketing
-================================================================= */
-.close {
-  max-width: var(--read-max);
-  margin: clamp(32px, 4vw, 56px) auto clamp(64px, 8vw, 96px);
-  padding-inline: var(--gut);
-}
-.close p {
-  font-size: clamp(17px, 1.5vw, 19px);
-  line-height: 1.5;
-  color: var(--ink);
-  margin: 0 0 24px;
-}
-.close__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
-  border-radius: var(--r-pill);
-  background: var(--link);
-  color: #fff;
-  font-size: 17px;
-  letter-spacing: -0.022em;
-  white-space: nowrap;
-  transition: background 200ms ease;
-}
-.close__cta:hover { background: var(--link-hov); }
-
-/* =================================================================
-   FOOTER
-================================================================= */
-.foot {
-  background: var(--surface-2);
-  color: var(--ink-3);
-  font-size: 12px;
-  line-height: 1.33337;
-  letter-spacing: -0.01em;
-  padding-block: 24px 22px;
-  border-top: 1px solid var(--rule);
-}
-.foot__partner {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 0 22px 22px;
-  border-bottom: 1px solid var(--rule);
-  text-align: center;
-}
-.foot__partner-row {
-  display: inline-flex; align-items: center; gap: 14px;
-  padding: 10px 18px;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-size: 13px;
-  margin-top: 8px;
-}
-.foot__partner-row img { height: 18px; }
-.foot__partner-row strong { color: var(--ink); font-weight: 600; }
-.foot__partner-tag {
-  font-size: 11px; font-weight: 600; color: var(--link);
-  letter-spacing: -0.01em;
-}
-.foot__inner { max-width: 1024px; margin: 0 auto; padding: 22px 22px 0; }
-.foot__cols {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--rule);
-}
-@media (max-width: 833px) { .foot__cols { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
-.foot__col h5 { color: var(--ink); font-size: 12px; font-weight: 600; margin: 0 0 10px; }
-.foot__col a, .foot__col span { display: block; padding: 4px 0; color: var(--ink-2); font-size: 12px; }
-.foot__col a:hover { text-decoration: underline; color: var(--ink); }
-.foot__legal {
-  padding-top: 16px;
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  color: var(--ink-3);
-}
-
-/* Reveal on scroll */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
-.reveal.visible { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  html { scroll-behavior: auto; }
-}
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none}}
 </style>
 </head>
 <body>
 
-<!-- ===========================================================
-  SVG SPRITE — Velo Working logotype
-=========================================================== -->
+<!-- ===== VELO WORKING LOGOTYPE (vector sprite) ===== -->
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
   <symbol id="velo-logo" viewBox="-67 125 310 50">
     <g fill="currentColor">
@@ -616,67 +192,59 @@ main { padding-top: 48px; }
   </symbol>
 </svg>
 
-<!-- ===========================================================
-  NAV
-=========================================================== -->
-<nav class="nav" id="nav" aria-label="Primary">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__brand" aria-label="Velo Working — home">
-      <svg class="nav__brand-svg" aria-hidden="true"><use href="#velo-logo"/></svg>
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="nav-logo" aria-label="Velo Working — home">
+      <svg aria-hidden="true"><use href="#velo-logo"/></svg>
     </a>
-    <ul class="nav__links" id="navLinks">
-      <li><a href="index.html#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
-      <li><a href="index.html#approach" class="nav__link">Approach</a></li>
-      <li><a href="index.html#modules" class="nav__link">Modules</a></li>
-      <li><a href="fabrication.html" class="nav__link">Fabrication</a></li>
-      <li><a href="vision.html" class="nav__link">Vision</a></li>
-      <li class="nav__item--has-children" data-dropdown>
-        <a href="blog/index.html" class="nav__link nav__link--caret" aria-haspopup="true" aria-expanded="false">Blog</a>
-        <ul class="nav__submenu" role="menu">
-          <li><a href="blog/workflow-vs-erp-positioning.html" class="nav__sublink" role="menuitem">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
-          <li><a href="blog/operational-tasks-first-principles.html" class="nav__sublink" role="menuitem">Operational tasks at first principles<small>Value × Effort</small></a></li>
-          <li><a href="blog/positioning-of-jodoo.html" class="nav__sublink" role="menuitem">Positioning of Jodoo<small>Org-chart test</small></a></li>
-          <li><a href="blog/THE%20SME%20DIGITAL%20PARADOX.html" class="nav__sublink" role="menuitem">The SME Digital Paradox<small>Diary · slide deck</small></a></li>
-          <li><a href="blog/index.html" class="nav__sublink nav__sublink--all" role="menuitem">All field notes</a></li>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html#build">What I build</a>
+      <a href="fabrication.html">Fabrication</a>
+      <a href="vision.html" class="is-current" aria-current="page">Vision</a>
+      <span class="nav-drop" data-drop>
+        <a href="blog/index.html" aria-haspopup="true" aria-expanded="false">Field notes</a>
+        <ul class="nav-menu">
+          <li><a href="blog/three-categories-of-business-software.html">Three categories of business software<small>Cloud ERP · Low-Code · No-Code</small></a></li>
+          <li><a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
+          <li><a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles<small>Value × Effort</small></a></li>
+          <li><a href="blog/positioning-of-jodoo.html">Positioning of Jodoo<small>Org-chart test</small></a></li>
+          <li><a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox<small>Diary · slide deck</small></a></li>
+          <li><a href="blog/index.html" class="all">All field notes</a></li>
         </ul>
-      </li>
-      <li><a href="index.html#pricing" class="nav__link">Pricing</a></li>
-      <li><a href="assessment/assessment.html" class="nav__link" target="_blank" rel="noopener">Assessment</a></li>
-      <li><a href="index.html#contact" class="nav__link">Contact</a></li>
-    </ul>
-    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      </span>
+      <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+      <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20your%20vision%20page%20and%20I%27d%20like%20to%20talk." class="pill pill-primary nav-cta" target="_blank" rel="noopener">Talk to Ronnie</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
     </button>
   </div>
-</nav>
+</header>
 
-<main>
+<main id="top">
 
-<!-- ===========================================================
-  HERO — title only
-=========================================================== -->
-<section class="hero">
-  <div class="hero__inner reveal">
-    <h1 class="hero__title">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
-    <p class="hero__lead">This is what I'm doing about it.</p>
-  </div>
-</section>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Vision</span>
+      <h1 class="reveal">I spent ten years inside companies watching the same pattern <em>break good people.</em></h1>
+      <p class="lead reveal">This is what I'm doing about it.</p>
+    </div>
+  </section>
 
-<!-- ===========================================================
-  ESSAY — photo + scrollable small-text story side by side
-=========================================================== -->
-<section class="essay">
-  <div class="essay__inner">
-    <figure class="essay__photo reveal">
-      <div class="essay__photo-frame">
-        <img src="asset/founder_photo.png" alt="Ronnie Yap, Founder of Velo Working" />
-      </div>
-      <figcaption>Ronnie Yap · Founder &amp; Director</figcaption>
-    </figure>
+  <!-- ===== ESSAY (photo + story) ===== -->
+  <section>
+    <div class="wrap essay-grid">
+      <figure class="photo-card reveal">
+        <div class="frame">
+          <img src="asset/founder_photo.png" alt="Ronnie Yap, founder of Velo Working" width="1792" height="2400" loading="lazy">
+        </div>
+        <figcaption>Ronnie Yap · Founder &amp; Director</figcaption>
+      </figure>
 
-    <div class="essay__story reveal">
-      <div class="essay__story-eyebrow">The story · scroll</div>
-      <div class="essay__scroll" tabindex="0" aria-label="Founder's story">
+      <div class="story reveal">
+        <span class="story__eyebrow">The story</span>
         <article>
           <h3>Capability becomes a burden.</h3>
           <p>The more capable I was, the more I got loaded. Not with the work in my job description — with everyone else's. I could hold more resources, so resources came to me. I could carry more political weight, so politics came to me. I became the senior person's assistant, doing low-end work for someone else's KPI. My actual scope quietly shifted, became the culture, and started costing me my performance and my promotion.</p>
@@ -688,7 +256,7 @@ main { padding-top: 48px; }
           <p>At the top, no one knew what was happening on the floor. The data didn't reach the room. Meetings ran on confidence and proximity. Whoever was closest to the boss got heard. Whoever told the better story got believed. I watched bad calls get made — over and over — because the room couldn't see the floor, and the floor couldn't get a number into the room.</p>
         </article>
 
-        <p class="essay__break"><em>A systems problem disguised as a people problem.</em></p>
+        <p class="story__break"><em>A systems problem disguised as a people problem.</em></p>
 
         <article>
           <h3>Why existing systems don't reach SMEs.</h3>
@@ -696,149 +264,131 @@ main { padding-top: 48px; }
         </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===========================================================
-  BRIDGE — Section 3 (single declarative line)
-=========================================================== -->
-<p class="bridge reveal">The vision came from this. Three things I want made standard in Singapore.</p>
+  <!-- ===== BRIDGE ===== -->
+  <section style="padding-block:clamp(40px,6vw,72px)">
+    <p class="bridge reveal">The vision came from this. Three things I want made standard in <em>Singapore.</em></p>
+  </section>
 
-<!-- ===========================================================
-  VISION — Section 4 (3 pillars + Singapore-context anchors)
-=========================================================== -->
-<section class="vision__wrap">
-  <p class="vision__intro reveal">None of these three is solved in Singapore. They aren't aspirations — they're long-standing problems I'd like to see closed in my working lifetime.</p>
-  <div class="pillars">
-    <div class="pillar reveal">
-      <div class="pillar__num">01</div>
-      <h3>Capable people do work that matters.</h3>
-      <p>Singapore SMEs lose their best people to MNCs and overseas every year — because the work inside isn't worth staying for. I want to build the SME I'd have stayed in. One where capability gets rewarded with leverage, not loaded with someone else's job.</p>
+  <!-- ===== VISION — 3 pillars ===== -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <p class="vision-intro reveal">None of these three is solved in Singapore. They aren't aspirations — they're long-standing problems I'd like to see closed in my working lifetime.</p>
+      <div class="grid g-3">
+        <div class="tile reveal">
+          <span class="num">01</span>
+          <h3>Capable people do work that matters.</h3>
+          <p>Singapore SMEs lose their best people to MNCs and overseas every year — because the work inside isn't worth staying for. I want to build the SME I'd have stayed in. One where capability gets rewarded with responsibility, not loaded with someone else's job.</p>
+        </div>
+        <div class="tile reveal">
+          <span class="num">02</span>
+          <h3>Singapore engineering keeps its bar high.</h3>
+          <p>The country still designs, but the building is moving offshore. The factories are shrinking, the trades are aging out, the next generation isn't being formed. I want some of that work to stay here — operationally, in the SMEs that still make and ship things from this island.</p>
+        </div>
+        <div class="tile reveal">
+          <span class="num">03</span>
+          <h3>SMEs survive long enough to compound.</h3>
+          <p>More than half of Singapore SMEs don't make it past the founder. Operations are usually the reason — not the market. A second generation needs a system to inherit, not a hero to replace. I build the system.</p>
+        </div>
+      </div>
+      <p class="signature reveal">Ronnie Yap · Founder &amp; Director · PMP</p>
     </div>
-    <div class="pillar reveal">
-      <div class="pillar__num">02</div>
-      <h3>Singapore engineering keeps its bar high.</h3>
-      <p>The country still designs, but the building is moving offshore. The factories are shrinking, the trades are aging out, the next generation isn't being formed. I want some of that work to stay here — operationally, in the SMEs that still make and ship things from this island.</p>
-    </div>
-    <div class="pillar reveal">
-      <div class="pillar__num">03</div>
-      <h3>SMEs survive long enough to compound.</h3>
-      <p>More than half of Singapore SMEs don't make it past the founder. Operations are usually the reason — not the market. A second generation needs a system to inherit, not a hero to replace. We build the system.</p>
-    </div>
-  </div>
-  <p class="vision__sig">Ronnie Yap · Founder &amp; Director · PMP</p>
-</section>
+  </section>
 
-<!-- ===========================================================
-  QUIET CLOSE — Section 5
-=========================================================== -->
-<section class="close reveal">
-  <p>If your operation looks anything like the ones I left behind, tell me. I'll tell you whether we can fix it, what it costs, and how long it takes.</p>
-  <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20your%20vision%20page%20and%20I%27d%20like%20to%20talk." class="close__cta" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
-</section>
+  <!-- ===== QUIET CLOSE ===== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="close-card">
+        <p>If your operation looks anything like the ones I left behind, tell me. I'll tell you whether I can fix it, what it costs, and how long it takes.</p>
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20read%20your%20vision%20page%20and%20I%27d%20like%20to%20talk." class="pill pill-primary" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ===========================================================
-  FOOTER
-=========================================================== -->
-<footer class="foot">
-  <div class="foot__partner">
-    <div class="foot__partner-tag">Strategic platform partner</div>
-    <div class="foot__partner-row">
-      <strong>Engineered with</strong>
-      <img src="asset/jodoo_logo.png" alt="Jodoo" loading="lazy" />
-      <span>· Asia's leading no-code workflow platform</span>
-    </div>
-  </div>
-
-  <div class="foot__inner">
-    <div class="foot__cols">
-      <div class="foot__col">
-        <h5>Velo Working</h5>
-        <a href="index.html#partner">Jodoo Partner</a>
-        <a href="index.html#approach">Approach</a>
-        <a href="index.html#modules">Modules</a>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-col foot-brand">
+        <a href="index.html" class="foot-logo" aria-label="Velo Working — home"><svg aria-hidden="true"><use href="#velo-logo"/></svg></a>
+        Custom systems for your operations, built to fit.<br>
+        Singapore · Malaysia · Brunei
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="index.html#build">What I build</a>
         <a href="fabrication.html">Fabrication</a>
-        <a href="index.html#why">Why us</a>
-        <a href="index.html#pricing">Pricing</a>
-      </div>
-      <div class="foot__col">
-        <h5>Resources</h5>
         <a href="vision.html">Vision</a>
-        <a href="index.html#manifesto">Manifesto</a>
         <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
-        <a href="blog/index.html">Field notes</a>
-        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">Diary — The SME Digital Paradox</a>
-        <a href="pitch-deck.html">About Us</a>
+        <a href="pitch-deck.html">About us</a>
       </div>
-      <div class="foot__col">
+      <div class="foot-col">
+        <h5>Field notes</h5>
+        <a href="blog/index.html">All field notes</a>
+        <a href="blog/three-categories-of-business-software.html">Three categories of business software</a>
+        <a href="blog/positioning-of-jodoo.html">Positioning of Jodoo</a>
+        <a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning</a>
+        <a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles</a>
+        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox</a>
+      </div>
+      <div class="foot-col">
         <h5>Contact</h5>
         <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
         <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <a href="tel:+6598943004">+65 9894 3004</a>
         <span>540 Sims Ave #03-05<br>Singapore 387603</span>
       </div>
-      <div class="foot__col">
-        <h5>Legal</h5>
-        <span>Velo Working Pte. Ltd.</span>
-        <span>UEN 202609930G</span>
-        <span>Incorporated 2026</span>
-      </div>
     </div>
-    <div class="foot__legal">
-      <span>Copyright © 2026 Velo Working Pte. Ltd. All rights reserved. · Official Jodoo partner.</span>
-      <span>Built for the ones still standing.</span>
-    </div>
+    <div class="fine">© 2026 Velo Working Pte. Ltd. (UEN 202609930G). All rights reserved. · Custom systems built on Jodoo — a no-code platform. The platform account stays in your company name.</div>
   </div>
 </footer>
 
 <script>
-/* Mobile nav toggle */
-(function(){
-  var nav = document.getElementById('nav');
-  var toggle = document.getElementById('navToggle');
-  if (!nav || !toggle) return;
-  toggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('nav--open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('.nav__item--has-children').forEach(function(item){
-    var trigger = item.querySelector('.nav__link--caret');
-    if (!trigger) return;
-    trigger.addEventListener('click', function(e){
-      if (window.matchMedia('(max-width: 833px)').matches) {
-        e.preventDefault();
-        var open = item.classList.toggle('is-open');
-        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      }
-    });
-  });
-  nav.querySelectorAll('.nav__link, .nav__sublink').forEach(function(l){
-    if (l.classList.contains('nav__link--caret')) return;
-    l.addEventListener('click', function(){
-      nav.classList.remove('nav--open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-})();
+  /* mobile nav toggle + dropdown */
+  (function(){
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('navToggle');
+    if (toggle && nav){
+      toggle.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+    var drop = nav ? nav.querySelector('[data-drop]') : null;
+    if (drop){
+      var trigger = drop.querySelector('a');
+      trigger.addEventListener('click', function(e){
+        if (window.matchMedia('(max-width: 980px)').matches){
+          e.preventDefault();
+          var open = drop.classList.toggle('open');
+          trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+      });
+    }
+    if (nav){
+      nav.querySelectorAll('.nav-links a').forEach(function(l){
+        if (drop && l === drop.querySelector('a')) return;
+        l.addEventListener('click', function(){
+          nav.classList.remove('open');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  })();
 
-/* Reveal on scroll */
-(function(){
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('visible'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
+  /* reveal on scroll */
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  })();
 </script>
-
 </body>
 </html>
