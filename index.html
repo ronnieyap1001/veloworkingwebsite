@@ -275,6 +275,37 @@
   @media(max-width:760px){.logos{grid-template-columns:repeat(2,1fr)}}
   .logobox{background:var(--surface-2); border:1px dashed #C4C4CC; border-radius:14px; height:72px; display:flex; align-items:center; justify-content:center; color:var(--ink-3); font-size:12px}
 
+  /* ---------- feature slider ---------- */
+  .slider{margin-top:48px}
+  .slider-viewport{overflow:hidden}
+  .slider-track{display:flex; will-change:transform; transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+  @media(prefers-reduced-motion:reduce){.slider-track{transition:none}}
+  .slide{flex:0 0 100%; min-width:100%}
+  .slide .imgbox{aspect-ratio:16/9; border-style:solid; border-color:var(--rule); background:var(--surface-2)}
+  .slide figure{margin:0}
+  .slide figcaption{padding:28px 4px 0; max-width:var(--read)}
+  .slide figcaption .num{display:block; margin-bottom:10px}
+  .slide figcaption h3{margin-bottom:8px}
+  .slide figcaption p{color:var(--ink-2); font-size:17px; line-height:1.5}
+  .slider-controls{display:flex; align-items:center; justify-content:center; gap:18px; margin-top:28px}
+  .slider-arrow{
+    width:44px; height:44px; flex-shrink:0; border-radius:50%;
+    border:1px solid var(--rule); background:var(--surface); color:var(--ink);
+    font-size:22px; line-height:1; cursor:pointer; display:inline-flex;
+    align-items:center; justify-content:center;
+    transition:background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .slider-arrow:hover{background:var(--surface-2); border-color:var(--ink-3)}
+  .slider-arrow:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .slider-dots{display:flex; flex-wrap:wrap; gap:9px; justify-content:center; max-width:380px}
+  .slider-dots button{
+    width:8px; height:8px; padding:0; border:0; border-radius:50%;
+    background:var(--rule); cursor:pointer; transition:background .15s ease, transform .15s ease;
+  }
+  .slider-dots button:hover{background:var(--ink-3)}
+  .slider-dots button[aria-selected="true"]{background:var(--link); transform:scale(1.3)}
+  .slider-dots button:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+
   /* ---------- final cta ---------- */
   .final{text-align:center}
   .final .head{margin:0 auto}
@@ -345,7 +376,6 @@
       <div class="reveal">
         <span class="eyebrow">Simple, modular operations systems</span>
         <h1>A simple system for the <em>one problem</em> in front of you.</h1>
-        <p class="lead">I'm Ronnie Yap, an independent operations engineer. You don't need a big, complex system that takes a year to roll out. You need one thing fixed — your data in one place, updated from anywhere, your team working off the same live record, and approvals that move on their own. I build exactly that, one module at a time, and you add more only when you're ready.</p>
         <div class="btns">
           <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20a%20problem%20in%20our%20operations." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
           <a href="#build" class="pill pill-ghost">See how it works</a>
@@ -367,7 +397,6 @@
       <div class="head reveal">
         <span class="eyebrow">What your system does</span>
         <h2>Four simple things, done <em>properly.</em></h2>
-        <p class="lead">You don't need a hundred features you'll never touch. You need a handful of things to finally work — your data captured, reachable anywhere, shared live, and your approvals running themselves.</p>
       </div>
 
       <div class="grid g-2 reveal" style="margin-top:48px">
@@ -401,41 +430,84 @@
       <div class="head reveal">
         <span class="eyebrow">How it works</span>
         <h2>Start with one problem. Add the rest <em>when you're ready.</em></h2>
-        <p class="lead">No year-long rollout. No system you have to swallow whole. We start with the single thing that hurts most — one module that does that job properly — and prove it works in weeks, not months. When you're ready, the next piece clicks into the same system. It grows at your pace, never ahead of it.</p>
       </div>
 
-      <h3 class="reveal" style="margin-top:48px; margin-bottom:16px; color:var(--ink-2); font-weight:600">Common places to start</h3>
+      <div class="slider reveal" id="featSlider" aria-roledescription="carousel" aria-label="Platform features">
+        <div class="slider-viewport">
+          <div class="slider-track" id="featTrack">
 
-      <div class="grid g-3 reveal">
-        <div class="tile">
-          <h3>Inventory &amp; stock</h3>
-          <p>Know what you have, where it is, and when to reorder.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 13: Drag and drop">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">01 / 13</span><h3>Drag and drop</h3><p>Build and rearrange your system visually. No coding, no waiting on a developer.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 13: Code generator &amp; scanning">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">02 / 13</span><h3>Code generator &amp; scanning</h3><p>Generate barcodes and QR codes, then scan them straight into the system.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 13: Direct form-to-database creation">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">03 / 13</span><h3>Direct form-to-database creation</h3><p>Forms write straight into your database the moment they're submitted.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 13: Automation, API &amp; webhook">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">04 / 13</span><h3>Automation + API + webhook</h3><p>Connect to the tools you already use and let actions trigger themselves.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 13: Data alert">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">05 / 13</span><h3>Data alert</h3><p>Get flagged the instant a number crosses a limit you've set.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 13: Notifications on mobile">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">06 / 13</span><h3>Notifications on mobile</h3><p>Updates land on your team's phones the moment they matter.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="7 of 13: Focus task">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">07 / 13</span><h3>Focus task</h3><p>Everyone sees exactly the tasks waiting on them — nothing else.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="8 of 13: Mobile and desktop">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">08 / 13</span><h3>Mobile + desktop</h3><p>The same system, full experience, on a phone or a computer.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="9 of 13: Cloud based">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">09 / 13</span><h3>Cloud based</h3><p>Reach it from anywhere, always current, nothing to install.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="10 of 13: User permission">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">10 / 13</span><h3>User permission</h3><p>Decide who can see and edit what, right down to the field.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="11 of 13: Automated approval &amp; handover workflow">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">11 / 13</span><h3>Automated approval &amp; handover workflow</h3><p>Requests route, get approved, and hand over without anyone chasing.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="12 of 13: E-signature">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">12 / 13</span><h3>E-signature</h3><p>Capture a signed sign-off right inside the record.</p></figcaption>
+            </figure>
+
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="13 of 13: Location tagging">
+              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <figcaption><span class="num">13 / 13</span><h3>Location tagging</h3><p>Stamp entries with the GPS location captured from the field.</p></figcaption>
+            </figure>
+
+          </div>
         </div>
-        <div class="tile">
-          <h3>Job &amp; production tracking</h3>
-          <p>See every job's status without walking the floor to ask.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
-        </div>
-        <div class="tile">
-          <h3>Approvals &amp; forms</h3>
-          <p>Requests and sign-offs in one place, not buried in chat.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
-        </div>
-        <div class="tile">
-          <h3>Quotations &amp; orders</h3>
-          <p>Quote, confirm, and track an order without retyping it.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
-        </div>
-        <div class="tile">
-          <h3>Leads &amp; customers</h3>
-          <p>A simple, shared record of every lead, deal, and contact.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
-        </div>
-        <div class="tile">
-          <h3>Field &amp; site reports</h3>
-          <p>Capture work on-site, from a phone, the moment it happens.</p>
-          <div class="imgbox mini"><span class="tag">Image</span><span class="dim">module screenshot</span></div>
+
+        <div class="slider-controls">
+          <button class="slider-arrow" id="featPrev" type="button" aria-label="Previous feature">&lsaquo;</button>
+          <div class="slider-dots" id="featDots" role="tablist" aria-label="Choose feature"></div>
+          <button class="slider-arrow" id="featNext" type="button" aria-label="Next feature">&rsaquo;</button>
         </div>
       </div>
     </div>
@@ -498,8 +570,8 @@
     <div class="wrap">
       <div class="head reveal">
         <span class="eyebrow">Get started</span>
-        <h2>Tell me the one thing <em>slowing you down.</em></h2>
-        <p class="lead" style="margin:24px auto 0">If a simple, modular system is the right fix, I'll show you exactly how it would work — starting with one module, not a year-long project. And if it isn't, I'll tell you that too.</p>
+        <h2>Let's talk — and get your quote the <em>next day.</em></h2>
+        <p class="lead" style="margin:24px auto 0">Message me today; I'll come back with a quote the next working day.</p>
         <div class="btns">
           <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20a%20problem%20in%20our%20operations." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
         </div>
@@ -588,6 +660,56 @@
       entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
     }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* feature slider */
+  (function(){
+    var root = document.getElementById('featSlider');
+    if (!root) return;
+    var track = document.getElementById('featTrack');
+    var slides = Array.prototype.slice.call(track.children);
+    var n = slides.length;
+    if (!n) return;
+    var prev = document.getElementById('featPrev');
+    var next = document.getElementById('featNext');
+    var dotsWrap = document.getElementById('featDots');
+    var i = 0;
+
+    var dots = slides.map(function(_, idx){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Feature ' + (idx + 1));
+      b.addEventListener('click', function(){ go(idx); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function update(){
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      dots.forEach(function(d, idx){ d.setAttribute('aria-selected', idx === i ? 'true' : 'false'); });
+      slides.forEach(function(s, idx){ s.setAttribute('aria-hidden', idx === i ? 'false' : 'true'); });
+    }
+    function go(idx){ i = (idx + n) % n; update(); }
+
+    if (next) next.addEventListener('click', function(){ go(i + 1); });
+    if (prev) prev.addEventListener('click', function(){ go(i - 1); });
+
+    root.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight'){ go(i + 1); }
+      else if (e.key === 'ArrowLeft'){ go(i - 1); }
+    });
+
+    var x0 = null;
+    root.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+    root.addEventListener('touchend', function(e){
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40){ go(dx < 0 ? i + 1 : i - 1); }
+      x0 = null;
+    });
+
+    update();
   })();
 </script>
 </body>
