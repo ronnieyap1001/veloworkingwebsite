@@ -193,7 +193,8 @@
   .hero{padding-top:clamp(56px,9vw,104px)}
   .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
   @media(max-width:900px){.hero-grid{grid-template-columns:1fr; gap:40px}}
-  .hero h1{margin-bottom:24px}
+  .hero h1{margin-bottom:24px; font-size:clamp(30px,4.4vw,50px)}
+  .hero-visual{width:100%; aspect-ratio:16/10; object-fit:contain; border-radius:var(--r-tile); background:var(--surface); border:1px solid var(--rule)}
 
   /* ---------- image placeholder box ---------- */
   .imgbox{
@@ -309,11 +310,9 @@
   /* ---------- feature slide media ---------- */
   .slide-media{
     aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden;
-    background:var(--surface-2); border:1px solid var(--rule);
-    display:flex; align-items:center; justify-content:center;
-    padding:clamp(10px,2vw,26px);
+    background:var(--surface); border:1px solid var(--rule);
   }
-  .slide-media img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block}
+  .slide-media img{width:100%; height:100%; object-fit:contain; display:block}
 
   /* ---------- showcase slideshow (What your system does) ---------- */
   .showcase .slide-photo{position:relative; aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden; background:var(--dark)}
@@ -408,18 +407,14 @@
     <div class="wrap hero-grid">
       <div class="reveal">
         <span class="eyebrow">Simple, modular operations systems</span>
-        <h1>A simple system for the <em>one problem</em> in front of you.</h1>
+        <h1>I help companies build a system for the <em>specific problem</em> in front of them — to capture data, review it easily, approve, update remotely, and work together.</h1>
         <div class="btns">
           <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20a%20problem%20in%20our%20operations." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
           <a href="#build" class="pill pill-ghost">See how it works</a>
         </div>
       </div>
       <div class="reveal">
-        <div class="imgbox ar-hero">
-          <span class="tag">Image</span>
-          <span class="desc">Clean screenshot of a real system / dashboard you've built on Jodoo — the actual modules, in a browser frame.</span>
-          <span class="dim">~16:10 · hero visual</span>
-        </div>
+        <img class="hero-visual" src="asset/Project%20Management%20Jodoo%20Mock%20Up.png" alt="A production monitoring dashboard built on Jodoo" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
   </section>
@@ -438,7 +433,7 @@
 
             <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Capture all your data">
               <div class="slide-photo">
-                <img src="asset/Website%20-%20Capture%20all%20your%20data%20-%20illus.jpg" alt="A welder at work on a factory floor" loading="eager" fetchpriority="high" decoding="async">
+                <img src="asset/Website%20-%20Capture%20all%20your%20data%20-%20illus.jpg" alt="A welder at work on a factory floor" loading="lazy" decoding="async">
                 <div class="slide-overlay">
                   <span class="num">01 / 04</span>
                   <h3>Capture all your data</h3>
@@ -492,11 +487,15 @@
     </div>
   </section>
 
-  <!-- ===== HOW IT WORKS — feature slideshow (autoplay) ===== -->
+  <!-- ===== FEATURES — slideshow (autoplay) ===== -->
   <section id="how">
     <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Features</span>
+        <h2>Everything your team needs, <em>built in.</em></h2>
+      </div>
 
-      <div class="slider reveal" data-slider data-autoplay="4500" style="margin-top:0" aria-roledescription="carousel" aria-label="Platform features">
+      <div class="slider reveal" data-slider data-autoplay="4500" aria-roledescription="carousel" aria-label="Platform features">
         <div class="slider-viewport">
           <div class="slider-track" data-track>
 
@@ -521,7 +520,7 @@
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 13: Data alert">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Notification%20Mock%20Up.png" alt="Data alert notification from Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">05 / 13</span><h3>Data alert</h3><p>Get flagged the instant a number crosses a limit you've set.</p></figcaption>
             </figure>
 
@@ -536,12 +535,12 @@
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="8 of 13: Mobile and desktop">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Mobile%20and%20Desktop%20Mock%20Up.png" alt="The same Jodoo system on mobile and desktop" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">08 / 13</span><h3>Mobile + desktop</h3><p>The same system, full experience, on a phone or a computer.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="9 of 13: Cloud based">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Cloud%20Mock%20Up.png" alt="Cloud-based access from anywhere in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">09 / 13</span><h3>Cloud based</h3><p>Reach it from anywhere, always current, nothing to install.</p></figcaption>
             </figure>
 
@@ -615,7 +614,7 @@
     <div class="wrap reveal">
       <div class="band-dark">
         <span class="eyebrow">Who it's for</span>
-        <h2>For people who want it <em class="sky">simple</em> — not a monster to implement.</h2>
+        <h2>For people who want a <em class="sky">simple, quick</em> solution to the problem in front of them — right now.</h2>
         <p class="body" style="margin-top:24px">If you've looked at a big ERP and thought &ldquo;that's too much, too slow, too expensive for what we actually need&rdquo; — that's exactly who I build for. Companies that want one real problem solved well, a system their team will actually use, and the freedom to grow it module by module. From a handful of staff to a few hundred. Manufacturing, trading, services, engineering — wherever work, stock or approvals are still tracked by hand or stuck in a spreadsheet. Based in Singapore, working across Malaysia and Brunei.</p>
       </div>
     </div>
