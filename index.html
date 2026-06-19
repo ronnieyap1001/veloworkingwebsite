@@ -191,10 +191,10 @@
 
   /* ---------- hero ---------- */
   .hero{padding-top:clamp(56px,9vw,104px)}
-  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr; gap:40px}}
+  .hero-copy{max-width:860px; margin:0 auto; text-align:center}
+  .hero-copy .btns{justify-content:center}
   .hero h1{margin-bottom:24px; font-size:clamp(30px,4.4vw,50px)}
-  .hero-visual{width:100%; aspect-ratio:16/10; object-fit:contain; border-radius:var(--r-tile); background:var(--surface); border:1px solid var(--rule)}
+  .hero-visual{display:block; width:100%; max-width:var(--maxw); height:auto; margin:clamp(36px,5vw,64px) auto 0; background:transparent; border:0}
 
   /* ---------- image placeholder box ---------- */
   .imgbox{
@@ -310,9 +310,11 @@
   /* ---------- feature slide media ---------- */
   .slide-media{
     aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden;
-    background:var(--surface); border:1px solid var(--rule);
+    background:var(--surface-2); border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    padding:clamp(10px,2vw,26px);
   }
-  .slide-media img{width:100%; height:100%; object-fit:contain; display:block}
+  .slide-media img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block}
 
   /* ---------- showcase slideshow (What your system does) ---------- */
   .showcase .slide-photo{position:relative; aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden; background:var(--dark)}
@@ -404,8 +406,8 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="reveal">
+    <div class="wrap">
+      <div class="hero-copy reveal">
         <span class="eyebrow">Simple, modular operations systems</span>
         <h1>I help companies build a system for the <em>specific problem</em> in front of them — to capture data, review it easily, approve, update remotely, and work together.</h1>
         <div class="btns">
@@ -413,9 +415,7 @@
           <a href="#build" class="pill pill-ghost">See how it works</a>
         </div>
       </div>
-      <div class="reveal">
-        <img class="hero-visual" src="asset/Project%20Management%20Jodoo%20Mock%20Up.png" alt="A production monitoring dashboard built on Jodoo" loading="eager" fetchpriority="high" decoding="async">
-      </div>
+      <img class="hero-visual reveal" src="asset/Project%20Management%20Jodoo%20Mock%20Up.png" alt="A production monitoring dashboard built on Jodoo" loading="eager" fetchpriority="high" decoding="async">
     </div>
   </section>
 
@@ -499,69 +499,64 @@
         <div class="slider-viewport">
           <div class="slider-track" data-track>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 13: Drag and drop">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 12: Drag and drop">
               <div class="slide-media"><img src="asset/Jodoo%20Drag%20and%20Drop%20Mock%20up.png" alt="Drag-and-drop builder in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">01 / 13</span><h3>Drag and drop</h3><p>Build and rearrange your system visually. No coding, no waiting on a developer.</p></figcaption>
+              <figcaption><span class="num">01 / 12</span><h3>Drag and drop</h3><p>Build and rearrange your system visually. No coding, no waiting on a developer.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 13: Code generator &amp; scanning">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 12: Code generator &amp; scanning">
               <div class="slide-media"><img src="asset/Jodoo%20QR%20Code%20Mock%20Up.png" alt="QR and barcode generator and scanning in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">02 / 13</span><h3>Code generator &amp; scanning</h3><p>Generate barcodes and QR codes, then scan them straight into the system.</p></figcaption>
+              <figcaption><span class="num">02 / 12</span><h3>Code generator &amp; scanning</h3><p>Generate barcodes and QR codes, then scan them straight into the system.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 13: Direct form-to-database creation">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 12: Direct form-to-database creation">
               <div class="slide-media"><img src="asset/Jodoo%20Form%20to%20Database%20Mock%20Up.png" alt="Form writing directly into a database in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">03 / 13</span><h3>Direct form-to-database creation</h3><p>Forms write straight into your database the moment they're submitted.</p></figcaption>
+              <figcaption><span class="num">03 / 12</span><h3>Direct form-to-database creation</h3><p>Forms write straight into your database the moment they're submitted.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 13: Automation, API &amp; webhook">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 12: Automation, API &amp; webhook">
               <div class="slide-media"><img src="asset/Jodoo%20Automation%20API%20Webhook%20Mock%20Up.png" alt="Automation, API and webhook configuration in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">04 / 13</span><h3>Automation + API + webhook</h3><p>Connect to the tools you already use and let actions trigger themselves.</p></figcaption>
+              <figcaption><span class="num">04 / 12</span><h3>Automation + API + webhook</h3><p>Connect to the tools you already use and let actions trigger themselves.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 13: Data alert">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 12: Data alert">
               <div class="slide-media"><img src="asset/Jodoo%20Notification%20Mock%20Up.png" alt="Data alert notification from Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">05 / 13</span><h3>Data alert</h3><p>Get flagged the instant a number crosses a limit you've set.</p></figcaption>
+              <figcaption><span class="num">05 / 12</span><h3>Data alert</h3><p>Get flagged the instant a number crosses a limit you've set.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 13: Notifications on mobile">
-              <div class="slide-media"><img src="asset/Jodoo%20Notification%20Mock%20Up.png" alt="Push notifications on a mobile phone from Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">06 / 13</span><h3>Notifications on mobile</h3><p>Updates land on your team's phones the moment they matter.</p></figcaption>
-            </figure>
-
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="7 of 13: Focus task">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 12: Focus task">
               <div class="slide-media"><img src="asset/Jodoo%20Task%20Notification%20Mock%20Up.png" alt="A personal task list in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">07 / 13</span><h3>Focus task</h3><p>Everyone sees exactly the tasks waiting on them — nothing else.</p></figcaption>
+              <figcaption><span class="num">06 / 12</span><h3>Focus task</h3><p>Everyone sees exactly the tasks waiting on them — nothing else.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="8 of 13: Mobile and desktop">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="7 of 12: Mobile and desktop">
               <div class="slide-media"><img src="asset/Jodoo%20Mobile%20and%20Desktop%20Mock%20Up.png" alt="The same Jodoo system on mobile and desktop" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">08 / 13</span><h3>Mobile + desktop</h3><p>The same system, full experience, on a phone or a computer.</p></figcaption>
+              <figcaption><span class="num">07 / 12</span><h3>Mobile + desktop</h3><p>The same system, full experience, on a phone or a computer.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="9 of 13: Cloud based">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="8 of 12: Cloud based">
               <div class="slide-media"><img src="asset/Jodoo%20Cloud%20Mock%20Up.png" alt="Cloud-based access from anywhere in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">09 / 13</span><h3>Cloud based</h3><p>Reach it from anywhere, always current, nothing to install.</p></figcaption>
+              <figcaption><span class="num">08 / 12</span><h3>Cloud based</h3><p>Reach it from anywhere, always current, nothing to install.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="10 of 13: User permission">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="9 of 12: User permission">
               <div class="slide-media"><img src="asset/jodoo%20User%20Permission%20Mock%20Up.png" alt="User permission settings in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">10 / 13</span><h3>User permission</h3><p>Decide who can see and edit what, right down to the field.</p></figcaption>
+              <figcaption><span class="num">09 / 12</span><h3>User permission</h3><p>Decide who can see and edit what, right down to the field.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="11 of 13: Automated approval &amp; handover workflow">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="10 of 12: Automated approval &amp; handover workflow">
               <div class="slide-media"><img src="asset/Jodoo%20Workflow%20Mock%20Up.png" alt="Automated approval and handover workflow in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">11 / 13</span><h3>Automated approval &amp; handover workflow</h3><p>Requests route, get approved, and hand over without anyone chasing.</p></figcaption>
+              <figcaption><span class="num">10 / 12</span><h3>Automated approval &amp; handover workflow</h3><p>Requests route, get approved, and hand over without anyone chasing.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="12 of 13: E-signature">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="11 of 12: E-signature">
               <div class="slide-media"><img src="asset/Jodoo%20E%20Signature%20Mock%20Up.png" alt="Electronic signature capture in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">12 / 13</span><h3>E-signature</h3><p>Capture a signed sign-off right inside the record.</p></figcaption>
+              <figcaption><span class="num">11 / 12</span><h3>E-signature</h3><p>Capture a signed sign-off right inside the record.</p></figcaption>
             </figure>
 
-            <figure class="slide" role="group" aria-roledescription="slide" aria-label="13 of 13: Location tagging">
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="12 of 12: Location tagging">
               <div class="slide-media"><img src="asset/jodoo%20Location%20Tagging%20Mock%20Up.png" alt="GPS location tagging in Jodoo" loading="lazy" decoding="async"></div>
-              <figcaption><span class="num">13 / 13</span><h3>Location tagging</h3><p>Stamp entries with the GPS location captured from the field.</p></figcaption>
+              <figcaption><span class="num">12 / 12</span><h3>Location tagging</h3><p>Stamp entries with the GPS location captured from the field.</p></figcaption>
             </figure>
 
           </div>
