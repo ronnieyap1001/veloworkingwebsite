@@ -306,6 +306,39 @@
   .slider-dots button[aria-selected="true"]{background:var(--link); transform:scale(1.3)}
   .slider-dots button:focus-visible{outline:2px solid var(--link); outline-offset:3px}
 
+  /* ---------- feature slide media ---------- */
+  .slide-media{
+    aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden;
+    background:var(--surface-2); border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    padding:clamp(10px,2vw,26px);
+  }
+  .slide-media img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block}
+
+  /* ---------- showcase slideshow (What your system does) ---------- */
+  .showcase .slide-photo{position:relative; aspect-ratio:16/9; border-radius:var(--r-tile); overflow:hidden; background:var(--dark)}
+  @media(max-width:700px){.showcase .slide-photo{aspect-ratio:3/4}}
+  .showcase .slide-photo img{width:100%; height:100%; object-fit:cover; display:block}
+  .showcase .slide-overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:clamp(28px,5vw,60px); color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,.84) 0%, rgba(0,0,0,.58) 26%, rgba(0,0,0,.12) 54%, rgba(0,0,0,0) 78%);
+  }
+  .showcase .slide-overlay .num{display:block; margin-bottom:14px; font-weight:600; letter-spacing:.04em; color:rgba(255,255,255,.82)}
+  .showcase .slide-overlay h3{color:#fff; font-size:clamp(26px,3.4vw,42px); letter-spacing:-0.03em; line-height:1.08; margin-bottom:12px; max-width:18ch}
+  .showcase .slide-overlay p{color:rgba(255,255,255,.9); font-size:clamp(15px,1.7vw,19px); line-height:1.5; max-width:54ch; text-shadow:0 1px 16px rgba(0,0,0,.35)}
+
+  /* ---------- security ---------- */
+  .sec-logos{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:44px}
+  @media(max-width:760px){.sec-logos{grid-template-columns:repeat(2,1fr)}}
+  .sec-logo{
+    background:var(--surface); border:1px solid var(--rule); border-radius:18px;
+    min-height:140px; padding:24px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center;
+  }
+  .sec-logo img{max-height:52px; max-width:82%; width:auto; object-fit:contain}
+  .sec-logo span{font-size:12px; color:var(--ink-3); letter-spacing:.02em; line-height:1.3}
+
   /* ---------- final cta ---------- */
   .final{text-align:center}
   .final .head{margin:0 auto}
@@ -399,26 +432,61 @@
         <h2>Four simple things, done <em>properly.</em></h2>
       </div>
 
-      <div class="grid g-2 reveal" style="margin-top:48px">
-        <div class="tile s2">
-          <span class="num">01</span>
-          <h3>Capture all your data</h3>
-          <p>Every job, order, item and form lives in one place. No more chasing numbers across spreadsheets, chat threads and paper.</p>
+      <div class="slider showcase reveal" data-slider data-autoplay="6000" aria-roledescription="carousel" aria-label="What your system does">
+        <div class="slider-viewport">
+          <div class="slider-track" data-track>
+
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Capture all your data">
+              <div class="slide-photo">
+                <img src="asset/Website%20-%20Capture%20all%20your%20data%20-%20illus.jpg" alt="A welder at work on a factory floor" loading="eager" fetchpriority="high" decoding="async">
+                <div class="slide-overlay">
+                  <span class="num">01 / 04</span>
+                  <h3>Capture all your data</h3>
+                  <p>Every job, order, item and form lives in one place. No more chasing numbers across spreadsheets, chat threads and paper.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Update it from anywhere">
+              <div class="slide-photo">
+                <img src="asset/website%20-%20update%20it%20from%20anywhere%20-%20illus.jpg" alt="Aerial view of a harvester working a field" loading="lazy" decoding="async">
+                <div class="slide-overlay">
+                  <span class="num">02 / 04</span>
+                  <h3>Update it from anywhere</h3>
+                  <p>Your team updates the system from the floor, the site or the road — on a phone. The record is current the moment work happens.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Work together, live">
+              <div class="slide-photo">
+                <img src="asset/Website%20-%20working%20life%20togather%20-%20illus.jpg" alt="A worker using a tablet on the shop floor" loading="lazy" decoding="async">
+                <div class="slide-overlay">
+                  <span class="num">03 / 04</span>
+                  <h3>Work together, live</h3>
+                  <p>Everyone sees the same up-to-date information at once. No emailing files back and forth, no &ldquo;which version is this?&rdquo;</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Automate your approvals">
+              <div class="slide-photo">
+                <img src="asset/Website%20-%20Automate%20your%20approvals%20-%20Illus.jpg" alt="A team reviewing documents together in an office" loading="lazy" decoding="async">
+                <div class="slide-overlay">
+                  <span class="num">04 / 04</span>
+                  <h3>Automate your approvals</h3>
+                  <p>Requests route to the right person, send their own reminders and record every sign-off. The workflow runs without you chasing it.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="tile s2">
-          <span class="num">02</span>
-          <h3>Update it from anywhere</h3>
-          <p>Your team updates the system from the floor, the site or the road — on a phone. The record is current the moment work happens.</p>
-        </div>
-        <div class="tile s2">
-          <span class="num">03</span>
-          <h3>Work together, live</h3>
-          <p>Everyone sees the same up-to-date information at once. No emailing files back and forth, no &ldquo;which version is this?&rdquo;</p>
-        </div>
-        <div class="tile s2">
-          <span class="num">04</span>
-          <h3>Automate your approvals</h3>
-          <p>Requests route to the right person, send their own reminders and record every sign-off. The workflow runs without you chasing it.</p>
+
+        <div class="slider-controls">
+          <button class="slider-arrow" data-prev type="button" aria-label="Previous slide">&lsaquo;</button>
+          <div class="slider-dots" data-dots role="tablist" aria-label="Choose slide"></div>
+          <button class="slider-arrow" data-next type="button" aria-label="Next slide">&rsaquo;</button>
         </div>
       </div>
     </div>
@@ -428,27 +496,27 @@
   <section id="how">
     <div class="wrap">
 
-      <div class="slider reveal" id="featSlider" style="margin-top:0" aria-roledescription="carousel" aria-label="Platform features">
+      <div class="slider reveal" data-slider data-autoplay="4500" style="margin-top:0" aria-roledescription="carousel" aria-label="Platform features">
         <div class="slider-viewport">
-          <div class="slider-track" id="featTrack">
+          <div class="slider-track" data-track>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="1 of 13: Drag and drop">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Drag%20and%20Drop%20Mock%20up.png" alt="Drag-and-drop builder in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">01 / 13</span><h3>Drag and drop</h3><p>Build and rearrange your system visually. No coding, no waiting on a developer.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 13: Code generator &amp; scanning">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20QR%20Code%20Mock%20Up.png" alt="QR and barcode generator and scanning in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">02 / 13</span><h3>Code generator &amp; scanning</h3><p>Generate barcodes and QR codes, then scan them straight into the system.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 13: Direct form-to-database creation">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Form%20to%20Database%20Mock%20Up.png" alt="Form writing directly into a database in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">03 / 13</span><h3>Direct form-to-database creation</h3><p>Forms write straight into your database the moment they're submitted.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 13: Automation, API &amp; webhook">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Automation%20API%20Webhook%20Mock%20Up.png" alt="Automation, API and webhook configuration in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">04 / 13</span><h3>Automation + API + webhook</h3><p>Connect to the tools you already use and let actions trigger themselves.</p></figcaption>
             </figure>
 
@@ -458,12 +526,12 @@
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 13: Notifications on mobile">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Notification%20Mock%20Up.png" alt="Push notifications on a mobile phone from Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">06 / 13</span><h3>Notifications on mobile</h3><p>Updates land on your team's phones the moment they matter.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="7 of 13: Focus task">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Task%20Notification%20Mock%20Up.png" alt="A personal task list in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">07 / 13</span><h3>Focus task</h3><p>Everyone sees exactly the tasks waiting on them — nothing else.</p></figcaption>
             </figure>
 
@@ -478,22 +546,22 @@
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="10 of 13: User permission">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/jodoo%20User%20Permission%20Mock%20Up.png" alt="User permission settings in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">10 / 13</span><h3>User permission</h3><p>Decide who can see and edit what, right down to the field.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="11 of 13: Automated approval &amp; handover workflow">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20Workflow%20Mock%20Up.png" alt="Automated approval and handover workflow in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">11 / 13</span><h3>Automated approval &amp; handover workflow</h3><p>Requests route, get approved, and hand over without anyone chasing.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="12 of 13: E-signature">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/Jodoo%20E%20Signature%20Mock%20Up.png" alt="Electronic signature capture in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">12 / 13</span><h3>E-signature</h3><p>Capture a signed sign-off right inside the record.</p></figcaption>
             </figure>
 
             <figure class="slide" role="group" aria-roledescription="slide" aria-label="13 of 13: Location tagging">
-              <div class="imgbox"><span class="tag">Feature</span><span class="dim">screenshot</span></div>
+              <div class="slide-media"><img src="asset/jodoo%20Location%20Tagging%20Mock%20Up.png" alt="GPS location tagging in Jodoo" loading="lazy" decoding="async"></div>
               <figcaption><span class="num">13 / 13</span><h3>Location tagging</h3><p>Stamp entries with the GPS location captured from the field.</p></figcaption>
             </figure>
 
@@ -501,9 +569,9 @@
         </div>
 
         <div class="slider-controls">
-          <button class="slider-arrow" id="featPrev" type="button" aria-label="Previous feature">&lsaquo;</button>
-          <div class="slider-dots" id="featDots" role="tablist" aria-label="Choose feature"></div>
-          <button class="slider-arrow" id="featNext" type="button" aria-label="Next feature">&rsaquo;</button>
+          <button class="slider-arrow" data-prev type="button" aria-label="Previous feature">&lsaquo;</button>
+          <div class="slider-dots" data-dots role="tablist" aria-label="Choose feature"></div>
+          <button class="slider-arrow" data-next type="button" aria-label="Next feature">&rsaquo;</button>
         </div>
       </div>
     </div>
@@ -520,6 +588,24 @@
           <img src="asset/jodoo_logo.png" alt="Jodoo — no-code app platform" loading="lazy">
           <span>Visit jodoo.com</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECURITY ===== -->
+  <section id="security">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Security</span>
+        <h2>Your data, independently <em>certified.</em></h2>
+        <p class="lead">Your system runs on Jodoo's cloud — audited and certified to international standards for security and privacy. The same infrastructure already trusted by tens of thousands of companies.</p>
+      </div>
+
+      <div class="sec-logos reveal">
+        <div class="sec-logo"><img src="asset/Jodoo%20AICPA%20Logo.png" alt="AICPA SOC" loading="lazy" decoding="async"><span>SOC 2 &middot; AICPA SOC</span></div>
+        <div class="sec-logo"><img src="asset/Jodoo%20ISO27001%20Logo.png" alt="ISO/IEC 27001" loading="lazy" decoding="async"><span>ISO/IEC 27001 certified</span></div>
+        <div class="sec-logo"><img src="asset/Jodoo%20General%20Data%20Protection%20Logo.png" alt="GDPR" loading="lazy" decoding="async"><span>GDPR compliant</span></div>
+        <div class="sec-logo"><img src="asset/Jodoo%20Security%20Vanta.png" alt="Vanta" loading="lazy" decoding="async"><span>Continuous monitoring by Vanta</span></div>
       </div>
     </div>
   </section>
@@ -589,6 +675,7 @@
       <div class="foot-col">
         <h5>Explore</h5>
         <a href="#build">System</a>
+        <a href="#security">Security</a>
         <a href="fabrication.html">Fabrication</a>
         <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
         <a href="pitch-deck.html">About us</a>
@@ -658,72 +745,74 @@
     els.forEach(function(e){ io.observe(e); });
   })();
 
-  /* feature slider */
+  /* sliders — showcase + feature carousel (any element with [data-slider]) */
   (function(){
-    var root = document.getElementById('featSlider');
-    if (!root) return;
-    var track = document.getElementById('featTrack');
-    var slides = Array.prototype.slice.call(track.children);
-    var n = slides.length;
-    if (!n) return;
-    var prev = document.getElementById('featPrev');
-    var next = document.getElementById('featNext');
-    var dotsWrap = document.getElementById('featDots');
-    var i = 0;
-
-    var dots = slides.map(function(_, idx){
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('role', 'tab');
-      b.setAttribute('aria-label', 'Feature ' + (idx + 1));
-      b.addEventListener('click', function(){ go(idx); });
-      dotsWrap.appendChild(b);
-      return b;
-    });
-
-    function update(){
-      track.style.transform = 'translateX(' + (-i * 100) + '%)';
-      dots.forEach(function(d, idx){ d.setAttribute('aria-selected', idx === i ? 'true' : 'false'); });
-      slides.forEach(function(s, idx){ s.setAttribute('aria-hidden', idx === i ? 'false' : 'true'); });
-    }
-    var DELAY = 4500;
-    var timer = null;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
-    function start(){ if (reduce || n < 2) return; stop(); timer = setInterval(function(){ go(i + 1); }, DELAY); }
+    document.querySelectorAll('[data-slider]').forEach(function(root){
+      var track = root.querySelector('[data-track]');
+      if (!track) return;
+      var slides = Array.prototype.slice.call(track.children);
+      var n = slides.length;
+      if (!n) return;
+      var prev = root.querySelector('[data-prev]');
+      var next = root.querySelector('[data-next]');
+      var dotsWrap = root.querySelector('[data-dots]');
+      var delay = parseInt(root.getAttribute('data-autoplay'), 10) || 0;
+      var i = 0, timer = null;
 
-    // go() moves to a slide; if autoplay is running, restart its clock so we
-    // don't jump again immediately after the user just navigated.
-    function go(idx){ i = (idx + n) % n; update(); if (timer) start(); }
+      var dots = [];
+      if (dotsWrap){
+        dots = slides.map(function(_, idx){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+          b.addEventListener('click', function(){ go(idx); });
+          dotsWrap.appendChild(b);
+          return b;
+        });
+      }
 
-    if (next) next.addEventListener('click', function(){ go(i + 1); });
-    if (prev) prev.addEventListener('click', function(){ go(i - 1); });
+      function update(){
+        track.style.transform = 'translateX(' + (-i * 100) + '%)';
+        dots.forEach(function(d, idx){ d.setAttribute('aria-selected', idx === i ? 'true' : 'false'); });
+        slides.forEach(function(s, idx){ s.setAttribute('aria-hidden', idx === i ? 'false' : 'true'); });
+      }
+      function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+      function start(){ if (reduce || delay <= 0 || n < 2) return; stop(); timer = setInterval(function(){ go(i + 1); }, delay); }
+      // go() moves to a slide; if autoplay is running, restart its clock so we
+      // don't advance again right after a manual move.
+      function go(idx){ i = (idx + n) % n; update(); if (timer) start(); }
 
-    root.addEventListener('keydown', function(e){
-      if (e.key === 'ArrowRight'){ go(i + 1); }
-      else if (e.key === 'ArrowLeft'){ go(i - 1); }
+      if (next) next.addEventListener('click', function(){ go(i + 1); });
+      if (prev) prev.addEventListener('click', function(){ go(i - 1); });
+
+      root.addEventListener('keydown', function(e){
+        if (e.key === 'ArrowRight'){ go(i + 1); }
+        else if (e.key === 'ArrowLeft'){ go(i - 1); }
+      });
+
+      var x0 = null;
+      root.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+      root.addEventListener('touchend', function(e){
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40){ go(dx < 0 ? i + 1 : i - 1); }
+        x0 = null;
+      });
+
+      // pause autoplay while hovering or focused inside the slider, or when the
+      // tab is hidden; resume afterwards.
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop);
+      root.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', function(){ if (document.hidden){ stop(); } else { start(); } });
+
+      update();
+      start();
     });
-
-    var x0 = null;
-    root.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
-    root.addEventListener('touchend', function(e){
-      if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40){ go(dx < 0 ? i + 1 : i - 1); }
-      x0 = null;
-    });
-
-    // pause autoplay while the user is hovering or focused inside the slider,
-    // or when the tab is hidden; resume afterwards.
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
-    root.addEventListener('focusin', stop);
-    root.addEventListener('focusout', start);
-    document.addEventListener('visibilitychange', function(){ if (document.hidden){ stop(); } else { start(); } });
-
-    update();
-    start();
   })();
 </script>
 </body>
