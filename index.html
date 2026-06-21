@@ -252,6 +252,30 @@
   .who-grid{display:grid; grid-template-columns:1fr .8fr; gap:56px; align-items:center}
   @media(max-width:900px){.who-grid{grid-template-columns:1fr; gap:32px}}
 
+  /* ---------- about me ---------- */
+  .about{border-top:1px solid var(--rule)}
+  .about-grid{display:grid; grid-template-columns:auto 1fr; gap:clamp(32px,5vw,64px); align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr; gap:28px}}
+  .about-photo{display:flex; flex-direction:column; align-items:flex-start; gap:14px}
+  .about-photo img{
+    width:clamp(148px,22vw,196px); aspect-ratio:4/5; object-fit:cover; object-position:center 22%;
+    border-radius:22px; background:var(--surface-2); box-shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+  .about-name{font-size:15px; font-weight:600; color:var(--ink); line-height:1.3}
+  .about-name small{display:block; font-size:13px; font-weight:400; color:var(--ink-3); margin-top:3px; letter-spacing:0}
+  .about-copy{max-width:640px}
+  .about-copy h2{margin-top:6px}
+  .about-copy .lead{margin-top:18px}
+  .about-copy .body{margin-top:20px; max-width:none}
+  .about-copy .body + .body{margin-top:14px}
+  .spec-label{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3); margin-top:26px}
+  .specialties{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+  .specialties span{
+    font-size:13px; font-weight:500; color:var(--ink-2);
+    background:var(--surface-2); border:1px solid var(--rule);
+    padding:6px 13px; border-radius:980px; letter-spacing:-0.01em;
+  }
+
   /* ---------- dark band (who it's for) ---------- */
   .band-dark{background:var(--dark); color:var(--paper-on-dark); border-radius:var(--r-tile); padding:clamp(40px,7vw,96px); }
   .band-dark .eyebrow{color:#6FB4FF}
@@ -411,6 +435,7 @@
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#build">System</a>
+      <a href="#about">About</a>
       <a href="fabrication.html">Fabrication</a>
       <span class="nav-drop" data-drop>
         <a href="blog/index.html" aria-haspopup="true" aria-expanded="false">Field notes</a>
@@ -645,6 +670,42 @@
     </div>
   </section>
 
+  <!-- ===== ABOUT ME ===== -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="about-grid reveal">
+        <div class="about-photo">
+          <!-- To use your casual photo (with your dog), replace asset/founder_photo.png with it,
+               or drop the new file in asset/ and point this src at it. Keep it portrait for the modest crop. -->
+          <img src="asset/founder_photo.png" alt="Ronnie Yap, founder of Velo Working" loading="lazy" decoding="async">
+          <span class="about-name">Ronnie Yap<small>Founder · Velo Working</small></span>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">About me</span>
+          <h2>Hi, I'm Ronnie — <em>15 years</em> on the operations floor.</h2>
+          <p class="lead">For 15 years I've worked in project management and operations, helping companies build the systems their project teams actually run on.</p>
+
+          <p class="spec-label">I specialise in</p>
+          <div class="specialties" aria-label="Specialisations">
+            <span>Project management</span>
+            <span>ERP</span>
+            <span>Logistics</span>
+            <span>Inventory</span>
+            <span>Procurement</span>
+            <span>Safety &amp; permit</span>
+          </div>
+
+          <p class="body">Along the way, I kept seeing the same thing: companies spending far too much on systems that should be simple. They turn out rigid and awkward to use, so the people on the ground quietly refuse them. A system is meant to help the people doing the real work — too often it just piles more burden onto them.</p>
+          <p class="body">That's why I went independent. Today I build these systems as a freelancer — affordable, and shaped around how the ground actually works. If that's the kind of help you need, hire someone who's been there.</p>
+
+          <div class="btns">
+            <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20a%20problem%20in%20our%20operations." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROOF (placeholder / TODO) ===== -->
   <section>
     <div class="wrap">
@@ -699,6 +760,7 @@
       <div class="foot-col">
         <h5>Explore</h5>
         <a href="#build">System</a>
+        <a href="#about">About</a>
         <a href="#security">Security</a>
         <a href="fabrication.html">Fabrication</a>
         <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
