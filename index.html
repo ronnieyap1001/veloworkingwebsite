@@ -295,10 +295,54 @@
   .partner-logo span{font-weight:500}
   .partner-logo span::after{content:" \2197"; margin-left:2px; color:var(--ink-3)}
 
-  /* ---------- proof ---------- */
-  .logos{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:32px}
-  @media(max-width:760px){.logos{grid-template-columns:repeat(2,1fr)}}
-  .logobox{background:var(--surface-2); border:1px dashed #C4C4CC; border-radius:14px; height:72px; display:flex; align-items:center; justify-content:center; color:var(--ink-3); font-size:12px}
+  /* ---------- proof / case studies ---------- */
+  .cases{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:40px}
+  @media(max-width:860px){.cases{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.cases{grid-template-columns:1fr}}
+  .case-card{
+    display:flex; flex-direction:column; gap:18px; text-decoration:none;
+    background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile);
+    padding:26px 24px 22px; color:var(--ink); cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .case-card:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.09); border-color:var(--ink-3)}
+  .case-card:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.case-card{transition:none} .case-card:hover{transform:none}}
+  .case-logo{display:flex; align-items:center; height:44px}
+  .case-logo img{max-height:44px; max-width:158px; width:auto; object-fit:contain}
+  .case-metric{margin-top:auto; font-size:21px; font-weight:600; letter-spacing:-0.025em; line-height:1.18; color:var(--ink)}
+  .case-metric small{display:block; margin-top:5px; font-size:13px; font-weight:400; letter-spacing:0; color:var(--ink-3)}
+  .case-chips{display:flex; flex-wrap:wrap; gap:6px}
+  .case-chip{font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--link); background:rgba(0,113,227,.08); padding:4px 10px; border-radius:980px}
+  .case-view{font-size:13px; font-weight:500; color:var(--link)}
+  .case-view::after{content:" \203A"}
+  .cases-note{margin-top:18px; font-size:13px; color:var(--ink-3); max-width:var(--read)}
+
+  /* ---------- case-study modal ---------- */
+  .cs-modal{position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); opacity:0; visibility:hidden; transition:opacity .22s ease, visibility .22s}
+  .cs-modal.open{opacity:1; visibility:visible}
+  .cs-dialog{position:relative; width:100%; max-width:640px; max-height:90vh; overflow:auto; background:var(--surface); border-radius:var(--r-tile); box-shadow:0 30px 80px rgba(0,0,0,.32); transform:translateY(14px) scale(.985); transition:transform .22s ease}
+  .cs-modal.open .cs-dialog{transform:none}
+  @media(prefers-reduced-motion:reduce){.cs-modal,.cs-dialog{transition:none}}
+  .cs-banner{aspect-ratio:16/9; background:var(--surface-2); overflow:hidden}
+  .cs-banner img{width:100%; height:100%; object-fit:cover; display:block}
+  .cs-close{position:absolute; top:14px; right:14px; z-index:3; width:36px; height:36px; border-radius:50%; border:0; background:rgba(255,255,255,.92); color:var(--ink); font-size:22px; line-height:1; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 2px 10px rgba(0,0,0,.18)}
+  .cs-close:hover{background:#fff}
+  .cs-close:focus-visible{outline:2px solid var(--link); outline-offset:2px}
+  .cs-body{padding:clamp(24px,4vw,38px)}
+  .cs-logo{display:block; height:32px; margin-bottom:16px}
+  .cs-logo img{height:32px; width:auto; max-width:190px; object-fit:contain}
+  .cs-title{font-size:clamp(23px,3vw,30px); font-weight:600; letter-spacing:-0.03em; line-height:1.1}
+  .cs-company{font-size:14px; color:var(--ink-3); margin-top:4px}
+  .cs-scenario{margin-top:26px}
+  .cs-scenario h4{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:14px; padding-bottom:9px; border-bottom:1px solid var(--rule)}
+  .cs-points{list-style:none; display:flex; flex-direction:column; gap:11px}
+  .cs-points li{position:relative; padding-left:24px; font-size:15px; line-height:1.5; color:var(--ink-2)}
+  .cs-points li::before{content:""; position:absolute; left:3px; top:8px; width:6px; height:6px; border-radius:50%; background:var(--link)}
+  .cs-points li b{color:var(--ink); font-weight:600}
+  .cs-foot{margin-top:30px; padding-top:22px; border-top:1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  .cs-foot .pill{font-size:15px; padding:10px 20px}
+  .cs-source{font-size:12px; color:var(--ink-3)}
 
   /* ---------- feature slider ---------- */
   .slider{margin-top:48px}
@@ -674,31 +718,104 @@
     </div>
   </section>
 
-  <!-- ===== PROOF (placeholder / TODO) ===== -->
-  <section>
+  <!-- ===== PROOF — case studies from companies running on Jodoo ===== -->
+  <section id="proof">
     <div class="wrap">
       <div class="head reveal">
         <span class="eyebrow">Proof</span>
         <h2>Built, not <em>promised.</em></h2>
+        <p class="lead">These companies run real operations on Jodoo — the same no-code platform I build on. Tap any logo to see the modules they built and the results they measured.</p>
       </div>
 
-      <!-- TODO: replace with real client logos once available — do not fabricate -->
-      <div class="logos reveal">
-        <div class="logobox">client logo</div>
-        <div class="logobox">client logo</div>
-        <div class="logobox">client logo</div>
-        <div class="logobox">client logo</div>
-        <div class="logobox">client logo</div>
+      <!-- Each card opens a summary; without JS it links straight to the full case study. -->
+      <div class="cases reveal">
+
+        <a class="case-card" data-case="kruss" href="https://www.jodoo.com/blog/customer-story-kruss" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/KRUSS%20Logo.png" alt="Krüss" loading="lazy" decoding="async"></span>
+          <span class="case-metric">+25% lead conversion<small>Krüss · Scientific instruments</small></span>
+          <span class="case-chips"><span class="case-chip">Sales / CRM</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="tenneco" href="https://www.jodoo.com/blog/customer-story-tenneco" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/Tenneco%20Logo.svg" alt="Tenneco" loading="lazy" decoding="async"></span>
+          <span class="case-metric">+60% supplier interaction<small>Tenneco · Automotive</small></span>
+          <span class="case-chips"><span class="case-chip">Purchasing</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="ke" href="https://www.jodoo.com/blog/customer-story-ke-electric" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/KE%20Electric%20Logo.png" alt="KE Electric" loading="lazy" decoding="async"></span>
+          <span class="case-metric">&minus;84% material waste<small>KE Electric · Switchgear</small></span>
+          <span class="case-chips"><span class="case-chip">Inventory</span><span class="case-chip">Scheduling</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="siemens" href="https://www.jodoo.com/blog/customer-story-siemens" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/Siemens%20logo.svg" alt="Siemens" loading="lazy" decoding="async"></span>
+          <span class="case-metric">$200K saved / year<small>Siemens · Switchgear production</small></span>
+          <span class="case-chips"><span class="case-chip">Production</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="saic" href="https://www.jodoo.com/blog/customer-story-saic-volkswagen" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/SAIC-Motor-Logo.png" alt="SAIC Volkswagen" loading="lazy" decoding="async"></span>
+          <span class="case-metric">65× spare-parts efficiency<small>SAIC Volkswagen · Automotive</small></span>
+          <span class="case-chips"><span class="case-chip">TPM</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="fwkk" href="https://www.jodoo.com/blog/customer-story-fwkk" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/fwkk%20logo.png" alt="FWKK" loading="lazy" decoding="async"></span>
+          <span class="case-metric">80% faster repairs<small>FWKK · Manufacturing</small></span>
+          <span class="case-chips"><span class="case-chip">Equipment Mgmt</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="efort" href="https://www.jodoo.com/blog/customer-story-efort" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/EFORT%20Logo.png" alt="EFORT" loading="lazy" decoding="async"></span>
+          <span class="case-metric">&minus;95% software cost<small>EFORT · Industrial robotics</small></span>
+          <span class="case-chips"><span class="case-chip">Quality</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="goldwind" href="https://www.jodoo.com/blog/customer-story-goldwind" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/Goldwind%20Logo.png" alt="Goldwind" loading="lazy" decoding="async"></span>
+          <span class="case-metric">$140K saved<small>Goldwind · Wind energy</small></span>
+          <span class="case-chips"><span class="case-chip">EHS</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
+        <a class="case-card" data-case="basf" href="https://www.jodoo.com/blog/customer-story-basf" target="_blank" rel="noopener">
+          <span class="case-logo"><img src="asset/case_study/BASF%20Logo.png" alt="BASF" loading="lazy" decoding="async"></span>
+          <span class="case-metric">100+ apps · 10+ regions<small>BASF · Chemicals</small></span>
+          <span class="case-chips"><span class="case-chip">EHS</span></span>
+          <span class="case-view">View case study</span>
+        </a>
+
       </div>
 
-      <!-- TODO: replace with a real client quote once available — do not fabricate -->
-      <div class="tile reveal" style="margin-top:12px; max-width:760px">
-        <span class="tag" style="align-self:flex-start; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--link); background:rgba(0,113,227,.08); padding:4px 10px; border-radius:980px">Testimonial — to add</span>
-        <p style="font-size:21px; color:var(--ink); letter-spacing:-0.022em; line-height:1.4; max-width:none">"A short, specific client quote goes here — what changed, in their words."</p>
-        <p class="cap">Name · Role · Company</p>
-      </div>
+      <p class="cases-note reveal">Case studies published by Jodoo. Velo Working configures systems on the same platform — and the platform account stays in your company name.</p>
     </div>
   </section>
+
+  <!-- ===== PROOF — case-study modal (populated by JS) ===== -->
+  <div class="cs-modal" id="csModal" role="dialog" aria-modal="true" aria-labelledby="csTitle">
+    <div class="cs-dialog" role="document">
+      <div class="cs-banner"><img id="csBanner" src="" alt=""></div>
+      <button class="cs-close" id="csClose" type="button" aria-label="Close case study">&times;</button>
+      <div class="cs-body">
+        <span class="cs-logo"><img id="csLogo" src="" alt=""></span>
+        <h3 class="cs-title" id="csTitle"></h3>
+        <p class="cs-company" id="csIndustry"></p>
+        <div id="csScenarios"></div>
+        <div class="cs-foot">
+          <a class="pill pill-primary" id="csLink" href="#" target="_blank" rel="noopener">Read the full case study&nbsp;&#8599;</a>
+          <span class="cs-source">Case study published by Jodoo</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== FINAL CTA ===== -->
   <section class="final">
@@ -867,6 +984,219 @@
       update();
       start();
     });
+  })();
+
+  /* proof — case-study modal */
+  (function(){
+    var modal = document.getElementById('csModal');
+    if (!modal) return;
+    var dialog   = modal.querySelector('.cs-dialog');
+    var banner   = document.getElementById('csBanner');
+    var logo     = document.getElementById('csLogo');
+    var titleEl  = document.getElementById('csTitle');
+    var industry = document.getElementById('csIndustry');
+    var scenEl   = document.getElementById('csScenarios');
+    var linkEl   = document.getElementById('csLink');
+    var closeBtn = document.getElementById('csClose');
+    var lastFocus = null;
+
+    /* Real figures, sourced from the case studies published by Jodoo (see each url). */
+    var CASES = {
+      kruss:{
+        name:"Krüss", industry:"Scientific instruments manufacturer · surface science",
+        logo:"asset/case_study/KRUSS%20Logo.png",
+        poster:"asset/case_study/CRM%20Case%20Study%20-%20KRUSS.png",
+        url:"https://www.jodoo.com/blog/customer-story-kruss",
+        scenarios:[
+          {head:"Sales / CRM", points:[
+            "Lead conversion up <b>25%</b> with a custom pipeline and lead-source tagging",
+            "Business-process efficiency up <b>50%</b> across pre- and post-sales",
+            "Marketing spend down <b>30%</b>, with accurate per-campaign ROI",
+            "Transparent per-order cost tracking for tighter margin control"
+          ]}
+        ]
+      },
+      tenneco:{
+        name:"Tenneco", industry:"Automotive — exhaust &amp; emission systems",
+        logo:"asset/case_study/Tenneco%20Logo.svg",
+        poster:"asset/case_study/Purchasing%20Case%20study%20-%20Tenneco.png",
+        url:"https://www.jodoo.com/blog/customer-story-tenneco",
+        scenarios:[
+          {head:"Purchasing &amp; Supplier Management", points:[
+            "Supplier interaction up <b>60%</b> on one shared platform",
+            "Digitalisation up <b>50%</b> across six factories",
+            "Operations streamlined <b>50%</b> with ~40 cloud apps",
+            "Standardised incoming inspection replaces scattered Excel — records are instant and mobile"
+          ]}
+        ]
+      },
+      ke:{
+        name:"KE Electric", industry:"High-end electrical switchgear manufacturer",
+        logo:"asset/case_study/KE%20Electric%20Logo.png",
+        poster:"asset/case_study/Inventory%20Case%20Study.png",
+        url:"https://www.jodoo.com/blog/customer-story-ke-electric",
+        scenarios:[
+          {head:"Warehouse &amp; Inventory", points:[
+            "Copper-busbar material waste cut <b>84%</b>",
+            "Obsolete stock value down <b>65%</b>, freeing tied-up capital",
+            "Full material lifecycle tracked with worker accountability"
+          ]},
+          {head:"Frontline Scheduling", points:[
+            "Production-reporting time cut <b>95%</b> — 40+ man-hours a month down to under 2",
+            "Anomaly response from hours or days to <b>minutes</b> via mobile Andon alerts",
+            "Safety-vest compliance reached <b>100%</b>, up from under 50%"
+          ]}
+        ]
+      },
+      siemens:{
+        name:"Siemens", industry:"High-voltage switchgear production",
+        logo:"asset/case_study/Siemens%20logo.svg",
+        poster:"asset/case_study/Production%20Case%20Study%20-%20Siemens.png",
+        url:"https://www.jodoo.com/blog/customer-story-siemens",
+        scenarios:[
+          {head:"Production", points:[
+            "<b>45</b> custom apps built in-house — a <b>98%</b> success rate",
+            "<b>$200,000</b> saved per year vs. customising core systems",
+            "<b>2.5 hours</b> saved per employee, every day",
+            "Real-time project visibility heads off delivery risk"
+          ]}
+        ]
+      },
+      saic:{
+        name:"SAIC Volkswagen", industry:"New-energy vehicle manufacturer",
+        logo:"asset/case_study/SAIC-Motor-Logo.png",
+        poster:"asset/case_study/TPM%20Case%20Study.png",
+        url:"https://www.jodoo.com/blog/customer-story-saic-volkswagen",
+        scenarios:[
+          {head:"TPM — Total Productive Maintenance", points:[
+            "Equipment-fault handling <b>50%</b> faster",
+            "Spare-parts management <b>65&times;</b> more efficient with mobile inventory",
+            "Problem-resolution cycle <b>50%</b> faster, from proposal to fix",
+            "<b>17</b> connected systems and <b>8,000+</b> active users"
+          ]}
+        ]
+      },
+      fwkk:{
+        name:"FWKK", industry:"Asia's largest swimwear &amp; sports-equipment manufacturer",
+        logo:"asset/case_study/fwkk%20logo.png",
+        poster:"asset/case_study/Equipment%20Mgmt%20Case%20Study.png",
+        url:"https://www.jodoo.com/blog/customer-story-fwkk",
+        scenarios:[
+          {head:"Equipment Management", points:[
+            "Machine-repair response <b>80%</b> faster with QR-code requests",
+            "Manual data entry cut <b>50%</b>",
+            "Real-time visibility across <b>3 countries</b>",
+            "Automated repair tracking feeds maintenance analytics"
+          ]}
+        ]
+      },
+      efort:{
+        name:"EFORT", industry:"Industrial robotics · 19 global subsidiaries",
+        logo:"asset/case_study/EFORT%20Logo.png",
+        poster:"asset/case_study/Quality%20Case%20Study%20-%20Efort.png",
+        url:"https://www.jodoo.com/blog/customer-story-efort",
+        scenarios:[
+          {head:"Quality Management", points:[
+            "Development &amp; operating cost down <b>95%</b>",
+            "A new quality module live in <b>1–2 days</b>, not months",
+            "<b>Zero</b> maintenance cost for updates and iterations",
+            "Consistent QMS and audit trail across every subsidiary"
+          ]}
+        ]
+      },
+      goldwind:{
+        name:"Goldwind", industry:"Global wind-energy leader · 29 countries",
+        logo:"asset/case_study/Goldwind%20Logo.png",
+        poster:"asset/case_study/EHS%20Case%20Study-Goldwind.png",
+        url:"https://www.jodoo.com/blog/customer-story-goldwind",
+        scenarios:[
+          {head:"EHS — Environment, Health &amp; Safety", points:[
+            "<b>$140,000</b> saved in system development and maintenance",
+            "Hazard-rectification rate reached <b>99.8%</b>",
+            "Permit-to-Work approval cut <b>95%</b> — 2+ hours down to 3–5 minutes",
+            "Safety-information flow up <b>30%</b>; <b>6,500+</b> daily users"
+          ]}
+        ]
+      },
+      basf:{
+        name:"BASF", industry:"The world's leading chemical company",
+        logo:"asset/case_study/BASF%20Logo.png",
+        poster:"asset/case_study/EHS%20Case%20Study-BASF.png",
+        url:"https://www.jodoo.com/blog/customer-story-basf",
+        scenarios:[
+          {head:"EHS &amp; Multi-site Collaboration", points:[
+            "<b>3+ months</b> cut from every deployment",
+            "<b>100+</b> custom apps live in one workspace",
+            "<b>10+</b> regions streamlined with a replicate-and-customise rollout",
+            "&ldquo;One Worker, One Profile&rdquo; consolidates certs and contractor records"
+          ]}
+        ]
+      }
+    };
+
+    function renderScenarios(scenarios){
+      scenEl.innerHTML = '';
+      scenarios.forEach(function(s){
+        var wrap = document.createElement('div');
+        wrap.className = 'cs-scenario';
+        var h = document.createElement('h4');
+        h.innerHTML = s.head;
+        var ul = document.createElement('ul');
+        ul.className = 'cs-points';
+        s.points.forEach(function(p){
+          var li = document.createElement('li');
+          li.innerHTML = p;
+          ul.appendChild(li);
+        });
+        wrap.appendChild(h);
+        wrap.appendChild(ul);
+        scenEl.appendChild(wrap);
+      });
+    }
+
+    function openCase(id, trigger){
+      var d = CASES[id];
+      if (!d) return;
+      lastFocus = trigger || document.activeElement;
+      banner.src = d.poster;
+      banner.alt = d.name + ' — ' + d.scenarios[0].head.replace(/&amp;/g,'&') + ' case study on Jodoo';
+      logo.src = d.logo; logo.alt = d.name;
+      titleEl.textContent = d.name;
+      industry.innerHTML = d.industry;
+      renderScenarios(d.scenarios);
+      linkEl.href = d.url;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+
+    function closeCase(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function onKey(e){
+      if (e.key === 'Escape'){ closeCase(); return; }
+      if (e.key === 'Tab'){
+        var f = dialog.querySelectorAll('a[href], button:not([disabled])');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    }
+
+    document.querySelectorAll('[data-case]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        openCase(el.getAttribute('data-case'), el);
+      });
+    });
+    closeBtn.addEventListener('click', closeCase);
+    modal.addEventListener('click', function(e){ if (e.target === modal) closeCase(); });
   })();
 </script>
 </body>
