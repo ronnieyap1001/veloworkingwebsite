@@ -196,30 +196,18 @@
   .hero h1{margin-bottom:24px; font-size:clamp(30px,4.4vw,50px)}
   .hero-visual{display:block; width:100%; max-width:var(--maxw); height:auto; margin:clamp(36px,5vw,64px) auto 0; background:transparent; border:0}
 
-  /* ---------- laptop mockup (CSS-drawn MacBook with dynamic video screen) ---------- */
-  .laptop{width:100%; max-width:960px; margin:clamp(36px,5vw,64px) auto 0}
-  .laptop-lid{
-    position:relative; background:#0b0b0d; border-radius:18px;
-    padding:12px 12px 0; box-shadow:0 24px 60px -24px rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.12);
-  }
-  .laptop-cam{
-    position:absolute; top:6px; left:50%; transform:translateX(-50%);
-    width:6px; height:6px; border-radius:50%; background:#26262b;
+  /* ---------- laptop mockup (real MacBook Pro frame with a dynamic video screen) ---------- */
+  /* Frame: asset/macbook-frame.png. Screen coords are tuned to this exact image. */
+  .laptop{
+    position:relative; width:100%; max-width:1000px; margin:clamp(36px,5vw,64px) auto 0;
+    aspect-ratio:1208/700;
+    background:url("asset/macbook-frame.png") center/contain no-repeat;
   }
   .laptop-screen{
-    position:relative; aspect-ratio:16/10; border-radius:7px; overflow:hidden;
-    background:#000;
+    position:absolute; top:6.7143%; left:11.8377%; width:76.4073%; height:82.4286%;
+    overflow:hidden; background:#000;
   }
-  .laptop-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
-  .laptop-base{
-    position:relative; height:14px; margin:0 auto; width:104%; transform:translateX(-1.9%);
-    background:linear-gradient(#d6d7db,#aeb0b6); border-radius:0 0 12px 12px;
-    box-shadow:0 14px 24px -12px rgba(0,0,0,.4);
-  }
-  .laptop-hinge{
-    position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:14%; height:6px; background:#9a9ca2; border-radius:0 0 7px 7px;
-  }
+  .laptop-video{width:100%; height:100%; object-fit:cover; display:block}
 
   /* ---------- image placeholder box ---------- */
   .imgbox{
@@ -446,20 +434,17 @@
         </div>
       </div>
       <!-- Laptop mockup with a dynamic video screen.
-           To change the video: drop your file in asset/ and update the <source> paths below.
-           A .webm + .mp4 pair gives the best size/compatibility. The poster shows before the video loads. -->
+           Frame: asset/macbook-frame.png. To set the screen video, drop your file in asset/
+           (e.g. asset/hero-demo.mp4, plus an optional .webm) — the <source> paths below already point at it.
+           Until a video exists, the poster (asset/hero-screen.png) shows the dashboard. -->
       <div class="laptop reveal" role="img" aria-label="A production monitoring dashboard built on Jodoo">
-        <div class="laptop-lid">
-          <span class="laptop-cam"></span>
-          <div class="laptop-screen">
-            <video class="laptop-video" autoplay muted loop playsinline preload="metadata"
-                   poster="asset/Project%20Management%20Jodoo%20Mock%20Up.png">
-              <source src="asset/hero-demo.webm" type="video/webm">
-              <source src="asset/hero-demo.mp4" type="video/mp4">
-            </video>
-          </div>
+        <div class="laptop-screen">
+          <video class="laptop-video" autoplay muted loop playsinline preload="metadata"
+                 poster="asset/hero-screen.png">
+            <source src="asset/hero-demo.webm" type="video/webm">
+            <source src="asset/hero-demo.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="laptop-base"><span class="laptop-hinge"></span></div>
       </div>
     </div>
   </section>
