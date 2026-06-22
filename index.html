@@ -151,7 +151,8 @@
   .nav-links a:hover{color:var(--ink-2)}
   .nav-cta{margin-left:4px}
   /* dropdown */
-  .nav-drop{position:relative}
+  .nav-drop{position:relative; display:flex; align-items:center}
+  .nav-drop > a{display:inline-flex; align-items:center}
   .nav-drop > a::after{content:""; display:inline-block; margin-left:6px; width:6px; height:6px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:translateY(-2px) rotate(45deg)}
   .nav-menu{
     position:absolute; top:30px; left:-12px; min-width:260px;
@@ -182,7 +183,7 @@
     .nav-links > a, .nav-drop{border-bottom:1px solid var(--rule)}
     .nav-links > a{padding:14px 0; font-size:16px}
     .nav-cta{margin:14px 0 0; align-self:flex-start}
-    .nav-drop{position:static}
+    .nav-drop{position:static; display:block}
     .nav-drop > a{display:block; padding:14px 0; font-size:16px}
     .nav-menu{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; border:0; background:none; padding:0 0 12px; min-width:0; display:none}
     .nav-drop.open .nav-menu{display:block}
