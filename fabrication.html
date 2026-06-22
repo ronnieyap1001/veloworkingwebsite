@@ -89,7 +89,8 @@
   .nav-links a:hover{color:var(--ink-2)}
   .nav-links a.is-current{color:var(--link); font-weight:500}
   .nav-cta{margin-left:4px}
-  .nav-drop{position:relative}
+  .nav-drop{position:relative; display:flex; align-items:center}
+  .nav-drop > a{display:inline-flex; align-items:center}
   .nav-drop > a::after{content:""; display:inline-block; margin-left:6px; width:6px; height:6px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:translateY(-2px) rotate(45deg)}
   .nav-menu{position:absolute; top:30px; left:-12px; min-width:260px; background:rgba(251,251,253,.97); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border:1px solid var(--rule); border-radius:14px; padding:6px; box-shadow:0 8px 28px rgba(0,0,0,.08); opacity:0; visibility:hidden; transform:translateY(-4px); transition:opacity .15s ease, transform .15s ease, visibility .15s; list-style:none}
   .nav-drop:hover .nav-menu, .nav-drop:focus-within .nav-menu, .nav-drop.open .nav-menu{opacity:1; visibility:visible; transform:none}
@@ -106,7 +107,7 @@
     .nav-links > a, .nav-drop{border-bottom:1px solid var(--rule)}
     .nav-links > a{padding:14px 0; font-size:16px}
     .nav-cta{margin:14px 0 0; align-self:flex-start}
-    .nav-drop{position:static}
+    .nav-drop{position:static; display:block}
     .nav-drop > a{display:block; padding:14px 0; font-size:16px}
     .nav-menu{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; border:0; background:none; padding:0 0 12px; min-width:0; display:none}
     .nav-drop.open .nav-menu{display:block}
