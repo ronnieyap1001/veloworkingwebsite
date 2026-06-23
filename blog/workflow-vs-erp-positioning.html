@@ -582,6 +582,9 @@ tbody tr:hover td.cell-con { background: rgba(214, 64, 69, 0.14); }
   html { scroll-behavior: auto; }
 }
 </style>
+<!-- Shared site navigation (single source of truth: nav.css + nav.js) -->
+<link rel="stylesheet" href="/nav.css">
+<script src="/nav.js" defer></script>
 </head>
 <body>
 
@@ -595,35 +598,8 @@ tbody tr:hover td.cell-con { background: rgba(214, 64, 69, 0.14); }
 </svg>
 
 <!-- NAV -->
-<nav class="nav" id="nav" aria-label="Primary">
-  <div class="nav__inner">
-    <a href="../index.html" class="nav__brand" aria-label="Velo Working — home">
-      <svg class="nav__brand-svg" aria-hidden="true"><use href="#velo-logo"/></svg>
-    </a>
-    <ul class="nav__links" id="navLinks">
-      <li><a href="../index.html#partner" class="nav__link nav__link--accent">Jodoo Partner</a></li>
-      <li><a href="../index.html#approach" class="nav__link">Approach</a></li>
-      <li><a href="../index.html#modules" class="nav__link">Modules</a></li>
-      <li><a href="../fabrication.html" class="nav__link">Fabrication</a></li>
-      <li class="nav__item--has-children" data-dropdown>
-        <a href="index.html" class="nav__link nav__link--caret" aria-haspopup="true" aria-expanded="false">Blog</a>
-        <ul class="nav__submenu" role="menu">
-          <li><a href="three-categories-of-business-software.html" class="nav__sublink" role="menuitem">Three categories of business software<small>Cloud ERP &middot; Low-Code &middot; No-Code</small></a></li>
-          <li><a href="workflow-vs-erp-positioning.html" class="nav__sublink" role="menuitem">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
-          <li><a href="operational-tasks-first-principles.html" class="nav__sublink" role="menuitem">Operational tasks at first principles<small>Value &times; Effort</small></a></li>
-          <li><a href="positioning-of-jodoo.html" class="nav__sublink" role="menuitem">Positioning of Jodoo<small>Org-chart test</small></a></li>
-          <li><a href="THE%20SME%20DIGITAL%20PARADOX.html" class="nav__sublink" role="menuitem">The SME Digital Paradox<small>Diary &middot; slide deck</small></a></li>
-          <li><a href="index.html" class="nav__sublink nav__sublink--all" role="menuitem">All field notes</a></li>
-        </ul>
-      </li>
-      <li><a href="../assessment/assessment.html" class="nav__link" target="_blank" rel="noopener">Assessment</a></li>
-      <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
-    </ul>
-    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
-    </button>
-  </div>
-</nav>
+<!-- Navigation is injected here from the shared /nav.js (edit the menu there). -->
+<div id="velo-nav"></div>
 
 <main id="top">
 
