@@ -455,38 +455,16 @@
   .reveal.in{opacity:1; transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none}}
 </style>
+<!-- Shared site navigation (single source of truth: nav.css + nav.js) -->
+<link rel="stylesheet" href="/nav.css">
+<script src="/nav.js" defer></script>
 </head>
 <body>
 
 
 <!-- ===== NAV ===== -->
-<header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a href="#top" class="nav-logo" aria-label="Velo Working — home">
-      <img src="asset/velo-logo.svg" alt="Velo Working">
-    </a>
-    <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#build">System</a>
-      <a href="#about">About</a>
-      <a href="fabrication.html">Fabrication</a>
-      <span class="nav-drop" data-drop>
-        <a href="blog/index.html" aria-haspopup="true" aria-expanded="false">Field notes</a>
-        <ul class="nav-menu">
-          <li><a href="blog/three-categories-of-business-software.html">Three categories of business software<small>Cloud ERP · Low-Code · No-Code</small></a></li>
-          <li><a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
-          <li><a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles<small>Value × Effort</small></a></li>
-          <li><a href="blog/positioning-of-jodoo.html">Positioning of Jodoo<small>Org-chart test</small></a></li>
-          <li><a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox<small>Diary · slide deck</small></a></li>
-          <li><a href="blog/index.html" class="all">All field notes</a></li>
-        </ul>
-      </span>
-      <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
-    </button>
-  </div>
-</header>
+<!-- Navigation is injected here from the shared /nav.js (edit the menu there). -->
+<div id="velo-nav"></div>
 
 <main id="top">
 
@@ -498,7 +476,7 @@
         <h1>I help companies build a system for the <em>specific problem</em> in front of them — to capture data, review it easily, approve, update remotely, and work together.</h1>
         <div class="btns">
           <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%20saw%20veloworking.com%20and%20I%27d%20like%20to%20talk%20about%20a%20problem%20in%20our%20operations." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
-          <a href="#build" class="pill pill-ghost">See how it works</a>
+          <a href="ai-quote.html" class="pill pill-ghost">Get an instant quote</a>
         </div>
       </div>
       <!-- Laptop mockup with a dynamic video screen.

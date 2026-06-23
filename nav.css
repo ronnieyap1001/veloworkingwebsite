@@ -1,0 +1,132 @@
+/* ============================================================================
+   Velo Working — shared site navigation (single source of truth).
+
+   This file styles the navigation bar that appears on EVERY page
+   (home, Fabrication, AI quote, Field notes / blog, Assessment).
+   The markup is injected by /nav.js, so to change the menu you only edit
+   nav.js (links/labels) and this file (styling) — once — and every page
+   updates automatically. No more keeping pages in sync by hand.
+
+   Self-contained on purpose: colours and font are hard-coded here so the bar
+   looks identical regardless of the host page's own CSS variables.
+   ============================================================================ */
+
+/* Reserve the bar's height (and match its look) before nav.js runs so the
+   page never jumps and there is no blank flash. */
+#velo-nav {
+  display: block; height: 56px;
+  background: rgba(251, 251, 253, .82);
+  border-bottom: 1px solid #D2D2D7;
+}
+
+.vnav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(251, 251, 253, .82);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid #D2D2D7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+               "Inter", system-ui, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.vnav__in {
+  max-width: 1180px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; gap: 16px;
+}
+
+.vnav__logo { display: inline-flex; align-items: center; color: #1D1D1F; text-decoration: none; flex-shrink: 0; }
+.vnav__logo img { height: 20px; width: auto; display: block; }
+
+.vnav__links { display: flex; gap: 22px; align-items: center; }
+.vnav__links > a,
+.vnav__drop > a {
+  color: #1D1D1F; text-decoration: none; font-size: 14px;
+  letter-spacing: -0.01em; white-space: nowrap;
+}
+.vnav__links > a:hover,
+.vnav__drop > a:hover { color: #6E6E73; }
+.vnav__links a.is-current { color: #0071E3; font-weight: 500; }
+
+/* Blue "Get quote" call-to-action, pinned to the far right. */
+.vnav__cta {
+  margin-left: 4px;
+  background: #0071E3; color: #fff !important;
+  padding: 8px 16px; border-radius: 980px;
+  font-weight: 500; font-size: 14px; line-height: 1;
+  white-space: nowrap; transition: background .15s ease;
+}
+.vnav__cta:hover { background: #0077ED; color: #fff !important; }
+.vnav__cta:focus-visible { outline: 2px solid #0071E3; outline-offset: 3px; }
+
+/* Dropdown (Field notes) */
+.vnav__drop { position: relative; display: flex; align-items: center; }
+.vnav__drop > a { display: inline-flex; align-items: center; }
+.vnav__drop > a::after {
+  content: ""; display: inline-block; margin-left: 6px; width: 6px; height: 6px;
+  border-right: 1.4px solid currentColor; border-bottom: 1.4px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+.vnav__menu {
+  position: absolute; top: 30px; left: -12px; min-width: 260px;
+  background: rgba(251, 251, 253, .97);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid #D2D2D7; border-radius: 14px; padding: 6px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  list-style: none; margin: 0;
+}
+.vnav__drop:hover .vnav__menu,
+.vnav__drop:focus-within .vnav__menu,
+.vnav__drop.is-open .vnav__menu { opacity: 1; visibility: visible; transform: none; }
+.vnav__menu a {
+  display: block; padding: 9px 12px; border-radius: 9px; font-size: 13px;
+  line-height: 1.3; white-space: normal; color: #1D1D1F; text-decoration: none;
+}
+.vnav__menu a small {
+  display: block; font-size: 11px; color: #86868B; margin-top: 2px;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.vnav__menu a:hover { background: rgba(0, 0, 0, .04); }
+.vnav__menu .vnav__menu-all {
+  border-top: 1px solid #D2D2D7; margin-top: 4px; padding-top: 11px;
+  color: #0071E3; font-weight: 500;
+}
+
+/* Mobile hamburger */
+.vnav__toggle {
+  display: none; width: 38px; height: 38px; border: 0; background: none;
+  cursor: pointer; align-items: center; justify-content: center; color: #1D1D1F; flex-shrink: 0;
+}
+.vnav__toggle svg { width: 20px; height: 20px; }
+
+@media (max-width: 980px) {
+  .vnav__toggle { display: inline-flex; }
+  .vnav__links {
+    position: absolute; top: 56px; left: 0; right: 0; display: none;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(251, 251, 253, .98);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid #D2D2D7; padding: 8px 24px 16px;
+  }
+  .vnav.is-open .vnav__links { display: flex; }
+  .vnav__links > a, .vnav__drop { border-bottom: 1px solid #D2D2D7; }
+  .vnav__links > a { padding: 14px 0; font-size: 16px; }
+  .vnav__cta {
+    margin: 14px 0 0; align-self: flex-start; border: 0;
+    padding: 10px 18px; font-size: 15px;
+  }
+  .vnav__drop { position: static; display: block; }
+  .vnav__drop > a { display: block; padding: 14px 0; font-size: 16px; }
+  .vnav__menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: 0; background: none; padding: 0 0 12px;
+    min-width: 0; display: none;
+  }
+  .vnav__drop.is-open .vnav__menu { display: block; }
+  .vnav__menu a { font-size: 14px; padding: 9px 0 9px 12px; }
+}
