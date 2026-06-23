@@ -156,6 +156,7 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
     <p style="margin:0 0 16px"><b>Estimate:</b> ${priceLine}</p>
     <h3 style="margin:0 0 6px">Problem</h3>
     <p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.problem_text)}</p>
+    ${d.expectation ? `<h3 style="margin:0 0 6px">Expectation</h3><p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.expectation)}</p>` : ""}
     <h3 style="margin:0 0 6px">MVP proposal</h3>
     <p style="margin:0 0 16px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
     ${d.assumptions ? `<h3 style="margin:0 0 6px">Assumptions made</h3><p style="margin:0 0 16px">${esc(d.assumptions).replace(/\n/g, "<br>")}</p>` : ""}
@@ -191,15 +192,16 @@ Deno.serve(async (req: Request) => {
   try { payload = await req.json(); } catch { return json({ error: "Invalid request." }, 400, origin); }
 
   const problem = String(payload.problem ?? "").trim();
+  const expectation = String(payload.expectation ?? "").trim();
   const name = String(payload.name ?? "").trim();
   const company = String(payload.company ?? "").trim();
   const phone = String(payload.phone ?? "").trim();
   const email = String(payload.email ?? "").trim();
 
   // Lead-capture gate (mirrors the client-side validation, enforced server-side).
-  if (!name || !company || !phone || !email || !problem)
+  if (!name || !company || !phone || !email || !problem || !expectation)
     return json({ error: "Please complete all fields." }, 400, origin);
-  if (problem.length > 4000)
+  if (problem.length > 4000 || expectation.length > 4000)
     return json({ error: "Please shorten your description (4000 characters max)." }, 400, origin);
   if (!isValidWorkEmail(email))
     return json({ error: "Please use your work email — Gmail, Yahoo, Hotmail, Outlook and similar personal addresses are not accepted." }, 400, origin);
@@ -245,7 +247,7 @@ Deno.serve(async (req: Request) => {
         tool_choice: { type: "tool", name: "submit_quote" },
         messages: [{
           role: "user",
-          content: `Visitor name: ${name}\nCompany: ${company}\n\nProblem / requirement:\n${problem}`,
+          content: `Visitor name: ${name}\nCompany: ${company}\n\nProblem (current pain):\n${problem}\n\nExpectation (what they want the solution to do):\n${expectation}`,
         }],
       }),
     });
@@ -274,7 +276,7 @@ Deno.serve(async (req: Request) => {
   const price = buildWeeks * WEEK_RATE_SGD;
 
   const record = {
-    problem_text: problem, contact_name: name, company, contact_phone: phone, contact_email: email,
+    problem_text: problem, expectation, contact_name: name, company, contact_phone: phone, contact_email: email,
     classification,
     build_weeks: buildWeeks, testing_deployment_weeks: tdWeeks, total_weeks: totalWeeks,
     estimated_weeks: buildWeeks, // kept in sync with the billed (build) weeks for continuity
