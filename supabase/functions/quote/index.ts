@@ -25,7 +25,7 @@ const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ??
   .split(",").map((s) => s.trim());
 
 const WEEK_RATE_SGD = 1500;
-const MODEL = "claude-haiku-4-5-20251001"; // swap to claude-sonnet-4-6 for richer proposals
+const MODEL = "claude-sonnet-4-6"; // richer reasoning for proposals + workflow quality
 const RATE_LIMIT = 5;                       // max enquiries...
 const RATE_WINDOW_MS = 60 * 60 * 1000;      // ...per hour, per hashed IP
 
@@ -68,10 +68,12 @@ COMPLEXITY — judge ONLY on build time and scope, NEVER on testing/deployment:
 - Otherwise it is SIMPLE (clear request, linear workflow, single Jodoo module, no external system, build_weeks of 4 or fewer).
 - For COMPLEX jobs: keep the proposal high-level, say a detailed scope discussion is needed, and do not promise a firm price.
 
-Workflow diagrams:
-- before_workflow_mermaid = the visitor's current manual / painful process.
-- after_workflow_mermaid = the streamlined process once the new Jodoo module is in place.
-- BOTH must be valid Mermaid "flowchart TD" syntax with 4 to 8 nodes. Use ONLY plain ASCII letters, numbers and spaces inside node labels — no parentheses, quotes, colons, slashes, ampersands or other special characters inside node text, because they break Mermaid rendering. No styling or class directives. Example: flowchart TD; A[Worker scans QR code on machine] --> B[Logs downtime on phone] --> C[Auto weekly summary] --> D[Manager reviews dashboard]
+Solution workflow (after_workflow_mermaid) — this is the key visual, put real thought into it:
+- Show the NEW end-to-end process once the Jodoo module is live: the actual steps, who does each one, and the key automations/decision points — specific to THIS visitor's problem and expectation, not generic.
+- Make it genuinely useful: 6 to 10 nodes. Use a clear linear or branching flow. You MAY use decision diamonds, e.g. C{Approved} --> |Yes| D[...] and C --> |No| E[...].
+- Valid Mermaid "flowchart TD" syntax. Inside node labels use ONLY plain ASCII letters, numbers and spaces — no parentheses, quotes, colons, slashes, ampersands or other punctuation, which break rendering.
+- Keep EVERY node label SHORT: at most 4 words / about 22 characters, so the text fits inside the box and never clips. If a step needs more detail, split it into two nodes rather than writing a long label. Prefer who-does-what verbs, e.g. Staff scans QR, Jodoo logs entry, Manager approves, Auto weekly report.
+- Example shape: flowchart TD; A[Staff scans QR] --> B[Jodoo logs entry] --> C{Within limit} --> |Yes| D[Auto approve] --> F[Dashboard updates]; C --> |No| E[Manager reviews] --> F
 
 proposal: the MVP solution only — 2 to 4 short plain-text paragraphs, no markdown headings, for a non-technical SME owner. Describe the single Jodoo module and the specific Jodoo capabilities you would use. Keep it minimal.
 assumptions: the decisions and assumptions you made on the requestor's behalf to keep the solution simple, especially where the request was unclear. If the request was fully clear, write exactly "None — your request was clear enough to scope directly."
@@ -93,13 +95,12 @@ const TOOL = {
       proposal: { type: "string", description: "The MVP solution only — the smallest single Jodoo module that delivers the core value." },
       assumptions: { type: "string", description: "Scoping decisions/assumptions made on the requestor's behalf. 'None — your request was clear enough to scope directly.' if fully clear." },
       beyond_mvp: { type: "string", description: "How a fuller/perfect solution could extend the MVP later, and/or open questions for the requestor." },
-      before_workflow_mermaid: { type: "string" },
-      after_workflow_mermaid: { type: "string" },
+      after_workflow_mermaid: { type: "string", description: "The detailed solution workflow as Mermaid 'flowchart TD'. 6-10 nodes, short labels (<=4 words)." },
     },
     required: [
       "classification", "build_weeks", "testing_deployment_weeks", "requires_external_api",
       "is_single_module", "complexity_reasoning", "proposal", "assumptions", "beyond_mvp",
-      "before_workflow_mermaid", "after_workflow_mermaid",
+      "after_workflow_mermaid",
     ],
   },
 };
@@ -162,9 +163,7 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
     ${d.assumptions ? `<h3 style="margin:0 0 6px">Assumptions made</h3><p style="margin:0 0 16px">${esc(d.assumptions).replace(/\n/g, "<br>")}</p>` : ""}
     ${d.beyond_mvp ? `<h3 style="margin:0 0 6px">Beyond the MVP / open questions</h3><p style="margin:0 0 16px">${esc(d.beyond_mvp).replace(/\n/g, "<br>")}</p>` : ""}
     <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
-    <h3 style="margin:0 0 6px">Before workflow (Mermaid)</h3>
-    <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.before_mermaid)}</pre>
-    <h3 style="margin:0 0 6px">After workflow (Mermaid)</h3>
+    <h3 style="margin:0 0 6px">Solution workflow (Mermaid)</h3>
     <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.after_mermaid)}</pre>
     <p style="color:#86868b;font-size:12px;margin-top:18px">Enquiry id: ${esc(d.id) || "not saved"}</p>
   </div>`;
@@ -283,7 +282,7 @@ Deno.serve(async (req: Request) => {
     price_sgd: price,
     proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
     assumptions: String(t.assumptions ?? ""), beyond_mvp: String(t.beyond_mvp ?? ""),
-    before_mermaid: String(t.before_workflow_mermaid ?? ""), after_mermaid: String(t.after_workflow_mermaid ?? ""),
+    after_mermaid: String(t.after_workflow_mermaid ?? ""),
     raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
   };
 
@@ -314,7 +313,6 @@ Deno.serve(async (req: Request) => {
     assumptions: record.assumptions,
     beyond_mvp: record.beyond_mvp,
     complexity_reasoning: record.reasoning,
-    before_workflow_mermaid: record.before_mermaid,
     after_workflow_mermaid: record.after_mermaid,
     build_weeks: buildWeeks,
     testing_deployment_weeks: tdWeeks,
