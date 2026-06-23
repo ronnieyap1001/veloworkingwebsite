@@ -148,9 +148,10 @@
   #loading p{color:var(--ink-2)}
 
   /* ---------- results ---------- */
-  #results{max-width:860px; margin:0 auto}
-  .q-rhead{text-align:center; max-width:600px; margin:0 auto 8px}
-  .q-tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--link); background:rgba(0,113,227,.08); padding:5px 12px; border-radius:980px; margin-bottom:14px}
+  #results{max-width:860px; margin:48px auto 0}
+  .q-result-title{text-align:center; font-size:clamp(24px,3.4vw,36px); margin-bottom:26px}
+  .q-flow-solo{margin-top:0}
+  .q-flow-solo .mermaid{display:flex; justify-content:center}
   .q-proposal{white-space:pre-wrap; color:var(--ink-2); font-size:16px; line-height:1.6}
   .q-section-label{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:32px 0 12px; text-align:center}
   .q-sub-label{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:8px}
@@ -313,13 +314,10 @@
 
       <!-- RESULTS -->
       <div id="results" hidden>
+        <h2 class="q-result-title">Result</h2>
 
         <!-- SIMPLE -->
         <div id="simpleBranch" hidden>
-          <div class="q-rhead">
-            <span class="q-tag">A simple MVP to start with</span>
-            <h2 style="font-size:clamp(26px,3.6vw,40px)">Here's the simplest way to solve it</h2>
-          </div>
 
           <div class="tile s2 q-price">
             <div class="amt" id="priceAmt">—</div>
@@ -354,16 +352,9 @@
             </div>
           </div>
 
-          <p class="q-section-label">Your workflow — before &amp; after</p>
-          <div class="q-flows">
-            <div class="tile q-flow">
-              <h3>Today</h3>
-              <div class="mermaid" id="beforeChart"></div>
-            </div>
-            <div class="tile q-flow">
-              <h3>With the new module</h3>
-              <div class="mermaid" id="afterChart"></div>
-            </div>
+          <p class="q-section-label">How it will work</p>
+          <div class="tile q-flow q-flow-solo">
+            <div class="mermaid" id="afterChart"></div>
           </div>
 
           <div class="q-cta">
@@ -374,10 +365,6 @@
 
         <!-- COMPLEX -->
         <div id="complexBranch" hidden>
-          <div class="q-rhead">
-            <span class="q-tag">This one deserves a proper scope</span>
-            <h2 style="font-size:clamp(26px,3.6vw,40px)">Let's talk it through</h2>
-          </div>
           <div class="tile q-report">
             <div class="q-rep-sec">
               <h3 class="q-rep-h">Your problem</h3>
@@ -451,7 +438,8 @@
   // Mermaid 11 is ESM-only — must be imported as a module, then exposed globally
   // for the app script below (a classic <script src> leaves window.mermaid undefined).
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"strict", flowchart:{ useMaxWidth:true } });
+  mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"strict",
+    flowchart:{ useMaxWidth:true, nodeSpacing:42, rankSpacing:48, padding:14 } });
   window.mermaid = mermaid;
 </script>
 <script>
@@ -574,6 +562,8 @@
         container.innerHTML = '<p class="q-mermaid-fallback">(Diagram unavailable — the steps above describe the change.)</p>';
         return;
       }
+      // Wait for web fonts so Mermaid measures node text correctly (else labels clip).
+      if (document.fonts && document.fonts.ready){ try { await document.fonts.ready; } catch(_){} }
       try{
         var out = await window.mermaid.render(id, code2);
         container.innerHTML = out.svg;
@@ -601,7 +591,6 @@
       requestQuoteBtn.disabled = false;
       requestQuoteBtn.textContent = "Request for official quotation";
       requestOk.hidden = true;
-      document.getElementById("beforeChart").innerHTML = "";
       document.getElementById("afterChart").innerHTML = "";
     }
 
@@ -679,7 +668,6 @@
         if (tw && tw > bw){ weeksTxt += " · estimated delivery in " + wk(tw) + " incl. " + wk(td) + " testing & deployment"; }
         txt("priceWeeks", weeksTxt);
         simpleBranch.hidden = false;
-        await drawFlow(document.getElementById("beforeChart"), data.before_workflow_mermaid, "mb" + (++mc));
         await drawFlow(document.getElementById("afterChart"), data.after_workflow_mermaid, "ma" + (++mc));
       }
       results.scrollIntoView({ behavior:"smooth", block:"start" });
