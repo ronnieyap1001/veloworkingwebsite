@@ -68,12 +68,10 @@ COMPLEXITY — judge ONLY on build time and scope, NEVER on testing/deployment:
 - Otherwise it is SIMPLE (clear request, linear workflow, single Jodoo module, no external system, build_weeks of 4 or fewer).
 - For COMPLEX jobs: keep the proposal high-level, say a detailed scope discussion is needed, and do not promise a firm price.
 
-Solution workflow (after_workflow_mermaid) — this is the key visual, put real thought into it:
-- Show the NEW end-to-end process once the Jodoo module is live: the actual steps, who does each one, and the key automations/decision points — specific to THIS visitor's problem and expectation, not generic.
-- Make it genuinely useful: 6 to 10 nodes. Use a clear linear or branching flow. You MAY use decision diamonds, e.g. C{Approved} --> |Yes| D[...] and C --> |No| E[...].
-- Valid Mermaid "flowchart TD" syntax. Inside node labels use ONLY plain ASCII letters, numbers and spaces — no parentheses, quotes, colons, slashes, ampersands or other punctuation, which break rendering.
-- Keep EVERY node label SHORT: at most 4 words / about 22 characters, so the text fits inside the box and never clips. If a step needs more detail, split it into two nodes rather than writing a long label. Prefer who-does-what verbs, e.g. Staff scans QR, Jodoo logs entry, Manager approves, Auto weekly report.
-- Example shape: flowchart TD; A[Staff scans QR] --> B[Jodoo logs entry] --> C{Within limit} --> |Yes| D[Auto approve] --> F[Dashboard updates]; C --> |No| E[Manager reviews] --> F
+workflow_steps — this is the key output, put real thought into it:
+- An ORDERED list of 5 to 8 steps describing the NEW end-to-end process once the Jodoo module is live: the actual steps in sequence, who does each one, and the key automations — specific to THIS visitor's problem and expectation, not generic.
+- Each step is one short, plain sentence (about 4 to 9 words), starting with who does it, e.g. "Employee submits visitor form in Jodoo", "Jodoo auto-sends instant push notification", "Guard scans QR code to verify", "Pass issued and visitor notified".
+- Plain text only (no numbering, no markdown, no arrows) — the website renders the numbers and the flow. Keep it concrete and in logical order from start to finish.
 
 proposal: the MVP solution only — 2 to 4 short plain-text paragraphs, no markdown headings, for a non-technical SME owner. Describe the single Jodoo module and the specific Jodoo capabilities you would use. Keep it minimal.
 assumptions: the decisions and assumptions you made on the requestor's behalf to keep the solution simple, especially where the request was unclear. If the request was fully clear, write exactly "None — your request was clear enough to scope directly."
@@ -95,12 +93,18 @@ const TOOL = {
       proposal: { type: "string", description: "The MVP solution only — the smallest single Jodoo module that delivers the core value." },
       assumptions: { type: "string", description: "Scoping decisions/assumptions made on the requestor's behalf. 'None — your request was clear enough to scope directly.' if fully clear." },
       beyond_mvp: { type: "string", description: "How a fuller/perfect solution could extend the MVP later, and/or open questions for the requestor." },
-      after_workflow_mermaid: { type: "string", description: "The detailed solution workflow as Mermaid 'flowchart TD'. 6-10 nodes, short labels (<=4 words)." },
+      workflow_steps: {
+        type: "array",
+        description: "The solution workflow as an ordered list of 5-8 short plain-text steps (no numbering or arrows).",
+        items: { type: "string" },
+        minItems: 3,
+        maxItems: 10,
+      },
     },
     required: [
       "classification", "build_weeks", "testing_deployment_weeks", "requires_external_api",
       "is_single_module", "complexity_reasoning", "proposal", "assumptions", "beyond_mvp",
-      "after_workflow_mermaid",
+      "workflow_steps",
     ],
   },
 };
@@ -163,8 +167,8 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
     ${d.assumptions ? `<h3 style="margin:0 0 6px">Assumptions made</h3><p style="margin:0 0 16px">${esc(d.assumptions).replace(/\n/g, "<br>")}</p>` : ""}
     ${d.beyond_mvp ? `<h3 style="margin:0 0 6px">Beyond the MVP / open questions</h3><p style="margin:0 0 16px">${esc(d.beyond_mvp).replace(/\n/g, "<br>")}</p>` : ""}
     <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
-    <h3 style="margin:0 0 6px">Solution workflow (Mermaid)</h3>
-    <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.after_mermaid)}</pre>
+    <h3 style="margin:0 0 6px">Solution workflow</h3>
+    <div style="white-space:pre-wrap;margin:0 0 16px">${esc(d.after_mermaid)}</div>
     <p style="color:#86868b;font-size:12px;margin-top:18px">Enquiry id: ${esc(d.id) || "not saved"}</p>
   </div>`;
   const body: Record<string, unknown> = {
@@ -274,6 +278,10 @@ Deno.serve(async (req: Request) => {
   const classification = isComplex ? "complex" : "simple";
   const price = buildWeeks * WEEK_RATE_SGD;
 
+  const workflowSteps = Array.isArray(t.workflow_steps)
+    ? (t.workflow_steps as unknown[]).map((s) => String(s).trim()).filter(Boolean)
+    : [];
+
   const record = {
     problem_text: problem, expectation, contact_name: name, company, contact_phone: phone, contact_email: email,
     classification,
@@ -282,7 +290,7 @@ Deno.serve(async (req: Request) => {
     price_sgd: price,
     proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
     assumptions: String(t.assumptions ?? ""), beyond_mvp: String(t.beyond_mvp ?? ""),
-    after_mermaid: String(t.after_workflow_mermaid ?? ""),
+    after_mermaid: workflowSteps.map((s, i) => `${i + 1}. ${s}`).join("\n"), // workflow stored as a readable numbered list
     raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
   };
 
@@ -313,7 +321,7 @@ Deno.serve(async (req: Request) => {
     assumptions: record.assumptions,
     beyond_mvp: record.beyond_mvp,
     complexity_reasoning: record.reasoning,
-    after_workflow_mermaid: record.after_mermaid,
+    workflow_steps: workflowSteps,
     build_weeks: buildWeeks,
     testing_deployment_weeks: tdWeeks,
     total_weeks: totalWeeks,

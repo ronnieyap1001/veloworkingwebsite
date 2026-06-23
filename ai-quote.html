@@ -150,21 +150,17 @@
   /* ---------- results ---------- */
   #results{max-width:860px; margin:48px auto 0}
   .q-result-title{text-align:center; font-size:clamp(24px,3.4vw,36px); margin-bottom:26px}
-  .q-flow-solo{margin-top:0}
-  .q-flow-solo .mermaid{display:flex; justify-content:center}
   .q-proposal{white-space:pre-wrap; color:var(--ink-2); font-size:16px; line-height:1.6}
   .q-section-label{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:32px 0 12px; text-align:center}
   .q-sub-label{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:8px}
   .q-subblock{margin-top:16px; padding-top:16px; border-top:1px solid var(--rule)}
-  .q-flows{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-  @media(max-width:760px){.q-flows{grid-template-columns:1fr}}
-  .q-flow{align-items:stretch}
-  .q-flow h3{font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:6px}
-  .q-flow .mermaid{overflow:auto; padding-top:4px}
-  .q-flow .mermaid svg{max-width:100%; height:auto; margin:0 auto}
-  .q-flow .mermaid .nodeLabel{white-space:normal; word-break:break-word; line-height:1.3}
-  .q-flow .mermaid foreignObject{overflow:visible}
-  .q-mermaid-fallback{color:var(--ink-3); font-size:13px}
+  /* numbered step list */
+  .q-steps{max-width:600px; margin:6px auto 0}
+  .q-steplist{list-style:none; margin:0; padding:0; counter-reset:q-step}
+  .q-steplist li{position:relative; counter-increment:q-step; padding:13px 0 13px 46px; border-top:1px solid var(--rule); font-size:16px; line-height:1.5; color:var(--ink)}
+  .q-steplist li:first-child{border-top:0}
+  .q-steplist li::before{content:counter(q-step); position:absolute; left:0; top:11px; width:28px; height:28px; border-radius:50%; background:var(--link); color:#fff; font-size:13px; font-weight:600; display:flex; align-items:center; justify-content:center}
+  .q-steps-fallback{color:var(--ink-3); font-size:13px; text-align:center}
   /* email-style sectioned report */
   .q-report{gap:0}
   .q-rep-sec{padding:16px 0; border-top:1px solid var(--rule)}
@@ -354,10 +350,8 @@
             </div>
           </div>
 
-          <p class="q-section-label">How it will work</p>
-          <div class="tile q-flow q-flow-solo">
-            <div class="mermaid" id="afterChart"></div>
-          </div>
+          <p class="q-section-label">The solution, step by step</p>
+          <div class="q-steps" id="workflowSteps"></div>
 
           <div class="q-cta">
             <button type="button" class="pill pill-primary" id="requestQuoteBtn">Request for official quotation</button>
@@ -436,14 +430,6 @@
   </div>
 </footer>
 
-<script type="module">
-  // Mermaid 11 is ESM-only — must be imported as a module, then exposed globally
-  // for the app script below (a classic <script src> leaves window.mermaid undefined).
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"loose",
-    flowchart:{ useMaxWidth:true, htmlLabels:true, wrappingWidth:200, nodeSpacing:42, rankSpacing:48, padding:14 } });
-  window.mermaid = mermaid;
-</script>
 <script>
   /* mobile nav toggle + dropdown (cloned from index) */
   (function(){
@@ -504,8 +490,6 @@
     }
     function sgd(n){ return "S$" + Number(n).toLocaleString("en-SG"); }
 
-    // mermaid is initialised + exposed on window by the ESM module above.
-
     var form = document.getElementById("quoteForm");
     var nameEl = document.getElementById("name");
     var companyEl = document.getElementById("company");
@@ -528,7 +512,6 @@
     var requestOk = document.getElementById("requestOk");
 
     var state = { enquiryId:null, snapshot:null };
-    var mc = 0; // mermaid id counter
 
     function leadFilled(){
       return nameEl.value.trim() && companyEl.value.trim() && phoneEl.value.trim() && emailEl.value.trim();
@@ -557,33 +540,37 @@
       formErr.classList.add("show");
     }
 
-    // securityLevel "loose" enables HTML labels (which wrap and never clip), so
-    // sanitise the model-generated diagram: no HTML tags can open (strip "<"),
-    // and drop any interactive/script directives. Flowchart arrows use "-->" only.
-    function sanitizeMermaid(code){
-      return String(code || "")
-        .replace(/</g, " ")
-        .replace(/^\s*(click|linkStyle|classDef|class|style)\b.*$/gim, "")
-        .replace(/javascript:/gi, "");
+    // Get workflow steps from the response. Prefer the structured `workflow_steps`
+    // array; fall back to extracting node labels from a legacy mermaid string so the
+    // page still works if the backend hasn't been redeployed yet.
+    function stepsFromData(data){
+      if (Array.isArray(data.workflow_steps) && data.workflow_steps.length){
+        return data.workflow_steps.map(function(s){ return String(s).trim(); }).filter(Boolean);
+      }
+      var m = String(data.after_workflow_mermaid || "");
+      var out = [], seen = {};
+      m.replace(/[\[{(]([^\]})|]+)[\]})]/g, function(_, t){
+        var s = String(t).trim();
+        if (s && !seen[s]){ seen[s] = 1; out.push(s); }
+        return _;
+      });
+      return out;
     }
-    async function drawFlow(container, code, id){
+    // Render the solution as a clean numbered step-by-step list.
+    function renderSteps(container, steps){
       container.innerHTML = "";
-      var code2 = sanitizeMermaid(code).trim();
-      if (!window.mermaid || !code2){
-        container.innerHTML = '<p class="q-mermaid-fallback">(Diagram unavailable — the steps above describe the change.)</p>';
+      if (!steps || !steps.length){
+        container.innerHTML = '<p class="q-steps-fallback">(Workflow unavailable — the proposal above describes it.)</p>';
         return;
       }
-      // Wait for web fonts so Mermaid measures node text correctly (else labels clip).
-      if (document.fonts && document.fonts.ready){ try { await document.fonts.ready; } catch(_){} }
-      try{
-        var out = await window.mermaid.render(id, code2);
-        container.innerHTML = out.svg;
-      }catch(err){
-        console.warn("Mermaid render failed:", err);
-        var leftover = document.getElementById(id); if (leftover) leftover.remove();
-        var dleft = document.getElementById("d" + id); if (dleft) dleft.remove();
-        container.innerHTML = '<p class="q-mermaid-fallback">(Couldn’t draw this diagram — the proposal above describes the change.)</p>';
-      }
+      var ol = document.createElement("ol");
+      ol.className = "q-steplist";
+      steps.forEach(function(s){
+        var li = document.createElement("li");
+        li.textContent = s;
+        ol.appendChild(li);
+      });
+      container.appendChild(ol);
     }
 
     function txt(id, val){ document.getElementById(id).textContent = val || ""; }
@@ -602,7 +589,7 @@
       requestQuoteBtn.disabled = false;
       requestQuoteBtn.textContent = "Request for official quotation";
       requestOk.hidden = true;
-      document.getElementById("afterChart").innerHTML = "";
+      document.getElementById("workflowSteps").innerHTML = "";
     }
 
     form.addEventListener("submit", async function(e){
@@ -679,7 +666,7 @@
         if (tw && tw > bw){ weeksTxt += " · estimated delivery in " + wk(tw) + " incl. " + wk(td) + " testing & deployment"; }
         txt("priceWeeks", weeksTxt);
         simpleBranch.hidden = false;
-        await drawFlow(document.getElementById("afterChart"), data.after_workflow_mermaid, "ma" + (++mc));
+        renderSteps(document.getElementById("workflowSteps"), stepsFromData(data));
       }
       results.scrollIntoView({ behavior:"smooth", block:"start" });
     });
