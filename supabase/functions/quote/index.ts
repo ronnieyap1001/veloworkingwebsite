@@ -1,0 +1,284 @@
+// Edge Function: quote
+// Generates an AI proposal + indicative price for a visitor's operational
+// problem, logs the enquiry, and emails Ronnie a notification.
+//
+// Secrets / env expected on the Supabase project:
+//   ANTHROPIC_API_KEY   (required)  - server-side Claude key
+//   RESEND_API_KEY      (optional)  - if unset, email is skipped (enquiry still logged + returned)
+//   NOTIFY_EMAILS       (optional)  - comma list; defaults below
+//   FROM_EMAIL          (optional)  - verified Resend sender; defaults below
+//   ALLOWED_ORIGINS     (optional)  - comma list; defaults below
+//   SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY  - injected automatically by Supabase
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+
+const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY") ?? "";
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") ?? "";
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
+const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+
+const NOTIFY_EMAILS = (Deno.env.get("NOTIFY_EMAILS") ??
+  "ronnie.yap@veloworking.com,ronnieyap1001@gmail.com")
+  .split(",").map((s) => s.trim()).filter(Boolean);
+const FROM_EMAIL = Deno.env.get("FROM_EMAIL") ?? "Velo Working <quotes@veloworking.com>";
+const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ??
+  "https://www.veloworking.com,https://veloworking.com")
+  .split(",").map((s) => s.trim());
+
+const WEEK_RATE_SGD = 1500;
+const MODEL = "claude-haiku-4-5-20251001"; // swap to claude-sonnet-4-6 for richer proposals
+const RATE_LIMIT = 5;                       // max enquiries...
+const RATE_WINDOW_MS = 60 * 60 * 1000;      // ...per hour, per hashed IP
+
+// Free / personal webmail providers are rejected — we want a real work email.
+const FREE_EMAIL_DOMAINS = new Set([
+  "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "yahoo.com.sg",
+  "ymail.com", "hotmail.com", "hotmail.co.uk", "outlook.com", "outlook.sg",
+  "live.com", "live.com.sg", "msn.com", "icloud.com", "me.com", "mac.com",
+  "aol.com", "gmx.com", "gmx.net", "proton.me", "protonmail.com", "pm.me",
+  "zoho.com", "yandex.com", "mail.com", "qq.com", "163.com", "126.com",
+]);
+
+const SYSTEM_PROMPT =
+`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular no-code (Jodoo) operational systems for SMEs in Singapore, Malaysia and Brunei. A visitor describes an operational problem or requirement. Produce a short, concrete proposal for a single no-code module that solves it, and classify the job. Always answer by calling the submit_quote tool.
+
+Pricing & complexity rules (apply strictly):
+- Pricing unit: 1 week of build time = 1500 SGD.
+- estimated_weeks = the whole number of weeks Ronnie needs to build the described solution.
+- A job is COMPLEX if ANY of these are true: estimated_weeks is greater than 4; it requires connecting to external APIs or third-party systems; or it is more than a single module. Set requires_external_api and is_single_module truthfully.
+- A job is SIMPLE only if the request is clear, the workflow is linear, it is a single module, needs no external APIs, and takes 4 weeks or fewer.
+- For COMPLEX jobs: keep the proposal to a high-level direction and explicitly say a detailed scope discussion is needed; do not over-promise a firm price.
+
+Workflow diagrams:
+- before_workflow_mermaid = the visitor's current manual / painful process.
+- after_workflow_mermaid = the streamlined process once the new module is in place.
+- BOTH must be valid Mermaid "flowchart TD" syntax with 4 to 8 nodes. Use ONLY plain ASCII letters, numbers and spaces inside node labels — no parentheses, quotes, colons, slashes, ampersands or other special characters inside node text, because they break Mermaid rendering. No styling or class directives. Example: flowchart TD; A[Collects data on paper] --> B[Types into Excel] --> C[Emails manager] --> D[Manager approves]
+
+proposal: 2 to 4 short plain-text paragraphs, no markdown headings, written for a non-technical SME owner.
+complexity_reasoning: 1 to 2 sentences explaining the classification.`;
+
+const TOOL = {
+  name: "submit_quote",
+  description: "Return the structured proposal, workflow diagrams and complexity assessment.",
+  input_schema: {
+    type: "object",
+    properties: {
+      classification: { type: "string", enum: ["simple", "complex"] },
+      estimated_weeks: { type: "integer", minimum: 1 },
+      requires_external_api: { type: "boolean" },
+      is_single_module: { type: "boolean" },
+      complexity_reasoning: { type: "string" },
+      proposal: { type: "string" },
+      before_workflow_mermaid: { type: "string" },
+      after_workflow_mermaid: { type: "string" },
+    },
+    required: [
+      "classification", "estimated_weeks", "requires_external_api",
+      "is_single_module", "complexity_reasoning", "proposal",
+      "before_workflow_mermaid", "after_workflow_mermaid",
+    ],
+  },
+};
+
+function corsHeaders(origin: string | null): Record<string, string> {
+  const allow = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allow,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, apikey, authorization, x-client-info",
+    "Vary": "Origin",
+  };
+}
+
+function json(body: unknown, status: number, origin: string | null): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+  });
+}
+
+async function sha256(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function isValidWorkEmail(email: string): boolean {
+  const m = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(email.trim().toLowerCase());
+  if (!m) return false;
+  return !FREE_EMAIL_DOMAINS.has(m[1]);
+}
+
+function esc(s: unknown): string {
+  return String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c] as string));
+}
+
+async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
+  if (!RESEND_API_KEY) { console.warn("RESEND_API_KEY not set — skipping enquiry email"); return; }
+  const complex = d.classification === "complex";
+  const priceLine = complex
+    ? "Complex — no firm price (visitor routed to WhatsApp)"
+    : `S$${Number(d.price_sgd).toLocaleString()} (${d.estimated_weeks} week(s) &times; S$1,500)`;
+  const html = `
+  <div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;max-width:640px;line-height:1.5">
+    <h2 style="margin:0 0 2px">New AI enquiry</h2>
+    <p style="color:#6e6e73;margin:0 0 18px;font-size:13px">${esc(new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }))} (SGT)</p>
+    <table style="border-collapse:collapse;font-size:14px;margin-bottom:18px">
+      <tr><td style="padding:3px 14px 3px 0;color:#6e6e73">Name</td><td><b>${esc(d.contact_name)}</b></td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#6e6e73">Company</td><td>${esc(d.company)}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#6e6e73">Phone</td><td>${esc(d.contact_phone)}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#6e6e73">Email</td><td>${esc(d.contact_email)}</td></tr>
+    </table>
+    <p style="margin:0 0 4px"><b>Classification:</b> ${esc(d.classification)}</p>
+    <p style="margin:0 0 16px"><b>Estimate:</b> ${priceLine}</p>
+    <h3 style="margin:0 0 6px">Problem</h3>
+    <p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.problem_text)}</p>
+    <h3 style="margin:0 0 6px">Proposal</h3>
+    <p style="margin:0 0 16px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
+    <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
+    <h3 style="margin:0 0 6px">Before workflow (Mermaid)</h3>
+    <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.before_mermaid)}</pre>
+    <h3 style="margin:0 0 6px">After workflow (Mermaid)</h3>
+    <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.after_mermaid)}</pre>
+    <p style="color:#86868b;font-size:12px;margin-top:18px">Enquiry id: ${esc(d.id) || "not saved"}</p>
+  </div>`;
+  const body: Record<string, unknown> = {
+    from: FROM_EMAIL,
+    to: NOTIFY_EMAILS,
+    subject: `New AI enquiry — ${complex ? "complex" : "simple"} — ${complex ? "WhatsApp" : "S$" + Number(d.price_sgd).toLocaleString()}`,
+    html,
+  };
+  if (d.contact_email) body.reply_to = d.contact_email;
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) console.error("Resend error", r.status, await r.text());
+}
+
+Deno.serve(async (req: Request) => {
+  const origin = req.headers.get("Origin");
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(origin) });
+  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405, origin);
+
+  let payload: Record<string, unknown>;
+  try { payload = await req.json(); } catch { return json({ error: "Invalid request." }, 400, origin); }
+
+  const problem = String(payload.problem ?? "").trim();
+  const name = String(payload.name ?? "").trim();
+  const company = String(payload.company ?? "").trim();
+  const phone = String(payload.phone ?? "").trim();
+  const email = String(payload.email ?? "").trim();
+
+  // Lead-capture gate (mirrors the client-side validation, enforced server-side).
+  if (!name || !company || !phone || !email || !problem)
+    return json({ error: "Please complete all fields." }, 400, origin);
+  if (problem.length > 4000)
+    return json({ error: "Please shorten your description (4000 characters max)." }, 400, origin);
+  if (!isValidWorkEmail(email))
+    return json({ error: "Please use your work email — Gmail, Yahoo, Hotmail, Outlook and similar personal addresses are not accepted." }, 400, origin);
+
+  // Per-IP rate limit.
+  const ipRaw = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  const ipHash = await sha256("velo-quote-salt::" + ipRaw);
+  const ua = req.headers.get("user-agent") ?? "";
+  if (SUPABASE_URL && SERVICE_ROLE) {
+    try {
+      const since = new Date(Date.now() - RATE_WINDOW_MS).toISOString();
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/enquiries?ip_hash=eq.${ipHash}&created_at=gte.${encodeURIComponent(since)}&select=id`,
+        { headers: { apikey: SERVICE_ROLE, Authorization: `Bearer ${SERVICE_ROLE}` } },
+      );
+      if (r.ok) {
+        const rows = await r.json();
+        if (Array.isArray(rows) && rows.length >= RATE_LIMIT)
+          return json({ error: "You've made several requests recently. Please WhatsApp Ronnie directly, or try again later." }, 429, origin);
+      }
+    } catch (e) { console.error("rate-limit check failed", e); }
+  }
+
+  if (!ANTHROPIC_API_KEY)
+    return json({ error: "The AI is not configured yet. Please WhatsApp Ronnie." }, 503, origin);
+
+  // Ask Claude for a structured proposal via forced tool use.
+  let t: Record<string, unknown>;
+  try {
+    const ar = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 1300,
+        temperature: 0.3,
+        system: SYSTEM_PROMPT,
+        tools: [TOOL],
+        tool_choice: { type: "tool", name: "submit_quote" },
+        messages: [{
+          role: "user",
+          content: `Visitor name: ${name}\nCompany: ${company}\n\nProblem / requirement:\n${problem}`,
+        }],
+      }),
+    });
+    if (!ar.ok) {
+      console.error("Anthropic error", ar.status, await ar.text());
+      return json({ error: "The AI is busy right now. Please try again in a moment, or WhatsApp Ronnie." }, 502, origin);
+    }
+    const data = await ar.json();
+    const block = (data.content ?? []).find((c: Record<string, unknown>) => c.type === "tool_use");
+    if (!block) return json({ error: "Could not generate a proposal. Please WhatsApp Ronnie." }, 502, origin);
+    t = block.input as Record<string, unknown>;
+  } catch (e) {
+    console.error("Anthropic request failed", e);
+    return json({ error: "The AI request failed. Please WhatsApp Ronnie." }, 502, origin);
+  }
+
+  // Pricing & classification are decided server-side — never trust the model to compute.
+  const weeks = Math.max(1, parseInt(String(t.estimated_weeks), 10) || 1);
+  const requiresApi = t.requires_external_api === true;
+  const singleModule = t.is_single_module !== false;
+  const isComplex = weeks > 4 || requiresApi || !singleModule;
+  const classification = isComplex ? "complex" : "simple";
+  const price = weeks * WEEK_RATE_SGD;
+
+  const record = {
+    problem_text: problem, contact_name: name, company, contact_phone: phone, contact_email: email,
+    classification, estimated_weeks: weeks, price_sgd: price,
+    proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
+    before_mermaid: String(t.before_workflow_mermaid ?? ""), after_mermaid: String(t.after_workflow_mermaid ?? ""),
+    raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
+  };
+
+  // Log the enquiry (best effort) and capture the row id.
+  let enquiryId: string | null = null;
+  if (SUPABASE_URL && SERVICE_ROLE) {
+    try {
+      const ins = await fetch(`${SUPABASE_URL}/rest/v1/enquiries`, {
+        method: "POST",
+        headers: {
+          apikey: SERVICE_ROLE, Authorization: `Bearer ${SERVICE_ROLE}`,
+          "Content-Type": "application/json", Prefer: "return=representation",
+        },
+        body: JSON.stringify(record),
+      });
+      if (ins.ok) { const rows = await ins.json(); enquiryId = rows?.[0]?.id ?? null; }
+      else console.error("enquiry insert failed", ins.status, await ins.text());
+    } catch (e) { console.error("enquiry insert error", e); }
+  }
+
+  // Email 1 — notify on every submission (best effort; never blocks the response).
+  await sendEnquiryEmail({ ...record, id: enquiryId }).catch((e) => console.error("enquiry email error", e));
+
+  return json({
+    enquiryId,
+    classification,
+    proposal: record.proposal,
+    complexity_reasoning: record.reasoning,
+    before_workflow_mermaid: record.before_mermaid,
+    after_workflow_mermaid: record.after_mermaid,
+    estimated_weeks: weeks,
+    price_sgd: price,
+  }, 200, origin);
+});
