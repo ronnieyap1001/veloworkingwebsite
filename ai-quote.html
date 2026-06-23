@@ -162,13 +162,18 @@
   .q-flow .mermaid{overflow:auto; padding-top:4px}
   .q-flow .mermaid svg{max-width:100%; height:auto; margin:0 auto}
   .q-mermaid-fallback{color:var(--ink-3); font-size:13px}
+  /* email-style sectioned report */
+  .q-report{gap:0}
+  .q-rep-sec{padding:16px 0; border-top:1px solid var(--rule)}
+  .q-rep-sec:first-child{padding-top:0; border-top:0}
+  .q-rep-h{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:8px}
+  .q-rep-p{white-space:pre-wrap; color:var(--ink-2); font-size:16px; line-height:1.6}
   .q-price{margin-top:14px; text-align:center; padding:clamp(28px,4vw,44px)}
   .q-price .amt{font-size:clamp(34px,6vw,52px); font-weight:600; letter-spacing:-0.04em; line-height:1}
   .q-price .wk{color:var(--ink-2); margin-top:8px; font-size:16px}
   .q-price .disc{font-size:12px; color:var(--ink-3); margin-top:14px}
   .q-cta{text-align:center; margin-top:26px}
   .q-ok{color:var(--success); font-weight:500; margin-top:10px}
-  .q-restart{text-align:center; margin-top:30px}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--rule); padding:40px 0; margin-top:clamp(48px,8vw,96px)}
@@ -282,9 +287,15 @@
         </div>
 
         <div class="q-field">
-          <label for="problem">What's the operational problem you want to solve?</label>
-          <textarea class="q-textarea" id="problem" name="problem" maxlength="4000" placeholder="e.g. We log daily machine downtime on paper, then someone retypes it into Excel every week. I want staff to record it on their phone and get an automatic weekly summary." disabled required></textarea>
+          <label for="problem">What's the operational problem you're facing today?</label>
+          <textarea class="q-textarea" id="problem" name="problem" maxlength="4000" placeholder="e.g. We log daily machine downtime on paper, then someone retypes it into Excel every week." disabled required></textarea>
           <p class="q-err" id="problemErr">Please describe your problem.</p>
+        </div>
+
+        <div class="q-field">
+          <label for="expectation">What do you expect the new system to do for you?</label>
+          <textarea class="q-textarea" id="expectation" name="expectation" maxlength="4000" placeholder="e.g. Staff record downtime on their phone, and I get an automatic weekly summary I can review anywhere." disabled required></textarea>
+          <p class="q-err" id="expectationErr">Please describe what you expect.</p>
         </div>
 
         <div class="q-cta">
@@ -309,11 +320,37 @@
             <span class="q-tag">A simple MVP to start with</span>
             <h2 style="font-size:clamp(26px,3.6vw,40px)">Here's the simplest way to solve it</h2>
           </div>
-          <div class="tile">
-            <p class="q-proposal" id="proposalText"></p>
-            <div class="q-subblock" id="assumptionsBlock" hidden>
-              <div class="q-sub-label">What I assumed to keep this simple</div>
-              <p class="q-proposal" id="assumptionsText"></p>
+
+          <div class="tile s2 q-price">
+            <div class="amt" id="priceAmt">—</div>
+            <div class="wk" id="priceWeeks"></div>
+            <div class="disc">Indicative estimate based on build time at S$1,500 / week — not a binding quote. Final pricing is confirmed after a short scope chat.</div>
+          </div>
+
+          <div class="tile q-report" style="margin-top:14px">
+            <div class="q-rep-sec">
+              <h3 class="q-rep-h">Your problem</h3>
+              <p class="q-rep-p" id="echoProblem"></p>
+            </div>
+            <div class="q-rep-sec" id="echoExpectationSec">
+              <h3 class="q-rep-h">Your expectation</h3>
+              <p class="q-rep-p" id="echoExpectation"></p>
+            </div>
+            <div class="q-rep-sec">
+              <h3 class="q-rep-h">Recommended MVP</h3>
+              <p class="q-rep-p" id="proposalText"></p>
+            </div>
+            <div class="q-rep-sec" id="assumptionsBlock" hidden>
+              <h3 class="q-rep-h">What I assumed to keep it simple</h3>
+              <p class="q-rep-p" id="assumptionsText"></p>
+            </div>
+            <div class="q-rep-sec" id="beyondBlock" hidden>
+              <h3 class="q-rep-h">Beyond the MVP — and what I'd confirm with you</h3>
+              <p class="q-rep-p" id="beyondText"></p>
+            </div>
+            <div class="q-rep-sec" id="reasonBlock" hidden>
+              <h3 class="q-rep-h">Why this is a simple build</h3>
+              <p class="q-rep-p" id="reasonText"></p>
             </div>
           </div>
 
@@ -329,17 +366,6 @@
             </div>
           </div>
 
-          <div class="tile" id="beyondBlock" hidden style="margin-top:14px">
-            <div class="q-sub-label">Beyond the MVP — and what I'd confirm with you</div>
-            <p class="q-proposal" id="beyondText"></p>
-          </div>
-
-          <div class="tile s2 q-price">
-            <div class="amt" id="priceAmt">—</div>
-            <div class="wk" id="priceWeeks"></div>
-            <div class="disc">Indicative estimate based on build time at S$1,500 / week — not a binding quote. Final pricing is confirmed after a short scope chat.</div>
-          </div>
-
           <div class="q-cta">
             <button type="button" class="pill pill-primary" id="requestQuoteBtn">Request for official quotation</button>
             <p class="q-ok" id="requestOk" hidden>Sent — Ronnie will be in touch shortly. Thank you!</p>
@@ -352,8 +378,23 @@
             <span class="q-tag">This one deserves a proper scope</span>
             <h2 style="font-size:clamp(26px,3.6vw,40px)">Let's talk it through</h2>
           </div>
-          <div class="tile">
-            <p class="q-proposal" id="complexProposalText"></p>
+          <div class="tile q-report">
+            <div class="q-rep-sec">
+              <h3 class="q-rep-h">Your problem</h3>
+              <p class="q-rep-p" id="echoProblemC"></p>
+            </div>
+            <div class="q-rep-sec" id="echoExpectationSecC">
+              <h3 class="q-rep-h">Your expectation</h3>
+              <p class="q-rep-p" id="echoExpectationC"></p>
+            </div>
+            <div class="q-rep-sec">
+              <h3 class="q-rep-h">Direction</h3>
+              <p class="q-rep-p" id="complexProposalText"></p>
+            </div>
+            <div class="q-rep-sec" id="reasonBlockC" hidden>
+              <h3 class="q-rep-h">Why it needs a proper scope</h3>
+              <p class="q-rep-p" id="reasonTextC"></p>
+            </div>
           </div>
           <div class="q-cta">
             <a class="pill pill-primary" id="complexWaBtn" href="#" target="_blank" rel="noopener">Message Ronnie on WhatsApp</a>
@@ -361,9 +402,6 @@
           </div>
         </div>
 
-        <div class="q-restart">
-          <button type="button" class="ilink" id="restartBtn">Describe another problem</button>
-        </div>
       </div>
 
     </div>
@@ -409,7 +447,13 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script type="module">
+  // Mermaid 11 is ESM-only — must be imported as a module, then exposed globally
+  // for the app script below (a classic <script src> leaves window.mermaid undefined).
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"strict", flowchart:{ useMaxWidth:true } });
+  window.mermaid = mermaid;
+</script>
 <script>
   /* mobile nav toggle + dropdown (cloned from index) */
   (function(){
@@ -470,7 +514,7 @@
     }
     function sgd(n){ return "S$" + Number(n).toLocaleString("en-SG"); }
 
-    if (window.mermaid){ mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"strict", flowchart:{ useMaxWidth:true } }); }
+    // mermaid is initialised + exposed on window by the ESM module above.
 
     var form = document.getElementById("quoteForm");
     var nameEl = document.getElementById("name");
@@ -479,9 +523,11 @@
     var phoneEl = document.getElementById("phone");
     var emailEl = document.getElementById("email");
     var problemEl = document.getElementById("problem");
+    var expectationEl = document.getElementById("expectation");
     var submitBtn = document.getElementById("submitBtn");
     var emailErr = document.getElementById("emailErr");
     var problemErr = document.getElementById("problemErr");
+    var expectationErr = document.getElementById("expectationErr");
     var formErr = document.getElementById("formErr");
 
     var loading = document.getElementById("loading");
@@ -490,7 +536,6 @@
     var complexBranch = document.getElementById("complexBranch");
     var requestQuoteBtn = document.getElementById("requestQuoteBtn");
     var requestOk = document.getElementById("requestOk");
-    var restartBtn = document.getElementById("restartBtn");
 
     var state = { enquiryId:null, snapshot:null };
     var mc = 0; // mermaid id counter
@@ -501,13 +546,15 @@
     function refreshGate(){
       var ok = leadFilled() && isWorkEmail(emailEl.value);
       problemEl.disabled = !ok;
-      submitBtn.disabled = !(ok && problemEl.value.trim());
+      expectationEl.disabled = !ok;
+      submitBtn.disabled = !(ok && problemEl.value.trim() && expectationEl.value.trim());
     }
-    [nameEl, companyEl, phoneEl, emailEl, problemEl].forEach(function(el){
+    [nameEl, companyEl, phoneEl, emailEl, problemEl, expectationEl].forEach(function(el){
       el.addEventListener("input", function(){
         formErr.classList.remove("show");
         if (el === emailEl) emailErr.classList.remove("show");
         if (el === problemEl) problemErr.classList.remove("show");
+        if (el === expectationEl) expectationErr.classList.remove("show");
         refreshGate();
       });
     });
@@ -522,8 +569,13 @@
 
     async function drawFlow(container, code, id){
       container.innerHTML = "";
+      var code2 = String(code || "").trim();
+      if (!window.mermaid || !code2){
+        container.innerHTML = '<p class="q-mermaid-fallback">(Diagram unavailable — the steps above describe the change.)</p>';
+        return;
+      }
       try{
-        var out = await mermaid.render(id, String(code || "").trim());
+        var out = await window.mermaid.render(id, code2);
         container.innerHTML = out.svg;
       }catch(err){
         console.warn("Mermaid render failed:", err);
@@ -533,21 +585,45 @@
       }
     }
 
+    function txt(id, val){ document.getElementById(id).textContent = val || ""; }
+    function show(id, on){ document.getElementById(id).hidden = !on; }
+    function fillEcho(probId, expSecId, expId, problem, expectation){
+      txt(probId, problem);
+      var ex = (expectation || "").trim();
+      if (ex){ txt(expId, ex); show(expSecId, true); } else { show(expSecId, false); }
+    }
+    // Reset the result area so re-submitting refreshes cleanly (the form stays visible).
+    function resetResults(){
+      results.hidden = true;
+      simpleBranch.hidden = true;
+      complexBranch.hidden = true;
+      requestQuoteBtn.hidden = false;
+      requestQuoteBtn.disabled = false;
+      requestQuoteBtn.textContent = "Request for official quotation";
+      requestOk.hidden = true;
+      document.getElementById("beforeChart").innerHTML = "";
+      document.getElementById("afterChart").innerHTML = "";
+    }
+
     form.addEventListener("submit", async function(e){
       e.preventDefault();
       if (!isWorkEmail(emailEl.value)){ emailErr.classList.add("show"); emailEl.focus(); return; }
       if (!problemEl.value.trim()){ problemErr.classList.add("show"); return; }
+      if (!expectationEl.value.trim()){ expectationErr.classList.add("show"); return; }
 
       var payload = {
         problem: problemEl.value.trim(),
+        expectation: expectationEl.value.trim(),
         name: nameEl.value.trim(),
         company: companyEl.value.trim(),
         phone: dialEl.value + " " + phoneEl.value.trim(),
         email: emailEl.value.trim()
       };
 
-      form.hidden = true;
+      // Keep the form visible; show loading + results BELOW it.
+      resetResults();
       loading.hidden = false;
+      loading.scrollIntoView({ behavior:"smooth", block:"center" });
 
       var data;
       try{
@@ -562,7 +638,6 @@
         }
       }catch(err){
         loading.hidden = true;
-        form.hidden = false;
         showFormError((err && err.message ? err.message : "Something went wrong.") + " You can also message Ronnie directly on WhatsApp.");
         return;
       }
@@ -570,47 +645,40 @@
       state.enquiryId = data.enquiryId || null;
       state.snapshot = {
         name: payload.name, company: payload.company, phone: payload.phone, email: payload.email,
-        problem: payload.problem, classification: data.classification,
+        problem: payload.problem, expectation: payload.expectation, classification: data.classification,
         buildWeeks: data.build_weeks, tdWeeks: data.testing_deployment_weeks, totalWeeks: data.total_weeks,
         price: data.price_sgd, proposal: data.proposal
       };
 
       loading.hidden = true;
       results.hidden = false;
+      var reason = (data.complexity_reasoning || "").trim();
 
       if (data.classification === "complex"){
-        document.getElementById("complexProposalText").textContent =
-          (data.proposal || "") + (data.complexity_reasoning ? "\n\n" + data.complexity_reasoning : "");
+        fillEcho("echoProblemC", "echoExpectationSecC", "echoExpectationC", payload.problem, payload.expectation);
+        txt("complexProposalText", data.proposal || "");
+        if (reason){ txt("reasonTextC", reason); show("reasonBlockC", true); } else { show("reasonBlockC", false); }
         var waText = "Hi Ronnie — I used the AI quote tool on veloworking.com. I'm " + payload.name +
-          " from " + payload.company + ". My requirement: " + payload.problem +
+          " from " + payload.company + ". My problem: " + payload.problem +
+          "\nMy expectation: " + payload.expectation +
           "\n\nThe tool flagged it as a more involved project — can we scope it together?";
         document.getElementById("complexWaBtn").href = WA + encodeURIComponent(waText);
         complexBranch.hidden = false;
-        simpleBranch.hidden = true;
       }else{
-        document.getElementById("proposalText").textContent = data.proposal || "";
+        fillEcho("echoProblem", "echoExpectationSec", "echoExpectation", payload.problem, payload.expectation);
+        txt("proposalText", data.proposal || "");
         var asmp = (data.assumptions || "").trim();
-        if (asmp && !/^none\b/i.test(asmp)){
-          document.getElementById("assumptionsText").textContent = asmp;
-          document.getElementById("assumptionsBlock").hidden = false;
-        } else {
-          document.getElementById("assumptionsBlock").hidden = true;
-        }
+        if (asmp && !/^none\b/i.test(asmp)){ txt("assumptionsText", asmp); show("assumptionsBlock", true); } else { show("assumptionsBlock", false); }
         var bmv = (data.beyond_mvp || "").trim();
-        if (bmv){
-          document.getElementById("beyondText").textContent = bmv;
-          document.getElementById("beyondBlock").hidden = false;
-        } else {
-          document.getElementById("beyondBlock").hidden = true;
-        }
-        document.getElementById("priceAmt").textContent = sgd(data.price_sgd);
+        if (bmv){ txt("beyondText", bmv); show("beyondBlock", true); } else { show("beyondBlock", false); }
+        if (reason){ txt("reasonText", reason); show("reasonBlock", true); } else { show("reasonBlock", false); }
+        txt("priceAmt", sgd(data.price_sgd));
         var wk = function(n){ return "~" + n + " week" + (n === 1 ? "" : "s"); };
         var bw = data.build_weeks, tw = data.total_weeks, td = data.testing_deployment_weeks;
         var weeksTxt = "Based on " + wk(bw) + " of build time";
         if (tw && tw > bw){ weeksTxt += " · estimated delivery in " + wk(tw) + " incl. " + wk(td) + " testing & deployment"; }
-        document.getElementById("priceWeeks").textContent = weeksTxt;
+        txt("priceWeeks", weeksTxt);
         simpleBranch.hidden = false;
-        complexBranch.hidden = true;
         await drawFlow(document.getElementById("beforeChart"), data.before_workflow_mermaid, "mb" + (++mc));
         await drawFlow(document.getElementById("afterChart"), data.after_workflow_mermaid, "ma" + (++mc));
       }
@@ -630,8 +698,6 @@
       requestQuoteBtn.hidden = true;
       requestOk.hidden = false;
     });
-
-    restartBtn.addEventListener("click", function(){ window.location.reload(); });
   })();
 </script>
 </body>

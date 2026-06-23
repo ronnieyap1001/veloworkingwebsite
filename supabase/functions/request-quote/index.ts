@@ -62,6 +62,7 @@ async function sendQuoteRequestEmail(d: Record<string, unknown>): Promise<void> 
     <p style="margin:0 0 16px"><b>Indicative estimate shown:</b> ${priceLine}</p>
     <h3 style="margin:0 0 6px">Original problem</h3>
     <p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.problem_text)}</p>
+    ${d.expectation ? `<h3 style="margin:0 0 6px">Expectation</h3><p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.expectation)}</p>` : ""}
     <h3 style="margin:0 0 6px">Proposal summary</h3>
     <p style="margin:0 0 16px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
     <p style="color:#86868b;font-size:12px;margin-top:18px">Enquiry id: ${esc(d.id) || "not saved"}</p>
@@ -113,7 +114,7 @@ Deno.serve(async (req: Request) => {
   const d = row ?? {
     id: enquiryId,
     contact_name: snap.name, company: snap.company, contact_phone: snap.phone, contact_email: snap.email,
-    problem_text: snap.problem, classification: snap.classification,
+    problem_text: snap.problem, expectation: snap.expectation, classification: snap.classification,
     build_weeks: snap.buildWeeks, testing_deployment_weeks: snap.tdWeeks, total_weeks: snap.totalWeeks,
     price_sgd: snap.price, proposal: snap.proposal,
   };
