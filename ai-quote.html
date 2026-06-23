@@ -153,6 +153,8 @@
   .q-tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--link); background:rgba(0,113,227,.08); padding:5px 12px; border-radius:980px; margin-bottom:14px}
   .q-proposal{white-space:pre-wrap; color:var(--ink-2); font-size:16px; line-height:1.6}
   .q-section-label{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:32px 0 12px; text-align:center}
+  .q-sub-label{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:8px}
+  .q-subblock{margin-top:16px; padding-top:16px; border-top:1px solid var(--rule)}
   .q-flows{display:grid; grid-template-columns:1fr 1fr; gap:14px}
   @media(max-width:760px){.q-flows{grid-template-columns:1fr}}
   .q-flow{align-items:stretch}
@@ -304,11 +306,15 @@
         <!-- SIMPLE -->
         <div id="simpleBranch" hidden>
           <div class="q-rhead">
-            <span class="q-tag">Looks like a simple build</span>
-            <h2 style="font-size:clamp(26px,3.6vw,40px)">Here's how I'd approach it</h2>
+            <span class="q-tag">A simple MVP to start with</span>
+            <h2 style="font-size:clamp(26px,3.6vw,40px)">Here's the simplest way to solve it</h2>
           </div>
           <div class="tile">
             <p class="q-proposal" id="proposalText"></p>
+            <div class="q-subblock" id="assumptionsBlock" hidden>
+              <div class="q-sub-label">What I assumed to keep this simple</div>
+              <p class="q-proposal" id="assumptionsText"></p>
+            </div>
           </div>
 
           <p class="q-section-label">Your workflow — before &amp; after</p>
@@ -321,6 +327,11 @@
               <h3>With the new module</h3>
               <div class="mermaid" id="afterChart"></div>
             </div>
+          </div>
+
+          <div class="tile" id="beyondBlock" hidden style="margin-top:14px">
+            <div class="q-sub-label">Beyond the MVP — and what I'd confirm with you</div>
+            <p class="q-proposal" id="beyondText"></p>
           </div>
 
           <div class="tile s2 q-price">
@@ -578,6 +589,20 @@
         simpleBranch.hidden = true;
       }else{
         document.getElementById("proposalText").textContent = data.proposal || "";
+        var asmp = (data.assumptions || "").trim();
+        if (asmp && !/^none\b/i.test(asmp)){
+          document.getElementById("assumptionsText").textContent = asmp;
+          document.getElementById("assumptionsBlock").hidden = false;
+        } else {
+          document.getElementById("assumptionsBlock").hidden = true;
+        }
+        var bmv = (data.beyond_mvp || "").trim();
+        if (bmv){
+          document.getElementById("beyondText").textContent = bmv;
+          document.getElementById("beyondBlock").hidden = false;
+        } else {
+          document.getElementById("beyondBlock").hidden = true;
+        }
         document.getElementById("priceAmt").textContent = sgd(data.price_sgd);
         var wk = function(n){ return "~" + n + " week" + (n === 1 ? "" : "s"); };
         var bw = data.build_weeks, tw = data.total_weeks, td = data.testing_deployment_weeks;
