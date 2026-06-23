@@ -58,4 +58,5 @@ supabase functions deploy request-quote
 - **Complex** if `build_weeks > 4` **or** a genuine external third-party system must be connected **or** it is more than a single module → no firm price, visitor routed to WhatsApp.
 - Otherwise **simple** → price shown + "Request for official quotation" button.
 - The system prompt teaches the model Jodoo's **built-in** capabilities (QR/barcode scanning, e-signature, approvals, automations, dashboards, PDF, data linking, etc.) so they are **not** mistaken for external-API work. `requires_external_api` is true only when connecting Jodoo to a separate outside system (Shopify, Xero, payment gateway, SMS/WhatsApp gateway, custom system…).
+- **MVP-first:** the prompt instructs the model to propose the *simplest viable* single-module solution (making its own scoping `assumptions` when the request is vague, rather than asking the visitor), then describe the fuller/"perfect" solution and open questions in `beyond_mvp`. This keeps more requests inside auto-quote capability.
 - The model proposes the inputs; the **server** does the maths and the final classification.

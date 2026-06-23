@@ -39,7 +39,13 @@ const FREE_EMAIL_DOMAINS = new Set([
 ]);
 
 const SYSTEM_PROMPT =
-`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular business systems for SMEs in Singapore, Malaysia and Brunei on JODOO, a no-code platform. A visitor describes an operational problem or requirement. Produce a short, concrete proposal for a single Jodoo module that solves it, classify the job, and estimate the build time. Always answer by calling the submit_quote tool.
+`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular business systems for SMEs in Singapore, Malaysia and Brunei on JODOO, a no-code platform. A visitor describes an operational problem or requirement. Your job is to propose the SIMPLEST viable solution — an MVP — that Ronnie can auto-quote, classify the job, and estimate the build time. Always answer by calling the submit_quote tool.
+
+SOLUTION APPROACH — MVP FIRST (most important):
+- Do NOT design a perfect or complete system. Propose a minimum viable product: the smallest single Jodoo module that delivers the core value and fits within auto-quote capability (one module, no external system, build_weeks of 4 or fewer).
+- If the request is vague or under-specified, DO NOT ask the visitor to clarify and do not inflate scope to cover every edge case. Instead MAKE sensible assumptions and decide the scope yourself on the requestor's behalf so the solution stays simple — and record those decisions in the assumptions field.
+- Prefer cutting scope (fewer fields, one workflow path, manual handling of edge cases) over adding complexity. Classify a job as complex ONLY if even a sensibly cut-down MVP genuinely cannot be a single module, needs an external third-party system, or still takes more than 4 build weeks.
+- After the MVP, use beyond_mvp to describe how a fuller or "perfect" solution could extend it later, and/or the key open questions you still have about the requirement.
 
 WHAT JODOO DOES OUT OF THE BOX (no coding, NO external API needed) — treat ALL of these as standard, low-effort building blocks, never as reasons a project is complex:
 - Forms: drag-and-drop builder, 20+ field types, subforms/tables, conditional show-hide logic, formulas and calculations, aggregate tables, photo upload, e-signature capture, custom buttons, custom result pages.
@@ -67,7 +73,9 @@ Workflow diagrams:
 - after_workflow_mermaid = the streamlined process once the new Jodoo module is in place.
 - BOTH must be valid Mermaid "flowchart TD" syntax with 4 to 8 nodes. Use ONLY plain ASCII letters, numbers and spaces inside node labels — no parentheses, quotes, colons, slashes, ampersands or other special characters inside node text, because they break Mermaid rendering. No styling or class directives. Example: flowchart TD; A[Worker scans QR code on machine] --> B[Logs downtime on phone] --> C[Auto weekly summary] --> D[Manager reviews dashboard]
 
-proposal: 2 to 4 short plain-text paragraphs, no markdown headings, written for a non-technical SME owner. Mention the specific Jodoo capabilities you would use.
+proposal: the MVP solution only — 2 to 4 short plain-text paragraphs, no markdown headings, for a non-technical SME owner. Describe the single Jodoo module and the specific Jodoo capabilities you would use. Keep it minimal.
+assumptions: the decisions and assumptions you made on the requestor's behalf to keep the solution simple, especially where the request was unclear. If the request was fully clear, write exactly "None — your request was clear enough to scope directly."
+beyond_mvp: how a fuller or "perfect" solution could extend the MVP later, and/or the main open questions you would want the requestor to answer. 1 to 3 short sentences, plain text.
 complexity_reasoning: 1 to 2 sentences explaining the classification, including the build time and whether any external system is involved.`;
 
 const TOOL = {
@@ -82,13 +90,15 @@ const TOOL = {
       requires_external_api: { type: "boolean", description: "True ONLY if a separate third-party system outside Jodoo must be connected." },
       is_single_module: { type: "boolean" },
       complexity_reasoning: { type: "string" },
-      proposal: { type: "string" },
+      proposal: { type: "string", description: "The MVP solution only — the smallest single Jodoo module that delivers the core value." },
+      assumptions: { type: "string", description: "Scoping decisions/assumptions made on the requestor's behalf. 'None — your request was clear enough to scope directly.' if fully clear." },
+      beyond_mvp: { type: "string", description: "How a fuller/perfect solution could extend the MVP later, and/or open questions for the requestor." },
       before_workflow_mermaid: { type: "string" },
       after_workflow_mermaid: { type: "string" },
     },
     required: [
       "classification", "build_weeks", "testing_deployment_weeks", "requires_external_api",
-      "is_single_module", "complexity_reasoning", "proposal",
+      "is_single_module", "complexity_reasoning", "proposal", "assumptions", "beyond_mvp",
       "before_workflow_mermaid", "after_workflow_mermaid",
     ],
   },
@@ -146,8 +156,10 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
     <p style="margin:0 0 16px"><b>Estimate:</b> ${priceLine}</p>
     <h3 style="margin:0 0 6px">Problem</h3>
     <p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.problem_text)}</p>
-    <h3 style="margin:0 0 6px">Proposal</h3>
+    <h3 style="margin:0 0 6px">MVP proposal</h3>
     <p style="margin:0 0 16px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
+    ${d.assumptions ? `<h3 style="margin:0 0 6px">Assumptions made</h3><p style="margin:0 0 16px">${esc(d.assumptions).replace(/\n/g, "<br>")}</p>` : ""}
+    ${d.beyond_mvp ? `<h3 style="margin:0 0 6px">Beyond the MVP / open questions</h3><p style="margin:0 0 16px">${esc(d.beyond_mvp).replace(/\n/g, "<br>")}</p>` : ""}
     <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
     <h3 style="margin:0 0 6px">Before workflow (Mermaid)</h3>
     <pre style="background:#f5f5f7;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px">${esc(d.before_mermaid)}</pre>
@@ -268,6 +280,7 @@ Deno.serve(async (req: Request) => {
     estimated_weeks: buildWeeks, // kept in sync with the billed (build) weeks for continuity
     price_sgd: price,
     proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
+    assumptions: String(t.assumptions ?? ""), beyond_mvp: String(t.beyond_mvp ?? ""),
     before_mermaid: String(t.before_workflow_mermaid ?? ""), after_mermaid: String(t.after_workflow_mermaid ?? ""),
     raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
   };
@@ -296,6 +309,8 @@ Deno.serve(async (req: Request) => {
     enquiryId,
     classification,
     proposal: record.proposal,
+    assumptions: record.assumptions,
+    beyond_mvp: record.beyond_mvp,
     complexity_reasoning: record.reasoning,
     before_workflow_mermaid: record.before_mermaid,
     after_workflow_mermaid: record.after_mermaid,
