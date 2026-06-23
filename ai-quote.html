@@ -174,15 +174,16 @@
   /* price + gantt */
   .q-price{margin-top:14px; text-align:center; padding:clamp(28px,4vw,40px)}
   .q-price .amt{font-size:clamp(34px,6vw,52px); font-weight:600; letter-spacing:-0.04em; line-height:1}
-  .q-gantt-title{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:20px 0 12px}
-  .q-gantt{max-width:520px; margin:0 auto}
-  .q-gantt-row{display:flex; align-items:center; gap:12px; margin:7px 0}
-  .q-gantt-row .lbl{flex:0 0 116px; font-size:13px; color:var(--ink-2); text-align:right}
-  .q-gantt-row .track{position:relative; flex:1 1 auto; height:24px; background:var(--surface); border:1px solid var(--rule); border-radius:6px; overflow:hidden}
-  .q-gantt-row .bar{position:absolute; top:0; height:100%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600; color:#fff; white-space:nowrap}
-  .q-gantt-row .bar-a{background:var(--link)}
-  .q-gantt-row .bar-b{background:#7FB3F2}
-  .q-gantt-foot{font-size:12px; color:var(--ink-3); margin-top:10px}
+  .q-gantt-title{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:20px 0 14px}
+  .q-gantt{margin:0 auto; text-align:left}
+  .q-gantt-row{margin-bottom:14px}
+  .q-gantt-head{display:flex; justify-content:space-between; align-items:baseline; font-size:13px; color:var(--ink-2); margin-bottom:6px}
+  .q-gantt-head .wks{font-weight:600; color:var(--ink)}
+  .q-gantt-track{position:relative; height:26px; background:var(--surface); border:1px solid var(--rule); border-radius:7px; overflow:hidden}
+  .q-gantt-bar{position:absolute; top:0; height:100%; border-radius:6px; min-width:4px}
+  .q-gantt-bar.a{background:var(--link)}
+  .q-gantt-bar.b{background:#7FB3F2}
+  .q-gantt-foot{font-size:12px; color:var(--ink-3); margin-top:12px; text-align:center}
   .q-price-notes{list-style:disc; text-align:left; max-width:520px; margin:18px auto 0; padding-left:20px}
   .q-price-notes li{font-size:12.5px; color:var(--ink-3); line-height:1.5; margin-bottom:4px}
   .q-cta{text-align:center; margin-top:26px}
@@ -564,13 +565,17 @@
       container.appendChild(ol);
     }
 
-    // Accept an array of bullets, or a legacy string (split to bullets) — keeps the
-    // page working before the backend is redeployed to return arrays.
+    // Turn the field into real bullets: an array stays as-is; a newline list is
+    // split per line; a single paragraph is split into sentences. Works whether or
+    // not the backend has been redeployed to return arrays.
     function toBullets(val){
       if (Array.isArray(val)) return val.map(function(s){ return String(s).trim(); }).filter(Boolean);
       var s = String(val || "").trim();
       if (!s || /^none\b/i.test(s)) return [];
-      return s.split(/\r?\n+/).map(function(x){ return x.replace(/^[\s\-•*\d.)]+/, "").trim(); }).filter(Boolean);
+      var raw = /\n/.test(s) ? s.split(/\r?\n+/) : s.split(/(?:;|\.)\s+(?=[A-Z(])/);
+      return raw.map(function(x){
+        return x.replace(/^\s*(?:[-•*]|\d+[.)])\s+/, "").replace(/[.;]\s*$/, "").replace(/\s+/g, " ").trim();
+      }).filter(function(x){ return x.length > 1; });
     }
     function renderBullets(id, items){
       var ul = document.getElementById(id);
@@ -578,19 +583,22 @@
       items.forEach(function(it){ var li = document.createElement("li"); li.textContent = it; ul.appendChild(li); });
     }
     // Pre-designed gantt — driven purely by the build/testing week numbers (no AI tokens).
+    // Block layout (label+weeks above a full-width track) so bars always span the container.
     function renderGantt(container, buildW, tdW){
       buildW = Math.max(1, parseInt(buildW, 10) || 1);
       tdW = Math.max(0, parseInt(tdW, 10) || 0);
       var total = buildW + tdW || 1;
-      var pct = function(n){ return (n / total * 100).toFixed(1); };
-      var wkl = function(n){ return n + " wk"; };
-      var html = '<div class="q-gantt-row"><span class="lbl">Build &amp; configure</span>' +
-        '<div class="track"><div class="bar bar-a" style="left:0;width:' + pct(buildW) + '%">' + wkl(buildW) + '</div></div></div>';
-      if (tdW > 0){
-        html += '<div class="q-gantt-row"><span class="lbl">Testing &amp; go-live</span>' +
-          '<div class="track"><div class="bar bar-b" style="left:' + pct(buildW) + '%;width:' + pct(tdW) + '%">' + wkl(tdW) + '</div></div></div>';
+      var pct = function(n){ return (n / total * 100).toFixed(2); };
+      var wkl = function(n){ return n + (n === 1 ? " week" : " weeks"); };
+      function row(label, cls, left, width, weeks){
+        return '<div class="q-gantt-row">' +
+          '<div class="q-gantt-head"><span>' + label + '</span><span class="wks">' + wkl(weeks) + '</span></div>' +
+          '<div class="q-gantt-track"><div class="q-gantt-bar ' + cls + '" style="left:' + left + '%;width:' + width + '%"></div></div>' +
+          '</div>';
       }
-      html += '<div class="q-gantt-foot">About ' + total + ' week' + (total > 1 ? "s" : "") + ' from start to go-live</div>';
+      var html = row("Build &amp; configure", "a", "0", pct(buildW), buildW);
+      if (tdW > 0){ html += row("Testing &amp; go-live", "b", pct(buildW), pct(tdW), tdW); }
+      html += '<div class="q-gantt-foot">About ' + total + (total === 1 ? " week" : " weeks") + ' from start to go-live</div>';
       container.innerHTML = html;
     }
 
