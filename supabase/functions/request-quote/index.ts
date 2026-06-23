@@ -46,7 +46,7 @@ async function sendQuoteRequestEmail(d: Record<string, unknown>): Promise<void> 
   const complex = d.classification === "complex";
   const priceLine = complex
     ? "Complex — no firm price was shown"
-    : `S$${Number(d.price_sgd).toLocaleString()} (${d.estimated_weeks} week(s) &times; S$1,500)`;
+    : `S$${Number(d.price_sgd).toLocaleString()} — ${d.build_weeks ?? d.estimated_weeks} build week(s) &times; S$1,500. Estimated delivery ~${d.total_weeks ?? d.build_weeks ?? d.estimated_weeks} week(s).`;
   const html = `
   <div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;max-width:640px;line-height:1.5">
     <div style="background:#0071e3;color:#fff;padding:14px 18px;border-radius:12px;margin-bottom:18px">
@@ -114,7 +114,8 @@ Deno.serve(async (req: Request) => {
     id: enquiryId,
     contact_name: snap.name, company: snap.company, contact_phone: snap.phone, contact_email: snap.email,
     problem_text: snap.problem, classification: snap.classification,
-    estimated_weeks: snap.weeks, price_sgd: snap.price, proposal: snap.proposal,
+    build_weeks: snap.buildWeeks, testing_deployment_weeks: snap.tdWeeks, total_weeks: snap.totalWeeks,
+    price_sgd: snap.price, proposal: snap.proposal,
   };
 
   await sendQuoteRequestEmail(d).catch((e) => console.error("quote-request email error", e));

@@ -560,7 +560,8 @@
       state.snapshot = {
         name: payload.name, company: payload.company, phone: payload.phone, email: payload.email,
         problem: payload.problem, classification: data.classification,
-        weeks: data.estimated_weeks, price: data.price_sgd, proposal: data.proposal
+        buildWeeks: data.build_weeks, tdWeeks: data.testing_deployment_weeks, totalWeeks: data.total_weeks,
+        price: data.price_sgd, proposal: data.proposal
       };
 
       loading.hidden = true;
@@ -578,8 +579,11 @@
       }else{
         document.getElementById("proposalText").textContent = data.proposal || "";
         document.getElementById("priceAmt").textContent = sgd(data.price_sgd);
-        document.getElementById("priceWeeks").textContent =
-          "Estimated " + data.estimated_weeks + " week" + (data.estimated_weeks > 1 ? "s" : "") + " of build time";
+        var wk = function(n){ return "~" + n + " week" + (n === 1 ? "" : "s"); };
+        var bw = data.build_weeks, tw = data.total_weeks, td = data.testing_deployment_weeks;
+        var weeksTxt = "Based on " + wk(bw) + " of build time";
+        if (tw && tw > bw){ weeksTxt += " · estimated delivery in " + wk(tw) + " incl. " + wk(td) + " testing & deployment"; }
+        document.getElementById("priceWeeks").textContent = weeksTxt;
         simpleBranch.hidden = false;
         complexBranch.hidden = true;
         await drawFlow(document.getElementById("beforeChart"), data.before_workflow_mermaid, "mb" + (++mc));
