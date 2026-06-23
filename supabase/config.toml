@@ -1,0 +1,12 @@
+# Supabase project config for the Velo Working website.
+# Used by the Supabase CLI (`supabase link` / `supabase functions deploy`).
+project_id = "uenbnsnafnxyqqtbmmzh"
+
+# Both AI-quote functions are called from the public (anonymous) website,
+# so JWT verification is disabled — they implement their own validation,
+# rate-limiting and CORS allowlist instead.
+[functions.quote]
+verify_jwt = false
+
+[functions.request-quote]
+verify_jwt = false

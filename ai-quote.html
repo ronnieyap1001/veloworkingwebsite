@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request price estimation with AI | Velo Working</title>
+<meta name="description" content="Describe your operational problem and get an instant AI-generated proposal, a before-and-after workflow, and an indicative price — built by Ronnie Yap, Velo Working. Singapore, Malaysia, Brunei.">
+<meta name="author" content="Ronnie Yap — Velo Working Pte. Ltd.">
+<link rel="canonical" href="https://www.veloworking.com/ai-quote.html">
+<meta name="robots" content="noindex">
+
+<meta property="og:title" content="Request price estimation with AI — Velo Working">
+<meta property="og:description" content="Describe your problem, get an instant proposal, a before/after workflow and an indicative price.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.veloworking.com/ai-quote.html">
+<meta property="og:site_name" content="Velo Working">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="asset/favicon.svg">
+<link rel="apple-touch-icon" href="asset/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+    --paper:#FBFBFD; --surface:#FFFFFF; --surface-2:#F5F5F7;
+    --link:#0071E3; --link-hov:#0077ED;
+    --dark:#0B0B0D; --paper-on-dark:#F5F5F7;
+    --rule:#D2D2D7;
+    --maxw:1180px; --read:680px;
+    --r-tile:24px;
+    --danger:#B3261E; --success:#1F8B4C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,"Helvetica Neue",Arial,sans-serif;
+    background:var(--paper); color:var(--ink);
+    font-size:17px; line-height:1.47; letter-spacing:-0.022em;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  @media(max-width:640px){.wrap{padding:0 16px}}
+  img,svg{display:block; max-width:100%}
+
+  /* ---------- type ---------- */
+  .eyebrow{font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--link); margin-bottom:12px; display:block}
+  h1{font-size:clamp(44px,7vw,80px); font-weight:600; letter-spacing:-0.045em; line-height:1.04}
+  h2{font-size:clamp(32px,4.6vw,56px); font-weight:600; letter-spacing:-0.04em; line-height:1.07}
+  h3{font-size:clamp(20px,2.4vw,26px); font-weight:600; letter-spacing:-0.03em; line-height:1.15}
+  em{font-style:italic; color:var(--link); font-weight:600}
+  .lead{font-size:clamp(19px,2.1vw,22px); font-weight:400; letter-spacing:-0.022em; color:var(--ink-2); line-height:1.45; max-width:var(--read)}
+  .cap{font-size:13px; color:var(--ink-3); letter-spacing:0}
+
+  /* ---------- layout ---------- */
+  section{padding:clamp(56px,9vw,104px) 0}
+  .head{max-width:760px}
+  .head h2{margin-top:0}
+  .head .lead{margin-top:24px}
+
+  /* ---------- buttons ---------- */
+  .btns{display:flex; gap:12px; flex-wrap:wrap; margin-top:32px}
+  .pill{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:17px; font-weight:400; letter-spacing:-0.022em;
+    padding:12px 22px; border-radius:980px; cursor:pointer;
+    text-decoration:none; border:1px solid transparent;
+    transition:background .15s ease, color .15s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .pill-primary{background:var(--link); color:#fff}
+  .pill-primary:hover{background:var(--link-hov)}
+  .pill-ghost{background:transparent; color:var(--link); border-color:var(--link)}
+  .pill-ghost:hover{background:rgba(0,113,227,.06)}
+  .pill:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .pill:disabled{opacity:.45; cursor:not-allowed}
+  .ilink{color:var(--link); text-decoration:none; font-weight:400; cursor:pointer; background:none; border:0; font:inherit}
+  .ilink:hover{text-decoration:underline}
+  .ilink::after{content:" \203A"}
+
+  /* ---------- nav (cloned from index) ---------- */
+  header.nav{position:sticky; top:0; z-index:50; background:rgba(251,251,253,.82); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--rule)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+  .nav-logo{display:inline-flex; align-items:center; color:var(--ink); text-decoration:none; flex-shrink:0}
+  .nav-logo img{height:20px; width:auto; display:block}
+  .nav-links{display:flex; gap:22px; align-items:center}
+  .nav-links a{color:var(--ink); text-decoration:none; font-size:14px; letter-spacing:-0.01em; white-space:nowrap}
+  .nav-links a:hover{color:var(--ink-2)}
+  .nav-drop{position:relative; display:flex; align-items:center}
+  .nav-drop > a{display:inline-flex; align-items:center}
+  .nav-drop > a::after{content:""; display:inline-block; margin-left:6px; width:6px; height:6px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:translateY(-2px) rotate(45deg)}
+  .nav-menu{position:absolute; top:30px; left:-12px; min-width:260px; background:rgba(251,251,253,.97); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border:1px solid var(--rule); border-radius:14px; padding:6px; box-shadow:0 8px 28px rgba(0,0,0,.08); opacity:0; visibility:hidden; transform:translateY(-4px); transition:opacity .15s ease, transform .15s ease, visibility .15s; list-style:none}
+  .nav-drop:hover .nav-menu, .nav-drop:focus-within .nav-menu, .nav-drop.open .nav-menu{opacity:1; visibility:visible; transform:none}
+  .nav-menu a{display:block; padding:9px 12px; border-radius:9px; font-size:13px; line-height:1.3; white-space:normal; color:var(--ink)}
+  .nav-menu a small{display:block; font-size:11px; color:var(--ink-3); margin-top:2px; text-transform:uppercase; letter-spacing:.04em}
+  .nav-menu a:hover{background:rgba(0,0,0,.04)}
+  .nav-menu .all{border-top:1px solid var(--rule); margin-top:4px; padding-top:11px; color:var(--link); font-weight:500}
+  .nav-toggle{display:none; width:38px; height:38px; border:0; background:none; cursor:pointer; align-items:center; justify-content:center; color:var(--ink); flex-shrink:0}
+  .nav-toggle svg{width:20px; height:20px}
+  @media(max-width:980px){
+    .nav-toggle{display:inline-flex}
+    .nav-links{position:absolute; top:56px; left:0; right:0; display:none; flex-direction:column; align-items:stretch; gap:0; background:rgba(251,251,253,.98); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--rule); padding:8px 24px 16px}
+    header.nav.open .nav-links{display:flex}
+    .nav-links > a, .nav-drop{border-bottom:1px solid var(--rule)}
+    .nav-links > a{padding:14px 0; font-size:16px}
+    .nav-drop{position:static; display:block}
+    .nav-drop > a{display:block; padding:14px 0; font-size:16px}
+    .nav-menu{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; border:0; background:none; padding:0 0 12px; min-width:0; display:none}
+    .nav-drop.open .nav-menu{display:block}
+    .nav-menu a{font-size:14px; padding:9px 0 9px 12px}
+  }
+
+  /* ---------- tiles ---------- */
+  .tile{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:clamp(24px,3vw,40px); display:flex; flex-direction:column; gap:12px}
+  .tile.s2{background:var(--surface-2); border-color:transparent}
+
+  /* ---------- intro ---------- */
+  .q-intro{padding-top:clamp(48px,7vw,84px); padding-bottom:0; text-align:center}
+  .q-intro .head{margin:0 auto}
+
+  /* ---------- form ---------- */
+  .q-card{max-width:720px; margin:36px auto 0; background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:clamp(24px,3.4vw,40px)}
+  .q-field{margin-bottom:18px}
+  .q-field:last-child{margin-bottom:0}
+  .q-field label{display:block; font-size:14px; font-weight:600; margin-bottom:7px; color:var(--ink)}
+  .q-field label .hint{font-weight:400; color:var(--ink-3); font-size:13px}
+  .q-input,.q-select,.q-textarea{width:100%; font:inherit; color:var(--ink); background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:12px 14px; letter-spacing:-0.01em}
+  .q-input:focus,.q-select:focus,.q-textarea:focus{outline:none; border-color:var(--link); box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+  .q-input:disabled,.q-textarea:disabled{background:var(--surface-2); color:var(--ink-3); cursor:not-allowed}
+  .q-textarea{min-height:132px; resize:vertical; line-height:1.5}
+  .q-grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media(max-width:560px){.q-grid2{grid-template-columns:1fr; gap:0}.q-grid2 .q-field{margin-bottom:18px}}
+  .q-phone{display:flex; gap:10px}
+  .q-phone .q-select{flex:0 0 auto; width:auto; min-width:150px}
+  .q-phone .q-input{flex:1 1 auto}
+  .q-err{color:var(--danger); font-size:13px; margin-top:7px; display:none}
+  .q-err.show{display:block}
+  .q-formnote{font-size:12px; color:var(--ink-3); margin-top:16px; text-align:center}
+  .q-submit{margin-top:8px}
+
+  /* ---------- loading ---------- */
+  #loading{text-align:center; padding:48px 0}
+  .q-spin{width:34px; height:34px; border-radius:50%; border:3px solid var(--rule); border-top-color:var(--link); animation:qspin .8s linear infinite; margin:0 auto 16px}
+  @keyframes qspin{to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.q-spin{animation:none}}
+  #loading p{color:var(--ink-2)}
+
+  /* ---------- results ---------- */
+  #results{max-width:860px; margin:0 auto}
+  .q-rhead{text-align:center; max-width:600px; margin:0 auto 8px}
+  .q-tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--link); background:rgba(0,113,227,.08); padding:5px 12px; border-radius:980px; margin-bottom:14px}
+  .q-proposal{white-space:pre-wrap; color:var(--ink-2); font-size:16px; line-height:1.6}
+  .q-section-label{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin:32px 0 12px; text-align:center}
+  .q-flows{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:760px){.q-flows{grid-template-columns:1fr}}
+  .q-flow{align-items:stretch}
+  .q-flow h3{font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--link); margin-bottom:6px}
+  .q-flow .mermaid{overflow:auto; padding-top:4px}
+  .q-flow .mermaid svg{max-width:100%; height:auto; margin:0 auto}
+  .q-mermaid-fallback{color:var(--ink-3); font-size:13px}
+  .q-price{margin-top:14px; text-align:center; padding:clamp(28px,4vw,44px)}
+  .q-price .amt{font-size:clamp(34px,6vw,52px); font-weight:600; letter-spacing:-0.04em; line-height:1}
+  .q-price .wk{color:var(--ink-2); margin-top:8px; font-size:16px}
+  .q-price .disc{font-size:12px; color:var(--ink-3); margin-top:14px}
+  .q-cta{text-align:center; margin-top:26px}
+  .q-ok{color:var(--success); font-weight:500; margin-top:10px}
+  .q-restart{text-align:center; margin-top:30px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--rule); padding:40px 0; margin-top:clamp(48px,8vw,96px)}
+  .foot-in{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start}
+  .foot-in a{color:var(--ink-2); text-decoration:none}
+  .foot-in a:hover{color:var(--link)}
+  .foot-col{font-size:14px; color:var(--ink-2); line-height:1.9; min-width:150px}
+  .foot-col h5{font-size:12px; font-weight:600; color:var(--ink); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em}
+  .foot-col a{display:block}
+  .foot-brand{max-width:260px}
+  .foot-logo img{height:20px; width:auto; margin-bottom:12px}
+  .fine{margin-top:28px; padding-top:20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); line-height:1.6}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none}}
+
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="nav-logo" aria-label="Velo Working — home">
+      <img src="asset/velo-logo.svg" alt="Velo Working">
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html#build">System</a>
+      <a href="index.html#about">About</a>
+      <a href="fabrication.html">Fabrication</a>
+      <span class="nav-drop" data-drop>
+        <a href="blog/index.html" aria-haspopup="true" aria-expanded="false">Field notes</a>
+        <ul class="nav-menu">
+          <li><a href="blog/three-categories-of-business-software.html">Three categories of business software<small>Cloud ERP · Low-Code · No-Code</small></a></li>
+          <li><a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning<small>Platform strategy</small></a></li>
+          <li><a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles<small>Value × Effort</small></a></li>
+          <li><a href="blog/positioning-of-jodoo.html">Positioning of Jodoo<small>Org-chart test</small></a></li>
+          <li><a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox<small>Diary · slide deck</small></a></li>
+          <li><a href="blog/index.html" class="all">All field notes</a></li>
+        </ul>
+      </span>
+      <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== INTRO + FORM ===== -->
+  <section class="q-intro">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">AI auto-quoting</span>
+        <h2>Describe your problem. <em>Get an instant estimate.</em></h2>
+        <p class="lead" style="margin:18px auto 0">Tell me the operational headache you want solved. My AI assistant drafts a simple proposal, sketches the before-and-after workflow, and gives you an indicative price in seconds.</p>
+      </div>
+
+      <!-- FORM -->
+      <form id="quoteForm" class="q-card reveal" novalidate>
+        <div class="q-grid2">
+          <div class="q-field">
+            <label for="name">Full name</label>
+            <input class="q-input" type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="q-field">
+            <label for="company">Company</label>
+            <input class="q-input" type="text" id="company" name="company" autocomplete="organization" required>
+          </div>
+        </div>
+
+        <div class="q-field">
+          <label for="phone">Contact number</label>
+          <div class="q-phone">
+            <select class="q-select" id="dialCode" aria-label="Country code">
+              <option value="+65" selected>Singapore (+65)</option>
+              <option value="+60">Malaysia (+60)</option>
+              <option value="+673">Brunei (+673)</option>
+              <option value="+62">Indonesia (+62)</option>
+              <option value="+66">Thailand (+66)</option>
+              <option value="+63">Philippines (+63)</option>
+              <option value="+84">Vietnam (+84)</option>
+              <option value="+91">India (+91)</option>
+              <option value="+86">China (+86)</option>
+              <option value="+852">Hong Kong (+852)</option>
+              <option value="+886">Taiwan (+886)</option>
+              <option value="+81">Japan (+81)</option>
+              <option value="+82">South Korea (+82)</option>
+              <option value="+61">Australia (+61)</option>
+              <option value="+64">New Zealand (+64)</option>
+              <option value="+44">United Kingdom (+44)</option>
+              <option value="+1">USA / Canada (+1)</option>
+              <option value="+971">UAE (+971)</option>
+              <option value="+966">Saudi Arabia (+966)</option>
+              <option value="+49">Germany (+49)</option>
+              <option value="+33">France (+33)</option>
+            </select>
+            <input class="q-input" type="tel" id="phone" name="phone" autocomplete="tel-national" placeholder="9123 4567" required>
+          </div>
+        </div>
+
+        <div class="q-field">
+          <label for="email">Work email <span class="hint">— please use your company email (Gmail, Yahoo, Hotmail, Outlook and similar are not accepted)</span></label>
+          <input class="q-input" type="email" id="email" name="email" autocomplete="email" required>
+          <p class="q-err" id="emailErr">Please use your work email — personal addresses like Gmail or Hotmail aren't accepted.</p>
+        </div>
+
+        <div class="q-field">
+          <label for="problem">What's the operational problem you want to solve?</label>
+          <textarea class="q-textarea" id="problem" name="problem" maxlength="4000" placeholder="e.g. We log daily machine downtime on paper, then someone retypes it into Excel every week. I want staff to record it on their phone and get an automatic weekly summary." disabled required></textarea>
+          <p class="q-err" id="problemErr">Please describe your problem.</p>
+        </div>
+
+        <div class="q-cta">
+          <button type="submit" class="pill pill-primary q-submit" id="submitBtn" disabled>Generate my estimate</button>
+        </div>
+        <p class="q-formnote">Your details and message are processed by AI and sent to Ronnie so he can follow up. No spam.</p>
+        <p class="q-err" id="formErr" style="text-align:center"></p>
+      </form>
+
+      <!-- LOADING -->
+      <div id="loading" hidden>
+        <div class="q-spin" role="status" aria-label="Generating"></div>
+        <p>Thinking through your workflow…</p>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="results" hidden>
+
+        <!-- SIMPLE -->
+        <div id="simpleBranch" hidden>
+          <div class="q-rhead">
+            <span class="q-tag">Looks like a simple build</span>
+            <h2 style="font-size:clamp(26px,3.6vw,40px)">Here's how I'd approach it</h2>
+          </div>
+          <div class="tile">
+            <p class="q-proposal" id="proposalText"></p>
+          </div>
+
+          <p class="q-section-label">Your workflow — before &amp; after</p>
+          <div class="q-flows">
+            <div class="tile q-flow">
+              <h3>Today</h3>
+              <div class="mermaid" id="beforeChart"></div>
+            </div>
+            <div class="tile q-flow">
+              <h3>With the new module</h3>
+              <div class="mermaid" id="afterChart"></div>
+            </div>
+          </div>
+
+          <div class="tile s2 q-price">
+            <div class="amt" id="priceAmt">—</div>
+            <div class="wk" id="priceWeeks"></div>
+            <div class="disc">Indicative estimate based on build time at S$1,500 / week — not a binding quote. Final pricing is confirmed after a short scope chat.</div>
+          </div>
+
+          <div class="q-cta">
+            <button type="button" class="pill pill-primary" id="requestQuoteBtn">Request for official quotation</button>
+            <p class="q-ok" id="requestOk" hidden>Sent — Ronnie will be in touch shortly. Thank you!</p>
+          </div>
+        </div>
+
+        <!-- COMPLEX -->
+        <div id="complexBranch" hidden>
+          <div class="q-rhead">
+            <span class="q-tag">This one deserves a proper scope</span>
+            <h2 style="font-size:clamp(26px,3.6vw,40px)">Let's talk it through</h2>
+          </div>
+          <div class="tile">
+            <p class="q-proposal" id="complexProposalText"></p>
+          </div>
+          <div class="q-cta">
+            <a class="pill pill-primary" id="complexWaBtn" href="#" target="_blank" rel="noopener">Message Ronnie on WhatsApp</a>
+            <p class="cap" style="margin-top:12px">Your enquiry has already been sent to Ronnie — he may reach out first.</p>
+          </div>
+        </div>
+
+        <div class="q-restart">
+          <button type="button" class="ilink" id="restartBtn">Describe another problem</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-col foot-brand">
+        <a href="index.html" class="foot-logo" aria-label="Velo Working — home"><img src="asset/velo-logo.svg" alt="Velo Working"></a>
+        Simple, modular systems for your operations.<br>
+        Singapore · Malaysia · Brunei
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="index.html#build">System</a>
+        <a href="index.html#about">About</a>
+        <a href="ai-quote.html">AI quote</a>
+        <a href="fabrication.html">Fabrication</a>
+        <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="pitch-deck.html">About us</a>
+      </div>
+      <div class="foot-col">
+        <h5>Field notes</h5>
+        <a href="blog/index.html">All field notes</a>
+        <a href="blog/three-categories-of-business-software.html">Three categories of business software</a>
+        <a href="blog/positioning-of-jodoo.html">Positioning of Jodoo</a>
+        <a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning</a>
+        <a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles</a>
+        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <a href="tel:+6598943004">+65 9894 3004</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+    </div>
+    <div class="fine">© 2026 Velo Working Pte. Ltd. (UEN 202609930G). All rights reserved. · Custom systems built on Jodoo — a no-code platform. The platform account stays in your company name.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  /* mobile nav toggle + dropdown (cloned from index) */
+  (function(){
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('navToggle');
+    if (toggle && nav){
+      toggle.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+    var drop = nav ? nav.querySelector('[data-drop]') : null;
+    if (drop){
+      var trigger = drop.querySelector('a');
+      trigger.addEventListener('click', function(e){
+        if (window.matchMedia('(max-width: 980px)').matches){
+          e.preventDefault();
+          var open = drop.classList.toggle('open');
+          trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+      });
+    }
+  })();
+
+  /* reveal on scroll */
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+      return;
+    }
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* ====================================================================
+     AI QUOTE APP
+  ==================================================================== */
+  (function(){
+    var FN_BASE = "https://uenbnsnafnxyqqtbmmzh.supabase.co/functions/v1";
+    var ANON_KEY = "sb_publishable_d5rYEDBIjQg3L6ZtKEPMhA_Z-AqbaK5";
+    var WA = "https://wa.me/6598943004?text=";
+
+    var FREE_EMAIL_DOMAINS = {
+      "gmail.com":1,"googlemail.com":1,"yahoo.com":1,"yahoo.co.uk":1,"yahoo.com.sg":1,
+      "ymail.com":1,"hotmail.com":1,"hotmail.co.uk":1,"outlook.com":1,"outlook.sg":1,
+      "live.com":1,"live.com.sg":1,"msn.com":1,"icloud.com":1,"me.com":1,"mac.com":1,
+      "aol.com":1,"gmx.com":1,"gmx.net":1,"proton.me":1,"protonmail.com":1,"pm.me":1,
+      "zoho.com":1,"yandex.com":1,"mail.com":1,"qq.com":1,"163.com":1,"126.com":1
+    };
+
+    function isWorkEmail(email){
+      var m = /^[^\s@]+@([^\s@]+\.[^\s@]+)$/.exec(String(email).trim().toLowerCase());
+      return !!m && !FREE_EMAIL_DOMAINS[m[1]];
+    }
+    function sgd(n){ return "S$" + Number(n).toLocaleString("en-SG"); }
+
+    if (window.mermaid){ mermaid.initialize({ startOnLoad:false, theme:"neutral", securityLevel:"strict", flowchart:{ useMaxWidth:true } }); }
+
+    var form = document.getElementById("quoteForm");
+    var nameEl = document.getElementById("name");
+    var companyEl = document.getElementById("company");
+    var dialEl = document.getElementById("dialCode");
+    var phoneEl = document.getElementById("phone");
+    var emailEl = document.getElementById("email");
+    var problemEl = document.getElementById("problem");
+    var submitBtn = document.getElementById("submitBtn");
+    var emailErr = document.getElementById("emailErr");
+    var problemErr = document.getElementById("problemErr");
+    var formErr = document.getElementById("formErr");
+
+    var loading = document.getElementById("loading");
+    var results = document.getElementById("results");
+    var simpleBranch = document.getElementById("simpleBranch");
+    var complexBranch = document.getElementById("complexBranch");
+    var requestQuoteBtn = document.getElementById("requestQuoteBtn");
+    var requestOk = document.getElementById("requestOk");
+    var restartBtn = document.getElementById("restartBtn");
+
+    var state = { enquiryId:null, snapshot:null };
+    var mc = 0; // mermaid id counter
+
+    function leadFilled(){
+      return nameEl.value.trim() && companyEl.value.trim() && phoneEl.value.trim() && emailEl.value.trim();
+    }
+    function refreshGate(){
+      var ok = leadFilled() && isWorkEmail(emailEl.value);
+      problemEl.disabled = !ok;
+      submitBtn.disabled = !(ok && problemEl.value.trim());
+    }
+    [nameEl, companyEl, phoneEl, emailEl, problemEl].forEach(function(el){
+      el.addEventListener("input", function(){
+        formErr.classList.remove("show");
+        if (el === emailEl) emailErr.classList.remove("show");
+        if (el === problemEl) problemErr.classList.remove("show");
+        refreshGate();
+      });
+    });
+    emailEl.addEventListener("blur", function(){
+      if (emailEl.value.trim() && !isWorkEmail(emailEl.value)) emailErr.classList.add("show");
+    });
+
+    function showFormError(msg){
+      formErr.textContent = msg;
+      formErr.classList.add("show");
+    }
+
+    async function drawFlow(container, code, id){
+      container.innerHTML = "";
+      try{
+        var out = await mermaid.render(id, String(code || "").trim());
+        container.innerHTML = out.svg;
+      }catch(err){
+        console.warn("Mermaid render failed:", err);
+        var leftover = document.getElementById(id); if (leftover) leftover.remove();
+        var dleft = document.getElementById("d" + id); if (dleft) dleft.remove();
+        container.innerHTML = '<p class="q-mermaid-fallback">(Couldn’t draw this diagram — the proposal above describes the change.)</p>';
+      }
+    }
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      if (!isWorkEmail(emailEl.value)){ emailErr.classList.add("show"); emailEl.focus(); return; }
+      if (!problemEl.value.trim()){ problemErr.classList.add("show"); return; }
+
+      var payload = {
+        problem: problemEl.value.trim(),
+        name: nameEl.value.trim(),
+        company: companyEl.value.trim(),
+        phone: dialEl.value + " " + phoneEl.value.trim(),
+        email: emailEl.value.trim()
+      };
+
+      form.hidden = true;
+      loading.hidden = false;
+
+      var data;
+      try{
+        var res = await fetch(FN_BASE + "/quote", {
+          method:"POST",
+          headers:{ "Content-Type":"application/json", "apikey":ANON_KEY, "Authorization":"Bearer " + ANON_KEY },
+          body: JSON.stringify(payload)
+        });
+        data = await res.json().catch(function(){ return {}; });
+        if (!res.ok || data.error){
+          throw new Error(data.error || ("Request failed (" + res.status + ")"));
+        }
+      }catch(err){
+        loading.hidden = true;
+        form.hidden = false;
+        showFormError((err && err.message ? err.message : "Something went wrong.") + " You can also message Ronnie directly on WhatsApp.");
+        return;
+      }
+
+      state.enquiryId = data.enquiryId || null;
+      state.snapshot = {
+        name: payload.name, company: payload.company, phone: payload.phone, email: payload.email,
+        problem: payload.problem, classification: data.classification,
+        weeks: data.estimated_weeks, price: data.price_sgd, proposal: data.proposal
+      };
+
+      loading.hidden = true;
+      results.hidden = false;
+
+      if (data.classification === "complex"){
+        document.getElementById("complexProposalText").textContent =
+          (data.proposal || "") + (data.complexity_reasoning ? "\n\n" + data.complexity_reasoning : "");
+        var waText = "Hi Ronnie — I used the AI quote tool on veloworking.com. I'm " + payload.name +
+          " from " + payload.company + ". My requirement: " + payload.problem +
+          "\n\nThe tool flagged it as a more involved project — can we scope it together?";
+        document.getElementById("complexWaBtn").href = WA + encodeURIComponent(waText);
+        complexBranch.hidden = false;
+        simpleBranch.hidden = true;
+      }else{
+        document.getElementById("proposalText").textContent = data.proposal || "";
+        document.getElementById("priceAmt").textContent = sgd(data.price_sgd);
+        document.getElementById("priceWeeks").textContent =
+          "Estimated " + data.estimated_weeks + " week" + (data.estimated_weeks > 1 ? "s" : "") + " of build time";
+        simpleBranch.hidden = false;
+        complexBranch.hidden = true;
+        await drawFlow(document.getElementById("beforeChart"), data.before_workflow_mermaid, "mb" + (++mc));
+        await drawFlow(document.getElementById("afterChart"), data.after_workflow_mermaid, "ma" + (++mc));
+      }
+      results.scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+
+    requestQuoteBtn.addEventListener("click", async function(){
+      requestQuoteBtn.disabled = true;
+      requestQuoteBtn.textContent = "Sending…";
+      try{
+        await fetch(FN_BASE + "/request-quote", {
+          method:"POST",
+          headers:{ "Content-Type":"application/json", "apikey":ANON_KEY, "Authorization":"Bearer " + ANON_KEY },
+          body: JSON.stringify({ enquiryId: state.enquiryId, snapshot: state.snapshot })
+        });
+      }catch(err){ console.warn("request-quote failed", err); }
+      requestQuoteBtn.hidden = true;
+      requestOk.hidden = false;
+    });
+
+    restartBtn.addEventListener("click", function(){ window.location.reload(); });
+  })();
+</script>
+</body>
+</html>
