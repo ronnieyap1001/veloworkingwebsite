@@ -347,7 +347,10 @@
 
           <div class="q-cta">
             <button type="button" class="pill pill-primary" id="requestQuoteBtn">Request for official quotation</button>
-            <p class="q-ok" id="requestOk" hidden>Sent — Ronnie will be in touch shortly. Thank you!</p>
+            <div id="requestDone" hidden>
+              <p class="q-ok" id="requestOk">Sent — Ronnie will be in touch shortly. To get a quote faster, message him directly with your result:</p>
+              <a class="pill pill-primary" id="requestWaBtn" href="#" target="_blank" rel="noopener" style="margin-top:14px">Send my result to Ronnie on WhatsApp</a>
+            </div>
           </div>
         </div>
 
@@ -502,6 +505,8 @@
     var complexBranch = document.getElementById("complexBranch");
     var requestQuoteBtn = document.getElementById("requestQuoteBtn");
     var requestOk = document.getElementById("requestOk");
+    var requestDone = document.getElementById("requestDone");
+    var requestWaBtn = document.getElementById("requestWaBtn");
 
     var state = { enquiryId:null, snapshot:null };
 
@@ -617,7 +622,7 @@
       requestQuoteBtn.hidden = false;
       requestQuoteBtn.disabled = false;
       requestQuoteBtn.textContent = "Request for official quotation";
-      requestOk.hidden = true;
+      requestDone.hidden = true;
       document.getElementById("workflowSteps").innerHTML = "";
     }
 
@@ -685,15 +690,44 @@
         var asmp = toBullets(data.assumptions);
         if (asmp.length){ renderBullets("assumptionsList", asmp); show("assumptionsBlock", true); } else { show("assumptionsBlock", false); }
         txt("proposalText", data.proposal || "");
-        renderSteps(document.getElementById("workflowSteps"), stepsFromData(data));
+        var steps = stepsFromData(data);
+        renderSteps(document.getElementById("workflowSteps"), steps);
         var bmv = toBullets(data.beyond_mvp);
         if (bmv.length){ renderBullets("beyondList", bmv); show("beyondBlock", true); } else { show("beyondBlock", false); }
         txt("priceAmt", sgd(data.price_sgd));
         renderGantt(document.getElementById("priceGantt"), data.build_weeks, data.testing_deployment_weeks);
+        // enrich the snapshot with EXACTLY what's shown, so the official-quote email + WhatsApp match the page
+        state.snapshot.assumptions = asmp;
+        state.snapshot.clarification = bmv;
+        state.snapshot.workflow_steps = steps;
+        state.snapshot.reasoning = reason;
         simpleBranch.hidden = false;
       }
       results.scrollIntoView({ behavior:"smooth", block:"start" });
     });
+
+    function clip(v, n){ var t = String(v || "").trim(); return t.length > n ? t.slice(0, n - 1) + "…" : t; }
+    // WhatsApp message with brief requestor details + the AI result.
+    function buildQuoteWa(s){
+      s = s || {};
+      var resultLine = "AI result: " + (s.classification || "-") +
+        (s.price ? " · indicative S$" + Number(s.price).toLocaleString("en-SG") : "") +
+        (s.buildWeeks ? " · build ~" + s.buildWeeks + " wk" : "") +
+        (s.totalWeeks ? ", go-live ~" + s.totalWeeks + " wk" : "");
+      return [
+        "Hi Ronnie, I'd like an official quotation (via the AI quote tool on veloworking.com).",
+        "",
+        "Name: " + (s.name || "-"),
+        "Company: " + (s.company || "-"),
+        "Phone: " + (s.phone || "-"),
+        "Email: " + (s.email || "-"),
+        "",
+        "Problem: " + clip(s.problem, 240),
+        "Expectation: " + clip(s.expectation, 240),
+        "",
+        resultLine
+      ].join("\n");
+    }
 
     requestQuoteBtn.addEventListener("click", async function(){
       requestQuoteBtn.disabled = true;
@@ -705,8 +739,9 @@
           body: JSON.stringify({ enquiryId: state.enquiryId, snapshot: state.snapshot })
         });
       }catch(err){ console.warn("request-quote failed", err); }
+      requestWaBtn.href = WA + encodeURIComponent(buildQuoteWa(state.snapshot));
       requestQuoteBtn.hidden = true;
-      requestOk.hidden = false;
+      requestDone.hidden = false;
     });
   })();
 </script>
