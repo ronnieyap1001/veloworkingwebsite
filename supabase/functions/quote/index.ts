@@ -39,25 +39,27 @@ const FREE_EMAIL_DOMAINS = new Set([
 ]);
 
 const SYSTEM_PROMPT =
-`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular business systems for SMEs in Singapore, Malaysia and Brunei on JODOO, a no-code platform. A visitor describes an operational problem or requirement. Your job is to propose the SIMPLEST viable solution — an MVP — that Ronnie can auto-quote, classify the job, and estimate the build time. Always answer by calling the submit_quote tool.
+`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular business systems for SMEs in Singapore, Malaysia and Brunei on a no-code platform. A visitor describes an operational problem or requirement. Your job is to propose the SIMPLEST viable solution — an MVP — that Ronnie can auto-quote, classify the job, and estimate the build time. Always answer by calling the submit_quote tool.
+
+IMPORTANT — never name the underlying platform in any output field. Always call it "the system" or "your system", never a brand or product name.
 
 SOLUTION APPROACH — MVP FIRST (most important):
-- Do NOT design a perfect or complete system. Propose a minimum viable product: the smallest single Jodoo module that delivers the core value and fits within auto-quote capability (one module, no external system, build_weeks of 4 or fewer).
+- Do NOT design a perfect or complete system. Propose a minimum viable product: the smallest single module that delivers the core value and fits within auto-quote capability (one module, no external system, build_weeks of 4 or fewer).
 - If the request is vague or under-specified, DO NOT ask the visitor to clarify and do not inflate scope to cover every edge case. Instead MAKE sensible assumptions and decide the scope yourself on the requestor's behalf so the solution stays simple — and record those decisions in the assumptions field.
 - Prefer cutting scope (fewer fields, one workflow path, manual handling of edge cases) over adding complexity. Classify a job as complex ONLY if even a sensibly cut-down MVP genuinely cannot be a single module, needs an external third-party system, or still takes more than 4 build weeks.
-- After the MVP, use beyond_mvp to describe how a fuller or "perfect" solution could extend it later, and/or the key open questions you still have about the requirement.
+- After the MVP, use beyond_mvp to list how a fuller or "perfect" solution could extend it later, and/or the key open questions you still have.
 
-WHAT JODOO DOES OUT OF THE BOX (no coding, NO external API needed) — treat ALL of these as standard, low-effort building blocks, never as reasons a project is complex:
+WHAT THE SYSTEM DOES OUT OF THE BOX (no coding, NO external API needed) — treat ALL of these as standard, low-effort building blocks, never as reasons a project is complex:
 - Forms: drag-and-drop builder, 20+ field types, subforms/tables, conditional show-hide logic, formulas and calculations, aggregate tables, photo upload, e-signature capture, custom buttons, custom result pages.
 - Data views: grid, kanban, gallery, gantt, calendar.
-- QR codes and barcodes: generate a shareable form QR code, AND scan barcodes/QR codes directly from the Jodoo mobile app (e.g. inventory, assets, equipment inspection). This is BUILT IN — it does NOT require any external API.
+- QR codes and barcodes: generate a shareable form QR code, AND scan barcodes/QR codes directly from the system's mobile app (e.g. inventory, assets, equipment inspection). This is BUILT IN — it does NOT require any external API.
 - Workflow and approvals: visual process designer, multi-level approvals, countersign, return/transfer, CC nodes, comments, auto-submit/return.
 - Automation: trigger actions on record create/update/delete, scheduled tasks, automated notifications and reminders, document/PDF generation.
 - Dashboards and reports: many chart types, gantt, calendar, KPI dashboards, conditional formatting, export to PDF/Excel, embed.
-- Data linking: connect/associate data between forms, pull data across apps in the same account (cross-app), change history, recycle bin, import/export.
+- Data linking: connect/associate data between forms, pull data across modules in the same account, change history, recycle bin, import/export.
 - Mobile: native iOS and Android apps. Plus roles, permissions, SSO and audit trail.
 
-WHAT COUNTS AS AN EXTERNAL API CONNECTION (only THIS makes a project complex): connecting Jodoo to a SEPARATE third-party system — e.g. Shopify, Xero or other accounting/ERP, a payment gateway, a government/tax portal, an SMS or WhatsApp gateway, a custom in-house system, or any two-way sync with software outside Jodoo (via Jodoo's open API, webhooks, Zapier/Make or custom plugins). Anything that is built into Jodoo (QR/barcode scanning, e-signature, notifications, PDF generation, dashboards, approvals, data linking within Jodoo) is NOT an external API connection. Set requires_external_api true ONLY when a separate outside system must be connected.
+WHAT COUNTS AS AN EXTERNAL API CONNECTION (only THIS makes a project complex): connecting the system to a SEPARATE third-party system — e.g. Shopify, Xero or other accounting/ERP, a payment gateway, a government/tax portal, an SMS or WhatsApp gateway, a custom in-house system, or any two-way sync with outside software (via open API, webhooks, Zapier/Make or custom plugins). Anything built into the system (QR/barcode scanning, e-signature, notifications, PDF generation, dashboards, approvals, internal data linking) is NOT an external API connection. Set requires_external_api true ONLY when a separate outside system must be connected.
 
 TIME ESTIMATE — estimate in whole weeks and SEPARATE build time from testing/deployment:
 - build_weeks = requirement understanding + development/configuration ONLY. The client already states their requirement in the form and the modules are simple, so requirement understanding should take only about 1-2 days — do not over-estimate it. build_weeks does NOT include testing or deployment.
@@ -65,17 +67,17 @@ TIME ESTIMATE — estimate in whole weeks and SEPARATE build time from testing/d
 
 COMPLEXITY — judge ONLY on build time and scope, NEVER on testing/deployment:
 - A job is COMPLEX if ANY of these are true: build_weeks is greater than 4; requires_external_api is true; or it is more than a single module.
-- Otherwise it is SIMPLE (clear request, linear workflow, single Jodoo module, no external system, build_weeks of 4 or fewer).
+- Otherwise it is SIMPLE (clear request, linear workflow, single module, no external system, build_weeks of 4 or fewer).
 - For COMPLEX jobs: keep the proposal high-level, say a detailed scope discussion is needed, and do not promise a firm price.
 
 workflow_steps — this is the key output, put real thought into it:
-- An ORDERED list of 5 to 8 steps describing the NEW end-to-end process once the Jodoo module is live: the actual steps in sequence, who does each one, and the key automations — specific to THIS visitor's problem and expectation, not generic.
-- Each step is one short, plain sentence (about 4 to 9 words), starting with who does it, e.g. "Employee submits visitor form in Jodoo", "Jodoo auto-sends instant push notification", "Guard scans QR code to verify", "Pass issued and visitor notified".
+- An ORDERED list of 5 to 8 steps describing the NEW end-to-end process once the system module is live: the actual steps in sequence, who does each one, and the key automations — specific to THIS visitor's problem and expectation, not generic.
+- Each step is one short, plain sentence (about 4 to 9 words), starting with who does it, e.g. "Employee submits visitor form in the system", "System auto-sends instant push notification", "Guard scans QR code to verify", "Pass issued and visitor notified".
 - Plain text only (no numbering, no markdown, no arrows) — the website renders the numbers and the flow. Keep it concrete and in logical order from start to finish.
 
-proposal: the MVP solution only — 2 to 4 short plain-text paragraphs, no markdown headings, for a non-technical SME owner. Describe the single Jodoo module and the specific Jodoo capabilities you would use. Keep it minimal.
-assumptions: the decisions and assumptions you made on the requestor's behalf to keep the solution simple, especially where the request was unclear. If the request was fully clear, write exactly "None — your request was clear enough to scope directly."
-beyond_mvp: how a fuller or "perfect" solution could extend the MVP later, and/or the main open questions you would want the requestor to answer. 1 to 3 short sentences, plain text.
+proposal: the MVP solution only — 2 to 4 short plain-text paragraphs, no markdown headings, for a non-technical SME owner. Describe the single module and the specific built-in capabilities you would use (call it "the system", never a brand name). Keep it minimal.
+assumptions: an ARRAY of short bullet points (each about 6 to 12 words) stating the scoping decisions/assumptions you made on the requestor's behalf, especially where the request was unclear. If the request was fully clear with nothing to assume, return an empty array.
+beyond_mvp: an ARRAY of short bullet points (each about 6 to 14 words) — how a fuller solution could extend the MVP later, and/or the key questions you want the requestor to clarify. Return an empty array if there is genuinely nothing to add.
 complexity_reasoning: 1 to 2 sentences explaining the classification, including the build time and whether any external system is involved.`;
 
 const TOOL = {
@@ -87,12 +89,12 @@ const TOOL = {
       classification: { type: "string", enum: ["simple", "complex"] },
       build_weeks: { type: "integer", minimum: 1, description: "Requirement understanding (1-2 days) + development only. Excludes testing/deployment." },
       testing_deployment_weeks: { type: "integer", minimum: 0, description: "User testing, fixes and go-live after the build. Not part of build time." },
-      requires_external_api: { type: "boolean", description: "True ONLY if a separate third-party system outside Jodoo must be connected." },
+      requires_external_api: { type: "boolean", description: "True ONLY if a separate third-party system outside the system must be connected." },
       is_single_module: { type: "boolean" },
       complexity_reasoning: { type: "string" },
-      proposal: { type: "string", description: "The MVP solution only — the smallest single Jodoo module that delivers the core value." },
-      assumptions: { type: "string", description: "Scoping decisions/assumptions made on the requestor's behalf. 'None — your request was clear enough to scope directly.' if fully clear." },
-      beyond_mvp: { type: "string", description: "How a fuller/perfect solution could extend the MVP later, and/or open questions for the requestor." },
+      proposal: { type: "string", description: "The MVP solution only — the smallest single module that delivers the core value. Never name the platform; call it 'the system'." },
+      assumptions: { type: "array", description: "Bullet points of scoping decisions/assumptions made on the requestor's behalf. Empty array if nothing to assume.", items: { type: "string" } },
+      beyond_mvp: { type: "array", description: "Bullet points: how a fuller solution could extend the MVP, and/or clarifying questions. Empty array if nothing to add.", items: { type: "string" } },
       workflow_steps: {
         type: "array",
         description: "The solution workflow as an ordered list of 5-8 short plain-text steps (no numbering or arrows).",
@@ -141,6 +143,20 @@ function esc(s: unknown): string {
   return String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c] as string));
 }
 
+// Normalise a bullet field (array or legacy string) to a clean string[].
+function toBulletArray(v: unknown): string[] {
+  if (Array.isArray(v)) return v.map((s) => String(s).trim()).filter(Boolean);
+  const s = String(v ?? "").trim();
+  if (!s || /^none\b/i.test(s)) return [];
+  return s.split(/\r?\n+/).map((x) => x.replace(/^[\s\-•*\d.)]+/, "").trim()).filter(Boolean);
+}
+
+// Render bullets as an HTML list for the notification email.
+function bulletHtml(items: string[]): string {
+  if (!items.length) return "";
+  return `<ul style="margin:0 0 16px;padding-left:20px">${items.map((i) => `<li style="margin-bottom:4px">${esc(i)}</li>`).join("")}</ul>`;
+}
+
 async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
   if (!RESEND_API_KEY) { console.warn("RESEND_API_KEY not set — skipping enquiry email"); return; }
   const complex = d.classification === "complex";
@@ -162,13 +178,12 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
     <h3 style="margin:0 0 6px">Problem</h3>
     <p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.problem_text)}</p>
     ${d.expectation ? `<h3 style="margin:0 0 6px">Expectation</h3><p style="white-space:pre-wrap;margin:0 0 16px">${esc(d.expectation)}</p>` : ""}
-    <h3 style="margin:0 0 6px">MVP proposal</h3>
-    <p style="margin:0 0 16px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
-    ${d.assumptions ? `<h3 style="margin:0 0 6px">Assumptions made</h3><p style="margin:0 0 16px">${esc(d.assumptions).replace(/\n/g, "<br>")}</p>` : ""}
-    ${d.beyond_mvp ? `<h3 style="margin:0 0 6px">Beyond the MVP / open questions</h3><p style="margin:0 0 16px">${esc(d.beyond_mvp).replace(/\n/g, "<br>")}</p>` : ""}
-    <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
-    <h3 style="margin:0 0 6px">Solution workflow</h3>
+    ${toBulletArray(d.assumptions).length ? `<h3 style="margin:0 0 6px">Assumptions</h3>${bulletHtml(toBulletArray(d.assumptions))}` : ""}
+    <h3 style="margin:0 0 6px">Proposal</h3>
+    <p style="margin:0 0 12px">${esc(d.proposal).replace(/\n/g, "<br>")}</p>
     <div style="white-space:pre-wrap;margin:0 0 16px">${esc(d.after_mermaid)}</div>
+    ${toBulletArray(d.beyond_mvp).length ? `<h3 style="margin:0 0 6px">Clarification</h3>${bulletHtml(toBulletArray(d.beyond_mvp))}` : ""}
+    <p style="margin:0 0 16px"><b>Why this classification:</b> ${esc(d.reasoning)}</p>
     <p style="color:#86868b;font-size:12px;margin-top:18px">Enquiry id: ${esc(d.id) || "not saved"}</p>
   </div>`;
   const body: Record<string, unknown> = {
@@ -281,6 +296,8 @@ Deno.serve(async (req: Request) => {
   const workflowSteps = Array.isArray(t.workflow_steps)
     ? (t.workflow_steps as unknown[]).map((s) => String(s).trim()).filter(Boolean)
     : [];
+  const assumptionsArr = toBulletArray(t.assumptions);
+  const beyondArr = toBulletArray(t.beyond_mvp);
 
   const record = {
     problem_text: problem, expectation, contact_name: name, company, contact_phone: phone, contact_email: email,
@@ -289,7 +306,7 @@ Deno.serve(async (req: Request) => {
     estimated_weeks: buildWeeks, // kept in sync with the billed (build) weeks for continuity
     price_sgd: price,
     proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
-    assumptions: String(t.assumptions ?? ""), beyond_mvp: String(t.beyond_mvp ?? ""),
+    assumptions: assumptionsArr.map((s) => `- ${s}`).join("\n"), beyond_mvp: beyondArr.map((s) => `- ${s}`).join("\n"),
     after_mermaid: workflowSteps.map((s, i) => `${i + 1}. ${s}`).join("\n"), // workflow stored as a readable numbered list
     raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
   };
@@ -318,8 +335,8 @@ Deno.serve(async (req: Request) => {
     enquiryId,
     classification,
     proposal: record.proposal,
-    assumptions: record.assumptions,
-    beyond_mvp: record.beyond_mvp,
+    assumptions: assumptionsArr,
+    beyond_mvp: beyondArr,
     complexity_reasoning: record.reasoning,
     workflow_steps: workflowSteps,
     build_weeks: buildWeeks,
