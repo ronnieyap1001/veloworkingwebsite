@@ -39,22 +39,36 @@ const FREE_EMAIL_DOMAINS = new Set([
 ]);
 
 const SYSTEM_PROMPT =
-`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular no-code (Jodoo) operational systems for SMEs in Singapore, Malaysia and Brunei. A visitor describes an operational problem or requirement. Produce a short, concrete proposal for a single no-code module that solves it, and classify the job. Always answer by calling the submit_quote tool.
+`You are the auto-quoting assistant for Velo Working, run by Ronnie Yap — an independent operations engineer who builds simple, modular business systems for SMEs in Singapore, Malaysia and Brunei on JODOO, a no-code platform. A visitor describes an operational problem or requirement. Produce a short, concrete proposal for a single Jodoo module that solves it, classify the job, and estimate the build time. Always answer by calling the submit_quote tool.
 
-Pricing & complexity rules (apply strictly):
-- Pricing unit: 1 week of build time = 1500 SGD.
-- estimated_weeks = the whole number of weeks Ronnie needs to build the described solution.
-- A job is COMPLEX if ANY of these are true: estimated_weeks is greater than 4; it requires connecting to external APIs or third-party systems; or it is more than a single module. Set requires_external_api and is_single_module truthfully.
-- A job is SIMPLE only if the request is clear, the workflow is linear, it is a single module, needs no external APIs, and takes 4 weeks or fewer.
-- For COMPLEX jobs: keep the proposal to a high-level direction and explicitly say a detailed scope discussion is needed; do not over-promise a firm price.
+WHAT JODOO DOES OUT OF THE BOX (no coding, NO external API needed) — treat ALL of these as standard, low-effort building blocks, never as reasons a project is complex:
+- Forms: drag-and-drop builder, 20+ field types, subforms/tables, conditional show-hide logic, formulas and calculations, aggregate tables, photo upload, e-signature capture, custom buttons, custom result pages.
+- Data views: grid, kanban, gallery, gantt, calendar.
+- QR codes and barcodes: generate a shareable form QR code, AND scan barcodes/QR codes directly from the Jodoo mobile app (e.g. inventory, assets, equipment inspection). This is BUILT IN — it does NOT require any external API.
+- Workflow and approvals: visual process designer, multi-level approvals, countersign, return/transfer, CC nodes, comments, auto-submit/return.
+- Automation: trigger actions on record create/update/delete, scheduled tasks, automated notifications and reminders, document/PDF generation.
+- Dashboards and reports: many chart types, gantt, calendar, KPI dashboards, conditional formatting, export to PDF/Excel, embed.
+- Data linking: connect/associate data between forms, pull data across apps in the same account (cross-app), change history, recycle bin, import/export.
+- Mobile: native iOS and Android apps. Plus roles, permissions, SSO and audit trail.
+
+WHAT COUNTS AS AN EXTERNAL API CONNECTION (only THIS makes a project complex): connecting Jodoo to a SEPARATE third-party system — e.g. Shopify, Xero or other accounting/ERP, a payment gateway, a government/tax portal, an SMS or WhatsApp gateway, a custom in-house system, or any two-way sync with software outside Jodoo (via Jodoo's open API, webhooks, Zapier/Make or custom plugins). Anything that is built into Jodoo (QR/barcode scanning, e-signature, notifications, PDF generation, dashboards, approvals, data linking within Jodoo) is NOT an external API connection. Set requires_external_api true ONLY when a separate outside system must be connected.
+
+TIME ESTIMATE — estimate in whole weeks and SEPARATE build time from testing/deployment:
+- build_weeks = requirement understanding + development/configuration ONLY. The client already states their requirement in the form and the modules are simple, so requirement understanding should take only about 1-2 days — do not over-estimate it. build_weeks does NOT include testing or deployment.
+- testing_deployment_weeks = user testing, fixes and go-live AFTER the build. Estimate separately; it is NOT part of build time.
+
+COMPLEXITY — judge ONLY on build time and scope, NEVER on testing/deployment:
+- A job is COMPLEX if ANY of these are true: build_weeks is greater than 4; requires_external_api is true; or it is more than a single module.
+- Otherwise it is SIMPLE (clear request, linear workflow, single Jodoo module, no external system, build_weeks of 4 or fewer).
+- For COMPLEX jobs: keep the proposal high-level, say a detailed scope discussion is needed, and do not promise a firm price.
 
 Workflow diagrams:
 - before_workflow_mermaid = the visitor's current manual / painful process.
-- after_workflow_mermaid = the streamlined process once the new module is in place.
-- BOTH must be valid Mermaid "flowchart TD" syntax with 4 to 8 nodes. Use ONLY plain ASCII letters, numbers and spaces inside node labels — no parentheses, quotes, colons, slashes, ampersands or other special characters inside node text, because they break Mermaid rendering. No styling or class directives. Example: flowchart TD; A[Collects data on paper] --> B[Types into Excel] --> C[Emails manager] --> D[Manager approves]
+- after_workflow_mermaid = the streamlined process once the new Jodoo module is in place.
+- BOTH must be valid Mermaid "flowchart TD" syntax with 4 to 8 nodes. Use ONLY plain ASCII letters, numbers and spaces inside node labels — no parentheses, quotes, colons, slashes, ampersands or other special characters inside node text, because they break Mermaid rendering. No styling or class directives. Example: flowchart TD; A[Worker scans QR code on machine] --> B[Logs downtime on phone] --> C[Auto weekly summary] --> D[Manager reviews dashboard]
 
-proposal: 2 to 4 short plain-text paragraphs, no markdown headings, written for a non-technical SME owner.
-complexity_reasoning: 1 to 2 sentences explaining the classification.`;
+proposal: 2 to 4 short plain-text paragraphs, no markdown headings, written for a non-technical SME owner. Mention the specific Jodoo capabilities you would use.
+complexity_reasoning: 1 to 2 sentences explaining the classification, including the build time and whether any external system is involved.`;
 
 const TOOL = {
   name: "submit_quote",
@@ -63,8 +77,9 @@ const TOOL = {
     type: "object",
     properties: {
       classification: { type: "string", enum: ["simple", "complex"] },
-      estimated_weeks: { type: "integer", minimum: 1 },
-      requires_external_api: { type: "boolean" },
+      build_weeks: { type: "integer", minimum: 1, description: "Requirement understanding (1-2 days) + development only. Excludes testing/deployment." },
+      testing_deployment_weeks: { type: "integer", minimum: 0, description: "User testing, fixes and go-live after the build. Not part of build time." },
+      requires_external_api: { type: "boolean", description: "True ONLY if a separate third-party system outside Jodoo must be connected." },
       is_single_module: { type: "boolean" },
       complexity_reasoning: { type: "string" },
       proposal: { type: "string" },
@@ -72,7 +87,7 @@ const TOOL = {
       after_workflow_mermaid: { type: "string" },
     },
     required: [
-      "classification", "estimated_weeks", "requires_external_api",
+      "classification", "build_weeks", "testing_deployment_weeks", "requires_external_api",
       "is_single_module", "complexity_reasoning", "proposal",
       "before_workflow_mermaid", "after_workflow_mermaid",
     ],
@@ -116,7 +131,7 @@ async function sendEnquiryEmail(d: Record<string, unknown>): Promise<void> {
   const complex = d.classification === "complex";
   const priceLine = complex
     ? "Complex — no firm price (visitor routed to WhatsApp)"
-    : `S$${Number(d.price_sgd).toLocaleString()} (${d.estimated_weeks} week(s) &times; S$1,500)`;
+    : `S$${Number(d.price_sgd).toLocaleString()} — ${d.build_weeks} build week(s) &times; S$1,500. Estimated delivery ~${d.total_weeks} week(s) (incl. ${d.testing_deployment_weeks} for testing &amp; deployment).`;
   const html = `
   <div style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;max-width:640px;line-height:1.5">
     <h2 style="margin:0 0 2px">New AI enquiry</h2>
@@ -236,16 +251,22 @@ Deno.serve(async (req: Request) => {
   }
 
   // Pricing & classification are decided server-side — never trust the model to compute.
-  const weeks = Math.max(1, parseInt(String(t.estimated_weeks), 10) || 1);
+  // Price and complexity are gated on BUILD time only (excludes testing/deployment).
+  const buildWeeks = Math.max(1, parseInt(String(t.build_weeks), 10) || 1);
+  const tdWeeks = Math.max(0, parseInt(String(t.testing_deployment_weeks), 10) || 0);
+  const totalWeeks = buildWeeks + tdWeeks;
   const requiresApi = t.requires_external_api === true;
   const singleModule = t.is_single_module !== false;
-  const isComplex = weeks > 4 || requiresApi || !singleModule;
+  const isComplex = buildWeeks > 4 || requiresApi || !singleModule;
   const classification = isComplex ? "complex" : "simple";
-  const price = weeks * WEEK_RATE_SGD;
+  const price = buildWeeks * WEEK_RATE_SGD;
 
   const record = {
     problem_text: problem, contact_name: name, company, contact_phone: phone, contact_email: email,
-    classification, estimated_weeks: weeks, price_sgd: price,
+    classification,
+    build_weeks: buildWeeks, testing_deployment_weeks: tdWeeks, total_weeks: totalWeeks,
+    estimated_weeks: buildWeeks, // kept in sync with the billed (build) weeks for continuity
+    price_sgd: price,
     proposal: String(t.proposal ?? ""), reasoning: String(t.complexity_reasoning ?? ""),
     before_mermaid: String(t.before_workflow_mermaid ?? ""), after_mermaid: String(t.after_workflow_mermaid ?? ""),
     raw_llm_json: t, user_agent: ua, ip_hash: ipHash,
@@ -278,7 +299,9 @@ Deno.serve(async (req: Request) => {
     complexity_reasoning: record.reasoning,
     before_workflow_mermaid: record.before_mermaid,
     after_workflow_mermaid: record.after_mermaid,
-    estimated_weeks: weeks,
+    build_weeks: buildWeeks,
+    testing_deployment_weeks: tdWeeks,
+    total_weeks: totalWeeks,
     price_sgd: price,
   }, 200, origin);
 });
