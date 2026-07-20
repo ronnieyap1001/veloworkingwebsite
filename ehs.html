@@ -123,6 +123,7 @@
   .laptop{position:relative; width:100%; max-width:1000px; margin:0 auto; aspect-ratio:1208/700; background:url("asset/macbook-frame.png") center/contain no-repeat}
   .laptop-screen{position:absolute; top:6.7143%; left:11.8377%; width:76.4073%; height:82.4286%; overflow:hidden; background:var(--paper); container-type:size}
   .app-viewport{width:100%; height:100%; overflow:hidden}
+  .app-viewport:focus-visible{outline:2px solid var(--link); outline-offset:2px}
   .app-canvas{width:920px; height:575px; transform-origin:top left; position:relative; transform:scale(calc(100cqw / 920px))}
   .screen{position:absolute; inset:0; display:flex; background:var(--paper)}
   .screen[hidden]{display:none}
@@ -134,7 +135,7 @@
   .story-ctrl{display:flex; gap:14px; align-items:center; margin-top:10px; flex-wrap:wrap}
   .tlink{background:none; border:0; font-family:inherit; font-size:14px; letter-spacing:-0.01em; color:var(--link); cursor:pointer; padding:10px 6px; min-height:44px}
   .tlink:hover{text-decoration:underline}
-  .tlink[disabled]{color:var(--ink-3); opacity:.55; cursor:default; text-decoration:none}
+  .tlink[disabled],.tlink[aria-disabled="true"]{color:var(--ink-3); opacity:.55; cursor:default; text-decoration:none}
   .tlink:focus-visible{outline:2px solid var(--link); outline-offset:3px}
   .simnote{font-size:13px; color:var(--ink-3); margin-top:6px}
   @media(prefers-reduced-motion:reduce){#storyPlay{display:none}}
@@ -349,7 +350,7 @@
   .cap-tile li::before{content:""; position:absolute; left:0; top:15px; width:6px; height:6px; border-radius:50%; background:var(--link); opacity:.7}
   .cap-tile li:first-child::before{top:12px}
   .cap-tile__tag{font-size:11px; color:var(--ink-3); margin-top:auto; padding-top:8px; letter-spacing:.08em; text-transform:uppercase}
-  .cap-tile .ilink{font-size:14px; margin-top:2px}
+  .cap-tile .ilink{font-size:14px; margin-top:2px; display:inline-flex; align-items:center; min-height:44px}
   .cap-tile.dark{background:var(--dark); color:var(--paper-on-dark); border-color:transparent}
   .cap-tile.dark h3{color:#fff}
   .cap-tile.dark p, .cap-tile.dark li{color:#C7C7CC}
@@ -363,7 +364,7 @@
   .flow{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:48px}
   .flow-step{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:24px 22px; display:flex; flex-direction:column; gap:8px}
   .flow-step .num{margin-bottom:4px}
-  .flow-step h4{font-size:17px; font-weight:600; letter-spacing:-0.022em; color:var(--ink)}
+  .flow-step h3{font-size:17px; font-weight:600; letter-spacing:-0.022em; color:var(--ink); line-height:1.3}
   .flow-step p{color:var(--ink-2); font-size:14px; line-height:1.5; margin:0}
   @media(max-width:1024px){.flow{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:560px){.flow{grid-template-columns:1fr}}
@@ -405,6 +406,7 @@
   /* no-JS: show everything, hide the controls that need the script */
   .reveal{opacity:1; transform:none}
   .story-ctrl,.switch{display:none}
+  .beat{cursor:default}
 </style>
 </noscript>
 <!-- Shared site navigation (single source of truth: nav.css + nav.js) -->
@@ -472,7 +474,7 @@
           <div class="story-stick">
             <div class="laptop">
               <div class="laptop-screen">
-                <div class="app-viewport">
+                <div class="app-viewport" role="region" aria-label="Simulated app screen">
                   <div class="app-canvas" id="appCanvas">
 
                     <!-- S8 · month-end dashboard (static markup — the no-JS default) -->
@@ -764,9 +766,9 @@
             </div><!-- /laptop -->
             <p class="story-cap" id="storyCap">Month end on one screen: 34 hazards raised, 97% closed, 31 hours average to close.</p>
             <div class="story-ctrl">
-              <button class="pill pill-ghost sm" id="storyPlay" aria-pressed="false">Play the story</button>
-              <button class="tlink" id="storyPrev" disabled>&#8249; Previous</button>
-              <button class="tlink" id="storyNext">Next &#8250;</button>
+              <button class="pill pill-ghost sm" id="storyPlay">Play the story</button>
+              <button class="tlink" id="storyPrev" aria-disabled="true">&#8249; Previous</button>
+              <button class="tlink" id="storyNext" aria-disabled="false">Next &#8250;</button>
             </div>
             <p class="simnote">Simulated data, for illustration.</p>
           </div><!-- /story-stick -->
@@ -827,7 +829,7 @@
         <!-- the timeline (interactive flowchart) -->
         <ol class="beats" aria-label="Incident timeline">
           <li data-scenario="a">
-            <button class="beat" data-beat="a1">
+            <button class="beat" disabled data-beat="a1">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">07:42</span>
               <span class="b-title">Spotted on the laydown area</span>
@@ -836,7 +838,7 @@
             </button>
           </li>
           <li data-scenario="a">
-            <button class="beat" data-beat="a2">
+            <button class="beat" disabled data-beat="a2">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">07:44</span>
               <span class="b-title">Scored and routed</span>
@@ -845,7 +847,7 @@
             </button>
           </li>
           <li data-scenario="a">
-            <button class="beat" data-beat="a3">
+            <button class="beat" disabled data-beat="a3">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">07:51</span>
               <span class="b-title">Lifting permit suspended</span>
@@ -854,7 +856,7 @@
             </button>
           </li>
           <li data-scenario="a" class="gapped" data-gap="overnight">
-            <button class="beat" data-beat="a4">
+            <button class="beat" disabled data-beat="a4">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">10:20</span>
               <span class="b-title">Fixed, with evidence</span>
@@ -863,7 +865,7 @@
             </button>
           </li>
           <li data-scenario="a">
-            <button class="beat" data-beat="a5">
+            <button class="beat" disabled data-beat="a5">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">Day 2 · 09:36</span>
               <span class="b-title">Verified on site. Closed at hour 26</span>
@@ -872,7 +874,7 @@
             </button>
           </li>
           <li data-scenario="a" class="last">
-            <button class="beat" data-beat="a6">
+            <button class="beat" disabled data-beat="a6">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">Month end</span>
               <span class="b-title">On the dashboard, on the record</span>
@@ -881,7 +883,7 @@
             </button>
           </li>
           <li data-scenario="b">
-            <button class="beat" data-beat="b1">
+            <button class="beat" disabled data-beat="b1">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">09:26</span>
               <span class="b-title">The inspection opens itself</span>
@@ -890,7 +892,7 @@
             </button>
           </li>
           <li data-scenario="b">
-            <button class="beat" data-beat="b2">
+            <button class="beat" disabled data-beat="b2">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">09:48</span>
               <span class="b-title">Disposal assigned, 72-hour clock</span>
@@ -899,7 +901,7 @@
             </button>
           </li>
           <li data-scenario="b" class="gapped" data-gap="two days">
-            <button class="beat" data-beat="b3">
+            <button class="beat" disabled data-beat="b3">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">11:15</span>
               <span class="b-title">The refresher books itself</span>
@@ -908,7 +910,7 @@
             </button>
           </li>
           <li data-scenario="b">
-            <button class="beat" data-beat="b4">
+            <button class="beat" disabled data-beat="b4">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">Day 3</span>
               <span class="b-title">Disposed, verified, archived</span>
@@ -917,7 +919,7 @@
             </button>
           </li>
           <li data-scenario="b" class="last">
-            <button class="beat" data-beat="b5">
+            <button class="beat" disabled data-beat="b5">
               <span class="dot" aria-hidden="true"></span>
               <span class="b-time">Month end</span>
               <span class="b-title">Compliance, in one screen</span>
@@ -1081,27 +1083,27 @@
       <div class="flow">
         <div class="flow-step reveal">
           <span class="num">01</span>
-          <h4>Report</h4>
+          <h3>Report</h3>
           <p>Anyone, from a phone: photo, pinned location, category. Under a minute.</p>
         </div>
         <div class="flow-step reveal">
           <span class="num">02</span>
-          <h4>Route</h4>
+          <h3>Route</h3>
           <p>Scored by likelihood × exposure × consequence, assigned to a named owner with a deadline. Nobody forwards an email.</p>
         </div>
         <div class="flow-step reveal">
           <span class="num">03</span>
-          <h4>Rectify</h4>
+          <h3>Rectify</h3>
           <p>Tracked to done. Evidence is required, not optional.</p>
         </div>
         <div class="flow-step reveal">
           <span class="num">04</span>
-          <h4>Verify</h4>
+          <h3>Verify</h3>
           <p>A second person confirms the fix on site. Desk close-outs don't count.</p>
         </div>
         <div class="flow-step reveal">
           <span class="num">05</span>
-          <h4>Close</h4>
+          <h3>Close</h3>
           <p>On the record, on the dashboard, ready for the auditor.</p>
         </div>
       </div>
@@ -1365,9 +1367,9 @@
       pin.classList.remove('pulse'); void pin.offsetWidth;
       if (!reduced.matches && !(b.healed && !b.closed)) pin.classList.add('pulse');
 
-      /* controls + announcement */
-      prevBtn.disabled = (i === 0);
-      nextBtn.disabled = (i === list.length - 1);
+      /* controls + announcement (aria-disabled keeps the buttons focusable) */
+      prevBtn.setAttribute('aria-disabled', i === 0 ? 'true' : 'false');
+      nextBtn.setAttribute('aria-disabled', i === list.length - 1 ? 'true' : 'false');
       liveEl.textContent = b.live;
     }
 
@@ -1393,12 +1395,10 @@
       if (state.timer){ clearInterval(state.timer); state.timer = null; }
       state.playing = false;
       playBtn.textContent = 'Play the story';
-      playBtn.setAttribute('aria-pressed','false');
     }
     function startPlay(){
       state.playing = true;
       playBtn.textContent = 'Pause';
-      playBtn.setAttribute('aria-pressed','true');
       state.timer = setInterval(function(){
         var last = BEATS[state.scn].length - 1;
         if (state.i >= last){ stopPlay(); return; }
@@ -1415,6 +1415,7 @@
         btn.addEventListener('click', function(){
           var id = btn.getAttribute('data-beat');
           if (id.charAt(0) !== state.scn) return;
+          stopPlay();
           var list = BEATS[state.scn];
           for (var k = 0; k < list.length; k++){ if (list[k].id === id){ setBeat(k); break; } }
         });
@@ -1432,6 +1433,7 @@
       var idx = vis.indexOf(document.activeElement);
       if (idx === -1) return;
       e.preventDefault();
+      stopPlay();
       if (key === 'ArrowDown'){ idx = Math.min(idx + 1, vis.length - 1); }
       else if (key === 'ArrowUp'){ idx = Math.max(idx - 1, 0); }
       else if (key === 'Home'){ idx = 0; }
@@ -1446,7 +1448,7 @@
       })(segs[n4]);
     }
     document.getElementById('storySwitch').addEventListener('keydown', function(e){
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
       e.preventDefault();
       var s = state.scn === 'a' ? 'b' : 'a';
       setScenario(s, true);
@@ -1459,8 +1461,14 @@
         section.querySelector('.laptop').scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block:'nearest' });
       }
     }
-    prevBtn.addEventListener('click', function(){ setBeat(state.i - 1); maybeScrollLaptop(); });
-    nextBtn.addEventListener('click', function(){ setBeat(state.i + 1); maybeScrollLaptop(); });
+    prevBtn.addEventListener('click', function(){
+      if (prevBtn.getAttribute('aria-disabled') === 'true') return;
+      stopPlay(); setBeat(state.i - 1); maybeScrollLaptop();
+    });
+    nextBtn.addEventListener('click', function(){
+      if (nextBtn.getAttribute('aria-disabled') === 'true') return;
+      stopPlay(); setBeat(state.i + 1); maybeScrollLaptop();
+    });
 
     /* deep links from the module tiles */
     var links = document.querySelectorAll('[data-story-link]');
@@ -1479,9 +1487,12 @@
 
     /* scale the fixed 920x575 app canvas to the laptop screen */
     var screenEl = section.querySelector('.laptop-screen');
+    var viewport = section.querySelector('.app-viewport');
     var canvas = document.getElementById('appCanvas');
     var mqCompact = window.matchMedia('(max-width:560px)');
     function rescale(){
+      /* compact mode turns the viewport into a scroll container — make it keyboard-reachable */
+      viewport.tabIndex = mqCompact.matches ? 0 : -1;
       if (mqCompact.matches){ canvas.style.transform = ''; return; }
       var w = screenEl.clientWidth;
       if (w > 0) canvas.style.transform = 'scale(' + (w / 920) + ')';
@@ -1491,7 +1502,13 @@
     if (mqCompact.addEventListener){ mqCompact.addEventListener('change', rescale); }
     rescale();
 
-    /* init: activate the first beat of scenario A (no-JS shows the static dashboard) */
+    /* init: enable the timeline (markup ships it disabled for no-JS), hide icon SVGs
+       from the accessibility tree, then activate the first beat of scenario A */
+    for (var n6 = 0; n6 < beatBtns.length; n6++){ beatBtns[n6].disabled = false; }
+    var deco = section.querySelectorAll('.screen svg');
+    for (var n7 = 0; n7 < deco.length; n7++){
+      if (!deco[n7].getAttribute('role')) deco[n7].setAttribute('aria-hidden','true');
+    }
     setBeat(0);
   })();
 </script>
