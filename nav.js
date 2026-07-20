@@ -45,6 +45,7 @@
           '<a href="' + systemHref + '" data-match="#build">System</a>' +
           '<a href="' + aboutHref + '" data-match="#about">About</a>' +
           '<a href="/fabrication.html" data-match="/fabrication.html">Fabrication</a>' +
+          '<a href="/ehs.html" data-match="/ehs.html">EHS system</a>' +
           '<span class="vnav__drop" data-drop>' +
             '<a href="/blog/index.html" data-match="/blog/" aria-haspopup="true" aria-expanded="false">Field notes</a>' +
             '<ul class="vnav__menu">' +

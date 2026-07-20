@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EHS management system — a digital safety department | Velo Working</title>
+<meta name="description" content="A complete EHS management system for construction, manufacturing and facilities SMEs in Singapore, Malaysia and Brunei — hazards, permits, chemicals, equipment, training and safety KPIs in one closed loop.">
+<meta name="author" content="Velo Working Pte. Ltd.">
+<link rel="canonical" href="https://www.veloworking.com/ehs.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="EHS management system — Velo Working">
+<meta property="og:description" content="Report it once. The system chases it to closed. Hazards, permits, chemicals, equipment, training and safety KPIs in one closed loop — built for construction, manufacturing and facilities SMEs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.veloworking.com/ehs.html">
+<meta property="og:site_name" content="Velo Working">
+<meta property="og:image" content="https://www.veloworking.com/asset/hero-screen.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EHS management system — Velo Working">
+<meta name="twitter:description" content="Every hazard gets a named owner, a deadline, and a verified closure. Follow one incident end to end — then see the nine modules behind it.">
+<meta name="twitter:image" content="https://www.veloworking.com/asset/hero-screen.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="asset/favicon.svg">
+<link rel="apple-touch-icon" href="asset/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1D1D1F; --ink-2:#6E6E73; --ink-3:#86868B;
+    --paper:#FBFBFD; --surface:#FFFFFF; --surface-2:#F5F5F7;
+    --link:#0071E3; --link-hov:#0077ED;
+    --dark:#0B0B0D; --paper-on-dark:#F5F5F7;
+    --rule:#D2D2D7;
+    --maxw:1180px; --read:680px;
+    --r-tile:24px;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,"Helvetica Neue",Arial,sans-serif;
+    background:var(--paper); color:var(--ink);
+    font-size:17px; line-height:1.47; letter-spacing:-0.022em;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  @media(max-width:640px){.wrap{padding:0 16px}}
+  img,svg{display:block; max-width:100%}
+  .vh{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+  /* type */
+  .eyebrow{font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--link); margin-bottom:12px; display:block}
+  h1{font-size:clamp(40px,6vw,72px); font-weight:600; letter-spacing:-0.045em; line-height:1.05}
+  h2{font-size:clamp(32px,4.6vw,56px); font-weight:600; letter-spacing:-0.04em; line-height:1.07}
+  h3{font-size:clamp(20px,2.4vw,26px); font-weight:600; letter-spacing:-0.03em; line-height:1.15}
+  em{font-style:italic; color:var(--link); font-weight:600}
+  .lead{font-size:clamp(19px,2.1vw,22px); font-weight:400; color:var(--ink-2); line-height:1.45; max-width:var(--read)}
+  .body{color:var(--ink-2); max-width:var(--read)}
+  .cap{font-size:13px; color:var(--ink-3)}
+
+  /* layout */
+  section{padding:clamp(72px,11vw,120px) 0}
+  .head{max-width:760px}
+  .head h2{margin-top:0}
+  .head .lead{margin-top:24px}
+  .head--center{margin:0 auto; text-align:center}
+  .head--center .lead{margin-left:auto; margin-right:auto}
+
+  /* buttons */
+  .btns{display:flex; gap:12px; flex-wrap:wrap; margin-top:32px}
+  .pill{display:inline-flex; align-items:center; justify-content:center; font-size:17px; font-weight:400; letter-spacing:-0.022em; padding:12px 22px; border-radius:980px; cursor:pointer; text-decoration:none; border:1px solid transparent; transition:background .15s ease, color .15s ease, border-color .15s ease; font-family:inherit}
+  .pill-primary{background:var(--link); color:#fff}
+  .pill-primary:hover{background:var(--link-hov)}
+  .pill-ghost{background:transparent; color:var(--link); border-color:var(--link)}
+  .pill-ghost:hover{background:rgba(0,113,227,.06)}
+  .pill:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .pill.sm{font-size:14px; padding:9px 16px; min-height:44px}
+  .ilink{color:var(--link); text-decoration:none}
+  .ilink:hover{text-decoration:underline}
+  .ilink::after{content:" \203A"}
+  .ilink:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+
+  /* hero (centered) */
+  .hero{padding:clamp(56px,9vw,104px) 0 clamp(40px,6vw,72px)}
+  .hero .wrap{text-align:center}
+  .hero h1{max-width:16ch; margin:0 auto 24px}
+  .hero p.lead{max-width:680px; margin:0 auto}
+  .hero .btns{justify-content:center}
+
+  /* ===== story section ===== */
+  #story{padding-top:clamp(40px,6vw,72px)}
+
+  /* scenario switcher */
+  .switch{display:inline-flex; gap:2px; background:var(--surface-2); border:1px solid var(--rule); border-radius:980px; padding:3px; margin-top:40px; max-width:100%; flex-wrap:wrap}
+  .seg{border:1px solid transparent; background:transparent; color:var(--ink-2); font-family:inherit; font-size:14px; letter-spacing:-0.01em; line-height:1.2; padding:10px 18px; border-radius:980px; cursor:pointer; min-height:44px}
+  .seg[aria-checked="true"]{background:var(--surface); border-color:var(--rule); color:var(--ink); font-weight:600}
+  .seg:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .seg .lbl-s{display:none}
+  @media(max-width:640px){.seg .lbl-l{display:none}.seg .lbl-s{display:inline}}
+  @media(max-width:400px){.switch{border-radius:22px}.seg{flex:1 1 100%}}
+  .kicker{margin-top:14px; font-size:13px; color:var(--ink-3)}
+
+  /* story grid */
+  .story-grid{display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(28px,4vw,56px); align-items:start; margin-top:32px}
+  @media(min-width:1025px){
+    .story-grid{grid-template-columns:minmax(340px,420px) minmax(0,1fr)}
+    .story-media{grid-column:2; grid-row:1; position:sticky; top:84px}
+    .beats{grid-column:1; grid-row:1}
+  }
+  @media(max-width:1024px){
+    .story-grid{max-width:680px; margin-left:auto; margin-right:auto}
+    .story-stick{position:sticky; top:66px; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule); padding-bottom:14px}
+  }
+  @media(max-height:620px){.story-stick{position:static; border-bottom:0; padding-bottom:0}}
+
+  /* laptop (same component as the home page) */
+  .laptop{position:relative; width:100%; max-width:1000px; margin:0 auto; aspect-ratio:1208/700; background:url("asset/macbook-frame.png") center/contain no-repeat}
+  .laptop-screen{position:absolute; top:6.7143%; left:11.8377%; width:76.4073%; height:82.4286%; overflow:hidden; background:var(--paper); container-type:size}
+  .app-viewport{width:100%; height:100%; overflow:hidden}
+  .app-canvas{width:920px; height:575px; transform-origin:top left; position:relative; transform:scale(calc(100cqw / 920px))}
+  .screen{position:absolute; inset:0; display:flex; background:var(--paper)}
+  .screen[hidden]{display:none}
+  .screen.enter{animation:scrIn .25s var(--ease)}
+  @keyframes scrIn{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen.enter{animation:none}}
+
+  .story-cap{margin-top:16px; font-size:14px; color:var(--ink-2); line-height:1.5; min-height:4.5em}
+  .story-ctrl{display:flex; gap:14px; align-items:center; margin-top:10px; flex-wrap:wrap}
+  .tlink{background:none; border:0; font-family:inherit; font-size:14px; letter-spacing:-0.01em; color:var(--link); cursor:pointer; padding:10px 6px; min-height:44px}
+  .tlink:hover{text-decoration:underline}
+  .tlink[disabled]{color:var(--ink-3); opacity:.55; cursor:default; text-decoration:none}
+  .tlink:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .simnote{font-size:13px; color:var(--ink-3); margin-top:6px}
+  @media(prefers-reduced-motion:reduce){#storyPlay{display:none}}
+  @media(max-width:400px){
+    .story-ctrl{gap:8px}
+    .story-ctrl #storyPlay{flex:1 1 100%}
+    .story-ctrl .tlink{flex:1 1 40%; text-align:left}
+  }
+
+  /* map tile */
+  .story-map{margin-top:24px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:18px}
+  .maplabel{font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:10px}
+  .mapbox{position:relative}
+  .mapbox svg{width:100%; height:auto; display:block; transition:opacity .3s ease}
+  #mapB{position:absolute; top:0; left:0; opacity:0}
+  [data-scenario="b"] #mapB{opacity:1}
+  [data-scenario="b"] #mapA{opacity:0}
+  @media(prefers-reduced-motion:reduce){.mapbox svg{transition:none}}
+  .map-pin{position:absolute; width:7px; height:7px; border-radius:50%; background:var(--link); transform:translate(-50%,-50%); transition:left .5s var(--ease), top .5s var(--ease)}
+  @media(prefers-reduced-motion:reduce){.map-pin{transition:none}}
+  .map-pin::after{content:""; position:absolute; inset:-6px; border:1.5px solid var(--link); border-radius:50%; opacity:0}
+  .map-pin.pulse::after{animation:pinPulse 2s ease-out 1}
+  @keyframes pinPulse{0%{transform:scale(.5); opacity:.9}100%{transform:scale(1.5); opacity:0}}
+  @media(prefers-reduced-motion:reduce){.map-pin.pulse::after{animation:none}}
+  .map-check{position:absolute; width:16px; height:16px; transform:translate(-50%,-50%); color:var(--ink); display:none}
+  .map-check svg{width:100%; height:100%}
+  .map-healed .map-check{display:block}
+  .pin-off .map-pin{display:none}
+  .map-cap{margin-top:10px; font-size:13px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+  @media(min-width:1025px) and (max-height:880px){.story-map{display:none}}
+  @media(max-width:560px){
+    .story-map{padding:14px}
+    .mapbox svg .lbl2{display:none}
+  }
+
+  /* timeline (the flowchart) */
+  .beats{list-style:none; margin:0; padding:0}
+  .beats li{position:relative}
+  .beats li[data-scenario]{display:none}
+  [data-scenario="a"] .beats li[data-scenario="a"]{display:block}
+  [data-scenario="b"] .beats li[data-scenario="b"]{display:block}
+  .beats li::before{content:""; position:absolute; left:9px; top:46px; bottom:-26px; width:0; border-left:1.5px solid var(--rule)}
+  .beats li.last::before{display:none}
+  .beats li.gapped::before{border-left-style:dashed}
+  .beats li.gapped::after{content:attr(data-gap); position:absolute; left:26px; bottom:-8px; font-size:11px; font-weight:500; color:var(--ink-3); text-transform:uppercase; letter-spacing:.05em; background:var(--paper); padding:1px 0}
+  .beat{position:relative; display:grid; grid-template-columns:20px 1fr; gap:0 14px; width:100%; text-align:left; padding:14px 16px 14px 0; background:none; border:1px solid transparent; border-radius:16px; cursor:pointer; font-family:inherit; letter-spacing:-0.022em; color:inherit; transition:border-color .15s ease, background .15s ease}
+  @media(hover:hover){.beat:hover{background:rgba(0,0,0,.03)}}
+  .beat[aria-current="step"]{border-color:var(--link); background:var(--surface)}
+  .beat:focus-visible{outline:2px solid var(--link); outline-offset:3px}
+  .dot{grid-row:1 / span 4; width:12px; height:12px; border-radius:50%; border:1.5px solid var(--ink); background:var(--paper); margin-top:5px; margin-left:3px; position:relative; z-index:1}
+  .beat[aria-current="step"] .dot{background:var(--link); border-color:var(--link)}
+  li.done .dot::after{content:""; position:absolute; inset:1.5px; border-radius:50%; background:var(--ink)}
+  .beat[aria-current="step"] .dot::after{display:none}
+  .b-time{grid-column:2; font-size:13px; font-weight:600; letter-spacing:.02em; color:var(--ink-3); font-variant-numeric:tabular-nums}
+  .beat[aria-current="step"] .b-time{color:var(--link)}
+  .b-title{grid-column:2; font-size:17px; font-weight:600; color:var(--ink); margin-top:2px; line-height:1.25}
+  .b-desc{grid-column:2; font-size:14px; color:var(--ink-2); line-height:1.5; margin-top:3px}
+  .b-meta{grid-column:2; display:flex; align-items:center; gap:8px; margin-top:8px; flex-wrap:wrap}
+  .b-badge{width:22px; height:22px; border-radius:50%; border:1px solid var(--rule); display:inline-flex; align-items:center; justify-content:center; color:var(--ink); flex-shrink:0}
+  .b-badge svg{width:13px; height:13px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round}
+  .b-role{font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3)}
+  .b-dotsep{color:var(--rule)}
+  .b-stage{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-3)}
+  @media(max-width:560px){
+    .beat{padding:12px 12px 12px 0; min-height:64px}
+    .b-title{font-size:16px}
+    .b-desc{font-size:13px}
+  }
+
+  /* ===== simulated app screens (fixed 920x575 canvas, scaled to fit) ===== */
+  .a-side{width:190px; background:#F7F7F9; border-right:1px solid #E5E5EA; padding:14px 0 0; flex-shrink:0}
+  .a-brand{font-size:13px; font-weight:600; color:var(--ink); padding:0 16px 12px; border-bottom:1px solid #E5E5EA; margin-bottom:8px; letter-spacing:.02em}
+  .a-nav{list-style:none}
+  .a-nav li{font-size:12.5px; color:var(--ink-2); padding:7px 16px; letter-spacing:-0.01em}
+  .a-nav li.on{color:var(--link); font-weight:600}
+  .a-main{flex:1; display:flex; flex-direction:column; min-width:0}
+  .a-top{height:44px; display:flex; align-items:center; gap:12px; padding:0 20px; border-bottom:1px solid #E5E5EA; background:#fff; flex-shrink:0}
+  .a-title{font-size:14px; font-weight:600; color:var(--ink); margin-right:auto; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .a-search{display:flex; align-items:center; gap:6px; border:1px solid #E5E5EA; border-radius:8px; padding:4px 10px; color:var(--ink-3); font-size:12px}
+  .a-search svg{width:12px; height:12px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round}
+  .a-avatar{width:24px; height:24px; border-radius:50%; border:1px solid var(--rule); font-size:10px; font-weight:600; color:var(--ink-2); display:flex; align-items:center; justify-content:center; flex-shrink:0}
+  .a-body{flex:1; padding:16px 20px; display:flex; flex-direction:column; gap:12px; min-height:0}
+  .a-cols{display:flex; gap:12px; flex:1; min-height:0}
+  .a-card{background:#fff; border:1px solid #E5E5EA; border-radius:10px; padding:14px}
+  .a-cardh{font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin-bottom:8px}
+  .a-chip{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; border:1px solid #C7C7CC; border-radius:980px; padding:3px 9px; color:var(--ink-2); white-space:nowrap}
+  .a-chip.blue{border-color:var(--link); color:var(--link)}
+  .a-chip svg{width:11px; height:11px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round}
+  .a-btn{display:inline-flex; align-items:center; justify-content:center; background:var(--link); color:#fff; font-size:12.5px; font-weight:500; border-radius:980px; padding:8px 18px; letter-spacing:-0.01em}
+  .a-ic{width:14px; height:14px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0}
+  .a-meta{display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:12px; color:var(--ink-2)}
+
+  /* tables */
+  .a-tbl{display:flex; flex-direction:column; overflow:hidden}
+  .a-tr{display:grid; gap:10px; padding:8px 12px; border-top:1px solid #EDEDF0; font-size:12.5px; color:var(--ink-2); align-items:center}
+  .a-tr:first-child{border-top:0}
+  .a-tr.head{font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3)}
+  .a-tr.hot{border-left:3px solid var(--link); background:#FAFAFC}
+  .a-td .strong{color:var(--ink); font-weight:500}
+  .t-hz{grid-template-columns:64px 1fr 118px 64px 96px}
+  .t-pm{grid-template-columns:74px 1fr 138px 104px}
+  .t-cm{grid-template-columns:1fr 64px 92px}
+  .t-cl{grid-template-columns:70px 1fr 84px 56px}
+
+  /* checklist rows */
+  .a-cl{display:flex; gap:9px; align-items:flex-start; padding:7px 12px; border-top:1px solid #EDEDF0; font-size:12.5px; color:var(--ink-2)}
+  .a-cl:first-child{border-top:0}
+  .a-cl .a-ic{margin-top:1px}
+  .a-cl .flag{color:var(--link)}
+  .a-cl .act{display:block; font-size:11.5px; color:var(--ink-3); margin-top:1px}
+  .a-cl .strong{color:var(--ink); font-weight:500}
+
+  /* stats */
+  .a-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+  .a-stat{background:#fff; border:1px solid #E5E5EA; border-radius:10px; padding:12px 14px}
+  .a-stat .n{font-size:21px; font-weight:600; color:var(--ink); letter-spacing:-0.03em; font-variant-numeric:tabular-nums}
+  .a-stat .l{font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin-top:2px}
+
+  /* stepper */
+  .a-step{display:flex; margin:2px 0 4px}
+  .a-sn{flex:1; position:relative; text-align:center; font-size:9.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-2); padding-top:16px}
+  .a-sn::after{content:""; position:absolute; top:5px; left:calc(50% + 9px); right:calc(-50% + 9px); border-top:1.5px solid var(--ink)}
+  .a-sn:last-child::after{display:none}
+  .a-sn::before{content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:10px; height:10px; border-radius:50%; border:1.5px solid var(--ink); background:#fff}
+  .a-sn.fill::before{background:var(--ink)}
+  .a-sn.blue::before{background:var(--link); border-color:var(--link)}
+  .a-sn .sub{display:block; font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; color:var(--ink-3); margin-top:1px}
+
+  /* evidence tiles + signature */
+  .a-evrow{display:flex; gap:10px}
+  .a-ev{flex:1; background:var(--surface-2); border:1px solid #E5E5EA; border-radius:8px; padding:14px 10px; display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--ink-3); font-size:11px}
+  .a-ev .a-ic{width:18px; height:18px}
+  .a-sign{display:flex; align-items:center; gap:10px; font-size:12px; color:var(--ink-2)}
+  .a-sign svg{width:56px; height:20px; stroke:var(--ink); stroke-width:1.5; fill:none; stroke-linecap:round}
+
+  /* S1 phone report */
+  .s1-wrap{flex:1; display:flex; align-items:center; justify-content:center; background:var(--surface-2)}
+  .phone{width:290px; background:#fff; border:1px solid #E5E5EA; border-radius:20px; padding:16px 18px; display:flex; flex-direction:column; gap:11px}
+  .ph-status{display:flex; align-items:center; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums}
+  .ph-status svg{width:30px; height:10px; stroke:var(--ink); stroke-width:1.5; fill:none; stroke-linecap:round}
+  .ph-title{font-size:15px; font-weight:600; color:var(--ink)}
+  .ph-photo{border:1.5px dashed #C7C7CC; border-radius:10px; padding:14px; display:flex; flex-direction:column; align-items:center; gap:7px; color:var(--ink-3); font-size:11px}
+  .ph-photo .a-ic{width:18px; height:18px}
+  .ph-field{border:1px solid #E5E5EA; border-radius:9px; padding:8px 11px; font-size:12px; color:var(--ink)}
+  .ph-field .fl{display:block; font-size:9.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); margin-bottom:2px}
+  .ph-field .withic{display:flex; align-items:center; gap:6px}
+  .ph-field .a-ic{width:12px; height:12px}
+  .ph-submit{display:flex; align-items:center; justify-content:center; background:var(--link); color:#fff; font-size:13px; font-weight:500; border-radius:980px; padding:10px}
+
+  /* S8 dashboard */
+  .s8-mid{display:grid; grid-template-columns:1.35fr 1fr; gap:10px; flex:1; min-height:0}
+  .s8-chart svg{width:100%; height:auto}
+  .s8-banner{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--ink-2); border-top:1px solid #EDEDF0; padding-top:9px; margin-top:9px}
+
+  /* ===== compact app reflow (frame dropped) ===== */
+  @media(max-width:560px){
+    .laptop{background:none; aspect-ratio:auto; max-width:none; margin:0}
+    .laptop-screen{position:static; width:100%; height:auto; border:1px solid var(--rule); border-radius:16px; background:#fff; overflow:hidden}
+    .app-viewport{overflow:visible; max-height:60vh; overflow-y:auto; border-radius:16px}
+    .app-canvas{width:auto; height:auto; transform:none !important}
+    .screen{position:static; flex-direction:column; background:#fff}
+    .screen[hidden]{display:none}
+    .a-side{display:none}
+    .a-top{height:auto; padding:12px 14px}
+    .a-title::before{content:"EHS · "}
+    .a-search{display:none}
+    .a-body{padding:14px}
+    .a-cols{flex-direction:column}
+    .a-tr{gap:3px 10px; padding:10px 12px}
+    .a-tr.head{display:none}
+    .t-hz,.t-pm,.t-cm,.t-cl{grid-template-columns:1fr}
+    .a-td{font-size:13px}
+    .a-td::before{content:attr(data-l); display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3)}
+    .a-td[data-l=""]::before{display:none}
+    .a-stats{grid-template-columns:1fr 1fr}
+    .s8-mid{grid-template-columns:1fr}
+    .phone{width:100%; max-width:340px}
+    .a-step{flex-wrap:wrap; gap:10px 0}
+    .a-sn{flex:1 1 33%}
+  }
+
+  /* tile (shared) */
+  .tile{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:clamp(24px,3vw,40px); display:flex; flex-direction:column; gap:12px}
+  .tile h3{margin-bottom:0}
+  .tile p{color:var(--ink-2); font-size:16px; line-height:1.5}
+  .num{font-size:14px; font-weight:600; color:var(--link); letter-spacing:0.04em}
+  .grid{display:grid; gap:12px}
+  .g-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:860px){.g-3{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.g-3{grid-template-columns:1fr}}
+
+  /* band-dark */
+  .band-dark{background:var(--dark); color:var(--paper-on-dark); border-radius:var(--r-tile); padding:clamp(40px,7vw,96px)}
+  .band-dark .eyebrow{color:#6FB4FF}
+  .band-dark h2{color:var(--paper-on-dark)}
+  .band-dark .body{color:#C7C7CC; max-width:680px}
+  .band-dark.center{text-align:center}
+  .band-dark.center .body{margin-left:auto; margin-right:auto}
+  em.sky{color:#6FB4FF}
+
+  /* modules bento — 9 tiles, 3x3 */
+  .caps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:48px}
+  @media(max-width:980px){.caps{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.caps{grid-template-columns:1fr}}
+  .cap-tile{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:clamp(24px,2.6vw,36px); display:flex; flex-direction:column; gap:12px}
+  .cap-tile h3{margin:0; font-size:clamp(18px,1.8vw,21px)}
+  .cap-tile__eyebrow{font-size:12px; font-weight:600; letter-spacing:.06em; color:var(--link); text-transform:uppercase}
+  .cap-tile p{color:var(--ink-2); font-size:15px; line-height:1.5}
+  .cap-tile ul{list-style:none; padding:0; margin:2px 0 0}
+  .cap-tile li{padding:7px 0 7px 18px; position:relative; color:var(--ink-2); font-size:14px; line-height:1.5; border-top:1px solid var(--rule)}
+  .cap-tile li:first-child{border-top:0; padding-top:4px}
+  .cap-tile li::before{content:""; position:absolute; left:0; top:15px; width:6px; height:6px; border-radius:50%; background:var(--link); opacity:.7}
+  .cap-tile li:first-child::before{top:12px}
+  .cap-tile__tag{font-size:11px; color:var(--ink-3); margin-top:auto; padding-top:8px; letter-spacing:.08em; text-transform:uppercase}
+  .cap-tile .ilink{font-size:14px; margin-top:2px}
+  .cap-tile.dark{background:var(--dark); color:var(--paper-on-dark); border-color:transparent}
+  .cap-tile.dark h3{color:#fff}
+  .cap-tile.dark p, .cap-tile.dark li{color:#C7C7CC}
+  .cap-tile.dark li{border-top-color:rgba(255,255,255,.1)}
+  .cap-tile.dark .cap-tile__eyebrow{color:#6FB4FF}
+  .cap-tile.dark .cap-tile__tag{color:rgba(255,255,255,.4)}
+  .cap-tile.dark li::before{background:#6FB4FF}
+  .cap-tile.dark .ilink{color:#6FB4FF}
+
+  /* 5-step flow */
+  .flow{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:48px}
+  .flow-step{background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:24px 22px; display:flex; flex-direction:column; gap:8px}
+  .flow-step .num{margin-bottom:4px}
+  .flow-step h4{font-size:17px; font-weight:600; letter-spacing:-0.022em; color:var(--ink)}
+  .flow-step p{color:var(--ink-2); font-size:14px; line-height:1.5; margin:0}
+  @media(max-width:1024px){.flow{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.flow{grid-template-columns:1fr}}
+
+  /* numbered row list */
+  .rows{margin-top:48px}
+  .row{display:grid; grid-template-columns:64px 1fr; gap:20px; padding:24px 0; border-top:1px solid var(--rule)}
+  .row:last-child{border-bottom:1px solid var(--rule)}
+  .row__num{font-size:14px; font-weight:600; color:var(--link); letter-spacing:.04em; padding-top:4px}
+  .row__name{font-weight:600; font-size:17px; color:var(--ink); margin-bottom:4px; letter-spacing:-0.022em}
+  .row__desc{color:var(--ink-2); font-size:15px; line-height:1.5}
+
+  /* final cta */
+  .cta-card{background:var(--surface-2); border-radius:var(--r-tile); padding:clamp(56px,8vw,96px); text-align:center}
+  .cta-card .eyebrow{margin:0 auto 12px}
+  .cta-card h2{margin-bottom:8px; max-width:18ch; margin-left:auto; margin-right:auto}
+  .cta-card .lead{margin:24px auto 0}
+  .cta-card .btns{justify-content:center}
+
+  /* footer */
+  footer{border-top:1px solid var(--rule); padding:40px 0}
+  .foot-in{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start}
+  .foot-in a{color:var(--ink-2); text-decoration:none}
+  .foot-in a:hover{color:var(--link)}
+  .foot-col{font-size:14px; color:var(--ink-2); line-height:1.9; min-width:150px}
+  .foot-col h5{font-size:12px; font-weight:600; color:var(--ink); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em}
+  .foot-col a{display:block}
+  .foot-brand{max-width:260px}
+  .foot-logo img{height:20px; width:auto; margin-bottom:12px}
+  .fine{margin-top:28px; padding-top:20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); line-height:1.6}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none}}
+</style>
+<noscript>
+<style>
+  /* no-JS: show everything, hide the controls that need the script */
+  .reveal{opacity:1; transform:none}
+  .story-ctrl,.switch{display:none}
+</style>
+</noscript>
+<!-- Shared site navigation (single source of truth: nav.css + nav.js) -->
+<link rel="stylesheet" href="/nav.css">
+<script src="/nav.js" defer></script>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<!-- Navigation is injected here from the shared /nav.js (edit the menu there). -->
+<div id="velo-nav"></div>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">EHS management system · Singapore · Malaysia · Brunei</span>
+      <h1 class="reveal">Report it once. The system chases it to <em>closed.</em></h1>
+      <p class="lead reveal">A complete EHS system for construction, manufacturing and facilities — hazards, permits, chemicals, equipment, training and safety KPIs in one place. Every issue gets a named owner, a deadline, and a verified closure. Nothing rides on somebody remembering. Below: one real morning, followed end to end.</p>
+      <div class="btns reveal">
+        <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20see%20the%20EHS%20system%20for%20my%20operation." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+        <a href="#story" class="pill pill-ghost">Follow one hazard</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Icon library (Lucide-style line icons, stroke only) -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="i-hardhat" viewBox="0 0 24 24"><path d="M2 18h20v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1z"/><path d="M10 15V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v10"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 2.5V11c0 4.6-3 7.9-7 9.5-4-1.6-7-4.9-7-9.5V5.5z"/><path d="M9 11.5l2 2 4-4.5"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 4v1H9z"/><path d="M9 13.5l2 2 4-4.5"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.6 4.6 0 0 0-6.1 6.1L3 18l3 3 5.6-5.6a4.6 4.6 0 0 0 6.1-6.1l-2.8 2.8-3-3z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M15.7 15.4a5 5 0 0 1 4.8 4.6"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10"/><path d="M18 9a8 8 0 0 1-8 8h-2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 21V4"/><path d="M4 4c4-2 8 2 12 0v9c-4 2-8-2-12 0"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="M21 15.5l-5-5L5 21"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  </svg>
+
+  <!-- ===== THE STORY ===== -->
+  <section id="story" data-scenario="a">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">One morning, end to end</span>
+        <h2>07:42. A rigger spots a frayed <em>sling.</em></h2>
+        <p class="lead">Click through the morning. The timeline is what happened; the laptop is what each person saw.</p>
+      </div>
+
+      <div class="switch reveal" role="radiogroup" aria-label="Choose a scenario" id="storySwitch">
+        <button class="seg" role="radio" aria-checked="true" data-scn="a"><span class="lbl-l">Construction site — the frayed sling</span><span class="lbl-s">Construction site</span></button>
+        <button class="seg" role="radio" aria-checked="false" tabindex="-1" data-scn="b"><span class="lbl-l">Office &amp; plant — the chemical store</span><span class="lbl-s">Office &amp; plant</span></button>
+      </div>
+      <p class="kicker" id="storyKicker">Scenario A of 2 · a Tuesday morning on a worksite</p>
+
+      <div class="story-grid reveal">
+
+        <!-- media column (DOM-first; renders on the right on desktop) -->
+        <div class="story-media">
+          <div class="story-stick">
+            <div class="laptop">
+              <div class="laptop-screen">
+                <div class="app-viewport">
+                  <div class="app-canvas" id="appCanvas">
+
+                    <!-- S8 · month-end dashboard (static markup — the no-JS default) -->
+                    <div class="screen" id="s8">
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li>Hazard investigation</li><li>Risk control</li><li>Accidents</li><li>Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li class="on">Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">Safety performance — month end</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">AR</span></div>
+                        <div class="a-body">
+                          <div class="a-stats">
+                            <div class="a-stat"><div class="n">34</div><div class="l">Hazards raised</div></div>
+                            <div class="a-stat"><div class="n">97%</div><div class="l">Closure rate</div></div>
+                            <div class="a-stat"><div class="n">31 h</div><div class="l">Avg close</div></div>
+                            <div class="a-stat"><div class="n">1</div><div class="l">Open actions</div></div>
+                          </div>
+                          <div class="s8-mid">
+                            <div class="a-card s8-chart">
+                              <div class="a-cardh">Hazards by area</div>
+                              <svg viewBox="0 0 300 132" role="img" aria-label="Bar chart: hazards by area — Tower 1 seven, Tower 2 twelve, yard six, stores four, workshop five">
+                                <g fill="none" stroke="#1D1D1F" stroke-width="1.5">
+                                  <rect x="18" y="61" width="34" height="49"/>
+                                  <rect x="132" y="68" width="34" height="42"/>
+                                  <rect x="189" y="82" width="34" height="28"/>
+                                  <rect x="246" y="75" width="34" height="35"/>
+                                </g>
+                                <rect x="75" y="26" width="34" height="84" fill="#0071E3"/>
+                                <line x1="10" y1="110" x2="290" y2="110" stroke="#C7C7CC" stroke-width="1"/>
+                                <g font-size="9" fill="#6E6E73" text-anchor="middle">
+                                  <text x="35" y="56">7</text><text x="92" y="21">12</text><text x="149" y="63">6</text><text x="206" y="77">4</text><text x="263" y="70">5</text>
+                                </g>
+                                <g font-size="9" fill="#86868B" text-anchor="middle">
+                                  <text x="35" y="124">Tower 1</text><text x="92" y="124">Tower 2</text><text x="149" y="124">Yard</text><text x="206" y="124">Stores</text><text x="263" y="124">Workshop</text>
+                                </g>
+                              </svg>
+                            </div>
+                            <div class="a-card">
+                              <div class="a-cardh">Compliance</div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span><span class="strong">SDS coverage</span> · 100%</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span><span class="strong">Training current</span> · 96%</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span><span class="strong">Inspections</span> · 12 of 12</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span><span class="strong">Permits closed on time</span> · 37 of 37</span></div>
+                            </div>
+                          </div>
+                          <div class="a-card">
+                            <div class="a-cardh">Recent closures</div>
+                            <div class="a-tbl">
+                              <div class="a-tr head t-cl"><span>ID</span><span>Item</span><span>Status</span><span>Time</span></div>
+                              <div class="a-tr t-cl"><span class="a-td" data-l="ID"><span class="strong">HZ-0231</span></span><span class="a-td" data-l="Item">Frayed crane sling — Tower 2 laydown</span><span class="a-td" data-l="Status">Verified</span><span class="a-td" data-l="Time">26 h</span></div>
+                              <div class="a-tr t-cl"><span class="a-td" data-l="ID"><span class="strong">CA-0057</span></span><span class="a-td" data-l="Item">Solvent drum disposal — chemical store</span><span class="a-td" data-l="Status">Verified</span><span class="a-td" data-l="Time">Day 3</span></div>
+                              <div class="a-tr t-cl"><span class="a-td" data-l="ID"><span class="strong">HZ-0228</span></span><span class="a-td" data-l="Item">Housekeeping — access ramp</span><span class="a-td" data-l="Status">Verified</span><span class="a-td" data-l="Time">41 h</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S1 · phone hazard report -->
+                    <div class="screen" id="s1" hidden>
+                      <div class="s1-wrap">
+                        <div class="phone">
+                          <div class="ph-status"><span>07:42</span><svg viewBox="0 0 30 10"><path d="M2 8V6"/><path d="M6 8V4"/><path d="M10 8V2"/><rect x="17" y="2" width="10" height="6" rx="1.5"/><path d="M28.5 4v2"/></svg></div>
+                          <div class="ph-title">Report a hazard</div>
+                          <div class="ph-photo"><svg class="a-ic"><use href="#i-camera"/></svg><span>Add photo</span><span class="a-chip"><svg><use href="#i-image"/></svg>IMG_0142</span></div>
+                          <div class="ph-field"><span class="fl">Location</span><span class="withic"><svg class="a-ic"><use href="#i-pin"/></svg>Tower 2 — laydown area</span></div>
+                          <div class="ph-field"><span class="fl">Category</span>Lifting equipment</div>
+                          <div class="ph-field"><span class="fl">Description</span>Sling frayed near thimble eye — 3 broken strands visible</div>
+                          <div class="ph-submit">Submit report</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S2 · hazard queue -->
+                    <div class="screen" id="s2" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li class="on">Hazard investigation</li><li>Risk control</li><li>Accidents</li><li>Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">Hazard queue</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">AR</span></div>
+                        <div class="a-body">
+                          <div class="a-meta"><span class="a-chip">Open 4</span><span class="a-chip">Under rectification 2</span><span class="a-chip">Closure rate 97%</span></div>
+                          <div class="a-cols">
+                            <div class="a-card" style="flex:2.2; padding:6px 0">
+                              <div class="a-tbl">
+                                <div class="a-tr head t-hz"><span>ID</span><span>Hazard</span><span>LEC</span><span>Owner</span><span>Status</span></div>
+                                <div class="a-tr hot t-hz"><span class="a-td" data-l="ID"><span class="strong">HZ-0231</span></span><span class="a-td" data-l="Hazard"><span class="strong">Frayed crane sling — Tower 2 laydown</span></span><span class="a-td" data-l="LEC">3×6×7 = 126 · Substantial</span><span class="a-td" data-l="Owner">J. Lim</span><span class="a-td" data-l="Status"><span class="a-chip">Routed</span></span></div>
+                                <div class="a-tr t-hz"><span class="a-td" data-l="ID">HZ-0228</span><span class="a-td" data-l="Hazard">Housekeeping — access ramp</span><span class="a-td" data-l="LEC">2×3×3 = 18 · Low</span><span class="a-td" data-l="Owner">M. Tan</span><span class="a-td" data-l="Status">In progress</span></div>
+                                <div class="a-tr t-hz"><span class="a-td" data-l="ID">HZ-0226</span><span class="a-td" data-l="Hazard">Scaffold tag missing — Tower 1</span><span class="a-td" data-l="LEC">3×3×7 = 63 · Moderate</span><span class="a-td" data-l="Owner">R. Kumar</span><span class="a-td" data-l="Status">In progress</span></div>
+                                <div class="a-tr t-hz"><span class="a-td" data-l="ID">HZ-0224</span><span class="a-td" data-l="Hazard">Exposed rebar — yard</span><span class="a-td" data-l="LEC">1×3×7 = 21 · Low</span><span class="a-td" data-l="Owner">J. Lim</span><span class="a-td" data-l="Status">Closed</span></div>
+                              </div>
+                            </div>
+                            <div class="a-card" style="flex:1">
+                              <div class="a-cardh">Auto-assignment</div>
+                              <div class="a-cl"><span>Area <span class="strong">Tower 2</span> → owner J. Lim</span></div>
+                              <div class="a-cl"><span>LEC ≥ 70 → notify EHS manager</span></div>
+                              <div class="a-cl"><span>Deadline: <span class="strong">48 h</span> from report</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S3 · permit register -->
+                    <div class="screen" id="s3" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li>Hazard investigation</li><li>Risk control</li><li>Accidents</li><li>Chemicals</li><li class="on">JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">Permit register</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">AR</span></div>
+                        <div class="a-body">
+                          <div class="a-cols">
+                            <div class="a-card" style="flex:2.1; padding:6px 0">
+                              <div class="a-tbl">
+                                <div class="a-tr head t-pm"><span>Permit</span><span>Type</span><span>Window</span><span>Status</span></div>
+                                <div class="a-tr t-pm"><span class="a-td" data-l="Permit"><span class="strong">LP-0093</span></span><span class="a-td" data-l="Type">Lifting — Tower 2 crane</span><span class="a-td" data-l="Window">Today 07:00–17:00</span><span class="a-td" data-l="Status"><span class="a-chip blue">Suspended</span></span></div>
+                                <div class="a-tr t-pm"><span class="a-td" data-l="Permit">LP-0089</span><span class="a-td" data-l="Type">Hot work — Block A</span><span class="a-td" data-l="Window">Today 08:00–12:00</span><span class="a-td" data-l="Status"><span class="a-chip">Active</span></span></div>
+                                <div class="a-tr t-pm"><span class="a-td" data-l="Permit">LP-0091</span><span class="a-td" data-l="Type">Confined space — tank 2</span><span class="a-td" data-l="Window">Today 09:00–15:00</span><span class="a-td" data-l="Status"><span class="a-chip">Active</span></span></div>
+                              </div>
+                            </div>
+                            <div class="a-card" style="flex:1">
+                              <div class="a-cardh">LP-0093 — Lifting</div>
+                              <div class="a-cl"><span>Linked hazard <span class="strong">HZ-0231</span></span></div>
+                              <div class="a-cl"><span>Suspended by A. Rahman · 07:51</span></div>
+                              <div class="a-cl"><span>"No lifts until sling replaced and verified."</span></div>
+                              <div class="a-cl"><span>Crew notified 07:51 · 4 recipients</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S4 · rectification task -->
+                    <div class="screen" id="s4" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li class="on">Hazard investigation</li><li>Risk control</li><li>Accidents</li><li>Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">HZ-0231 — rectification</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">JL</span></div>
+                        <div class="a-body">
+                          <div class="a-meta"><span class="strong" style="font-size:14px; color:var(--ink); font-weight:600">Replace frayed sling — Tower 2 laydown</span><span class="a-chip">J. Lim</span><span class="a-chip blue">Due 48 h</span></div>
+                          <div class="a-cols">
+                            <div class="a-card" style="flex:1.4">
+                              <div class="a-cardh">Checklist</div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Old sling quarantined</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>New sling installed — cert <span class="strong">SL-8841</span></span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Toolbox brief held 10:05</span></div>
+                              <div style="border-top:1px solid #EDEDF0; margin-top:6px; padding:9px 12px 2px; font-size:12px; color:var(--ink-3)">Note: old sling tagged and moved to quarantine rack B.</div>
+                            </div>
+                            <div class="a-card" style="flex:1">
+                              <div class="a-cardh">Evidence</div>
+                              <div class="a-evrow">
+                                <div class="a-ev"><svg class="a-ic"><use href="#i-image"/></svg>before.jpg · 07:42</div>
+                                <div class="a-ev"><svg class="a-ic"><use href="#i-image"/></svg>after.jpg · 10:18</div>
+                              </div>
+                              <div style="display:flex; justify-content:flex-end; margin-top:12px"><span class="a-btn">Submit for verification</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S5 · closure record -->
+                    <div class="screen" id="s5" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li class="on">Hazard investigation</li><li>Risk control</li><li>Accidents</li><li>Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">HZ-0231 — closure</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">AR</span></div>
+                        <div class="a-body">
+                          <div class="a-card">
+                            <div class="a-step">
+                              <span class="a-sn fill">Reported<span class="sub">07:42</span></span>
+                              <span class="a-sn fill">Routed<span class="sub">07:44</span></span>
+                              <span class="a-sn fill">Rectified<span class="sub">10:20</span></span>
+                              <span class="a-sn blue">Verified<span class="sub">Day 2 09:36</span></span>
+                              <span class="a-sn fill">Closed<span class="sub">Day 2 09:36</span></span>
+                            </div>
+                            <div style="text-align:center; font-size:11px; color:var(--ink-3); margin-top:6px">26 h elapsed, report to verified close</div>
+                          </div>
+                          <div class="a-cols">
+                            <div class="a-card" style="flex:1.4">
+                              <div class="a-cardh">Verification</div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Sling replaced — cert SL-8841 sighted</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Quarantined sling removed from service</span></div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Crew briefed on inspection outcome</span></div>
+                              <div class="s8-banner"><svg class="a-ic"><use href="#i-check"/></svg><span>Permit <span class="strong">LP-0093</span> reinstated · Day 2 09:41</span></div>
+                            </div>
+                            <div class="a-card" style="flex:1">
+                              <div class="a-cardh">Signed off</div>
+                              <div class="a-sign"><svg viewBox="0 0 56 20"><path d="M3 14c4-8 6 3 10-5s5 8 9 1 4-3 7-3 5 2 8 1 6-4 10-2"/></svg><span>A. Rahman<br>Safety officer · Day 2 09:36</span></div>
+                              <div style="margin-top:12px"><span class="a-chip blue">Closed — verified</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S6 · chemical store inspection -->
+                    <div class="screen" id="s6" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li>Hazard investigation</li><li class="on">Risk control</li><li>Accidents</li><li>Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">Chemical store — monthly inspection</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">AR</span></div>
+                        <div class="a-body">
+                          <div class="a-meta"><span class="a-chip"><svg><use href="#i-branch"/></svg>Created by rule · 09:00</span><span>A. Rahman</span><span class="b-dotsep">·</span><span>Chemical store</span></div>
+                          <div class="a-card" style="flex:1; padding:6px 0; overflow:hidden">
+                            <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Ventilation running</span></div>
+                            <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Bunding intact</span></div>
+                            <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Drums labelled</span></div>
+                            <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Spill kit stocked</span></div>
+                            <div class="a-cl"><svg class="a-ic"><use href="#i-check"/></svg><span>Aisles clear</span></div>
+                            <div class="a-cl"><svg class="a-ic flag"><use href="#i-flag"/></svg><span><span class="strong">Drums within disposal date — fail</span><span class="act">2 drums past date · action: disposal raised</span></span></div>
+                            <div class="a-cl"><svg class="a-ic flag"><use href="#i-flag"/></svg><span><span class="strong">SDS on file for every chemical — fail</span><span class="act">1 missing · action: requested from supplier</span></span></div>
+                            <div class="a-cl"><svg class="a-ic flag"><use href="#i-flag"/></svg><span><span class="strong">Handler certs current — fail</span><span class="act">2 expired · action: refresher Thu 14:00</span></span></div>
+                          </div>
+                          <div style="display:flex; justify-content:flex-end"><span class="a-btn">Raise findings</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- S7 · corrective action record -->
+                    <div class="screen" id="s7" hidden>
+                      <div class="a-side">
+                        <div class="a-brand">EHS</div>
+                        <ul class="a-nav">
+                          <li>Hazard investigation</li><li>Risk control</li><li>Accidents</li><li class="on">Chemicals</li><li>JSA &amp; permits</li><li>Equipment</li><li>Health &amp; PPE</li><li>Training</li><li>Performance</li>
+                        </ul>
+                      </div>
+                      <div class="a-main">
+                        <div class="a-top"><span class="a-title">CA-0057 — licensed disposal</span><span class="a-search"><svg class="a-ic"><use href="#i-search"/></svg>Search</span><span class="a-avatar">KT</span></div>
+                        <div class="a-body">
+                          <div class="a-card">
+                            <div class="a-step">
+                              <span class="a-sn fill">Raised<span class="sub">09:48</span></span>
+                              <span class="a-sn fill">Assigned<span class="sub">09:48</span></span>
+                              <span class="a-sn fill">Done<span class="sub">Day 3 10:12</span></span>
+                              <span class="a-sn blue">Verified<span class="sub">Day 3 14:30</span></span>
+                            </div>
+                          </div>
+                          <div class="a-cols">
+                            <div class="a-card" style="flex:1.2">
+                              <div class="a-cardh">Corrective action</div>
+                              <div class="a-cl"><span><span class="strong">Arrange licensed disposal — 2 × 200 L solvent drums</span></span></div>
+                              <div class="a-cl"><span>Owner <span class="strong">K. Tan</span> · Facilities <span class="a-chip blue" style="margin-left:6px">72 h</span></span></div>
+                              <div class="a-cl"><span>Linked: chemical store inspection · 09:26</span></div>
+                              <div class="a-tbl" style="margin-top:4px">
+                                <div class="a-tr head t-cm"><span>Register</span><span>Qty</span><span>Status</span></div>
+                                <div class="a-tr t-cm"><span class="a-td" data-l="Register">Solvent T-40</span><span class="a-td" data-l="Qty">200 L</span><span class="a-td" data-l="Status"><span class="a-chip">Disposed</span></span></div>
+                                <div class="a-tr t-cm"><span class="a-td" data-l="Register">Thinner R-12</span><span class="a-td" data-l="Qty">200 L</span><span class="a-td" data-l="Status"><span class="a-chip">Disposed</span></span></div>
+                              </div>
+                            </div>
+                            <div class="a-card" style="flex:1">
+                              <div class="a-cardh">Evidence &amp; verification</div>
+                              <div class="a-cl"><svg class="a-ic"><use href="#i-file"/></svg><span>Consignment note <span class="strong">CN-88712</span> · licensed contractor</span></div>
+                              <div class="a-evrow" style="margin-top:8px">
+                                <div class="a-ev"><svg class="a-ic"><use href="#i-image"/></svg>collection.jpg · Day 3</div>
+                                <div class="a-ev"><svg class="a-ic"><use href="#i-image"/></svg>store-after.jpg</div>
+                              </div>
+                              <div class="a-sign" style="margin-top:10px"><svg viewBox="0 0 56 20"><path d="M3 14c4-8 6 3 10-5s5 8 9 1 4-3 7-3 5 2 8 1 6-4 10-2"/></svg><span>A. Rahman · Day 3 14:30</span></div>
+                              <div style="margin-top:10px"><span class="a-chip"><svg><use href="#i-check"/></svg>Closed — archived</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div><!-- /app-canvas -->
+                </div><!-- /app-viewport -->
+              </div><!-- /laptop-screen -->
+            </div><!-- /laptop -->
+            <p class="story-cap" id="storyCap">Month end on one screen: 34 hazards raised, 97% closed, 31 hours average to close.</p>
+            <div class="story-ctrl">
+              <button class="pill pill-ghost sm" id="storyPlay" aria-pressed="false">Play the story</button>
+              <button class="tlink" id="storyPrev" disabled>&#8249; Previous</button>
+              <button class="tlink" id="storyNext">Next &#8250;</button>
+            </div>
+            <p class="simnote">Simulated data, for illustration.</p>
+          </div><!-- /story-stick -->
+
+          <div class="story-map" aria-hidden="true">
+            <div class="maplabel">Where it happened</div>
+            <div class="mapbox" id="mapbox">
+              <svg id="mapA" viewBox="0 0 600 210">
+                <g fill="none" stroke="#1D1D1F" stroke-width="1.5">
+                  <rect x="12" y="12" width="576" height="186" rx="2"/>
+                  <rect x="60" y="45" width="130" height="95"/>
+                  <circle cx="255" cy="58" r="9"/>
+                  <path d="M255 67v33"/><path d="M264 55l128 -16"/><path d="M246 56l-28 8"/>
+                  <rect x="330" y="105" width="140" height="70"/>
+                  <rect x="495" y="140" width="80" height="45"/>
+                  <path d="M495 158v12"/>
+                </g>
+                <g stroke="#86868B" stroke-width="1">
+                  <path d="M340 168l15-15"/><path d="M365 170l20-20"/><path d="M395 172l20-20"/><path d="M425 170l20-20"/>
+                </g>
+                <path d="M300 197V150H480" fill="none" stroke="#86868B" stroke-width="1.25" stroke-dasharray="5 5"/>
+                <path d="M270 194v10M330 194v10" stroke="#1D1D1F" stroke-width="1.5"/>
+                <g font-size="9.5" fill="#86868B" letter-spacing=".08em" style="text-transform:uppercase">
+                  <text x="68" y="62">TOWER 2</text>
+                  <text x="332" y="99">LAYDOWN AREA</text>
+                  <text x="497" y="134" class="lbl2">SITE OFFICE</text>
+                  <text x="283" y="190" class="lbl2">GATE</text>
+                </g>
+              </svg>
+              <svg id="mapB" viewBox="0 0 600 210">
+                <g fill="none" stroke="#1D1D1F" stroke-width="1.5">
+                  <rect x="12" y="12" width="576" height="186" rx="2"/>
+                  <rect x="30" y="32" width="200" height="148"/>
+                  <rect x="52" y="62" width="52" height="32"/>
+                  <rect x="52" y="116" width="52" height="32"/>
+                  <rect x="130" y="62" width="52" height="32"/>
+                  <rect x="280" y="120" width="96" height="68"/>
+                  <circle cx="302" cy="166" r="7"/><circle cx="322" cy="166" r="7"/><circle cx="342" cy="166" r="7"/>
+                  <rect x="410" y="32" width="160" height="80"/>
+                  <rect x="432" y="58" width="10" height="16"/><rect x="456" y="58" width="10" height="16"/><rect x="432" y="86" width="10" height="16"/><rect x="456" y="86" width="10" height="16"/>
+                  <rect x="480" y="140" width="90" height="50"/>
+                </g>
+                <path d="M255 32v166" fill="none" stroke="#86868B" stroke-width="1.25" stroke-dasharray="5 5"/>
+                <g font-size="9.5" fill="#86868B" letter-spacing=".08em" style="text-transform:uppercase">
+                  <text x="38" y="48">PLANT ROOM</text>
+                  <text x="280" y="114">CHEMICAL STORE</text>
+                  <text x="418" y="48">OFFICE</text>
+                  <text x="486" y="156" class="lbl2">RECORDS</text>
+                </g>
+              </svg>
+              <span class="map-pin" id="mapPin" style="left:66.7%; top:66.7%"></span>
+              <span class="map-check" id="mapCheck" style="left:66.7%; top:66.7%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="#FBFBFD"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+            </div>
+            <p class="map-cap" id="mapCap">07:42 · Laydown area, Tower 2</p>
+          </div><!-- /story-map -->
+        </div><!-- /story-media -->
+
+        <!-- the timeline (interactive flowchart) -->
+        <ol class="beats" aria-label="Incident timeline">
+          <li data-scenario="a">
+            <button class="beat" data-beat="a1">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">07:42</span>
+              <span class="b-title">Spotted on the laydown area</span>
+              <span class="b-desc">A rigger photographs the frayed sling and files it from his phone in under a minute.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-hardhat"/></svg></span><span class="b-role">Worker</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">01 · Report</span></span>
+            </button>
+          </li>
+          <li data-scenario="a">
+            <button class="beat" data-beat="a2">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">07:44</span>
+              <span class="b-title">Scored and routed</span>
+              <span class="b-desc">The report arrives pre-scored — likelihood × exposure × consequence = 126 — and lands with the Tower 2 owner on a 48-hour clock.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-branch"/></svg></span><span class="b-role">System</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">02 · Route</span></span>
+            </button>
+          </li>
+          <li data-scenario="a">
+            <button class="beat" data-beat="a3">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">07:51</span>
+              <span class="b-title">Lifting permit suspended</span>
+              <span class="b-desc">LP-0093 flips to suspended and the crane crew is notified before the morning lift.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-shield"/></svg></span><span class="b-role">Safety officer</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">02 · Route</span></span>
+            </button>
+          </li>
+          <li data-scenario="a" class="gapped" data-gap="overnight">
+            <button class="beat" data-beat="a4">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">10:20</span>
+              <span class="b-title">Fixed, with evidence</span>
+              <span class="b-desc">New sling installed and certified, old one quarantined, before-and-after photos attached.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-wrench"/></svg></span><span class="b-role">Supervisor</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">03 · Rectify</span></span>
+            </button>
+          </li>
+          <li data-scenario="a">
+            <button class="beat" data-beat="a5">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">Day 2 · 09:36</span>
+              <span class="b-title">Verified on site. Closed at hour 26</span>
+              <span class="b-desc">The officer re-inspects at the laydown area and signs. Only now does the hazard close.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-shield"/></svg></span><span class="b-role">Safety officer</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">04 · Verify</span></span>
+            </button>
+          </li>
+          <li data-scenario="a" class="last">
+            <button class="beat" data-beat="a6">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">Month end</span>
+              <span class="b-title">On the dashboard, on the record</span>
+              <span class="b-desc">Closure rate, aging, the sling as row one — audit-ready without a weekend of paperwork.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-brief"/></svg></span><span class="b-role">Management</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">05 · Close</span></span>
+            </button>
+          </li>
+          <li data-scenario="b">
+            <button class="beat" data-beat="b1">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">09:26</span>
+              <span class="b-title">The inspection opens itself</span>
+              <span class="b-desc">Created by rule at 09:00, walked by 09:26 — three findings: drums past disposal date, one SDS missing, two certs expired.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-branch"/></svg></span><span class="b-role">System</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">01 · Report</span></span>
+            </button>
+          </li>
+          <li data-scenario="b">
+            <button class="beat" data-beat="b2">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">09:48</span>
+              <span class="b-title">Disposal assigned, 72-hour clock</span>
+              <span class="b-desc">A corrective action with a named owner and a deadline; the missing SDS is requested the same minute.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-clip"/></svg></span><span class="b-role">Facilities owner</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">02 · Route</span></span>
+            </button>
+          </li>
+          <li data-scenario="b" class="gapped" data-gap="two days">
+            <button class="beat" data-beat="b3">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">11:15</span>
+              <span class="b-title">The refresher books itself</span>
+              <span class="b-desc">The training finding routes to HR; both storekeepers are enrolled for Thursday 14:00 before lunch.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-users"/></svg></span><span class="b-role">HR</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">02 · Route</span></span>
+            </button>
+          </li>
+          <li data-scenario="b">
+            <button class="beat" data-beat="b4">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">Day 3</span>
+              <span class="b-title">Disposed, verified, archived</span>
+              <span class="b-desc">Consignment note, licensed contractor, photos, signature — verified and archived.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-shield"/></svg></span><span class="b-role">Safety officer</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">04 · Verify</span></span>
+            </button>
+          </li>
+          <li data-scenario="b" class="last">
+            <button class="beat" data-beat="b5">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="b-time">Month end</span>
+              <span class="b-title">Compliance, in one screen</span>
+              <span class="b-desc">SDS coverage, training currency, inspections done — beside the hazard numbers, on one screen.</span>
+              <span class="b-meta"><span class="b-badge" aria-hidden="true"><svg><use href="#i-brief"/></svg></span><span class="b-role">Management</span><span class="b-dotsep" aria-hidden="true">·</span><span class="b-stage">05 · Close</span></span>
+            </button>
+          </li>
+        </ol>
+
+      </div><!-- /story-grid -->
+      <span class="vh" aria-live="polite" id="storyLive"></span>
+    </div>
+  </section>
+
+  <!-- ===== THE ALTERNATIVE (dark band) ===== -->
+  <section>
+    <div class="wrap reveal">
+      <div class="band-dark center">
+        <span class="eyebrow">The alternative</span>
+        <h2>Group chats are where hazards go <em class="sky">quiet.</em></h2>
+        <p class="body" style="margin-top:24px">Today the sling photo lands in a group chat, the follow-up lives on a clipboard, and the closure — if it happened — is in someone's head. When the auditor or MOM asks for records, you reconstruct the story from screenshots. That is not a safety system. It is a memory test your company sits for every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NINE MODULES ===== -->
+  <section id="modules">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">What's inside</span>
+        <h2>Nine modules. One <em>loop.</em></h2>
+        <p class="lead">The two mornings above walk six of the nine. The other three — accidents, equipment, health — run the same loop: owner, deadline, verification, record.</p>
+      </div>
+
+      <div class="caps">
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">A · Hazard investigation</span>
+          <h3>Reported, investigated, rectified, verified, closed.</h3>
+          <p>The loop you just watched — with a dashboard tracking totals, open items and closure rate.</p>
+          <ul>
+            <li>Photo-and-pin reporting from any phone</li>
+            <li>Named owner and deadline on every hazard</li>
+            <li>Closure only after on-site verification</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="a1">See it in the story</a>
+          <div class="cap-tile__tag">report · rectify · verify</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">B · Risk control</span>
+          <h3>Risk scored, inspections raised by rule.</h3>
+          <p>Likelihood × exposure × consequence scoring turns judgment into a number — and numbers into tasks.</p>
+          <ul>
+            <li>LEC scoring with grade thresholds</li>
+            <li>Risk register with review dates</li>
+            <li>Inspection tasks created by rule, not memory</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="b1">See it in the story</a>
+          <div class="cap-tile__tag">lec · register · inspections</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">C · Accident management</span>
+          <h3>Incidents registered, causes found, actions tracked.</h3>
+          <p>From registration to root cause to corrective actions — with a trend dashboard, not anecdotes.</p>
+          <ul>
+            <li>Incident and near-miss registration</li>
+            <li>Root-cause investigation on record</li>
+            <li>Corrective actions with owners and due dates</li>
+          </ul>
+          <div class="cap-tile__tag">incidents · root cause · trends</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">D · Chemical management</span>
+          <h3>Every chemical, from delivery to disposal.</h3>
+          <p>The full lifecycle with the safety data sheet on file and the disposal archived.</p>
+          <ul>
+            <li>Register with locations and quantities</li>
+            <li>SDS on file for every chemical</li>
+            <li>Disposal records archived for audit</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="b2">See it in the story</a>
+          <div class="cap-tile__tag">sds · lifecycle · disposal</div>
+        </div>
+
+        <div class="cap-tile dark reveal">
+          <span class="cap-tile__eyebrow">E · JSA &amp; permit to work</span>
+          <h3>High-risk work approved digitally, suspended instantly.</h3>
+          <p>Job safety analysis and permits for hot work, lifting, confined space — with an approval chain and a register.</p>
+          <ul>
+            <li>JSA attached to every permit</li>
+            <li>Digital approval chain with timestamps</li>
+            <li>One tap to suspend, notify, reinstate</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="a3">See it in the story</a>
+          <div class="cap-tile__tag">jsa · ptw · approvals</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">F · Equipment management</span>
+          <h3>Every asset inspected on schedule.</h3>
+          <p>An equipment archive with checklists that arrive on time and a health dashboard.</p>
+          <ul>
+            <li>Asset archive with certificates</li>
+            <li>Scheduled inspection checklists</li>
+            <li>Defects become tasks automatically</li>
+          </ul>
+          <div class="cap-tile__tag">assets · checklists · health</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">G · Health &amp; PPE</span>
+          <h3>People records as current as the plant's.</h3>
+          <p>Medical exams, fitness status, and PPE stock in one place.</p>
+          <ul>
+            <li>Medical exam records with due dates</li>
+            <li>PPE inventory and requisitions</li>
+            <li>Fitness status visible to the right people</li>
+          </ul>
+          <div class="cap-tile__tag">medical · ppe · records</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">H · Training management</span>
+          <h3>From induction to compliance, with expiry dates.</h3>
+          <p>Courses, attendance, and qualifications that flag themselves before they lapse.</p>
+          <ul>
+            <li>Induction tracks for new hires</li>
+            <li>Attendance and quiz records</li>
+            <li>Qualifications with expiry alerts</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="b3">See it in the story</a>
+          <div class="cap-tile__tag">induction · courses · certs</div>
+        </div>
+
+        <div class="cap-tile reveal">
+          <span class="cap-tile__eyebrow">I · Performance management</span>
+          <h3>Safety KPIs that update themselves.</h3>
+          <p>Criteria, assessors, appraisals — and the month-end dashboard from the story above.</p>
+          <ul>
+            <li>KPI criteria and weights</li>
+            <li>Assessor scoring on record</li>
+            <li>Dashboards that need no compiling</li>
+          </ul>
+          <a class="ilink" href="#story" data-story-link="a6">See it in the story</a>
+          <div class="cap-tile__tag">kpis · appraisals · dashboard</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE LOOP ===== -->
+  <section>
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">The operating principle</span>
+        <h2>Reported is not <em>closed.</em></h2>
+        <p class="lead">Every module runs the same five stages. They are the stage tags you saw on the timeline above.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step reveal">
+          <span class="num">01</span>
+          <h4>Report</h4>
+          <p>Anyone, from a phone: photo, pinned location, category. Under a minute.</p>
+        </div>
+        <div class="flow-step reveal">
+          <span class="num">02</span>
+          <h4>Route</h4>
+          <p>Scored by likelihood × exposure × consequence, assigned to a named owner with a deadline. Nobody forwards an email.</p>
+        </div>
+        <div class="flow-step reveal">
+          <span class="num">03</span>
+          <h4>Rectify</h4>
+          <p>Tracked to done. Evidence is required, not optional.</p>
+        </div>
+        <div class="flow-step reveal">
+          <span class="num">04</span>
+          <h4>Verify</h4>
+          <p>A second person confirms the fix on site. Desk close-outs don't count.</p>
+        </div>
+        <div class="flow-step reveal">
+          <span class="num">05</span>
+          <h4>Close</h4>
+          <p>On the record, on the dashboard, ready for the auditor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section>
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for the people who carry the <em>risk.</em></h2>
+      </div>
+      <div class="rows reveal">
+        <div class="row"><div class="row__num">01</div><div><div class="row__name">Main contractors &amp; builders</div><div class="row__desc">Site hazards, lifting and hot-work permits, subcontractor inductions.</div></div></div>
+        <div class="row"><div class="row__num">02</div><div><div class="row__name">Manufacturing plants</div><div class="row__desc">Machine safety, chemicals and SDS, PPE, shift-based inspections.</div></div></div>
+        <div class="row"><div class="row__num">03</div><div><div class="row__name">Facilities &amp; property managers</div><div class="row__desc">Contractor permits, scheduled inspections, equipment records across sites.</div></div></div>
+        <div class="row"><div class="row__num">04</div><div><div class="row__name">The one-person safety department</div><div class="row__desc">A safety officer covering what should be a team: one queue instead of four notebooks.</div></div></div>
+        <div class="row"><div class="row__num">05</div><div><div class="row__name">Operations managers</div><div class="row__desc">Deadlines and named owners instead of reminders and chasing.</div></div></div>
+        <div class="row"><div class="row__num">06</div><div><div class="row__name">SMEs facing bizSAFE or ISO 45001-style audits</div><div class="row__desc">Evidence on record, not reconstructed from group chats the weekend before.</div></div></div>
+        <div class="row"><div class="row__num">07</div><div><div class="row__name">Directors &amp; management</div><div class="row__desc">The dashboard, the audit trail, the records when the inspector asks.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section>
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Why work with us</span>
+        <h2>The case is <em>simple.</em></h2>
+      </div>
+      <div class="grid g-3" style="margin-top:48px">
+        <div class="tile reveal">
+          <span class="num">01</span>
+          <h3>Built to fit your site.</h3>
+          <p>Configured around your areas, your permits, your inspection routines — not a generic checklist app.</p>
+        </div>
+        <div class="tile reveal">
+          <span class="num">02</span>
+          <h3>Your account. Your data.</h3>
+          <p>The system runs in your company's name. If we part ways, everything stays with you.</p>
+        </div>
+        <div class="tile reveal">
+          <span class="num">03</span>
+          <h3>One person, accountable.</h3>
+          <p>Ronnie scopes it, builds it, trains your crew, and answers the phone after.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING NOTE ===== -->
+  <section>
+    <div class="wrap">
+      <div class="head head--center reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Fixed scope. Fixed <em>price.</em></h2>
+        <p class="lead">Scoped after a site walkthrough. Start with one loop if you like — most clients begin with hazard reporting and permits — then add modules in phases. Each phase is quoted before it starts. Nothing is billed by surprise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section id="contact">
+    <div class="wrap reveal">
+      <div class="cta-card">
+        <span class="eyebrow">Start with a walkthrough</span>
+        <h2>See your site in this <em>system.</em></h2>
+        <p class="lead">Thirty minutes, on WhatsApp or at your site. Bring your incident book, your permit file, or your last audit finding — I'll show you where each one lives in the system, and quote a fixed price for the first phase.</p>
+        <div class="btns">
+          <a href="https://wa.me/6598943004?text=Hi%20Ronnie%20%E2%80%94%20I%27d%20like%20to%20see%20the%20EHS%20system%20for%20my%20operation." class="pill pill-primary" target="_blank" rel="noopener">Talk to Ronnie</a>
+          <a href="ai-quote.html" class="pill pill-ghost">Get a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-col foot-brand">
+        <a href="index.html" class="foot-logo" aria-label="Velo Working — home"><img src="asset/velo-logo.svg" alt="Velo Working"></a>
+        Custom systems for your operations, built to fit.<br>
+        Singapore · Malaysia · Brunei
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="index.html#build">System</a>
+        <a href="ehs.html">EHS system</a>
+        <a href="fabrication.html">Fabrication</a>
+        <a href="assessment/assessment.html" target="_blank" rel="noopener">Assessment</a>
+        <a href="pitch-deck.html">About us</a>
+      </div>
+      <div class="foot-col">
+        <h5>Field notes</h5>
+        <a href="blog/index.html">All field notes</a>
+        <a href="blog/three-categories-of-business-software.html">Three categories of business software</a>
+        <a href="blog/positioning-of-jodoo.html">Positioning of Jodoo</a>
+        <a href="blog/workflow-vs-erp-positioning.html">Workflow vs ERP positioning</a>
+        <a href="blog/operational-tasks-first-principles.html">Operational tasks at first principles</a>
+        <a href="blog/THE%20SME%20DIGITAL%20PARADOX.html">The SME Digital Paradox</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="https://wa.me/6598943004" target="_blank" rel="noopener">WhatsApp +65 9894 3004</a>
+        <a href="mailto:ronnie.yap@veloworking.com">ronnie.yap@veloworking.com</a>
+        <a href="tel:+6598943004">+65 9894 3004</a>
+        <span>540 Sims Ave #03-05<br>Singapore 387603</span>
+      </div>
+    </div>
+    <div class="fine">© 2026 Velo Working Pte. Ltd. (UEN 202609930G). All rights reserved. · Custom systems built on Jodoo — a no-code platform. The platform account stays in your company name.</div>
+  </div>
+</footer>
+
+<script>
+  /* reveal on scroll */
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* ===== story controller ===== */
+  (function(){
+    var section = document.getElementById('story');
+    if (!section) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* map anchors, in % of the map box */
+    var ANCH = {
+      a: { laydown:[66.7,66.7], office:[89.2,77.1] },
+      b: { store:[54.7,71.4], office:[81.7,34.3] }
+    };
+    var HOME = { a:'laydown', b:'store' }; /* where the incident lives (the healing check) */
+    var KICKER = {
+      a: 'Scenario A of 2 · a Tuesday morning on a worksite',
+      b: 'Scenario B of 2 · a scheduled inspection, no drama required.'
+    };
+    var BEATS = {
+      a: [
+        { id:'a1', screen:'s1', map:'laydown',
+          cap:"The report, from a rigger's phone: photo, pinned location, category. Under a minute, on the spot — not typed up at the site office after lunch.",
+          mapCap:'07:42 · Laydown area, Tower 2',
+          live:'Step 1 of 6 — screen: report a hazard.' },
+        { id:'a2', screen:'s2', map:'office',
+          cap:'The safety officer’s queue. The report arrives already scored — likelihood × exposure × consequence = 126, substantial — and pre-assigned to the Tower 2 owner with a 48-hour clock. Nobody had to decide who deals with it.',
+          mapCap:'07:44 · Site office',
+          live:'Step 2 of 6 — screen: hazard queue. Scored 126, routed to J. Lim.' },
+        { id:'a3', screen:'s3', map:'office',
+          cap:'One tap in the permit register. LP-0093 flips to suspended and the crane crew is notified — before the morning lift, not after.',
+          mapCap:'07:51 · Site office',
+          live:'Step 3 of 6 — screen: permit register. Lifting permit LP-0093 suspended.' },
+        { id:'a4', screen:'s4', map:'laydown',
+          cap:'The supervisor’s task: checklist done, old sling quarantined, new sling certified, before-and-after photos attached. Submitted for verification — it cannot close itself.',
+          mapCap:'10:20 · Laydown area',
+          live:'Step 4 of 6 — screen: rectification task with evidence.' },
+        { id:'a5', screen:'s5', map:'laydown', healed:true,
+          cap:'The safety officer re-inspects at the laydown area and signs. Only now does HZ-0231 close — 26 hours after the report. The lifting permit reinstates four minutes later.',
+          mapCap:'Day 2 · Laydown area — verified',
+          live:'Step 5 of 6 — screen: closure record, verified on site.' },
+        { id:'a6', screen:'s8', map:'office', closed:true,
+          cap:'The report management actually reads: 34 hazards raised, 97% closed, 31 hours average to close. The sling is row one — closed, verified, evidenced. Audit-ready without a weekend of paperwork.',
+          mapCap:'Month end · Site office',
+          live:'Step 6 of 6 — screen: month-end safety dashboard.' }
+      ],
+      b: [
+        { id:'b1', screen:'s6', map:'store',
+          cap:'The checklist the system opened by itself at 09:00 — a rule, not a reminder. By 09:26 it holds three findings: two drums past their disposal date, one missing SDS, two expired chemical-handling certs.',
+          mapCap:'09:26 · Chemical store',
+          live:'Step 1 of 5 — screen: chemical store inspection, three findings.' },
+        { id:'b2', screen:'s7', map:'office',
+          cap:'The corrective action: licensed disposal of two 200-litre drums, owned by facilities, due in 72 hours. The missing SDS is requested from the supplier in the same minute.',
+          mapCap:'09:48 · Office',
+          live:'Step 2 of 5 — screen: corrective action CA-0057 assigned.' },
+        { id:'b3', screen:'s6', map:'office',
+          cap:'The third finding routes to HR. A chemical-handling refresher is booked for Thursday 14:00 and both storekeepers are enrolled — before lunch, without a meeting. It is the last flagged line on the inspection.',
+          mapCap:'11:15 · Office',
+          live:'Step 3 of 5 — screen: inspection findings. Training refresher booked.' },
+        { id:'b4', screen:'s7', map:'store', healed:true,
+          cap:'Day 3: consignment note, licensed contractor, after-photos, the safety officer’s signature — the lower half of the record. It archives itself where the next audit can find it.',
+          mapCap:'Day 3 · Chemical store — verified',
+          live:'Step 4 of 5 — screen: corrective action verified and archived.' },
+        { id:'b5', screen:'s8', map:'office', closed:true,
+          cap:'The same month-end screen the director reads: hazard closures beside chemical, training and inspection compliance. One screen, no compiling.',
+          mapCap:'Month end · Office',
+          live:'Step 5 of 5 — screen: month-end safety dashboard.' }
+      ]
+    };
+
+    var screens = {};
+    var ids = ['s1','s2','s3','s4','s5','s6','s7','s8'];
+    for (var n = 0; n < ids.length; n++) screens[ids[n]] = document.getElementById(ids[n]);
+
+    var beatBtns = section.querySelectorAll('.beat');
+    var btnByBeat = {};
+    for (var n2 = 0; n2 < beatBtns.length; n2++) btnByBeat[beatBtns[n2].getAttribute('data-beat')] = beatBtns[n2];
+
+    var capEl = document.getElementById('storyCap'),
+        mapCapEl = document.getElementById('mapCap'),
+        kickerEl = document.getElementById('storyKicker'),
+        liveEl = document.getElementById('storyLive'),
+        pin = document.getElementById('mapPin'),
+        check = document.getElementById('mapCheck'),
+        mapbox = document.getElementById('mapbox'),
+        playBtn = document.getElementById('storyPlay'),
+        prevBtn = document.getElementById('storyPrev'),
+        nextBtn = document.getElementById('storyNext'),
+        segs = section.querySelectorAll('.seg'),
+        ol = section.querySelector('.beats');
+
+    var state = { scn:'a', i:0, timer:null, playing:false };
+    var curScreen = 's8';
+
+    function pos(el, xy){ el.style.left = xy[0] + '%'; el.style.top = xy[1] + '%'; }
+
+    function setBeat(i){
+      var list = BEATS[state.scn];
+      if (i < 0 || i >= list.length) return;
+      state.i = i;
+      var b = list[i];
+
+      /* laptop screen (skip the swap when the beat shares the visible screen) */
+      if (b.screen !== curScreen){
+        for (var k in screens){ if (screens.hasOwnProperty(k)) screens[k].hidden = (k !== b.screen); }
+        curScreen = b.screen;
+        if (!reduced.matches){
+          var nxt = screens[b.screen];
+          nxt.classList.remove('enter'); void nxt.offsetWidth; nxt.classList.add('enter');
+        }
+      }
+
+      /* timeline states (clear across BOTH scenarios so no stale state survives a switch) */
+      for (var m = 0; m < beatBtns.length; m++){
+        beatBtns[m].removeAttribute('aria-current');
+        beatBtns[m].parentNode.classList.remove('done');
+      }
+      for (var j = 0; j < list.length; j++){
+        var btn = btnByBeat[list[j].id], li = btn.parentNode;
+        if (j === i){ btn.setAttribute('aria-current','step'); }
+        if (j < i){ li.classList.add('done'); }
+      }
+
+      /* captions */
+      capEl.textContent = b.cap;
+      mapCapEl.textContent = b.mapCap;
+
+      /* map pin + healing check */
+      var anch = ANCH[state.scn];
+      pos(check, anch[HOME[state.scn]]);
+      if (b.healed || b.closed){ mapbox.classList.add('map-healed'); } else { mapbox.classList.remove('map-healed'); }
+      if (b.healed && !b.closed){ mapbox.classList.add('pin-off'); } else { mapbox.classList.remove('pin-off'); }
+      pos(pin, b.closed ? anch.office : anch[b.map]);
+      pin.classList.remove('pulse'); void pin.offsetWidth;
+      if (!reduced.matches && !(b.healed && !b.closed)) pin.classList.add('pulse');
+
+      /* controls + announcement */
+      prevBtn.disabled = (i === 0);
+      nextBtn.disabled = (i === list.length - 1);
+      liveEl.textContent = b.live;
+    }
+
+    function setScenario(s, announce){
+      if (state.scn === s) return;
+      state.scn = s;
+      section.setAttribute('data-scenario', s);
+      for (var j = 0; j < segs.length; j++){
+        var on = segs[j].getAttribute('data-scn') === s;
+        segs[j].setAttribute('aria-checked', on ? 'true' : 'false');
+        segs[j].tabIndex = on ? 0 : -1;
+      }
+      kickerEl.textContent = KICKER[s];
+      stopPlay();
+      setBeat(0);
+      if (announce){
+        liveEl.textContent = 'Scenario: ' + (s === 'a' ? 'construction site' : 'office and plant') + '. ' + BEATS[s][0].live;
+      }
+    }
+
+    /* playback — opt-in only, cancelled by any interaction */
+    function stopPlay(){
+      if (state.timer){ clearInterval(state.timer); state.timer = null; }
+      state.playing = false;
+      playBtn.textContent = 'Play the story';
+      playBtn.setAttribute('aria-pressed','false');
+    }
+    function startPlay(){
+      state.playing = true;
+      playBtn.textContent = 'Pause';
+      playBtn.setAttribute('aria-pressed','true');
+      state.timer = setInterval(function(){
+        var last = BEATS[state.scn].length - 1;
+        if (state.i >= last){ stopPlay(); return; }
+        setBeat(state.i + 1);
+      }, 4000);
+    }
+    playBtn.addEventListener('click', function(){ state.playing ? stopPlay() : startPlay(); });
+    section.addEventListener('pointerdown', function(e){ if (!playBtn.contains(e.target)) stopPlay(); });
+    document.addEventListener('visibilitychange', function(){ if (document.hidden) stopPlay(); });
+
+    /* beat clicks */
+    for (var n3 = 0; n3 < beatBtns.length; n3++){
+      (function(btn){
+        btn.addEventListener('click', function(){
+          var id = btn.getAttribute('data-beat');
+          if (id.charAt(0) !== state.scn) return;
+          var list = BEATS[state.scn];
+          for (var k = 0; k < list.length; k++){ if (list[k].id === id){ setBeat(k); break; } }
+        });
+      })(beatBtns[n3]);
+    }
+
+    /* arrow-key navigation between visible beats */
+    ol.addEventListener('keydown', function(e){
+      var key = e.key;
+      if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Home' && key !== 'End') return;
+      var vis = [];
+      for (var j = 0; j < beatBtns.length; j++){
+        if (beatBtns[j].getAttribute('data-beat').charAt(0) === state.scn) vis.push(beatBtns[j]);
+      }
+      var idx = vis.indexOf(document.activeElement);
+      if (idx === -1) return;
+      e.preventDefault();
+      if (key === 'ArrowDown'){ idx = Math.min(idx + 1, vis.length - 1); }
+      else if (key === 'ArrowUp'){ idx = Math.max(idx - 1, 0); }
+      else if (key === 'Home'){ idx = 0; }
+      else { idx = vis.length - 1; }
+      vis[idx].focus();
+    });
+
+    /* scenario switcher */
+    for (var n4 = 0; n4 < segs.length; n4++){
+      (function(seg){
+        seg.addEventListener('click', function(){ setScenario(seg.getAttribute('data-scn'), true); });
+      })(segs[n4]);
+    }
+    document.getElementById('storySwitch').addEventListener('keydown', function(e){
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      var s = state.scn === 'a' ? 'b' : 'a';
+      setScenario(s, true);
+      for (var j = 0; j < segs.length; j++){ if (segs[j].getAttribute('data-scn') === s) segs[j].focus(); }
+    });
+
+    /* previous / next */
+    function maybeScrollLaptop(){
+      if (window.matchMedia('(max-height:620px)').matches){
+        section.querySelector('.laptop').scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block:'nearest' });
+      }
+    }
+    prevBtn.addEventListener('click', function(){ setBeat(state.i - 1); maybeScrollLaptop(); });
+    nextBtn.addEventListener('click', function(){ setBeat(state.i + 1); maybeScrollLaptop(); });
+
+    /* deep links from the module tiles */
+    var links = document.querySelectorAll('[data-story-link]');
+    for (var n5 = 0; n5 < links.length; n5++){
+      (function(a){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          var v = a.getAttribute('data-story-link');
+          if (v.charAt(0) !== state.scn) setScenario(v.charAt(0), false);
+          var list = BEATS[state.scn];
+          for (var k = 0; k < list.length; k++){ if (list[k].id === v){ setBeat(k); break; } }
+          section.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth' });
+        });
+      })(links[n5]);
+    }
+
+    /* scale the fixed 920x575 app canvas to the laptop screen */
+    var screenEl = section.querySelector('.laptop-screen');
+    var canvas = document.getElementById('appCanvas');
+    var mqCompact = window.matchMedia('(max-width:560px)');
+    function rescale(){
+      if (mqCompact.matches){ canvas.style.transform = ''; return; }
+      var w = screenEl.clientWidth;
+      if (w > 0) canvas.style.transform = 'scale(' + (w / 920) + ')';
+    }
+    if ('ResizeObserver' in window){ new ResizeObserver(rescale).observe(screenEl); }
+    window.addEventListener('resize', rescale);
+    if (mqCompact.addEventListener){ mqCompact.addEventListener('change', rescale); }
+    rescale();
+
+    /* init: activate the first beat of scenario A (no-JS shows the static dashboard) */
+    setBeat(0);
+  })();
+</script>
+</body>
+</html>
