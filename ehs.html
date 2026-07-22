@@ -103,8 +103,8 @@
   .seg:focus-visible{outline:2px solid var(--link); outline-offset:3px}
   .seg .lbl-s{display:none}
   @media(max-width:640px){.seg .lbl-l{display:none}.seg .lbl-s{display:inline}}
-  @media(max-width:400px){.switch{border-radius:22px}.seg{flex:1 1 100%}}
-  .kicker{margin-top:14px; font-size:13px; color:var(--ink-3)}
+  @media(max-width:400px){.switch{border-radius:24px}.seg{flex:1 1 100%}}
+  .kicker{margin-top:12px; font-size:13px; color:var(--ink-3)}
 
   /* story grid */
   .story-grid{display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(28px,4vw,56px); align-items:start; margin-top:32px}
@@ -115,7 +115,7 @@
   }
   @media(max-width:1024px){
     .story-grid{max-width:680px; margin-left:auto; margin-right:auto}
-    .story-stick{position:sticky; top:66px; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule); padding-bottom:14px}
+    .story-stick{position:sticky; top:66px; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule); padding-bottom:16px}
   }
   @media(max-height:620px){.story-stick{position:static; border-bottom:0; padding-bottom:0}}
 
@@ -132,12 +132,12 @@
   @media(prefers-reduced-motion:reduce){.screen.enter{animation:none}}
 
   .story-cap{margin-top:16px; font-size:14px; color:var(--ink-2); line-height:1.5; min-height:4.5em}
-  .story-ctrl{display:flex; gap:14px; align-items:center; margin-top:10px; flex-wrap:wrap}
+  .story-ctrl{display:flex; gap:16px; align-items:center; margin-top:12px; flex-wrap:wrap}
   .tlink{background:none; border:0; font-family:inherit; font-size:14px; letter-spacing:-0.01em; color:var(--link); cursor:pointer; padding:10px 6px; min-height:44px}
   .tlink:hover{text-decoration:underline}
   .tlink[disabled],.tlink[aria-disabled="true"]{color:var(--ink-3); opacity:.55; cursor:default; text-decoration:none}
   .tlink:focus-visible{outline:2px solid var(--link); outline-offset:3px}
-  .simnote{font-size:13px; color:var(--ink-3); margin-top:6px}
+  .simnote{font-size:13px; color:var(--ink-3); margin-top:8px}
   @media(prefers-reduced-motion:reduce){#storyPlay{display:none}}
   @media(max-width:400px){
     .story-ctrl{gap:8px}
@@ -146,8 +146,8 @@
   }
 
   /* map tile */
-  .story-map{margin-top:24px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:18px}
-  .maplabel{font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:10px}
+  .story-map{margin-top:24px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-tile); padding:20px}
+  .maplabel{font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:12px}
   .mapbox{position:relative}
   .mapbox svg{width:100%; height:auto; display:block; transition:opacity .3s ease}
   #mapB{position:absolute; top:0; left:0; opacity:0}
@@ -164,10 +164,10 @@
   .map-check svg{width:100%; height:100%}
   .map-healed .map-check{display:block}
   .pin-off .map-pin{display:none}
-  .map-cap{margin-top:10px; font-size:13px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+  .map-cap{margin-top:12px; font-size:13px; color:var(--ink-3); font-variant-numeric:tabular-nums}
   @media(min-width:1025px) and (max-height:880px){.story-map{display:none}}
   @media(max-width:560px){
-    .story-map{padding:14px}
+    .story-map{padding:16px}
     .mapbox svg .lbl2{display:none}
   }
 
@@ -181,7 +181,7 @@
   .beats li.last::before{display:none}
   .beats li.gapped::before{border-left-style:dashed}
   .beats li.gapped::after{content:attr(data-gap); position:absolute; left:26px; bottom:-8px; font-size:11px; font-weight:500; color:var(--ink-3); text-transform:uppercase; letter-spacing:.05em; background:var(--paper); padding:1px 0}
-  .beat{position:relative; display:grid; grid-template-columns:20px 1fr; gap:0 14px; width:100%; text-align:left; padding:14px 16px 14px 0; background:none; border:1px solid transparent; border-radius:16px; cursor:pointer; font-family:inherit; letter-spacing:-0.022em; color:inherit; transition:border-color .15s ease, background .15s ease}
+  .beat{position:relative; display:grid; grid-template-columns:20px 1fr; gap:0 16px; width:100%; text-align:left; padding:12px 16px 12px 0; background:none; border:1px solid transparent; border-radius:16px; cursor:pointer; font-family:inherit; letter-spacing:-0.022em; color:inherit; transition:border-color .15s ease, background .15s ease}
   @media(hover:hover){.beat:hover{background:rgba(0,0,0,.03)}}
   .beat[aria-current="step"]{border-color:var(--link); background:var(--surface)}
   .beat:focus-visible{outline:2px solid var(--link); outline-offset:3px}
@@ -775,7 +775,7 @@
 
           <div class="story-map" aria-hidden="true">
             <div class="maplabel">Where it happened</div>
-            <div class="mapbox" id="mapbox">
+            <div class="mapbox map-healed" id="mapbox">
               <svg id="mapA" viewBox="0 0 600 210">
                 <g fill="none" stroke="#1D1D1F" stroke-width="1.5">
                   <rect x="12" y="12" width="576" height="186" rx="2"/>
@@ -789,7 +789,7 @@
                 <g stroke="#86868B" stroke-width="1">
                   <path d="M340 168l15-15"/><path d="M365 170l20-20"/><path d="M395 172l20-20"/><path d="M425 170l20-20"/>
                 </g>
-                <path d="M300 197V150H480" fill="none" stroke="#86868B" stroke-width="1.25" stroke-dasharray="5 5"/>
+                <path d="M300 197V150H480" fill="none" stroke="#86868B" stroke-width="1.5" stroke-dasharray="5 5"/>
                 <path d="M270 194v10M330 194v10" stroke="#1D1D1F" stroke-width="1.5"/>
                 <g font-size="9.5" fill="#86868B" letter-spacing=".08em" style="text-transform:uppercase">
                   <text x="68" y="62">TOWER 2</text>
@@ -811,7 +811,7 @@
                   <rect x="432" y="58" width="10" height="16"/><rect x="456" y="58" width="10" height="16"/><rect x="432" y="86" width="10" height="16"/><rect x="456" y="86" width="10" height="16"/>
                   <rect x="480" y="140" width="90" height="50"/>
                 </g>
-                <path d="M255 32v166" fill="none" stroke="#86868B" stroke-width="1.25" stroke-dasharray="5 5"/>
+                <path d="M255 32v166" fill="none" stroke="#86868B" stroke-width="1.5" stroke-dasharray="5 5"/>
                 <g font-size="9.5" fill="#86868B" letter-spacing=".08em" style="text-transform:uppercase">
                   <text x="38" y="48">PLANT ROOM</text>
                   <text x="280" y="114">CHEMICAL STORE</text>
@@ -819,10 +819,10 @@
                   <text x="486" y="156" class="lbl2">RECORDS</text>
                 </g>
               </svg>
-              <span class="map-pin" id="mapPin" style="left:66.7%; top:66.7%"></span>
+              <span class="map-pin" id="mapPin" style="left:89.2%; top:77.1%"></span>
               <span class="map-check" id="mapCheck" style="left:66.7%; top:66.7%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="#FBFBFD"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
             </div>
-            <p class="map-cap" id="mapCap">07:42 · Laydown area, Tower 2</p>
+            <p class="map-cap" id="mapCap">Month end · Site office</p>
           </div><!-- /story-map -->
         </div><!-- /story-media -->
 
@@ -1248,7 +1248,7 @@
     var HOME = { a:'laydown', b:'store' }; /* where the incident lives (the healing check) */
     var KICKER = {
       a: 'Scenario A of 2 · a Tuesday morning on a worksite',
-      b: 'Scenario B of 2 · a scheduled inspection, no drama required.'
+      b: 'Scenario B of 2 · a scheduled inspection, no drama required'
     };
     var BEATS = {
       a: [
@@ -1269,7 +1269,7 @@
           mapCap:'10:20 · Laydown area',
           live:'Step 4 of 6 — screen: rectification task with evidence.' },
         { id:'a5', screen:'s5', map:'laydown', healed:true,
-          cap:'The safety officer re-inspects at the laydown area and signs. Only now does HZ-0231 close — 26 hours after the report. The lifting permit reinstates four minutes later.',
+          cap:'The safety officer re-inspects at the laydown area and signs. Only now does HZ-0231 close — 26 hours after the report. The lifting permit reinstates five minutes later.',
           mapCap:'Day 2 · Laydown area — verified',
           live:'Step 5 of 6 — screen: closure record, verified on site.' },
         { id:'a6', screen:'s8', map:'office', closed:true,
@@ -1405,7 +1405,11 @@
         setBeat(state.i + 1);
       }, 4000);
     }
-    playBtn.addEventListener('click', function(){ state.playing ? stopPlay() : startPlay(); });
+    playBtn.addEventListener('click', function(){
+      if (state.playing){ stopPlay(); return; }
+      if (state.i >= BEATS[state.scn].length - 1) setBeat(0); /* replay from the top */
+      startPlay();
+    });
     section.addEventListener('pointerdown', function(e){ if (!playBtn.contains(e.target)) stopPlay(); });
     document.addEventListener('visibilitychange', function(){ if (document.hidden) stopPlay(); });
 
@@ -1476,6 +1480,7 @@
       (function(a){
         a.addEventListener('click', function(e){
           e.preventDefault();
+          stopPlay();
           var v = a.getAttribute('data-story-link');
           if (v.charAt(0) !== state.scn) setScenario(v.charAt(0), false);
           var list = BEATS[state.scn];
