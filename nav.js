@@ -5,22 +5,14 @@
        <div id="velo-nav"></div>
    This file replaces that placeholder with the full navigation bar, so the
    menu is defined in ONE place. Change a label or link here and it updates on
-   the home page, Fabrication, AI quote, Field notes (blog) and Assessment all
-   at once — the pages can no longer drift out of sync.
+   the home page, AI quote, Field notes (blog) and Assessment all at once —
+   the pages can no longer drift out of sync.
 
-   Links are root-relative (e.g. "/fabrication.html") so the same markup works
+   Links are root-relative (e.g. "/ai-quote.html") so the same markup works
    from every folder depth (/, /blog/, /assessment/) on www.veloworking.com.
    ============================================================================ */
 (function () {
   "use strict";
-
-  // Is the visitor on the home page? If so, use in-page anchors for the
-  // sections that live on the home page so clicks scroll instead of reloading.
-  var path = location.pathname.replace(/\/index\.html$/, "/");
-  var isHome = path === "/" || path === "";
-
-  var systemHref = isHome ? "#build" : "/index.html#build";
-  var aboutHref  = isHome ? "#about" : "/index.html#about";
 
   // The Field notes (blog) dropdown entries — edit this list to change the menu.
   var notes = [
@@ -38,14 +30,10 @@
   var html =
     '<header class="vnav" id="veloNav">' +
       '<div class="vnav__in">' +
-        '<a href="/index.html" class="vnav__logo" aria-label="Velo Working — home">' +
-          '<img src="/asset/velo-logo.svg" alt="Velo Working">' +
+        '<a href="/index.html" class="vnav__logo" aria-label="Ronnie Yap — home">' +
+          '<span class="vnav__wordmark">Ronnie Yap</span>' +
         '</a>' +
         '<nav class="vnav__links" id="veloNavLinks" aria-label="Primary">' +
-          '<a href="' + systemHref + '" data-match="#build">System</a>' +
-          '<a href="' + aboutHref + '" data-match="#about">About</a>' +
-          '<a href="/fabrication.html" data-match="/fabrication.html">Fabrication</a>' +
-          '<a href="/ehs.html" data-match="/ehs.html">EHS system</a>' +
           '<span class="vnav__drop" data-drop>' +
             '<a href="/blog/index.html" data-match="/blog/" aria-haspopup="true" aria-expanded="false">Field notes</a>' +
             '<ul class="vnav__menu">' +

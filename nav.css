@@ -2,7 +2,7 @@
    Velo Working — shared site navigation (single source of truth).
 
    This file styles the navigation bar that appears on EVERY page
-   (home, Fabrication, AI quote, Field notes / blog, Assessment).
+   (home, AI quote, Field notes / blog, Assessment).
    The markup is injected by /nav.js, so to change the menu you only edit
    nav.js (links/labels) and this file (styling) — once — and every page
    updates automatically. No more keeping pages in sync by hand.
@@ -37,7 +37,7 @@
 }
 
 .vnav__logo { display: inline-flex; align-items: center; color: #1D1D1F; text-decoration: none; flex-shrink: 0; }
-.vnav__logo img { height: 20px; width: auto; display: block; }
+.vnav__wordmark { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #1D1D1F; line-height: 1; }
 
 .vnav__links { display: flex; gap: 22px; align-items: center; }
 .vnav__links > a,
